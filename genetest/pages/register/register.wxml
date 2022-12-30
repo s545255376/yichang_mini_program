@@ -1,0 +1,84 @@
+<!--genetest/pages/register/register.wxml-->
+<view id="register" class="wholepage" style="min-height:{{windowHeight}}px">
+    <view id="mainBox" wx:if="{{!sendback}}">
+        <view id="mainBox_title">申请基因检测</view>
+        <view class="stepBox">
+            <view class="title">
+                <image src="../../image/Step1.png" mode="widthFix"></image>
+            </view>
+            <view class=" info">完善个人信息</view>
+        </view>
+        <view id="register_box">
+            <view class="register_item">
+                <view class="item_title">* 姓名：</view>
+                <view class="item_input">
+                    <input value="{{name}}" placeholder="请输入您的姓名" bindinput="inputchange" data-name="name" />
+                </view>
+            </view>
+            <view class="register_item">
+                <view class="item_title">* 性别：</view>
+                <view class="item_input">
+                    <input disabled="disabled" value="{{sex}}" placeholder="请选择性别" bindtap="inputchange" data-name="sex" />
+                    <van-icon name="arrow" />
+                </view>
+            </view>
+            <view class="register_item">
+                <view class="item_title">* 年龄：</view>
+                <view class="item_input">
+                    <input type="number" value="{{age}}" placeholder="请输入您的年龄" bindinput="inputchange" data-name="age" />
+                </view>
+            </view>
+        </view>
+        <view class="stepBox">
+            <view class="title">
+                <image src="../../image/Step2.png" mode="widthFix"></image>
+            </view>
+            <view class=" info">扫描检测条码</view>
+        </view>
+        <view id="scanBox">
+            <view>{{scantips}}</view>
+            <image src="../../image/scan.png" bindtap="scan" />
+        </view>
+        <view class="button_group">
+            <view class="btn black" bindtap="intoRegister" bindtap="intoNext">下一步</view>
+            <view class="policy">
+                <van-checkbox value="{{ policy }}" shape="square" bind:change="checkboxchange" checked-color="#231F20" icon-size="15px"></van-checkbox>
+                <view>阅读并同意<text bindtap="intopolicy">《隐私政策》</text>和<text bindtap="intopolicy">《个人信息保护》</text></view>
+            </view>
+        </view>
+    </view>
+    <view id="sendback" wx:if="{{sendback}}">
+        <view class="notice_title">口腔粘膜细胞DNA采样方式</view>
+        <view class="notice_desc emphasize">一、采样说明</view>
+        <view class="notice_desc">1、清水漱口，静候10分钟。</view>
+        <view class="notice_desc">2、撕开一次性采样拭子包装纸上的封口纸，并从袋子里轻轻取出采样拭子（注意：一次性采样拭子采样拭子头不能接触口腔内壁以外的其他物品，以免被污染。）</view>
+        <view class="notice_desc">3、手持一次性采样拭子伸进口腔一侧，在内壁黏膜处（上颚处或左右内侧口腔内壁）由上下移动刮拭15~20次，可根据实际情况增加次数，力度适中，以紧贴口腔内壁黏膜为宜，确保采样拭子头各处都能蘸取口腔黏膜脱落细胞；按照同样方法，在口腔内壁另一侧进行采集。</view>
+        <view class="notice_desc">4、采样完毕后，请将口腔拭子从口腔内取出，放入采样试管内，推动口腔拭子，将口腔拭子头置入保存管，拧紧并保存。（注意：转动次数过多会导致样本的稀释或损耗。采样后，确保一次性采样拭子不接触其他任何物体。）</view>
+        <view style="text-align: center;">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/genetest/course1.jpg" mode="widthFix" show-menu-by-longpress="{{true}}"></image>
+        </view>
+        <view class="notice_desc emphasize">二、注意事项</view>
+        <view class="notice_desc">1、该产品适用于对任何年龄段人群的自然腔道等部位沾取生物样本检验用</view>
+        <view class="notice_desc">2、本产品为一次性使用产品，请勿多次使用。</view>
+        <view class="notice_desc">3、取样前，请检查包装是否完好，若破损，请立即停止使用，联系经销商或厂商更换。</view>
+        <view class="notice_desc">4、若使用后，出现过敏现象，请立即停止使用。</view>
+        <view class="notice_desc">5、采样10分钟前，请不要吃东西、吸烟、饮酒、也不要用漱口水漱口，以免影响采样结果。</view>
+
+        <view class="button_group fixed {{needAdapt ? 'needAdapt' : ''}}">
+            <view class="btn black" bindtap="showQrcode">邮寄样本</view>
+        </view>
+    </view>
+</view>
+
+<van-popup show="{{ sexpop }}" round position="bottom" bind:close="onClose">
+    <van-picker columns="{{ columns }}" bind:cancel="onClose" show-toolbar title="" bind:confirm="inputchange" data-name="sexselect" />
+</van-popup>
+
+<pop bindeventclose="closeToast" popname="qrcodeToast" wx:if="{{qrcodeToast}}">
+    <view class="pop_custome_main">
+        <view>邮寄样本</view>
+        <image src="https://cmjx.chengmeijiangxuan.com/static/web/genetest/qrcode.png" mode="widthFix" show-menu-by-longpress="{{true}}"></image>
+        <view>长按识别图中二维码或打开微信扫一扫扫描包装盒上的快递二维码，填入寄件地址，选择取件时间等待顺丰上门取货。</view>
+        <view>注意事项：运费到付，勿付款！</view>
+    </view>
+</pop>

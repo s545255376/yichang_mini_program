@@ -1,0 +1,157 @@
+.page{
+  padding-bottom: 150rpx;
+}
+.ic_empty{
+  margin-top: -340rpx;
+}
+.ic_empty .goshoping{
+  background: #C2253A;
+  color: #ffffff;
+  font-size: 32rpx;
+  width: 200rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  margin-left: calc(50% - 100rpx);
+  margin-top: 40rpx;
+}
+/* 列表 */
+.cart_body{
+  width: 100%;
+  background: #ffffff;
+}
+.cart{
+  width: calc(100% - 60rpx);
+  margin: 0 30rpx;
+  display: flex;
+  border-bottom: 1px solid #EAEBEE;
+}
+.cart:last-child{
+  border-bottom: none;
+}
+
+.cart .check_icon{
+  margin: 114rpx 0;
+  text-align: center;
+  width: 40rpx;
+}
+.cart .check_icon .checkbox{
+  width: 38rpx;
+  margin: 0 auto;
+}
+.cart .detail{
+  width: calc(100% - 70rpx);
+  display: inline-flex;
+  margin-left: 30rpx;
+  padding: 30rpx 0;
+}
+.cart .goods_thumb{
+  width: 180rpx;
+  height: 216rpx;
+}
+.cart .info{
+  width: calc(100% - 200rpx);
+  margin-left: 20rpx;
+  position: relative;
+}
+.cart .info .title{
+  font-size: 26rpx;
+  color: #231F20;
+  width: calc(100% - 30rpx);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 40rpx;
+  text-align: justify;
+}
+.cart .info .title image{
+  width: 26rpx;
+  margin: 5rpx 0;
+}
+.cart .info .desc{
+  width: 100%;
+  font-size: 24rpx;
+  color: #7B7979;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  line-height: 40rpx;
+  height: 40rpx;
+  text-align: justify;
+}
+.cart_norms{
+  margin-top: 20rpx;
+  width: max-content;
+  color: #A7A5A6;
+  height: 24rpx;
+  line-height: 24rpx;
+  font-size: 24rpx;
+  max-width: calc(100% - 30rpx);
+  margin-right: 8rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.price{
+  vertical-align: text-bottom;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.pay_price{
+  width: calc(100% - 100rpx);
+  display: inline-flex;
+  margin-right: 16rpx;
+  color: #231F20;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  font-weight: bold;
+  margin-top: 36rpx;
+}
+.pay_price text{
+  font-size: 24rpx;
+}
+.market_price{
+  font-size: 22rpx;
+  color: #A7A5A6;
+  margin-left: 14rpx;
+  text-decoration: line-through;
+  font-weight: 100;
+}
+.cart .paynum{
+  float: right;
+  margin-top: 28rpx;
+  color: #A7A5A6;
+}
+
+/* 结算 */
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  z-index: 999;
+}
+.footer button{
+  width: calc(100% - 60rpx);
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 30rpx;
+  background: #231F20;
+  color: #ffffff;
+  font-size: 32rpx;
+  border-radius: 0;
+}
+
+radio .wx-radio-input{
+  border-color: #D3D2D2;
+}
+radio .wx-radio-input.wx-radio-input-checked{
+  border: 1px solid #000000;
+}
+radio .wx-radio-input.wx-radio-input-checked::before{
+  color: #000000;
+}

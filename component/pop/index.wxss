@@ -1,0 +1,31 @@
+/* component/pop/index.wxss */
+.modal-box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-body {
+    width: 100%;
+    position: relative;
+}
+
+.modal-close {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-top: 48rpx;
+}
+
+.modal-close .tagimage {
+    position: absolute;
+    right: calc(50% - 25rpx);
+    width: 50rpx;
+}

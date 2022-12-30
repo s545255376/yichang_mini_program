@@ -1,0 +1,40 @@
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="ic_empty" wx:elif="{{list.length == 0}}">
+  <image src="../../../../images/ic_empty_order.png" mode="widthFix"></image>
+  <view>暂无订单～</view>
+</view>
+<view  class="{{needAdapt ? 'iphone_pandding' : ''}}" wx:else>
+  <view class="list" wx:for="{{list}}" wx:key="orderList">
+    <view class="head" bindtap="orderDetail" data-idx="{{index}}">订单编号：{{item.return_sn}}
+      <text>{{item.refund_type}}</text>
+    </view>
+    <!-- body -->
+    <view class="detail" bindtap="orderDetail" data-idx="{{index}}">
+      <view class="body" wx:for="{{item.order.goods}}" wx:key="orderGoodsList" wx:for-item="info" wx:for-index="idx">
+        <image src="{{info.image}}" mode="aspectFill"></image>
+        <view class="tips" wx:if="{{info.type == 2}}">
+          <image src="../../../../images/order/ic_gifts.png" mode="widthFix"></image>
+          <view>赠品</view>
+        </view>
+        <view class="info">
+          <view class="title">{{info.goods_name}}</view>
+          <view class="desc">{{info.goods_sub}}</view>
+          <view class="norms"><text wx:for="{{info.item}}" wx:key="orderGoodsItem" wx:for-item="model" wx:for-index="modelidx">{{model}}</text></view>
+          <view class="price"><text class="symbol">退款：¥</text>{{info.price}}<text class="num">x {{info.num}}</text></view>
+        </view>
+      </view>
+    </view>
+    <!-- footer -->
+    <view class="footer">
+      <view class="show">{{item.refund_status}}</view>
+      <view class="btn">
+        <view class="white_btn" bindtap="customerService">联系客服</view>
+        <!-- <button class="white_btn" open-type="contact" bindcontact="handleContact"  send-message-title="客服">联系客服</button> -->
+      </view>
+    </view>
+  </view>
+</view>
+

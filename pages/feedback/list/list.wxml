@@ -1,0 +1,29 @@
+<view class="{{needAdapt ? 'iphone_pandding' : ''}}">
+  <view class="ic_empty" wx:if="{{list.length == 0}}">
+    <image src="../../../images/ic_empty_feedback.png" mode="widthFix"></image>
+    <view>暂无记录</view>
+  </view>
+  <view class="list" wx:else>
+    <view class="part" wx:for="{{list}}" wx:key="feedBackList">
+      <view class="title" bindtap="goDetail" data-idx="{{index}}">{{item.content}}</view>
+      <view class="imglist" wx:if="{{item.image.length != 0}}">
+        <image src="{{img}}" mode="aspectFill" bindtap="bannerClick" wx:for="{{item.image}}" wx:key="feedBackImg" wx:for-item="img" wx:for-index="idx" data-pidx="{{index}}" data-idx="{{idx}}" data-type="parent"></image>
+      </view>
+      <view class="create_time" bindtap="goDetail" data-idx="{{index}}">{{item.create_time}}</view>
+      <view class="feedback" wx:if="{{item.reply.length != 0}}">
+        <view class="row">
+          <view class="title">{{item.reply[0].type == 1?'商户答复':'用户回复'}}：<text class="date">{{item.reply[0].create_time}}</text></view>
+          <view class="info">
+            {{item.reply[0].reply_content}}
+            <view wx:if="{{item.reply[0].image.length != 0}}">
+              <image src="{{img}}" mode="aspectFill" bindtap="bannerClick" wx:for="{{item.reply[0].image}}" wx:key="feedBackImg" wx:for-item="img" wx:for-index="idx" data-pidx="{{index}}" data-idx="{{idx}}" data-type="child"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="page_bottom_btn" bindtap="addNew">立即反馈</view>
+</view>

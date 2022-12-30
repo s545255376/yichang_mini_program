@@ -1,0 +1,163 @@
+<view class="page {{needAdapt ? 'iphone_pandding' : ''}}">
+  <view wx:if="{{loading == true}}"></view>
+  <view class="ic_empty" wx:elif="{{loadState == false}}">
+    <image src="../../images/ic_error_network.png" mode="widthFix"></image>
+    <view>网络异常，请重新登陆～</view>
+  </view>
+  <view class="ic_empty" wx:elif="{{list[0].length == 0 && list[1].length == 0 && list[2].length == 0 && cancel.length == 0}}">
+    <image src="../../images/ic_empty_box.png" mode="widthFix"></image>
+    <view>空空如也～</view>
+    <view>遇见心动的，就放进来吧</view>
+    <view class="goshoping" bindtap="goShoping">去逛逛</view>
+  </view>
+  <view wx:else>
+    <view class="footer">
+      <!-- <checkbox-group bindchange="searchAll" class="checkpart">
+        <checkbox value="all" checked="{{modelall}}">全选</checkbox>
+      </checkbox-group> -->
+      <view class="sumprice">合计：<text>¥</text><text class="sumnum">{{sumprice}}</text></view>
+      <button bindtap="goPayment">结算</button>
+    </view>
+
+    <view class="paytips">注：不同的取货方式不能同时结算</view>
+    <view wx:for="{{list}}" wx:key="cartlist" wx:for-item="listitem" wx:for-index="partnum">
+      <view class="cartpart" wx:if="{{listitem.length != 0}}">
+        <checkbox-group bindchange="searchAll"  data-type="{{partnum}}">
+          <label><view class="head"><checkbox disabled="{{modeltype != partnum && modeltype != 'none'}}" value="all" checked="{{modelall[partnum]}}" class="checkbox"/>{{partnum == 0?'门店自提':partnum == 1?'快递配送':'门店自提或快递配送'}}</view></label>
+        </checkbox-group>
+        <checkbox-group bindchange="cartSearch" disabled="{{modeltype != partnum && modeltype != 'none'}}" data-type="{{partnum}}" class="cart_body" wx:if="{{listitem.length != 0}}">
+          <view class="cart" wx:for="{{listitem}}" wx:key="childlist">
+            <view class="check_icon"><checkbox disabled="{{modeltype != partnum && modeltype != 'none'}}" value="{{index}}" class="checkbox" checked="{{item.checked}}"/></view>
+            <view class="detail">
+              <image src="{{item.image}}" mode="aspectFill" class="goods_thumb" bindtap="goGoodsInfo"  data-type="{{partnum}}" data-idx="{{index}}"></image>
+              <view class="info">
+                <view class="title"><view bindtap="goGoodsInfo"  data-type="{{partnum}}" data-idx="{{index}}">{{item.goods_name}}</view><image mode="widthFix" src="../../images/ic_del.png" bindtap="delCart" data-state="list"  data-type="{{partnum}}" data-idx="{{index}}"></image></view>
+                <view class="desc" bindtap="goGoodsInfo"  data-type="{{partnum}}" data-idx="{{index}}">{{item.goods_sub}}</view>
+  
+                <view wx:if="{{item.is_suit == 0}}">
+                  <view wx:if="{{1 < item.item.length}}">
+                    <view class="cart_norms" bindtap="normsChange"  data-type="{{partnum}}" data-idx="{{index}}"><view><text wx:for="{{item.item}}" wx:key="cartListItem" wx:for-item="norms">{{norms}}</text></view><image mode="widthFix" src="../../images/ic_arrow_d.png"></image></view>
+                  </view>
+                  <view wx:else class="cart_norms cart_unnorms"></view>
+                </view>
+                <view wx:else>
+                  <view wx:if="{{item.suit_list.length != 0}}">
+                    <view class="cart_norms" bindtap="normsChange" data-type="{{partnum}}" data-idx="{{index}}">
+                      <view wx:for="{{item.suit_list}}" wx:key="cartSuitList" wx:for-item="suitlist" wx:for-index="suitidx" ><text wx:for="{{suitlist.item}}" wx:key="cartListItem" wx:for-item="norms">{{norms}}</text></view>
+                      <image mode="widthFix" src="../../images/ic_arrow_d.png"></image>
+                    </view>
+                  </view>
+                  <view wx:else class="cart_norms cart_unnorms"></view>
+                </view>
+
+
+  
+                <view class="price">
+                  <view class="pay_price"><text>¥</text>{{item.price}}<view class="market_price" wx:if="{{item.market_price != 0}}">¥{{item.market_price}}</view></view>
+                  <view class="paynum">
+                    <view class="{{item.num<=1?'un_click':''}}" bindtap="delNum" data-type="{{partnum}}" data-idx="{{index}}">-</view><view class="num">{{item.num}}</view><view bindtap="addNum" data-type="{{partnum}}" data-idx="{{index}}">+</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </checkbox-group>
+      </view>
+    </view>
+
+    
+    <view class="invalid" wx:if="{{cancel.length != 0}}">
+      <view class="head">
+        商品已失效 ，看看其他的宝贝吧
+        <view bindtap="delCart" data-idx="0" data-state="cancel">清空<image mode="widthFix" src="../../images/ic_trash.png"></image></view>
+      </view>
+      <view class="cart" wx:for="{{cancel}}" wx:key="cartCancel">
+        <view class="invalid_tips">失效</view>
+        <view class="detail">
+          <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+          <view class="info">
+            <view class="title"><view>{{item.goods_name}}</view><image mode="widthFix" src="../../images/ic_del.png"></image></view>
+            <view class="desc">{{item.goods_sub}}</view>
+            <!-- <view wx:if="{{1 < item.item.length}}">
+              <view class="cart_norms" bindtap="normsChange" data-idx="{{index}}"><view><text wx:for="{{item.item}}" wx:key="cartListItem" wx:for-item="norms">{{norms}}</text></view><image mode="widthFix" src="../../images/ic_arrow_d.png"></image></view>
+            </view>
+            <view wx:else class="cart_norms cart_unnorms"></view> -->
+            <view wx:if="{{item.is_suit == 0}}">
+              <view wx:if="{{1 < item.item.length}}">
+                <view class="cart_norms"><view><text wx:for="{{item.item}}" wx:key="cartListItem" wx:for-item="norms">{{norms}}</text></view><image mode="widthFix" src="../../images/ic_arrow_d.png"></image></view>
+              </view>
+              <view wx:else class="cart_norms cart_unnorms"></view>
+            </view>
+            <view wx:else>
+              <view wx:if="{{item.suit_list.length != 0}}">
+                <view class="cart_norms">
+                  <view wx:for="{{item.suit_list}}" wx:key="cartSuitList" wx:for-item="suitlist" wx:for-index="suitidx" ><text wx:for="{{suitlist.item}}" wx:key="cartListItem" wx:for-item="norms">{{norms}}</text></view>
+                  <image mode="widthFix" src="../../images/ic_arrow_d.png"></image>
+                </view>
+              </view>
+              <view wx:else class="cart_norms cart_unnorms"></view>
+            </view>
+
+            <view class="price">
+              <view class="pay_price"><text>¥</text>{{item.price}}<view class="market_price" wx:if="{{item.market_price != 0}}">¥{{item.market_price}}</view></view>
+              <view class="paynum">
+                <view class="un_click">-</view><view class="num">{{item.num}}</view><view class="un_click">+</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+  <!-- 弹窗 -->
+  <view wx:if="{{goodsToast == true}}">
+    <view class="mask" catchtouchmove="false" bindtap="closeToast"></view>
+    <view class="toast">
+      <view class="title" catchtouchmove="false">
+        <image src="../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeToast"></image>
+        <image src="{{toastShow.image}}" mode="aspectFill" class="goods_img"></image>
+        <view class="info">
+          <view class="price"><text>￥</text>{{toastShow.price}} <view><text wx:if="{{toastShow.market_price != 0}}">￥</text>{{toastShow.market_price == 0?'':toastShow.market_price}}</view></view>
+          <view class="search_tips" wx:if="{{toastShow.is_suit == 0}}"><text wx:for="{{toastShow.specs}}" wx:key="goodsSpecs">{{item.item[item.searchidx].item}}</text></view>
+          <!-- <view class="stock" wx:if="{{list.is_stock == 1}}">库存： {{goods_search.stock}}</view> -->
+        </view>
+      </view>
+
+      <!-- 规格-单品 -->
+      <view class="norms" wx:if="{{toastShow.is_suit == 0}}">
+        <view wx:for="{{toastShow.specs}}" wx:key="goodsSpecs">
+          <view class="name">{{item.spec_name}}：</view>
+          <view class="btn_list">
+            <view class="{{item.searchidx == -1?'':item.searchidx == idx?'btn_click':''}}" wx:for="{{item.item}}" wx:key="goodsSpecsItem" wx:for-item="specsitem" wx:for-index="idx" data-pidx="{{index}}"  data-idx="{{idx}}" bindtap="specsSearch">
+              <image src="{{specsitem.image}}" mode="aspectFill" wx:if="{{specsitem.image}}"></image>
+              <text>{{specsitem.item}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 规格-套盒 -->
+      <view class="norms" wx:else>
+        <view wx:for="{{toastShow.suit_list}}" wx:key="goodsSuitSpecs" wx:for-item="suititem" wx:for-index="suitidx">
+          <view wx:for="{{suititem.specs}}" wx:key="goodsSpecs">
+            <view class="name">{{suititem.goods_name}}{{item.spec_name}}：</view>
+            <view class="btn_list">
+              <view class="{{item.searchidx == -1?'':item.searchidx == idx?'btn_click':''}}" wx:for="{{item.item}}" wx:key="goodsSpecsItem" wx:for-item="specsitem" wx:for-index="idx" data-gidx="{{suitidx}}" data-pidx="{{index}}"  data-idx="{{idx}}" bindtap="specsSearch">
+                <image src="{{specsitem.image}}" mode="aspectFill" wx:if="{{specsitem.image}}"></image>
+                <text>{{specsitem.item}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+
+      <view class="submit_btn" catchtouchmove="false" bindtap="changeNorms"><button>保存</button></view>
+    </view>
+  </view>
+</view>
+
+

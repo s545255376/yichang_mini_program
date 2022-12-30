@@ -1,0 +1,17 @@
+<view class="{{needAdapt ? 'iphone_pandding' : ''}}">
+  <view class="text">
+    <textarea placeholder="你有什么意见或问题可以反馈给我们" placeholder-class="placeholder" maxlength="100" bindinput="inputChange"></textarea>
+    <text>0/100</text>
+  </view>
+  <view class="imglist">
+    <view class="img" wx:for="{{uploadimg}}" wx:key="returnImgList">
+      <image src="{{item.img}}" mode="aspectFill" bindtap="bannerClick" data-idx="{{index}}"></image>
+      <view data-idx="{{index}}" bindtap="delImg">删除</view>
+    </view>
+    <view class="img" bindtap="addImg">
+      <image src="../../../images/mine/ic_feedback_upload.png" mode="aspectFill"></image>
+    </view>
+  </view>
+
+  <view class="page_bottom_btn" bindtap="saveBtn">立即反馈</view>
+</view>

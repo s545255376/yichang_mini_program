@@ -1,0 +1,8 @@
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="input_box" wx:else>
+    <input class="input_line" placeholder='金额' type="digit" bindinput='getInputValue'/>
+    <view class="input_button" bindtap="bonusPoints">确认</view>
+</view>

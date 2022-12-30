@@ -1,0 +1,162 @@
+.login {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 80%;
+    padding: 0 10%;
+    margin-top: -350rpx;
+}
+
+.logo {
+    text-align: center;
+    width: 138rpx;
+    height: 138rpx;
+    border-radius: 50%;
+    padding: 20rpx;
+    margin: 0 auto;
+}
+
+.logo image {
+    width: 100%;
+}
+
+.name {
+    font-size: 34rpx;
+    text-align: center;
+    line-height: 50rpx;
+    margin-top: 24rpx;
+    color: #231F20;
+}
+
+.title {
+    color: #231F20;
+    font-size: 28rpx;
+    margin-top: 100rpx;
+    line-height: 40rpx;
+}
+
+.tips {
+    color: #7B7979;
+    font-size: 26rpx;
+    line-height: 40rpx;
+    margin-top: 20rpx;
+}
+
+.login_btn {
+    width: 100%;
+    background-color: #231F20;
+    color: #ffffff;
+    font-size: 30rpx;
+    line-height: 100rpx;
+    margin-top: 100rpx;
+}
+
+
+
+/* 协议 */
+.login_treaty {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #ffffff;
+    z-index: 999;
+    width: calc(100% - 80rpx);
+    padding: 50rpx 40rpx;
+    border-radius: 30rpx 30rpx 0 0;
+}
+
+.login_treaty .title {
+    color: #363641;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.login_treaty .info {
+    padding: 50rpx 0 70rpx;
+    color: #807E7E;
+    font-size: 30rpx;
+}
+
+.login_treaty .info view {
+    display: contents;
+}
+
+.login_treaty .info text {
+    color: #C2263A;
+}
+
+.login_treaty .btn {
+    width: 100%;
+    display: flex;
+}
+
+.login_treaty .btn view {
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 8rpx;
+}
+
+.login_treaty .cancel {
+    width: 200rpx;
+    background: #F5F5F5;
+    color: #807E7E;
+}
+
+.login_treaty .confirm {
+    width: calc(100% - 200rpx);
+    margin-left: 8rpx;
+    background: #C2263A;
+    color: #ffffff;
+}
+
+/* 顾客绑定美容师弹窗 */
+#pop_register_main {
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 8rpx;
+    /* height: 956rpx; */
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+    border-radius: 20rpx;
+}
+
+#title {
+    width: 100%;
+    text-align: center;
+    color: #363641;
+    padding: 40rpx 0;
+    font-size: 28rpx;
+}
+
+#main {
+    width: 100%;
+    padding: 0 40rpx 60rpx 40rpx;
+    box-sizing: border-box;
+}
+
+#main .van-field,
+#main .van-cell {
+    background-color: #F5F5F5 !important;
+    color: #1D1D1D !important;
+}
+
+#buttonGroup {
+    border-top: 1px solid #D3D3D3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30rpx 0;
+}
+
+#buttonGroup view {
+    color: #1D1D1D;
+    font-size: 30rpx;
+}

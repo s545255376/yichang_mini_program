@@ -1,0 +1,330 @@
+.tabbar{
+  width: 100%;
+  display: block;
+}
+.tabbar .name_search{
+  width: calc(100% - 40rpx);
+  padding: 20rpx;
+  background: #F8F8F9;
+  display: flex;
+}
+.tabbar .name_search input{
+  width: calc(100% - 120rpx);
+  background: #ffffff;
+  height: 70rpx;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+}
+.tabbar .name_search view{
+  width: 118rpx;
+  background: #ffffff;
+  color: #231F20;
+  font-size: 28rpx;
+  line-height: 70rpx;
+  height: 70rpx;
+  border-left: 2rpx solid #F0F0F0;
+}
+.tabbar .picker_search{
+  width: 100%;
+  display: flex;
+  background: #ffffff;
+  border-bottom: 1px solid #F8F8F9;
+  padding: 10rpx 0;
+}
+.tabbar .picker_search .picker_search_part{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #A7A5A6;
+  font-size: 26rpx;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+.tabbar .picker_search .picker{
+  height: 100%;
+}
+.tabbar .picker_search view{
+  margin: 0;
+  display: inline-block;
+}
+.tabbar .picker_search .label{
+  max-width: 260rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.tabbar .picker_search .search_date{
+  margin: 15rpx 0;
+}
+.tabbar .picker_search .search_date view{
+  display: block;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.tabbar .picker_search .arror{
+  content:"";
+  position: absolute;
+  top:calc(50% - 5rpx);
+  right:calc(50% - 140rpx);
+  border-top:10rpx solid #A7A5A6;
+  border-left:10rpx solid transparent;
+  border-right:10rpx solid transparent;
+}
+/* .tabbar .picker_search .hasdate .arror{
+  top:10rpx;
+} */
+/* list */
+.page{
+  margin-top: 220rpx; 
+}
+.list{
+  width: calc(100% - 60rpx);
+  margin-top: 16rpx;
+  padding: 0 30rpx;
+  background: #ffffff;
+}
+.list .head{
+  width: 100%;
+  display: flex;
+  padding: 30rpx 0;
+}
+.list .head image{
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.list .head .cust_info{
+  width: calc(100% - 80rpx);
+  margin-left: 16rpx;
+}
+.list .head .cust_info .cust_name{
+  color: #231F20;
+  font-size: 28rpx;
+  line-height: 28rpx;
+}
+.list .head .cust_info .cust_order{
+  color: #A7A5A6;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  line-height: 24rpx;
+}
+/* body */
+.list .detail{
+  padding: 30rpx;
+  width: calc(100% - 40rpx);
+  padding: 10rpx 20rpx;
+  background: #F9F9F9;
+  /* background: #aaa; */
+}
+.list .body{
+  width: 100%;
+  padding-bottom:30rpx;
+  display: flex;
+  padding: 20rpx 0;
+}
+.list .body image{
+  width: 156rpx;
+  height: 187rpx;
+}
+.list .body .info{
+  position: relative;
+  width: calc(100% - 176rpx);
+  margin-left: 20rpx;
+}
+.list .body .title{
+  color: #231F20;
+  font-size: 28rpx;
+}
+.list .body .desc{
+  color: #A7A5A6;
+  font-size: 26rpx;
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.list .body .norms{
+  color: #A7A5A6;
+  font-size: 24rpx;
+}
+.list .body .price{
+  position: absolute;
+  width: 100%;
+  left: 0rpx;
+  bottom: 0rpx;
+  font-size: 26rpx;
+  color: #231F20;
+  font-weight: bold;
+}
+.list .body .price .symbol{
+  font-size: 24rpx;
+}
+.list .body .price .num{
+  font-size: 26rpx;
+  color: #A7A5A6;
+  float: right;
+  font-weight: 100;
+}
+/* footer */
+.list .footer{
+  width: 100%;
+  background: #ffffff;
+  color: #A7A5A6;
+  font-size: 24rpx;
+  line-height: 100rpx;
+}
+.list .footer .date{
+  display: inline-block;
+  width: auto;
+}
+.list .footer .date image{
+  width: 24rpx;
+  margin-right: 6rpx;
+  vertical-align: middle;
+}
+.list .footer .right{
+  float: right;
+  display: inline-flex;
+  width: auto;
+  font-size: 22rpx;
+}
+.list .footer .right view{
+  color: #000000;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+.list .footer .right view text{
+  color: #C2253A;
+  font-size: 28rpx;
+}
+.list .footer text{
+  color: #A7A5A6;
+  font-size: 22rpx;
+  margin-left: 10rpx;
+}
+.wait_c{
+  color: #C2253A;
+}
+.finish_c{
+  color: #D3D2D2;
+}
+
+/* .search_btn{
+  width: 90rpx;
+  position: fixed;
+  right: 30rpx;
+  bottom: 56rpx;
+} */
+
+/* 日期区间选择 */
+.time_picker{
+  position: fixed;
+  left: 55rpx;
+  top: 50%;
+  z-index: 999;
+  background: #ffffff;
+  width: calc(100% - 110rpx);
+  margin-top: -400rpx;
+  border-radius: 20rpx;
+}
+.time_picker .month{
+  width: calc(100% - 80rpx);
+  padding: 40rpx;
+  color: #231F20;
+  font-size: 30rpx;
+}
+.time_picker .month view{
+  float: right;
+}
+.time_picker .month image{
+  width: 40rpx;
+  margin-left: 20rpx;
+}
+.time_picker .btn{
+  border-top: 1px solid #E7E7E7;
+  padding: 35rpx 45rpx;
+  text-align: right;
+}
+.time_picker .btn view{
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 24rpx;
+  display: inline-block;
+  border-radius: 5rpx;
+}
+.time_picker .btn .cancel{
+  color: #B8BFC6;
+}
+.time_picker .btn .confirm{
+  background: #C2253A;
+  color: #ffffff;
+}
+.time_picker .account-box{
+  width: 100%;
+}
+.time_picker .account-box .f-rili-head {
+	width: 100%;
+	display: flex;
+  border-bottom: 1px solid #EEEEEE;
+}
+.time_picker .account-box .f-rili-th {
+	width: 14.25%;
+	text-align: center;
+	line-height: 60rpx;
+	height: 60rpx;
+  background-color: #fff;
+  color: #EEA1AC;
+	font-size: 26rpx;
+}
+.time_picker .account-box .f-tbody {
+	width: auto;
+	height: auto;
+  background: #FFFFFF;
+  padding-top: 20rpx;
+	padding-bottom: 30rpx;
+}
+.time_picker .account-box .f-td {
+	display: inline-block;
+  width: 14.25%;
+	text-align: center;
+	height: 60rpx;
+	line-height: 60rpx;
+	position: relative;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+.time_picker .account-box .datenum {
+	border-radius: 50%;
+	width: 60rpx;
+	height: 60rpx;
+	line-height: 60rpx;
+	text-align: center;
+  margin: 0 auto;
+  color: #000000;
+}
+.time_picker .account-box .clickdom{
+  color: #ffffff;
+  background: #C2253A;
+}
+.time_picker .account-box .unclick{
+  color: #C0C0C0;
+}
+.time_picker .account-box .datebg{
+  background: rgba(194, 37, 58, 0.06);
+}
+.time_picker .account-box .datebg_start{
+  border-radius: 30rpx 0 0 30rpx;
+  background:none;
+  background-image: linear-gradient(to right, #ffffff 50% , rgba(194, 37, 58, 0.06) 50%);
+}
+.time_picker .account-box .datebg_end{
+  border-radius: 0 30rpx 30rpx 0;
+  background:none;
+  background-image: linear-gradient(to right, rgba(194, 37, 58, 0.06) 50%, #ffffff 50% );
+}

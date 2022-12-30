@@ -1,0 +1,31 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view wx:else>
+  <view class="essay">
+    <view class="title">{{title}}</view>
+    <view class="date">{{date}}</view>
+    <view class="content">
+      <template is="wxParse" data="{{wxParseData:contentname.nodes}}"></template>
+    </view>
+  </view>
+  
+  <view class="recommend" wx:if="{{list.length != 0}}">
+    <view class="recommend_title">商品推荐</view>
+    <view class="goodslist">
+      <view class="goodspart" wx:for="{{list}}" wx:key="recommend" data-idx="{{index}}" bindtap="goGoods">
+        <view class="image">
+          <image src="{{item.image}}" mode="aspectFill"></image>
+          <view wx:if="{{item.tag.length != 0}}"><text wx:for="{{item.tag}}" wx:key="tagList" wx:for-item="tag">{{tag}}</text></view>
+        </view>
+        <view class="info">
+          <view class="title">{{item.goods_name}}</view>
+          <!-- <view class="desc">{{item.intro}}</view> -->
+          <view class="price">¥{{item.price}}<text>¥{{item.market_price}}</text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

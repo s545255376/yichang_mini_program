@@ -1,0 +1,310 @@
+<import src="../wxParse/wxParse.wxml" />
+<!-- <image src="../../images/ic_return.png" mode="widthFix" class="icon_return" style="top:{{statusBarHeight}}px" bindtap="returnBack"></image> -->
+<view class="{{pageShow == true?'wholepage':''}} {{needAdapt ?'iphone_pandding':''}}">
+    <view wx:if="{{banner.length != 0 || list.video != ''}}">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" class="banner" bindchange="swiperChange" style="height:{{bannerHeight}}px">
+            <swiper-item wx:if="{{list.video != ''}}">
+                <view class="swiper-item">
+                    <video src="{{list.video}}" autoplay muted="true" show-mute-btn="true" controls="true" custom-cache="{{false}}"></video>
+                </view>
+            </swiper-item>
+            <swiper-item wx:for="{{banner}}" wx:key="homebanner">
+                <view class="swiper-item">
+                    <image src="{{item}}" mode="aspectFill" data-imgnum="{{index}}" lazy-load="true" bindtap="bannerClick" data-idx="{{index}}"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="indication">{{current+1}}/{{list.video == ''?list.images.length:list.images.length+1}}</view>
+    </view>
+
+    <view class="head">
+        <view class="price">
+            <view class="sale_price"><text>¥</text>{{list.price}}</view>
+            <view class="overline" wx:if="{{list.is_pd == 1}}"><text>¥</text>{{list.pd_setting.pd_price}} ~ <text>¥</text>{{list.market_price}}</view>
+            <view class="overline" wx:elif="{{list.market_price != 0}}"><text>¥</text>{{list.market_price}}</view>
+        </view>
+        <view class="title">{{list.goods_name}}</view>
+        <view class="desc">{{list.goods_sub}}</view>
+
+        <!-- <view class="activity" bindtap="integralShow">
+      <view class="name">活动</view>
+      <view class="integral">积分</view>
+      <text>购买可得 19 积分 购买可得购买可得购买可得购买可得购买可得购买可得购买可得购买可得购买可得</text>
+      <image src="../../images/ic_arrow_r.png" mode="widthFix"></image>
+    </view> -->
+    </view>
+
+    <view id="groupon_slot" wx:if="{{list.is_pd == 1}}">
+        <view id="title">拼团玩法</view>
+        <view id="content">
+            <view id="howtoPlay">
+                <view id="step_simple">
+                    <view>
+                        <view>1</view>
+                        <text>开团/参团</text>
+                    </view>
+                    <view>
+                        <view>2</view>
+                        <text>邀请好友</text>
+                    </view>
+                    <view>
+                        <view>3</view>
+                        <text>参团成功</text>
+                    </view>
+                </view>
+                <view id="step_detailed" style="{{!ptSlotShow ? 'height:300rpx;' : 'height:unset;'}}">
+                    <view>1、开团规则：在拼团时间范围内，所有会员进入盲盒拼团详情页，点击“拼团购“选择对应自己肤质的清洁套餐，下单并成为该团第一个支付成功的买家（即”团长“），则开团成功。</view>
+                    <view>2、组团时间：好友拼团时间为48小时内有效，团长和参团者可在48小时内随时反复补单，每团满6单即拼团成功。若超出规定时间，系统会自动为该团匹配不足订单数。</view>
+                    <view>3、拼团成功：在拼团时间范围内，支付拼团订单达成6单即拼团成功，（不限人数，一人买6单也可独立成团）每团的团长可邀请最多5人参与拼团，成功可获得团长奖励，系统自动匹配的不计。</view>
+                    <view>4、拼团奖励：团长在该团中自购+分享参团的订单满6单，即自动成团，团长获得价值98元的肌肤检测券一张，价值198元的水光肌定制护理券一张。可到所属门店核销体验。</view>
+                    <view>5、邀请好友：本活动新老用户都可开团参团，仅限归属于该门店的所有注册用户，且该门店已开通盲盒拼团活动。团长和参团者待成团后，可继续开团。</view>
+                    <view>6、退换规则：本次盲盒拼团商品一旦成团不支持线上退换货，成团商品统一发货到所属门店，您可联系专属美容师前往领取，具体售后服务请详询门店。</view>
+                    <view class="slotShow" bindtap="showSlot" wx:if="{{!ptSlotShow}}"><text>展开</text>
+                        <image src="../../images/groupon/arrow.png"></image>
+                    </view>
+                </view>
+                <view class="slotHide" bindtap="showSlot" wx:if="{{ptSlotShow}}"><text>收起</text>
+                    <image src="../../images/groupon/arrow.png"></image>
+                </view>
+            </view>
+            <view id="tuanList" wx:if="{{fakesuccessList.length > 0}}">
+                <view id="tuanListTitle"><text>已有</text><text>{{list.pd_success_num}}</text><text>人完成拼团</text></view>
+                <view id="tuanSwiper">
+                    <swiper autoplay circular vertical>
+                        <block wx:for="{{fakesuccessList}}" wx:key="index">
+                            <swiper-item>
+                                <view class="swiper_item" wx:for="{{item}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+                                    <view>
+                                        <image src="{{items.headimg}}"></image>
+                                        <view>{{items.name}}</view>
+                                    </view>
+                                    <view>{{items.create_time}}</view>
+                                </view>
+                            </swiper-item>
+                        </block>
+                    </swiper>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 赠品选择 -->
+    <view class="gift_part" wx:if="{{list.give_mode == 1}}">
+        <view class="list {{giveLimitNum == 0 ? 'padding_b':''}}">
+            <view class="gift_goods" wx:for="{{giveCheckList}}" wx:key="giveCheckList">
+                <image src="{{item.image}}" mode="aspectFill"></image>
+                <view class="info">
+                    <view class="title">{{item.goods_name}}</view>
+                    <!-- <view class="norms">30ml</view> -->
+                </view>
+                <view class="btn">
+                    <view bindtap="getNorms" data-type="change" data-id="{{item.id}}" data-idx="{{index}}">更换</view>
+                </view>
+            </view>
+        </view>
+        <view class="search_part" wx:if="{{giveLimitNum != 0}}">
+            <view class="tips">赠品</view>
+            <view class="num">购买此商品可以选择{{giveLimitNum}}件赠品</view>
+            <view class="btn" bindtap="getNorms" data-type="new">选择赠品</view>
+        </view>
+    </view>
+
+
+    <view class="body">
+        <view class="title">商品详情</view>
+        <view class="goods_tips">国家药监局提示您：请正确认识化妆品功效，化妆品不能替代药品，不能治疗皮肤病等疾病”</view>
+        <view class="content">
+            <template is="wxParse" data="{{wxParseData:contentname.nodes}}"></template>
+        </view>
+    </view>
+
+    <view class="share" wx:if="{{jxShow == true && liveStatus == 'false'}}">
+        <!-- <button open-type="share" class="share_link"><image src="../../images/ic_share_black.png" mode="widthFix"></image></button> -->
+
+        <view class="share_poster" bindtap="posterShow">
+            <image src="../../images/ic_poster.png" mode="widthFix"></image>
+        </view>
+    </view>
+
+
+    <view class="footer" wx:if="{{footerShow == true}}">
+        <view class="footer_l">
+            <view class="s_btn" bindtap="goHome">
+                <image src="../../images/return_hone.png" mode="widthFix"></image>
+                <view>首页</view>
+            </view>
+            <view class="s_btn" bindtap="customerService">
+                <image src="../../images/ic_service.png" mode="widthFix"></image>
+                <view>客服</view>
+                <!-- <button open-type="contact" bindcontact="handleContact"></button> -->
+            </view>
+            <view class="s_btn cart" bindtap="goCart" wx:if="{{list.can_add_cart != 0 && list.activity_id != 2}}">
+                <image src="../../images/return_cart.png" mode="widthFix"></image>
+                <view>购物袋</view>
+                <text wx:if="{{cartnum != 0}}">{{cartnum}}</text>
+            </view>
+        </view>
+
+        <view class="footer_r {{list.can_buy == 1?'':'unpay'}}" wx:if="{{list.activity_id == 2}}">
+            <view class="b_btn paynow" bindtap="buyTogether">拼单购买</view>
+        </view>
+        <view class="footer_r {{list.can_buy == 1 ? '' : 'unpay'}}" wx:elif="{{list.is_pd == 1}}">
+            <view class="b_btn add_cart groupon_btn {{pd_oid ? 'btn_opacity' : ''}}" bindtap="ptBuyNow" data-pt_buytype="0">
+                <text>¥{{list.price}}</text>
+                <text>单独购买</text>
+            </view>
+            <view class="b_btn paynow groupon_btn" bindtap="ptBuyNow" data-pt_buytype="1">
+                <text>¥{{list.pd_setting.pd_price}}</text>
+                <text>{{list.pd_setting.pd_total}}单拼团价</text>
+            </view>
+        </view>
+        <view class="footer_r {{list.can_buy == 1?'':'unpay'}}" wx:else>
+            <!-- <view class="b_btn add_cart" bindtap="addCart" wx:if="{{jxShow == true && liveStatus == 'false' && list.rakeback != 0 && list.is_enter_u8 != 0}}">加入购物袋</view> -->
+            <view class="b_btn add_cart" bindtap="addCart" wx:if="{{list.can_add_cart != 0}}">加入购物袋</view>
+            <view class="b_btn paynow" bindtap="buyNow">{{jxShow == true?'立即购买':'成为匠选官'}}</view>
+        </view>
+
+
+
+    </view>
+
+    <!-- 老拼购弹窗 -->
+    <view wx:if="{{togetherToast == true}}">
+        <view class="mask" catchtouchmove="false" bindtap="closeToast"></view>
+        <view class="together_toast">
+            <image src="../../images/ic_close.png" mode="widthFix" class="ic_close"></image>
+            <view class="buy_desc">选择购买方式</view>
+            <view class="buy_only {{pdNum == 0?'buy_type_click':''}}" bindtap="togetherNumSearch" data-idx="0">{{list.pd_choice[0]}}人拼单</view>
+            <view class="buy_list">
+                <view bindtap="togetherNumSearch" wx:for="{{list.pd_choice}}" wx:if="{{index != 0}}" wx:key="pdChoice" data-idx="{{index}}" class="{{pdNum == index?'buy_type_click':''}}">{{item}}人拼单</view>
+            </view>
+            <view class="buy_btn" bindtap="pdBuyNow">确定</view>
+        </view>
+
+    </view>
+
+    <!-- 新拼团弹窗 -->
+    <view wx:if="{{ptToast == true}}">
+        <view class="mask" catchtouchmove="false" bindtap="closeToast"></view>
+        <view class="toast" id="pt_toast">
+            <image src="../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeToast"></image>
+            <view id="pt_title">请选择盲盒</view>
+            <view id="pt_skulist" class="norms">
+                <view class="pt_item" wx:for="{{pt_sku}}" wx:key="index">
+                    <image src="{{item.image}}" mode="widthFix"></image>
+                    <view class="pt_item_info">
+                        <view>{{item.items}}</view>
+                        <view class="pt_item_info_priceanum">
+                            <view><text>¥</text><text>{{pt_buytype == 1 ? list.pd_setting.pd_price : item.market_price}}</text></view>
+                            <view>
+                                <view class="paynum">
+                                    <view class="{{item.num == 0 ? 'un_click':''}}" bindtap="delNum" data-index="{{index}}">-</view>
+                                    <view class="num">{{item.num}}</view>
+                                    <view bindtap="addNum" data-index="{{index}}" class="{{ptTotalNums == 6 ?'un_click':''}}">+</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="toast_tips">共选择{{ptTotalNums}}件商品</view>
+            <view class="submit_btn" catchtouchmove="false" bindtap="pdConfirmBuyNow"><button>{{toastBtn}}</button></view>
+        </view>
+    </view>
+
+    <!-- 规格弹窗 -->
+    <view wx:if="{{goodsToast == true}}">
+        <view class="mask" catchtouchmove="false" bindtap="closeToast"></view>
+        <view class="toast">
+            <view class="title" catchtouchmove="false">
+                <image src="../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeToast"></image>
+                <image src="{{list.is_suit == 0?goods_search.image:list.images[0].image}}" mode="aspectFill" class="goods_img"></image>
+                <view class="info">
+                    <view class="price">
+                        <text>￥</text>
+                        {{list.is_suit == 0?goods_search.price:sumprice.price}}
+                        <view>
+                            <text wx:if="{{list.is_suit == 0 && goods_search.market_price != 0}}">￥</text>
+                            {{goods_search.market_price == 0?'':goods_search.market_price}}
+                            <text wx:if="{{list.is_suit == 1 && sumprice.market_price != 0}}">￥</text>
+                            {{sumprice.market_price == 0?'':sumprice.market_price}}
+                        </view>
+                    </view>
+
+                    <view wx:if="{{list.is_suit == 0}}">
+                        <view class="search_tips" wx:if="{{goods_search.unsearch == true && list.sku.length != 0}}">请选择 <text wx:for="{{list.specs}}" wx:key="goodsSpecs" wx:if="{{item.searchidx == -1}}">{{item.spec_name}}</text></view>
+                        <view class="search_tips" wx:else><text wx:for="{{list.specs}}" wx:key="goodsSpecs">{{item.item[item.searchidx].item}}</text></view>
+                    </view>
+
+                    <view class="stock" wx:if="{{list.is_stock == 1}}">库存： {{goods_search.stock}}</view>
+                </view>
+            </view>
+            <!-- 规格 -->
+            <view class="norms">
+                <!-- 单品 -->
+                <view wx:for="{{list.specs}}" wx:key="goodsSpecs" wx:if="{{list.is_suit == 0}}">
+                    <view class="name">{{item.spec_name}}：</view>
+                    <view class="btn_list">
+                        <view class="{{item.searchidx == -1?'':item.searchidx == idx?'btn_click':''}}" wx:for="{{item.item}}" wx:key="goodsSpecsItem" wx:for-item="specsitem" wx:for-index="idx" data-pidx="{{index}}" data-idx="{{idx}}" bindtap="specsSearch">
+                            <image src="{{specsitem.image}}" mode="aspectFill" wx:if="{{specsitem.image}}"></image>
+                            <text>{{specsitem.item}}</text>
+                        </view>
+                    </view>
+                </view>
+                <!-- 套盒 -->
+                <view class="suit_list" wx:for="{{list.suit_list}}" wx:key="goodsSuitList" wx:for-item="goodsitem" wx:for-index="goodsidx" wx:if="{{list.is_suit == 1}}">
+
+                    <view wx:for="{{goodsitem.specs}}" wx:key="goodsSpecs">
+                        <view class="name">{{goodsitem.goods_name}}{{item.spec_name}}：<text>{{item.searchidx == -1?'请选择':goodsitem.specs[index].item[goodsitem.specs[index].searchidx].item}}</text></view>
+                        <view class="btn_list">
+                            <view class="{{item.searchidx == -1?'':item.searchidx == idx?'btn_click':''}}" wx:for="{{item.item}}" wx:key="goodsSpecsItem" wx:for-item="specsitem" wx:for-index="idx" data-gidx="{{goodsidx}}" data-pidx="{{index}}" data-idx="{{idx}}" bindtap="specsSearch">
+                                <image src="{{specsitem.image}}" mode="aspectFill" wx:if="{{specsitem.image}}"></image>
+                                <text>{{specsitem.item}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="num_search">
+                    <view class="name">购买数量：</view>
+                    <view class="paynum">
+                        <view class="{{goodsnum<=1?'un_click':''}}" bindtap="delNum">-</view>
+                        <view class="num">{{goodsnum}}</view>
+                        <view bindtap="addNum" class="{{(list.max_allow_num <= goodsnum &&  list.max_allow_num != 0)?'un_click':''}}">+</view>
+                    </view>
+                </view>
+            </view>
+            <view class="submit_btn" catchtouchmove="false" bindtap="setOrder"><button>{{toastBtn}}</button></view>
+        </view>
+    </view>
+
+    <!-- 积分 -->
+    <view wx:if="{{integralToast == true}}" catchtouchmove="false">
+        <view class="mask" bindtap="closeToast"></view>
+        <view class="toast">
+            <view class="toast_name">
+                <view>积分</view>
+                <image src="../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeToast"></image>
+            </view>
+            <!-- 规格 -->
+            <view class="toast_body">
+                <view class="integral">
+                    <view class="label">积分</view>
+                    <view class="info">购买可得19积分</view>
+                </view>
+            </view>
+            <view class="submit_btn" catchtouchmove="false" bindtap="closeToast"><button>{{toastBtn}}</button></view>
+        </view>
+    </view>
+
+    <!-- 分享海报 -->
+    <view catchtouchmove="false" class="{{posterToast == true?'':'hide'}}">
+        <view class="mask" bindtap="closeToast"></view>
+        <view class="poster {{model == 'iPhone 5'?'poster_ios5':''}}">
+            <image src="../../images/ic_close.png" mode="widthFix" class="close" bindtap="closeToast"></image>
+            <canvas canvas-id="saveimg" bindtap="downLoad" class="poster_card" wx:if="{{drawCanvasType == 'old'}}"></canvas>
+            <canvas type="2d" id="saveimg" bindtap="downLoad" class="poster_card" wx:else></canvas>
+            <view class="saveimg" bindtap="downLoadImg">保存至相册</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,366 @@
+page{
+  background: #ffffff;
+}
+.head{
+  width: calc(100% - 60rpx);
+  background: #ffffff;
+  padding: 40rpx 30rpx 0;
+  position: relative;
+  z-index: 999;
+}
+.head image{
+  width: 40rpx;
+  margin: auto 0;
+  float: right;
+  vertical-align: middle;
+}
+.check_state{
+  width: calc(100% - 80rpx);
+  display: inline-block;
+}
+.check_state view{
+  width: fit-content;
+  border-radius: 54rpx;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  padding: 12rpx 24rpx;
+  color: #A7A5A6;
+  display: inline-block;
+  margin-right: 30rpx;
+}
+.check_state .checked{
+  background:#231F20;
+  color: #ffffff;
+}
+.list{
+  width: calc(100% - 40rpx);
+  padding: 50rpx 20rpx;
+}
+.list .date{
+  text-align: right;
+  line-height: 80rpx;
+  border-top: 1px solid #E8E8E8;
+  width: calc(100% - 60rpx);
+  margin: 0 30rpx;
+  font-size: 24rpx;
+  color: #A7A5A6;
+}
+.list .part{
+  background: #F8F8F8;
+  border-radius: 20rpx;
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+.list .part_info{
+  width: calc(100% - 60rpx);
+  padding: 50rpx 30rpx;
+  display: flex;
+  position: relative;
+}
+.list .part_info .state{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 56rpx;
+}
+.list .part_info .image{
+  width: 98rpx;
+  height: 98rpx;
+  border-radius: 50%;
+  border: 3rpx solid #D9C392;
+  text-align: center;
+  font-size: 22rpx;
+  line-height: 33rpx;
+  color: #D9C392;
+  margin: auto 0;
+}
+.list .part_info .image image{
+  width: 58rpx;
+  margin: 0 auto;
+  display: block;
+}
+.list .part_info .info{
+  width: calc(100% - 160rpx);
+  margin-left: 45rpx;
+  text-align: center;
+}
+.list .part_info .info view{
+  width: 100%;
+  display: flex;
+}
+.list .part_info .info .title{
+  line-height: 36rpx;
+  font-size: 24rpx;
+  color: #A7A5A6;
+}
+.list .part_info .info .pernum{
+  font-size: 30rpx;
+  color: #231F20;
+  line-height: 40rpx;
+  margin-top: 26rpx;
+}
+.list .part_info .info .perline{
+  width: 100%;
+  height: 12rpx;
+  border-radius: 6rpx;
+  position: relative;
+  display: flex;
+  background: linear-gradient(90deg, #F6E6DA 0%, #D9C392 100%);
+}
+.list .part_info .info .perline .perball{
+  position: absolute;
+  left: 0%;
+  top: -10rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  border: 4rpx solid #ffffff;
+  box-shadow: 0px 0px 8px 0px rgba(217, 195, 146, 1);
+  background: #D9C392;
+}
+/* .list .part_info .info .perline view:first-child{
+  background: #F1EAD9;
+  border-radius: 5rpx 0 0 5rpx;
+}
+.list .part_info .info .perline view:nth-child(2){
+  background: #E6D8B8;
+}
+.list .part_info .info .perline view:last-child{
+  background: #D9C392;
+  border-radius: 0 5rpx 5rpx 0;
+} */
+
+.ic_check{
+  position: fixed;
+  right: 32rpx;
+  bottom: 40rpx;
+  text-align: center;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #231F20;
+  box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.3);
+  opacity: 0.6;
+}
+.ic_check image{
+  width: 52rpx;
+  margin-top: 15rpx;
+}
+.ic_check view{
+  font-size: 24rpx;
+  line-height: 24rpx;
+  display: block;
+}
+
+/* 日期区间选择 */
+.time_picker{
+  /* position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+  width:100%; */
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background: #ffffff;
+  border-radius: 0 0 45rpx 45rpx;
+  box-shadow: 0 12rpx 14rpx rgba(0, 0, 0, 0.05);
+}
+.time_picker .month{
+  width: 100%;
+  padding: 40rpx 0 0;
+  color: #231F20;
+  font-size: 30rpx;
+  text-align: center;
+}
+.time_picker .month image{
+  width: 40rpx;
+  vertical-align: middle;
+  margin: 0 30rpx;
+}
+.time_picker .account-box{
+  width: 100%;
+}
+.time_picker .account-box .f-rili-head {
+	width: 100%;
+  display: flex;
+  padding: 42rpx 0 10rpx;
+}
+.time_picker .account-box .f-rili-th {
+	width: 14.25%;
+	text-align: center;
+	line-height: 24rpx;
+	height: 24rpx;
+  color: #918F8F;
+	font-size: 24rpx;
+}
+.time_picker .account-box .f-tbody {
+	width: auto;
+	height: auto;
+  background: #FFFFFF;
+  padding-top: 20rpx;
+}
+.time_picker .account-box .f-td {
+	display: inline-block;
+	width: 14.25%;
+	text-align: center;
+	height: 46rpx;
+	line-height: 46rpx;
+	position: relative;
+  margin-top: 32rpx;
+  font-size: 30rpx;
+}
+.time_picker .account-box .datenum {
+	border-radius: 50%;
+	width: 30rpx;
+	height: 30rpx;
+	line-height: 30rpx;
+	text-align: center;
+  margin: 0 auto;
+  color: #231F20;
+  text-align: center;
+  padding: 10rpx;
+}
+.time_picker .account-box .datebg .dom{
+  width: 10rpx;
+  height: 10rpx;
+  background: #D9C392;
+  border-radius: 50%;
+  margin: 10rpx auto 0;
+}
+.time_picker .account-box .unclick{
+  color: #DBDBE2;
+}
+/* .time_picker .account-box .clickdom{
+  color: #ffffff;
+  background: #C2253A;
+}
+.time_picker .account-box .datebg{
+  background: #D9C392;
+}
+.time_picker .account-box .datebg .datenum{
+  color: #ffffff;
+} */
+.time_picker .account-box .sebg{
+  border-radius: 23rpx;
+}
+.time_picker .account-box .sbg{
+  border-radius: 23rpx 0 0 23rpx;
+}
+.time_picker .account-box .ebg{
+  border-radius: 0 23rpx 23rpx 0;
+}
+.time_picker .account-box .clickdom{
+  /* width:0;
+  height:0;
+  border:6rpx solid #D9C392;
+  margin: 10rpx auto 0; */
+  border-radius: 50%;
+  background: #D9C392;
+  color: #ffffff;
+}
+.time_picker .account-box .hasdom{
+  width:0;
+  height:0;
+  border:6rpx solid #D9C392;
+  margin: 10rpx auto 0;
+  border-radius: 50%;
+}
+.time_picker .account-box .todaydom{
+  width:0;
+  height:0;
+	border-right:10rpx solid transparent;
+	border-left:10rpx solid transparent;
+  border-bottom:10rpx solid #231F20;
+  margin: 10rpx auto 0;
+}
+.time_picker .ic_more{
+  width: 100%;
+  text-align: center;
+  padding: 38rpx 0 20rpx;
+}
+.time_picker .ic_more image{
+  width: 40rpx;
+}
+.time_picker .hide{
+  display: none !important;
+}
+/* 自定义-日期选择 */
+.custom_part{
+  width: calc(100% - 90rpx);
+  background: #ffffff;
+  padding: 40rpx 45rpx;
+  border-radius: 0 0 45rpx 45rpx;
+  box-shadow: 0 12rpx 14rpx rgba(0, 0, 0, 0.05);
+  color: #A7A5A6;
+}
+.custom_part text{
+  color: #231F20;
+}
+.picker_toast{
+  width: calc(100% - 90rpx) !important;
+  padding: 45rpx 45rpx 60rpx;
+  background: #ffffff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  border-radius: 45px 45px 0 0;
+}
+.picker_toast .show_date{
+  width: calc(100% - 40rpx);
+  display: flex;
+  padding: 0 20rpx;
+}
+.picker_toast .show_date .startdate,
+.picker_toast .show_date .enddate{
+  width: calc(100% - 180rpx);
+  text-align: left;
+  padding: 40rpx 90rpx 0;
+}
+.picker_toast .show_date .startdate{
+  border-right: 1rpx solid #E8E8E8;
+}
+.picker_toast .show_date .lab{
+  color: #D3D2D2;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  margin-bottom: 20rpx;
+}
+.picker_toast .show_date .labdate{
+  color: #231F20;
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+.picker_toast .date_picker{
+  background: #F7F3E9;
+  height: 350rpx !important;
+  margin: 60rpx 0;
+}
+.picker_toast .date_picker view{
+  line-height: 34px;
+  text-align: center;
+  background: #F8F8F8;
+}
+.picker_toast .picker_btn{
+  width: 100%;
+  text-align: center;
+  display: flex;
+}
+.picker_toast .picker_btn view{
+  width: 100%;
+  font-size: 34rpx;
+  line-height: 80rpx;
+  border-radius: 2rpx;
+}
+.picker_toast .picker_btn .cancel{
+  background: #ffffff;
+  color: #A7A5A6;
+}
+.picker_toast .picker_btn .confirm{
+  background: #D9C392;
+  color: #ffffff;
+}

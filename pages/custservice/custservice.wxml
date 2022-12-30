@@ -1,0 +1,12 @@
+<view class="list" bindtap="sendBtn" data-tel="{{userinfo.seller_mobile}}">美容师电话<text>{{userinfo.seller_mobile}}</text></view>
+<view class="list" bindtap="sendBtn" data-tel="{{userinfo.store_mobile}}">门店电话<text>{{userinfo.store_mobile}}</text></view>
+
+
+<view wx:if="{{telToast == true}}">
+  <view class="mask" bindtap="closeBtn"></view>
+  <view class="sendtel">
+    <view class="tel">{{sendtel}}</view>
+    <view class="send" bindtap="sendConfirm">呼叫</view>
+    <view class="cancel" bindtap="closeBtn">取消</view>
+  </view>
+</view>

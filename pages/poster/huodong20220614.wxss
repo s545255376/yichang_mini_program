@@ -1,0 +1,82 @@
+/* pages/poster/huodong20220614.wxss */
+.part {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+image {
+    width: 100%;
+    display: block;
+}
+
+#imageBox {
+    width: 100%;
+    position: relative;
+    margin-bottom: 300rpx;
+}
+
+#imageBox>view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    bottom: 220rpx;
+}
+
+#imageBox>view>view {
+    width: 60%;
+    text-align: center;
+    padding: 20rpx 0;
+    color: #231f20;
+    border: 1px solid #d1d2d4;
+}
+
+/* 直播间输入密码弹窗 */
+#pop_password_main {
+    width: 630rpx;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 8rpx;
+    /* height: 956rpx; */
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+    border-radius: 20rpx;
+}
+
+#title {
+    width: 100%;
+    text-align: center;
+    color: #363641;
+    padding: 40rpx 0;
+    font-size: 28rpx;
+}
+
+#main {
+    width: 100%;
+    padding: 0 40rpx 60rpx 40rpx;
+    box-sizing: border-box;
+}
+
+#main .van-field,
+#main .van-cell {
+    background-color: #F5F5F5 !important;
+    color: #1D1D1D !important;
+}
+
+#buttonGroup {
+    border-top: 1px solid #D3D3D3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30rpx 0;
+}
+
+#buttonGroup view {
+    color: #1D1D1D;
+    font-size: 30rpx;
+}

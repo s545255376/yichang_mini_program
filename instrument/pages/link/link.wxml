@@ -1,0 +1,75 @@
+<view class="head">肌肤报警器配对</view>
+<view class="desc">点击肌肤报警器上的圆形按钮开启蓝牙<text bindtap="showExplain">使用说明</text></view>
+<view class="bg">
+    <image src="../../images/bluetooth_bg.png" mode="widthFix"></image>
+</view>
+
+<view wx:if="{{searchType == false}}">
+    <view class="tips">{{bluetoothOpen ? '蓝牙已开启' : '蓝牙尚未开启' }}<text wx:if="{{!bluetoothOpen}}">请开启蓝牙</text></view>
+
+    <view class="start_pair {{bluetoothOpen ? 'pair_click' : '' }}" bindtap="startSearch">
+        <view>开始</view>
+        <view>配对</view>
+    </view>
+
+    <view class="hist" bindtap="goHist">历史记录</view>
+</view>
+<view wx:else>
+    <view class="tips">{{connected ? name+deviceId : '正在搜索可配对的设备···' }}<text wx:if="{{connected}}" bindtap="changeSearch">切换</text></view>
+    <view class="link_success" wx:if="{{ connected }}">
+        <image src="../../images/ic_success.png" mode="widthFix"></image>
+        配对成功
+    </view>
+
+    <view wx:if="{{instrument_info && connected == false}}">
+        <view class="list">
+            <view class="row">
+                <view>{{instrument_info}}</view>
+            </view>
+        </view>
+        <view class="lately">最近连接设备</view>
+    </view>
+
+    <view class="list" wx:if="{{connected == false}}">
+        <view class="row" wx:for="{{devices}}" wx:key="index">
+            <view>{{item.name || item.localName}}-{{item.deviceId}}</view>
+            <text data-deviceId="{{item.deviceId}}" data-name="{{item.name || item.localName}}" data-uuid="{{item.advertisServiceUUIDs}}" bindtap="createBLEConnection">连接</text>
+            <text class="dbm">{{item.RSSI}}dBm</text>
+        </view>
+    </view>
+    <view class="nextbtn" wx:else>
+        <view bindtap="goNext">
+            <image src="../../images/ic_next.png" mode="widthFix"></image>
+        </view>
+    </view>
+</view>
+
+
+
+<view wx:if="{{unbundType}}">
+    <view class="mask"></view>
+    <view class="unbundling">
+        <view class="info">
+            <view class="title">解绑原因</view>
+            <input placeholder="请输入解绑原因" placeholder-class="placeholder" bindinput="addReason" />
+            <view class="tips" wx:if="{{unbundTips}}">请填写解绑原因</view>
+        </view>
+        <view class="btn">
+            <view class="cancel" bindtap="unbundCancel">取消</view>
+            <view class="confirm" bindtap="unbundConfirm">提交</view>
+        </view>
+    </view>
+</view>
+
+
+
+<view wx:if="{{explainType}}">
+    <view class="mask"></view>
+    <view class="explain">
+        <view class="title">测肤使用说明</view>
+        <view class="info">
+            <image src="../../images/bluetooth_explain.png" mode="widthFix"></image>
+        </view>
+        <view class="btn" bindtap="closeExplain">我知道了</view>
+    </view>
+</view>

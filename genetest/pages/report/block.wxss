@@ -1,0 +1,26 @@
+/* genetest/pages/report/block.wxss */
+#block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#block>view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -100rpx;
+}
+
+#block>view image {
+    width: 62rpx;
+    height: 64rpx;
+}
+
+#block>view>view {
+    margin-top: 30rpx;
+    font-size: 26rpx;
+    color: #231F20;
+}

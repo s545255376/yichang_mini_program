@@ -1,0 +1,19 @@
+<!--pages/classifySearch/classifySearch.wxml-->
+<van-search id="search" bind:search="confirmSearch" value="{{ value }}" placeholder="请输入搜索关键词" />
+<view id="classifySearch" class="home wholepage" style="padding-top:{{ searchBarHeight}}px;min-height:{{screenHeight}}px">
+    <view class="goodspart" wx:for="{{columnGoods}}" wx:key="index" bindtap="goGoodsInfo" data-goodsid="{{item.goods_id}}">
+        <view class="image">
+            <image src="{{item.image}}" mode="widthFix"></image>
+        </view>
+        <view class="info">
+            <view class="title">{{item.goods_name}}</view>
+            <view class="price">
+                ¥{{item.price}}
+            </view>
+        </view>
+    </view>
+    <view class="ic_empty" wx:if="{{columnGoods.length == 0}}">
+        <image src="../../images/ic_empty_box.png" mode="widthFix"></image>
+        <view>暂时没有相关商品哦</view>
+    </view>
+</view>

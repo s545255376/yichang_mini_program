@@ -1,0 +1,24 @@
+<!--pages/poster/huodong20220614.wxml-->
+<view class="part" style="{{'min-height:'+ screenHeight + 'px'}}">
+    <view id="imageBox">
+        <image src="https://cmjx.chengmeijiangxuan.com/static/web/yqh/bg.jpg" mode="widthFix"></image>
+        <view wx:if="{{isClose}}">
+            <view>直播间已结束</view>
+        </view>
+        <view bindtap="activeEnter" wx:else>
+            <view>点击进入</view>
+        </view>
+    </view>
+</view>
+
+<pop bindeventclose="closeToast" popname="passwordToast" wx:if="{{passwordToast}}">
+    <view id="pop_password_main">
+        <view id="title">直播间秘钥</view>
+        <view id="main">
+            <van-field value="{{ password }}" placeholder="请输入直播间秘钥" border="{{ false }}" bind:change="passwordOnChange" />
+        </view>
+        <view id="buttonGroup" bindtap="confirmCheck">
+            <view>确定</view>
+        </view>
+    </view>
+</pop>

@@ -1,0 +1,325 @@
+.mine{
+  width: 100%;
+  height: auto;
+  position: relative;
+  background: #F8F8F9;
+}
+.mine_bg{
+  width: 100%;
+}
+.user{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: calc(100% - 80rpx);
+  padding: 0 40rpx;
+  display: flex;
+  margin-top: -90rpx;
+}
+.user .logoavatar,.user .avatar{
+  width: 126rpx;
+  height: 126rpx;
+  border-radius: 50%;
+  border: 3rpx solid #ffffff;
+}
+.user .username{
+  font-size: 32rpx;
+  color: #231F20;
+  line-height: 63rpx;
+  margin-left: 20rpx;
+  font-weight: bold;
+}
+.user .store_name{
+  font-size: 26rpx;
+  color: #231F20;
+  line-height: 63rpx;
+  margin-left: 20rpx;
+}
+.user .store_name image{
+  width: 32rpx;
+  vertical-align: text-bottom;
+  margin-right: 8rpx;
+}
+.card{
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+}
+.card .mine_bg{
+  height: 80rpx;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.mine_tips{
+  position: absolute;
+  bottom: 26rpx;
+  left: 5%;
+  width: 90%;
+}
+.mine_tips image{
+  width: 40rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mine_tips view{
+  margin-left: 20rpx;
+  color: #EFBA8F;
+  font-size: 26rpx;
+  display: inline-block;
+}
+.mine_tips button{
+  width: 150rpx;
+  color: #231F20;
+  font-size: 22rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background: linear-gradient(to right, #FBCA9F , #D99C71);
+  float: right;
+  border-radius: 25rpx;
+}
+.mine .ic_writeoff{
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  background: #000000;
+  width: 63rpx;
+  height: 63rpx;
+  border-radius: 50%;
+  text-align: center;
+}
+.mine .ic_writeoff image{
+  width: 29rpx;
+  margin: 17rpx 0;
+}
+/* 积分/优惠券 */
+.integral_coupon{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  background: #ffffff;
+  padding: 20rpx 0;
+  margin-bottom: 16rpx;
+}
+.integral_coupon view{
+  width: 100%;
+}
+.integral_coupon .border_r{
+  border-right: 1px solid #EAEBEE;
+}
+.integral_coupon .num{
+  font-size: 36rpx;
+  color: #231F20;
+}
+.integral_coupon .name{
+  font-size: 26rpx;
+  color:#7B7979;
+}
+.coupon .num{
+  position: relative;
+}
+.coupon .num view{
+  position: absolute;
+  right: 50%;
+  top: 10rpx;
+  width: 50rpx;
+  line-height: 30rpx;
+  background: #231F20;
+  color: #ffffff;
+  font-size: 16rpx;
+  margin-right: -90rpx;
+  animation:coupon 0.8s;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+  animation-timing-function:linear;
+}
+@keyframes coupon
+{
+	from {margin-right:-90rpx;}
+	to {margin-right:-100rpx;}
+}
+/* part */
+.part{
+  width: calc(100% - 60rpx);
+  padding: 0 30rpx;
+  background: #ffffff;
+  margin-bottom: 16rpx;
+}
+.part_title{
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #EAEBEE;
+  padding: 30rpx 0;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.part_title text{
+  color: #231F20;
+  font-size: 30rpx;
+}
+.part_title view{
+  float: right;
+  color: #A7A5A6;
+  font-size: 26rpx;
+}
+.part_title image{
+  width: 30rpx;
+  vertical-align: middle;
+}
+.part_body{
+  width: 100%;
+  display: flex; 
+  padding: 40rpx 0;
+}
+.part_body view{
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+.part_body image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.part_body view view{
+  font-size: 26rpx;
+  color: #7B7979;
+}
+.part_body text{
+  position: absolute;
+  right: 50%;
+  top: -5rpx;
+  margin-right: -40rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #C2253A;
+  font-size: 20rpx;
+  line-height: 30rpx;
+  text-align: center;
+}
+.server .part_body{
+  display: inline-block !important;
+  padding: 40rpx 0 0 !important;
+}
+.server .part_body view{
+  display: inline-block;
+  width: 25%;
+}
+.server .part_body view view{
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+.server .part_body text{
+  background: #F1AFAD;
+  color: #ffffff;
+}
+
+.contact{
+  position: relative;
+}
+.contact button{
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+/* 退出登录 */
+.actionSheet{
+  position: fixed;
+  left: 30rpx;
+  bottom: 30rpx;
+  width: calc(100% - 60rpx);
+  height: auto;
+  
+  line-height: 100rpx;
+  font-size: 28rpx;
+  z-index: 999;
+  text-align: center;
+}
+.actionSheet .btnlist{
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16rpx;
+}
+.actionSheet .btnlist view{
+  border-bottom: 1px solid #F2F4F5;
+}
+.actionSheet .btnlist view:last-child{
+  border-bottom: none;
+}
+.actionSheet .cancel{
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16rpx;
+  margin-top: 8rpx;
+}
+/* 卡券核销 */
+.write_off{
+  position: fixed;
+  width: 600rpx;
+  /* left: calc(50% - 300rpx);
+  top: calc(50% - 380rpx); */
+  background: #ffffff;
+  border-radius: 6rpx;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.write_off .info{
+  text-align: center;
+  width: calc(100% - 60rpx);
+  padding: 30rpx 30rpx 0;
+}
+.write_off .info image{
+  width: 260rpx;
+  height: 260rpx;
+  margin: 40rpx auto 30rpx;
+}
+.write_off .info .title{
+  color: #212121;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  margin-bottom: 20rpx;
+}
+.write_off .info .price{
+  color:#E22046;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  margin: 0 0 20rpx;
+  font-weight: bold;
+}
+.write_off .info .cardnum{
+  color: #A3A3A3;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  margin: 0 0 10rpx;
+}
+.write_off .write_off_btn{
+  width: 100%;
+  background: #F8F8F8;
+  padding: 40rpx 0;
+  text-align: center;
+  border-radius: 0 0 6rpx 6rpx;
+  margin-top: 30rpx;
+}
+.write_off .write_off_btn view{
+  width: fit-content;
+  color: #212121;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  border: 1rpx solid #212121;
+  border-radius: 6rpx;
+  margin: 0 auto;
+  padding: 0 45rpx;
+}
+.write_off .close_btn{
+  position: absolute;
+  width: 60rpx;
+  left: calc(50% - 30rpx);
+  bottom: -120rpx;
+}

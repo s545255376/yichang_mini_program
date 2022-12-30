@@ -1,0 +1,263 @@
+<!-- pages/poster/huodong20220325.wxml -->
+<view class="part">
+    <!-- 3800 -->
+    <block>
+        <!-- 下架 -->
+        <view class="part_onlyimg_title" wx:if="{{isDingzhi_3800xj}}"></view>
+        <!-- 单独 -->
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_sichuan_0516}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/101-277_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanghai_0520}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/161-171_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_liaoning_0520}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/241-107,241-042_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanghai_0601}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/161-296_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_heilongjiang_0608}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/141-120_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_sichuan_0608}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/101-264_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_liaoning_0608}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/241-097_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_zhenan_0616}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/021-140,021-157_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0616}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-134,221-022,191-188_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0629}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-116_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_hebei_0629}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/151-097_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0701}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-192_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0706}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-151,191-058_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanghai_0714}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/161-292_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_hebei_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/151-101_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-078_3800.png" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_henan_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/193-157_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_sichuan_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/101-148_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_henan_0720}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/193-137_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_beijing_0720}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/171-041_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0728}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-099_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0809}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/quanshanxi_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_beijing_0909}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/211-220_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <!-- 新东方 -->
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_heilongjiang_1125}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/quanshanxi_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50960"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_xinmeiyuan_1205}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/quanshanxi_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="51002"></image>
+        </view>
+        <block wx:elif="{{isDingzhi_shandong_0714}}">
+            <view class="part_onlyimg_title">
+                <image src="https://cmjx.chengmeijiangxuan.com/static/web/071-174_3800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+            </view>
+            <view class="part_onlyimg_title">
+                <image src="https://cmjx.chengmeijiangxuan.com/static/web/071-174_7600.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50953"></image>
+            </view>
+        </block>
+        <!-- 季卡 -->
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_JK}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/3800jk.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+        <!-- 正常 -->
+        <view class="part_onlyimg_title" wx:else>
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/3800nk.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50744"></image>
+        </view>
+    </block>
+    <!-- 6800 -->
+    <block>
+        <!-- 下架 -->
+        <view class="part_onlyimg_title" wx:if="{{isDingzhi_6800xj}}"></view>
+        <!-- 单独 -->
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanghai_0520}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/161-171_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanghai_0601}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/161-296_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0616}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-134,221-022,191-188_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0629}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-116_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_hebei_0629}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/151-097_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0701}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-192_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0706}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-151,191-058_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_hebei_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/151-101_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-078_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_sichuan_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/101-148_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_beijing_0720}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/171-041_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0728}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-099_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0809}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/quanshanxi_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_beijing_0909}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/211-220_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <!-- 新东方 -->
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_heilongjiang_1125}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/quanshanxi_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50962"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_xinmeiyuan_1205}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/quanshanxi_6800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="51004"></image>
+        </view>
+        <!-- 季卡 -->
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_JK}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/6800jk.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+        <!-- 正常 -->
+        <view class="part_onlyimg_title" wx:else>
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/6800nk.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50830"></image>
+        </view>
+    </block>
+    <!-- 9800 -->
+    <block>
+        <!-- 下架 -->
+        <view class="part_onlyimg_title" wx:if="{{isDingzhi_9800xj}}"></view>
+        <!-- 单独 -->
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_sichuan_0516}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/101-277_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanghai_0520}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/161-171_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_liaoning_0520}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/241-107,241-042_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_sichuan_0608}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/101-264_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_liaoning_0608}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/241-097_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_sichuan_0616}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/101-082_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_zhenan_0616}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/021-140,021-157_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_hunan_0616}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/061-184_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0616}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-134,221-022,191-188_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0629}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-116_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_hebei_0629}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/151-097_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0701}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-192_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0706}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-151,191-058_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanghai_0714}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/161-292_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_hebei_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/151-101_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-078_9800.png" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_henan_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/193-157_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_sichuan_0718}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/101-148_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_henan_0720}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/193-137_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_beijing_0720}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/171-041_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0728}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-099_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0809}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/quanshanxi_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_shanxi_0809}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/quanshanxi_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <!-- 新东方 -->
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_heilongjiang_1125}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/191-151,191-058_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50961"></image>
+        </view>
+        <block wx:elif="{{isDingzhi_shandong_0714}}">
+            <view class="part_onlyimg_title">
+                <image src="https://cmjx.chengmeijiangxuan.com/static/web/071-174_9800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+            </view>
+            <view class="part_onlyimg_title">
+                <image src="https://cmjx.chengmeijiangxuan.com/static/web/071-174_19800.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50955"></image>
+            </view>
+        </block>
+        <!-- 季卡 -->
+        <view class="part_onlyimg_title" wx:elif="{{isDingzhi_JK}}">
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/9800jk.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+        <!-- 正常 -->
+        <view class="part_onlyimg_title" wx:else>
+            <image src="https://cmjx.chengmeijiangxuan.com/static/web/9800nk.jpg" mode="widthFix" bindtap="goGoodsInfo" data-goodsid="50745"></image>
+        </view>
+    </block>
+    <view class="ic_empty" wx:if="{{isNot}}">
+        <image src="../../images/ic_empty_box.png" mode="widthFix"></image>
+        <view>门店暂时没有商品哦～</view>
+    </view>
+</view>

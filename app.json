@@ -1,0 +1,140 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/login/login",
+        "pages/poster/xiaomei",
+        "pages/skin/index/index",
+        "pages/skin/detail/detail",
+        "pages/scores/scores",
+        "pages/goodsgroup/goodsgroup",
+        "pages/cart/cart",
+        "pages/livelist/livelist",
+        "pages/mine/mine",
+        "pages/goodsdetail/goodsdetail",
+        "pages/goodsnorms/goodsnorms",
+        "pages/payment/payment",
+        "pages/order/list/list",
+        "pages/order/detail/detail",
+        "pages/order/giftlist/giftlist",
+        "pages/order/apply/apply",
+        "pages/order/logistics/logistics",
+        "pages/order/refund/list/list",
+        "pages/order/refund/detail/detail",
+        "pages/coupon/coupon",
+        "pages/contract/contract",
+        "pages/custservice/custservice",
+        "pages/question/question",
+        "pages/message/list/list",
+        "pages/message/detail/detail",
+        "pages/address/list/list",
+        "pages/address/add/add",
+        "pages/feedback/list/list",
+        "pages/feedback/detail/detail",
+        "pages/feedback/add/add",
+        "pages/intomyx/intomyx",
+        "pages/poster/huodong20220325",
+        "pages/classify/classify",
+        "pages/classifySearch/classifySearch",
+        "pages/poster/huodong20220614",
+        "pages/points/scan/scan",
+        "pages/points/spend/spend",
+        "pages/points/team/team"
+    ],
+    "subpackages": [
+        {
+            "root": "other",
+            "pages": [
+                "pages/customer/order/order",
+                "pages/jxposter/jxposter",
+                "pages/material/list/list",
+                "pages/material/collection/collection",
+                "pages/xiaomei/xiaomei"
+            ]
+        },
+        {
+            "root": "instrument",
+            "pages": [
+                "pages/link/link",
+                "pages/state/state",
+                "pages/position/position",
+                "pages/instrument/instrument",
+                "pages/result/result",
+                "pages/hist/hist",
+                "pages/histinfo/histinfo"
+            ]
+        },
+        {
+            "root": "groupon",
+            "pages": [
+                "pages/tuaninfo/tuaninfo",
+                "pages/order/list"
+            ]
+        },
+        {
+            "root": "genetest",
+            "pages": [
+                "pages/index/index",
+                "pages/register/register",
+                "pages/policy/policy",
+                "pages/list/list",
+                "pages/report/report",
+                "pages/report/block"
+            ]
+        }
+    ],
+    "tabBar": {
+        "color": "#A7A5A6",
+        "selectedColor": "#C2253A",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "iconPath": "images/icon_cart.png",
+                "selectedIconPath": "images/icon_cart_search.png",
+                "text": "商城"
+            },
+            {
+                "pagePath": "pages/classify/classify",
+                "iconPath": "images/icon_classify.png",
+                "selectedIconPath": "images/icon_classify_active.png",
+                "text": "分类"
+            },
+            {
+                "pagePath": "pages/livelist/livelist",
+                "iconPath": "images/ic_live.png",
+                "selectedIconPath": "images/ic_live_search.png",
+                "text": "直播"
+            },
+            {
+                "pagePath": "pages/intomyx/intomyx",
+                "iconPath": "images/icon_intomyx.png",
+                "selectedIconPath": "images/icon_intomyx_active.png",
+                "text": "商学院"
+            },
+            {
+                "pagePath": "pages/mine/mine",
+                "iconPath": "images/icon_mine.png",
+                "selectedIconPath": "images/icon_mine_search.png",
+                "text": "我的"
+            }
+        ]
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "诚美匠选",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#f6f6f6"
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "您的位置信息将用于添加收货地址"
+        }
+    },
+    "plugins": {
+        "live-player-plugin": {
+            "version": "1.3.4",
+            "provider": "wx2b03c6e691cd7370"
+        }
+    },
+    "sitemapLocation": "sitemap.json"
+}

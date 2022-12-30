@@ -1,0 +1,79 @@
+<!--genetest/pages/list/list.wxml-->
+<view id="list">
+    <view class="item" wx:for="{{list}}" wx:key="index">
+        <view class="item_title">
+            <view>基因检测条码：{{item.wbarcode}}</view>
+            <view>{{item.result_issued}}</view>
+        </view>
+        <view class="item_main">
+            <view>申请检测时间：{{item.create_time}}</view>
+            <view wx:if="{{item.result_time}}">完成检测时间：{{item.result_time}}</view>
+        </view>
+        <block wx:if="{{item.result_issued == '等待样本'}}">
+            <view class="button_group list_button_group">
+                <view class="btn black" bindtap="showQrcode" data-id="{{item.id}}">邮寄样本</view>
+            </view>
+        </block>
+        <block wx:if="{{item.result_issued == '报告已生成'}}">
+            <view class="button_group list_button_group">
+                <view class="btn black" bindtap="sendmessages" data-id="{{item.id}}">立即咨询</view>
+                <view class="btn white" bindtap="checkreport" data-id="{{item.id}}">查看报告</view>
+            </view>
+        </block>
+    </view>
+    <view class="ic_empty" wx:if="{{list.length == 0}}">
+        <image src="/images/ic_empty_box.png" mode="widthFix"></image>
+        <view>暂无报告</view>
+    </view>
+    <!-- <view class="item">
+        <view class="item_title">
+            <view>基因检测条码：9836587463</view>
+            <view>等待样本</view>
+        </view>
+        <view class="item_main">
+            <view>申请检测时间：2022-06-09</view>
+            <view>完成检测时间：2022-07-12</view>
+        </view>
+        <view class="button_group list_button_group">
+            <view class="btn black">立即咨询</view>
+            <view class="btn white">查看报告</view>
+        </view>
+    </view>
+    <view class="item">
+        <view class="item_title">
+            <view>基因检测条码：9836587463</view>
+            <view>等待样本</view>
+        </view>
+        <view class="item_main">
+            <view>申请检测时间：2022-06-09</view>
+            <view>完成检测时间：2022-07-12</view>
+        </view>
+        <view class="button_group list_button_group">
+            <view class="btn black" bindtap="showQrcode">邮寄样本</view>
+        </view>
+    </view> -->
+</view>
+
+<pop bindeventclose="closeToast" popname="qrcodeToast" wx:if="{{qrcodeToast}}">
+    <view class="pop_qrcode_main">
+        <view>邮寄样本</view>
+        <!-- <image src="https://cmjx.chengmeijiangxuan.com/static/web/genetest/qrcode.png" mode="widthFix" show-menu-by-longpress="{{true}}"></image> -->
+        <view>请使用 “<span>微信扫一扫</span>” 扫描样品回收袋上的顺丰快递二维码，或点击 “<span>保存到相册</span>” 按钮下载顺丰快递二维码并使用 “<span>微信扫一扫</span>” 扫描相册中的二维码，填入寄件地址，选择取件时间等待顺丰上门取货。</view>
+        <view>注意事项：运费到付，勿付款！</view>
+        <view class="button_group mini_toast_group">
+            <view class="btn white" bindtap="showpreview">展示二维码</view>
+            <view class="btn black" bindtap="confirmscan">保存到相册</view>
+        </view>
+    </view>
+</pop>
+
+<pop bindeventclose="closeToast" popname="authToast" wx:if="{{authToast}}">
+    <view class="pop_minitoast_main">
+        <view>特别提示</view>
+        <view>您同意使用并授权“诚美匠选”通过您上传的「采样盒条码值」获取您的检测数据为您提供查收检测报告相关服务。</view>
+        <view class="button_group mini_toast_group">
+            <view class="btn white" bindtap="rejectauth">暂不授权</view>
+            <view class="btn black" bindtap="confirmauth">确认授权</view>
+        </view>
+    </view>
+</pop>

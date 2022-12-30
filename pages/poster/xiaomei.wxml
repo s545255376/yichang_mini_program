@@ -1,0 +1,13 @@
+<view id="singlepage0227" style="{{'min-height:'+ screenHeight + 'px'}}">
+    <view class="clearfix"></view>
+    <view id="main">
+        <image src="https://cmjx.chengmeijiangxuan.com/upload/20210722/0227.png" mode="widthFix" />
+    </view>
+    <view id="sharefloatButton">
+        <button class="button" open-type="share">123</button>
+        <view>
+            <image src="../../images/ic_share.png" mode="widthFix" />
+        </view>
+        <view>分</view><view>享</view><view>好</view><view>友</view>
+    </view>
+</view>

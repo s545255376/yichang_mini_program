@@ -1,0 +1,101 @@
+<wxs module="Fix" src="../../../utils/count.wxs"></wxs>
+<view class="head">
+  <view class="check_state">
+    <view class="{{datanum == 0?'checked':''}}" bindtap="dateChange" data-num="0">今日</view>
+    <view class="{{datanum == 1?'checked':''}}" bindtap="dateChange" data-num="1">本周</view>
+    <view class="{{datanum == 2?'checked':''}}" bindtap="dateChange" data-num="2">近一个月</view>
+  </view>
+  <image src="../../images/ic_calendar.png" mode="widthFix" bindtap="customChange"></image>
+</view>
+<view class="mask" wx:if="{{dateSearch == true}}" bindtap="caleShow"></view>
+<view class="time_picker" wx:if="{{datanum == 0}}">
+  <view class="account-box">
+    <view class="f-rili-table">
+      <view class="f-rili-head {{dateSearch == true?'':'hide'}}">
+        <view class="f-rili-th">一</view>
+        <view class="f-rili-th">二</view>
+        <view class="f-rili-th">三</view>
+        <view class="f-rili-th">四</view>
+        <view class="f-rili-th">五</view>
+        <view class="f-rili-th">六</view>
+        <view class="f-rili-th">日</view>
+        <view class="clear"></view>
+      </view>
+      <view class="f-tbody">
+        <view class="f-td {{dateSearch == false && item.show == false?'hide':''}}" wx:for="{{caleList}}" wx:key="caleDate" bindtap="changeDay" data-num="{{item.num}}" data-idx="{{index}}">
+          <view class="datenum {{item.check == true?'clickdom':''}} {{item.click == true?'':'unclick'}}">{{item.num}}</view>
+          <view class="dom {{(item.bg == true && item.date != todaydom)?'hasdom':''}} {{item.date == todaydom?'todaydom':''}}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="month {{dateSearch == true?'':'hide'}}">
+    <image src="../../images/ic_arror_l_unclick.png" mode="widthFix" bindtap="monthChange" data-type="lastmonth"></image>
+    {{date.month}}月    {{date.year}}
+    <image src="../../images/ic_arror_r_unclick.png" mode="widthFix" bindtap="monthChange" data-type="nextmonth"></image>
+  </view>
+  <view class="ic_more" bindtap="caleShow"><image src="../../images/ic_more.png" mode="widthFix"></image></view>
+  
+</view>
+
+<view class="custom_part" wx:elif="{{datanum == 3}}">自定义时间：<text wx:if="{{custom.end[0] != ''}}">{{custom.start[0]}}.{{custom.start[1]}}.{{custom.start[2]}} — {{custom.end[0]}}.{{custom.end[1]}}.{{custom.end[2]}}</text></view>
+
+
+
+<view class="ic_empty" wx:if="{{list.length == 0}}">
+  <image src="../../images/ic_empty_order.png" mode="widthFix"></image>
+  <view>暂无记录～</view>
+</view>
+<view class="list" wx:else>
+  <view wx:for="{{list}}" wx:key="index" bindtap="goCharts" data-position="{{item.position}}"  data-type="{{item.type}}" class="part">
+    <view class="part_info">
+      <image src="{{item.type == 0?'../../images/ic_check_before.png':'../../images/ic_check_after.png'}}" mode="widthFix" class="state"></image>
+      <view class="image"><image src="{{item.position == 0?'../../images/ic_hand_search.png':item.position == 1?'../../images/ic_face_search.png':'../../images/ic_eyes_search.png'}}" mode="widthFix"></image><view>{{item.position == 0?'手部':item.position == 1?'脸部':'眼部'}}</view></view>
+      <view class="info">
+        <view class="title"><view>肌肤状况</view><view>平均水分</view><view>比最近一{{datanum ==0?'天':datanum ==1?'周':'月'}}</view></view>
+        <view class="pernum"><view>{{item.moisture_content < 20?'干燥':item.moisture_content < 30?'较干燥':item.moisture_content < 40?'标准':'较湿润'}}</view><view>{{Fix.toFix(item.moisture_content)}}%</view><view>{{Fix.toFix(item.compare)}}%</view></view>
+        <!-- <view class="perline">
+          <view class="perball" style="left:{{item.moisture_content*100/60}}%"></view>
+          <view></view><view></view><view></view>
+        </view> -->
+      </view>
+    </view>
+    <view class="date">{{item.last_time}}</view>
+  </view>
+
+
+</view>
+
+
+
+<view class="ic_check" bindtap="goBack">
+  <image src="../../images/ic_check.png" mode="widthFix"></image>
+  <view>去检测</view>
+</view>
+
+
+<view wx:if="{{customShow == true}}">
+  <view class="mask" style="z-index:999;"></view>
+  <view class="picker_toast">
+    <view class="show_date">
+      <view class="startdate"><view class="lab">开始日期</view><view class="labdate" wx:if="{{custom.start[0] != ''}}">{{custom.start[0]}}.{{custom.start[1]}}.{{custom.start[2]}}</view></view>
+      <view class="enddate"><view class="lab">结束日期</view><view class="labdate" wx:if="{{custom.end[0] != ''}}">{{custom.end[0]}}.{{custom.end[1]}}.{{custom.end[2]}}</view></view>
+    </view>
+    <picker-view indicator-style="height: 34px;" value="{{dateValue}}" bindchange="bindChange" class="date_picker">
+      <picker-view-column>
+        <view wx:for="{{years}}" wx:key="years">{{item}}年</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{months}}" wx:key="months">{{item}}月</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{days}}" wx:key="days">{{item}}日</view>
+      </picker-view-column>
+    </picker-view>
+    <view class="picker_btn">
+      <view class="cancel" bindtap="customCancel">取消</view>
+      <view class="confirm" bindtap="customConfirm">确定</view>
+    </view>
+  </view>
+
+</view>

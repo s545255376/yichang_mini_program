@@ -1,0 +1,306 @@
+@import "/pages/wxParse/wxParse.wxss";
+@import "styles/goodsBlock.wxss";
+
+page {
+    background: #F8F8F9;
+    font-size: 32rpx;
+    font-family: 'noto sans';
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* 重写默认元素样式 */
+image {
+    height: auto;
+}
+
+input {
+    caret-color: #000;
+}
+
+/* 清除浮动 */
+.clearfix {
+    clear: both;
+    height: 1px;
+}
+
+/* 遮罩弹窗 */
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000000;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    z-index: 998;
+}
+
+.closebtn {
+    position: absolute;
+    right: calc(50% - 25rpx);
+    bottom: -70rpx;
+    width: 50rpx;
+}
+
+/* 按钮组 */
+.button_group {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button_group .btn {
+    padding: 0 30rpx;
+    height: 66rpx;
+    line-height: 66rpx;
+    color: #ffffff;
+    font-size: 28rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.button_group .btn.white {
+    color: #231F20;
+    border: 1rpx solid #D1D2D4;
+    background: #fff;
+}
+
+.button_group .btn.black {
+    background: #231F20;
+    border: 1rpx solid #231F20;
+}
+
+/* 空数据 */
+.ic_empty {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    margin-top: -180rpx;
+    text-align: center;
+}
+
+.ic_empty image {
+    width: 312rpx;
+    margin-bottom: 40rpx;
+}
+
+.ic_empty view {
+    width: 100%;
+    color: #A7A5A6;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+/* 思源字体 */
+.wholepage {
+    font-family: 'SourceHanSans';
+}
+
+
+/* 弹窗 */
+.toast {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 70%;
+    background: #ffffff;
+    z-index: 999;
+}
+
+.toast .toast_name {
+    width: 100%;
+    text-align: center;
+    font-size: 34rpx;
+    color: #231F20;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 1px solid #EAEBEE;
+    position: fixed;
+    bottom: calc(70% - 100rpx);
+    left: 0;
+}
+
+.toast .close {
+    width: 40rpx;
+    position: absolute;
+    right: 20rpx;
+    top: 30rpx;
+}
+
+.toast_body {
+    width: 690rpx;
+    height: calc(100% - 290rpx);
+    padding: 30rpx 0;
+    margin-left: calc(50% - 345rpx);
+    margin-top: 80rpx;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.toast .submit_btn {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #ffffff;
+}
+
+.toast .submit_btn button {
+    font-size: 32rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    width: calc(100% - 60rpx);
+    margin: 30rpx;
+    background: #231F20;
+    color: #ffffff;
+}
+
+.hide {
+    display: none;
+}
+
+/* 选择按钮 */
+checkbox .wx-checkbox-input {
+    border-radius: 50%;
+    border-color: #D3D2D2;
+    width: 28rpx;
+    height: 28rpx;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    background: #ffffff;
+    border-color: #231F20;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+    line-height: 28rpx;
+    text-align: center;
+    font-size: 22rpx;
+    color: #231F20;
+    background: transparent;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+radio .wx-radio-input {
+    border-color: #ffffff;
+    background: none;
+    width: 38rpx;
+    height: 38rpx;
+}
+
+radio .wx-radio-input.wx-radio-input-checked {
+    border: 1px solid #ffffff;
+    background: #ffffff;
+    width: 38rpx;
+    height: 38rpx;
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before {
+    color: #D3D2D2;
+}
+
+.tabbar {
+    width: 100%;
+    display: flex;
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+}
+
+.tabbar view {
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 28rpx;
+    color: #888888;
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.tabbar .tabbar_click {
+    border-bottom: 4rpx solid #231F20;
+    color: #000000;
+}
+
+.nextbtn {
+    width: 100%;
+    text-align: center;
+    margin: 112rpx 0;
+
+}
+
+.nextbtn view {
+    width: 132rpx;
+    height: 132rpx;
+    text-align: center;
+    background: #231F20;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.nextbtn image {
+    width: 56rpx;
+    margin: 38rpx 0;
+}
+
+#errorMsg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50rpx 0;
+    font-size: 28rpx;
+    color: #A7A5A6;
+}
+
+
+.iphone_pandding .footer {
+    padding-bottom: 56rpx;
+}
+
+.iphone_pandding .toast .submit_btn button {
+    margin-bottom: 64rpx !important;
+}
+
+.iphone_pandding .footer_btn {
+    height: 134rpx !important;
+}
+
+.iphone_pandding .page_bottom_btn {
+    margin-bottom: 34rpx;
+}
+
+.iphone_pandding.page .list:last-child,
+.iphone_pandding .buttomBar {
+    padding-bottom: 34rpx;
+}
+
+.iphone_pandding.page .list .iphone_pandding .footer {
+    padding-bottom: 30rpx;
+}
+
+/* 
+2rpx = 0.1rem;
+6rpx = 0.2rem;
+22rpx = 0.7rem;
+28rpx = 0.9rem;
+
+
+16rpx = 0.5rem;
+20rpx = 0.6rem;
+24rpx = 0.8rem;
+32rpx = 1rem;
+
+
+*/

@@ -1,0 +1,265 @@
+<view class="ic_empty" wx:if="{{loadState == false}}">
+    <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+    <view>网络异常，请重新登陆～</view>
+</view>
+<view class="{{needAdapt ? 'iphone_pandding' : ''}}" wx:else>
+    <view class="head" wx:if="{{info.order_status == 0}}">
+        <image src="../../../images/order/ic_waitpay.png" mode="widthFix"></image>
+        <view class="waitpay">
+            <view class="name">{{info.order_status_str}}</view>
+            <view class="desc">
+                请在 {{showtimearr[0]}} 时 {{showtimearr[1]}} 分 {{showtimearr[2]}} 秒内完成支付，超时将自动取消订单
+            </view>
+        </view>
+    </view>
+    <view class="head" wx:else>
+        <image src="../../../images/order/ic_waitsend.png" mode="widthFix" wx:if="{{info.order_status == 1}}"></image>
+        <image src="../../../images/order/ic_waitreceive.png" mode="widthFix" wx:elif="{{info.order_status == 2}}"></image>
+        <image src="../../../images/order/ic_finish.png" mode="widthFix" wx:elif="{{info.order_status == 3}}"></image>
+        <image src="../../../images/order/ic_waitreceive.png" mode="widthFix" wx:elif="{{info.ic_close == 5}}"></image>
+        <view class="haspay">{{info.order_status_str}}</view>
+    </view>
+    <!-- 拼单 -->
+    <view wx:if="{{info.activity_id == 2}}">
+        <view class="pd_head" wx:if="{{info.pd_info.is_pay == 1}}">
+            <view class="pd_bg">
+                <view class="pd_l initiator" wx:if="{{info.pd_info.owner == 1}}">
+                    <image src="../../../images/order/pd_share_title.png" mode="widthFix"></image>
+                    <view class="pd_desc">好友下单购买，您可获得相应奖励</view>
+                    <button open-type="share" class="pd_share" wx:if="{{info.pd_info.status == 0}}">
+                        邀请好友
+                    </button>
+                    <button class="pd_share pd_finish" wx:else>活动结束</button>
+                </view>
+                <view class="pd_l participant" wx:else>
+                    <view class="pd_desc">你已成功参与拼单活动。</view>
+                </view>
+                <view class="pd_r">
+                    <view class="pd_avatar">
+                        <image src="{{info.pd_info.head_pic}}" mode="aspectFill"></image>
+                        <view>{{info.pd_info.owner == 0?'团员':'团长'}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 地址 -->
+    <view class="address">
+        <view class="row">
+            <view class="label">收 货 人：</view>
+            <view class="info">{{info.consignee.consignee}} {{info.consignee.mobile}}</view>
+        </view>
+        <view class="row">
+            <view class="label">收货地址：</view>
+            <view class="info">
+                {{info.consignee.province}} {{info.consignee.city}} {{info.consignee.district}} {{info.consignee.detail_address}}
+            </view>
+        </view>
+    </view>
+    <!-- 物流 -->
+    <view class="logistics" bindtap="logisticsList" wx:if="{{loglist.AcceptStation}}">
+        <view class="order_title">
+            <image src="../../../images/order/ic_logistics.png" mode="widthFix"></image>
+            发货信息
+        </view>
+        <view class="info">{{loglist.AcceptStation}}</view>
+    </view>
+    <!-- 详情 -->
+    <view class="goods_part">
+        <view class="order_title">
+            <image src="../../../images/order/ic_order.png" mode="widthFix"></image>
+            购物清单
+        </view>
+        <view class="goods" wx:for="{{info.goods}}" wx:key="orderGoods" bindtap="goGoodsInfo" data-idx="{{index}}" wx:if="{{item.type != 3}}">
+            <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+            <view class="tips" wx:if="{{item.type == 2}}">
+                <image src="../../../images/order/ic_gifts.png" mode="widthFix"></image>
+                <view>赠品</view>
+            </view>
+            <view class="info">
+                <view class="title">{{item.goods_name}}</view>
+                <view class="desc">{{item.goods_sub}}</view>
+                <!-- 套盒 -->
+                <view class="suitnorms" wx:if="{{item.suit_info.length != 0}}" catchtap="showNorms" data-idx="{{index}}">
+                    <view wx:for="{{item.suit_info}}" wx:key="payGoodsSuitList" wx:for-item="suitlist" wx:for-index="suitidx">
+                        {{suitidx == 0?'':'+'}}{{suitlist.item}}
+                    </view>
+                    <image src="../../../images/ic_arrow_d.png" mode="widthFix"></image>
+                </view>
+                <view class="norms">
+                    <text>{{item.item}}</text>
+                </view>
+                <view class="price">
+                    <view class="pay_price">
+                        <text>¥</text>
+                        {{item.goods_price}}
+                        <view class="market_price" wx:if="{{item.market_price != 0}}">
+                            ¥{{item.market_price}}
+                        </view>
+                    </view>
+                    <view class="paynum">x {{item.num}}</view>
+                </view>
+            </view>
+        </view>
+        <!-- 奖品 -->
+        <view wx:if="{{prizelist.length != 0}}">
+            <view class="order_title">
+                <image src="../../../images/order/ic_gift.png" mode="widthFix"></image>
+                奖品
+            </view>
+            <view class="gifts">
+                <view class="gift_img">
+                    <image src="{{item.image}}" mode="widthFix" wx:for="{{prizelist}}" wx:key="prizelist" wx:if="{{index < 3}}"></image>
+                </view>
+                <view class="show_more">
+                    <view class="info" bindtap="showMoreGifts">
+                        <view>查</view>
+                        <view>看</view>
+                        <view>更</view>
+                        <view>多</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 订单相关统计信息 -->
+    <view class="statistics">
+        <text class="num">共{{info.total}}件商品</text>
+    </view>
+    <view class="total">
+        <view class="list">
+            <view>
+                商品金额
+                <view>
+                    <text>¥</text>
+                    {{info.goods_price}}
+                </view>
+            </view>
+            <view wx:if="{{info.discount_info != ''}}">
+                活动折扣
+                <view class="discount_num">{{info.discount_info}}</view>
+            </view>
+            <view>
+                运费
+                <view>
+                    <text>¥</text>
+                    {{info.express_fee}}
+                </view>
+            </view>
+            <view>
+                优惠金额
+                <view>
+                    <text>¥</text>
+                    {{info.coupon_price}}
+                </view>
+            </view>
+            <view class="pay">
+                应付金额
+                <view>
+                    <text>¥</text>
+                    {{info.pay_price}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="remark">
+        <view>买家留言</view>
+        <textarea placeholder="留言建议提前协商（50字以内）" value="{{info.buyer_msg}}" disabled="{{true}}"></textarea>
+    </view>
+    <view class="order_msg">
+        <view class="total">
+            <view class="list">
+                <view>订单编号：{{info.order_sn}}</view>
+                <view>下单时间：{{info.create_time}}</view>
+                <view wx:if="{{info.pay_time != 0}}">付款时间：{{info.pay_time}}</view>
+                <view wx:if="{{info.order_status == 5}}">取消时间：{{info.cancel_time}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="footer_btn" wx:if="{{info.order_status == 0}}">
+        <view class="white_btn" bindtap="cancelOrder">取消订单</view>
+        <view class="black_btn" bindtap="payOrder">去支付</view>
+    </view>
+    <view class="footer_btn" wx:elif="{{info.order_status == 1}}">
+        <view class="black_btn" wx:if="{{info.activity_id == 4 && info.pay_status == 1 && info.goods[0].show_goods == 0 && giftList.length > 0}}" bindtap="active20220401">立即申领</view>
+        <view class="white_btn" bindtap="customerService">联系客服</view>
+        <!-- <button class="white_btn" open-type="contact" bindcontact="handleContact"  send-message-title="客服">联系客服</button> -->
+        <view class="white_btn" bindtap="applyReturn" wx:if="{{info.refund_status == 1}}">
+            申请退款
+        </view>
+    </view>
+    <view class="footer_btn" wx:elif="{{info.order_status == 2}}">
+        <view class="black_btn" bindtap="confirmGet">确认收货</view>
+        <view class="white_btn" bindtap="applyReturn" wx:if="{{info.refund_status == 1}}">
+            申请退货
+        </view>
+    </view>
+    <!-- <view class="footer_btn" wx:elif="{{info.order_status == 3}}">
+    <view class="white_btn" bindtap="addCart">再次购买</view>
+  </view> -->
+    <view class="footer_btn" wx:elif="{{info.order_status == 5}}">
+        <view class="white_btn" bindtap="delOrder">删除订单</view>
+        <!-- <view class="white_btn" bindtap="addCart">再次购买</view> -->
+    </view>
+</view>
+<!-- 第一次进入订单----中奖弹窗 -->
+<view wx:if="{{getGiftShow == true}}">
+    <view class="mask"></view>
+    <view class="gift_toast">
+        <image src="../../../images/order/get_gifts_bg.png" mode="widthFix" class="bg"></image>
+        <view class="info">恭喜您，中奖商品可以在订单中查看</view>
+        <image src="../../../images/ic_close.png" mode="widthFix" class="close" bindtap="closeGiveToast"></image>
+    </view>
+</view>
+<!-- 套盒规格弹窗 -->
+<view wx:if="{{goodsToast == true}}">
+    <view class="mask" catchtouchmove="false" bindtap="closeNorms"></view>
+    <view class="toast coverbox_toast">
+        <view class="title" catchtouchmove="false">
+            <image src="../../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeNorms"></image>
+            <image src="{{normsList.image}}" mode="aspectFill" class="goods_img"></image>
+            <view class="info">
+                <view class="price">
+                    <text>￥</text>
+                    {{normsList.goods_price}}
+                    <view>
+                        <text>￥</text>
+                        {{normsList.market_price}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 规格 -->
+        <view class="norms">
+            <view class="suit_list" wx:for="{{normsList.suit_info}}" wx:key="goodsSuitList" wx:for-item="goodsitem" wx:for-index="goodsidx">
+                <view class="name">{{goodsitem.goods_name}}：</view>
+                <view class="btn_list">
+                    <view class="btn_click">
+                        <text>{{goodsitem.item}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<van-popup show="{{ show_giftPanel }}" position="bottom" closeable round bind:close="onClose">
+    <view id="panelTitle">赠品选择</view>
+    <view id="panelShell">
+        <view class="gift_list" wx:for="{{giftList}}" wx:key="index">
+            <view class="gift_fromGoodsTitle">
+                <image src="{{item.base_image}}" />
+                <view>
+                    <view>{{item.base_name}}</view>
+                    <view>￥{{item.base_price}}</view>
+                </view>
+            </view>
+            <view class="gift_btnList_title"><text>可选的赠品：</text><text>{{item.warn}}</text></view>
+            <view class="gift_btnList">
+                <block wx:for="{{item.list}}" wx:for-item="specsitem" wx:for-index="indexs" wx:key="indexs">
+                    <view class="specsItem {{specsitem.chouse ? 'chouse' : ''}}" bindtap="chousethisGift" data-fatherindex="{{index}}" data-childindex="{{indexs}}" data-specsgoodsn="{{specsitem.goods_sn}}">{{specsitem.goods_name}}</view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="submit_btn" catchtouchmove="false" bindtap="setgiftConfirm"><button>确认</button></view>
+</van-popup>

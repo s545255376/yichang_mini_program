@@ -1,0 +1,57 @@
+.skin_tabbar{
+  background: #ffffff;
+  width: 100%;
+  line-height: 80rpx;
+  padding: 0 40rpx;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.skin_tabbar view{
+  display: inline-block;
+  margin-right: 40rpx;
+}
+.skin_tabbar view:last-child{
+  margin-right: 0;
+}
+.skin_tabbar .clicktab{
+  border-bottom: 4rpx solid #000000;
+  font-weight: bold;
+}
+.list{
+  margin-top: 20rpx;
+  background: #ffffff;
+  padding: 0 30rpx;
+  width: calc(100% - 60rpx);
+}
+.essay{
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eeeeee;
+}
+.essay:last-child{
+  border-bottom: none;
+}
+.essay image{
+  width: 100%;
+  height: 240rpx;
+  display: block;
+}
+.essay view{
+  text-align: justify;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.essay .title{
+  font-size: 34rpx;
+  margin-top: 40rpx;
+  color: #231F20;
+  -webkit-line-clamp: 1;
+}
+.essay .info{
+  font-size: 24rpx;
+  color: #A7A5A6;
+  line-height: 40rpx;
+  -webkit-line-clamp: 2;
+}

@@ -1,0 +1,43 @@
+<view class="top">
+    <view class="head">皮肤检测</view>
+    <view class="tips">检测时<text>保持肌肤报警器为</text><text class="bold">点亮</text><text>状态</text>，紧贴需要检测的部位</view>
+    <image src="../../images/machine_bg.png" mode="widthFix" class="machine_bg"></image>
+
+    <view class="{{model != -1?'expand_round':''}}">
+        <!-- 旋转 -->
+        <view class="roundpart">
+            <image src="../../images/round_opacity.png" mode="widthFix" class="round round_opacity"></image>
+            <image src="../../images/round_1.png" mode="widthFix" class="round round_inside"></image>
+            <image src="../../images/round_2.png" mode="widthFix" class="round round_one"></image>
+            <image src="../../images/round_3.png" mode="widthFix" class="round round_two"></image>
+            <image src="../../images/round_4.png" mode="widthFix" class="round round_three"></image>
+        </view>
+
+        <view class="success">
+            <image src="../../images/ic_success.png" mode="widthFix" wx:if="{{state == 3 && finish == true}}"></image>{{((state == 0 || state == 1)&&testing == false)?'加载中，请稍后':(testing == true && (state == 0 || state == 1 || state == 2))?'智能检测中 请勿移动仪器…':state == 2?'正在重新连接设备，请稍后':(state == 3 && finish == true)?'数据分析生成中…':''}}
+        </view>
+    </view>
+
+    <!-- <view>水分值:{{moisture}}%</view> -->
+</view>
+
+
+
+<!-- 仪器 -->
+<view class="bottom">
+    <view class="state" bindtap="linkAgain">
+        <view class="{{(state == 0||state == 2)?'red_dom':'green_dom'}}"></view>{{(state == 0||state == 2)?'蓝牙连接不稳定，正在尝试重新连接…':'蓝牙已连接'}}
+    </view>
+    <view class="machine">
+        <image src="../../images/machine.png" mode="widthFix"></image>
+    </view>
+</view>
+
+<view class="tipsmark" wx:if="{{mask == true}}">
+    <view class="mark_info">
+        <view class="mask_title">请将肌肤报警器探针紧贴需要检测的部位</view>
+        <view class="mask_tips">温馨提示：检测时，请尽量不要移动测肤仪</view>
+        <image src="../../images/bluetooth_tips.png" mode="widthFix" class="mask_img"></image>
+        <view class="mask_btn" bindtap="hideMask">下一步</view>
+    </view>
+</view>

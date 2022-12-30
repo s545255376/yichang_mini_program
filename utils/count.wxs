@@ -1,0 +1,23 @@
+var Fix= {
+  toFix: function (value) {
+    if(value){
+      value = parseFloat(value);
+      return value.toFixed(2)//此处1为保留一位小数
+    }
+    else{
+      return 0;
+    }
+  },
+  toFixTwo: function (value) {
+    if(value){
+      value = parseFloat(value);
+      return value.toFixed(2)//此处1为保留一位小数
+    }
+    else{
+      return 0;
+    }
+  },
+}
+module.exports = {
+  toFix: Fix.toFix
+}

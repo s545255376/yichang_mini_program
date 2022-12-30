@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "van-icon": "@vant/weapp/icon/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-picker": "@vant/weapp/picker/index",
+        "van-checkbox": "@vant/weapp/checkbox/index",
+        "pop": "/component/pop"
+    },
+    "navigationBarTitleText": "申请基因检测"
+}

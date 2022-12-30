@@ -1,0 +1,62 @@
+<view class="tabbar">
+  <view class="{{tabbarNum == index?'tabbar_click':''}}" bindtap="tabbarChange" wx:for="{{tabbar}}"  wx:key="tabbar" wx:for-item="item" wx:for-index="index" data-idx="{{index}}">{{item}}</view>
+</view>
+
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="ic_empty" wx:elif="{{list.length == 0}}">
+  <image src="../../../images/ic_empty_order.png" mode="widthFix"></image>
+  <view>暂无订单～</view>
+</view>
+<view wx:else class="page {{needAdapt ? 'iphone_pandding' :''}}">
+  <view class="list" wx:for="{{list}}" wx:key="orderList">
+    <view class="head" bindtap="orderDetail" data-idx="{{index}}">订单编号：{{item.order_sn}}
+    <image src="../../../images/order/ic_pd.png" mode="widthFix" wx:if="{{item.activity_id == 2}}" class="ic_pd"></image>
+      <text class="{{item.order_status == 0?'':item.order_status == (1||2)?'wait_c':'finish_c'}}">{{item.order_status == 0?'未付款':item.order_status == 1?'待发货':item.order_status == 2?'待收货':item.order_status == 3?'交易完成':item.order_status == 4?'已删除':item.order_status == 5?'已失效':'已关闭'}}</text>
+    </view>
+    <!-- body -->
+    <view class="detail" bindtap="orderDetail" data-idx="{{index}}">
+      <view class="body" wx:for="{{item.goods}}" wx:key="orderGoodsList" wx:for-item="info" wx:for-index="idx">
+        <image src="{{info.image}}" mode="aspectFill"></image>
+        <view class="tips" wx:if="{{info.type == 2}}">
+          <image src="../../../images/order/ic_gifts.png" mode="widthFix"></image>
+          <view>赠品</view>
+        </view>
+        <view class="info">
+          <view class="title">{{info.goods_name}}</view>
+          <view class="desc">{{info.goods_sub}}</view>
+          <view class="norms"><text wx:for="{{info.item}}" wx:key="orderGoodsItem" wx:for-item="model" wx:for-index="modelidx">{{model}}</text></view>
+          <view class="price"><text class="symbol">{{6 <= item.order_status?item.return_type+'：':''}}¥</text>{{info.price}}<text class="num">x {{info.num}}</text></view>
+        </view>
+      </view>
+    </view>
+    <!-- footer -->
+    <view class="footer">
+      <view class="show" wx:if="{{6 <= item.order_status}}">{{item.return_type}}{{item.return_status <= 2?'处理中':item.return_status == 3?'成功':item.return_status == 4?'失败':'已撤回'}}</view>
+      <view class="show" wx:else>实付：¥ {{item.pay_price}}<text>共{{item.total}}件商品</text></view>
+      
+      <view class="btn" wx:if="{{item.order_status == 0}}">
+        <view class="white_btn" bindtap="cancelOrder" data-idx="{{index}}">取消订单</view>
+        <view class="black_btn" bindtap="payOrder" data-idx="{{index}}">去支付</view>
+      </view>
+      <view class="btn" wx:elif="{{item.order_status == 1}}">
+        <view class="white_btn" bindtap="customerService">联系客服</view>
+        <!-- <button class="white_btn" open-type="contact" bindcontact="handleContact"  send-message-title="客服" session-from="udesk|去哪美小程序商城|实付：¥ {{item.pay_price}}|订单编号：{{item.order_sn}}|支付时间：{{item.pay_time}}|{{userinfo.username}}|{{userinfo.portrait}}">联系客服</button> -->
+      </view>
+      <view class="btn" wx:elif="{{item.order_status == 2}}">
+        <view class="white_btn" bindtap="showLogistics" data-idx="{{index}}">查看物流</view>
+        <view class="black_btn" bindtap="confirmGet" data-idx="{{index}}">确认收货</view>
+      </view>
+      <!-- <view class="btn" wx:elif="{{item.order_status == 3}}">
+        <view class="white_btn" bindtap="addCart" data-idx="{{index}}">再次购买</view>
+      </view> -->
+      <view class="btn" wx:elif="{{item.order_status == 5}}">
+        <view class="white_btn" bindtap="delOrder" data-idx="{{index}}">删除订单</view>
+        <!-- <view class="white_btn" bindtap="addCart" data-idx="{{index}}">再次购买</view> -->
+      </view>
+    </view>
+  </view>
+</view>
+

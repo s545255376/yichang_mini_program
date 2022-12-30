@@ -1,0 +1,13 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="essay" wx:else>
+  <view class="title">{{desc}}</view>
+  <view class="date">{{date}}</view>
+  <view class="content">
+    <template is="wxParse" data="{{wxParseData:contentname.nodes}}"></template>
+  </view>
+  <!-- <rich-text nodes="{{content}}" class="content"></rich-text> -->
+</view>

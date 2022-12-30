@@ -1,0 +1,197 @@
+<view class="{{pageShow == true?'wholepage':''}}">
+    <view class="mine">
+        <image src="../../images/mine/ic_mine_bg.png" mode="widthFix" class="mine_bg"></image>
+        <view class="user">
+            <image wx:if="{{logType == false}}" src="../../images/mine/logo.png" mode="widthFix" class="logoavatar"></image>
+            <image wx:else src="{{userinfo.portrait}}" mode="aspectFill" class="avatar"></image>
+            <view>
+                <view class="username">{{userinfo.username}}</view>
+                <view class="store_name">
+                    <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>
+                    {{userinfo.store_name}}
+                </view>
+            </view>
+        </view>
+        <view class="card">
+            <image src="../../images/mine/ic_mine_cardbg.png" mode="aspectFill" class="mine_bg"></image>
+            <view class="mine_tips">
+                <image src="../../images/mine/ic_vlog.png" mode="widthFix"></image>
+                <view>夷畅岩茶</view>
+                <button wx:if="{{logType ==  false}}">加入会员</button>
+            </view>
+        </view>
+        <view class="ic_writeoff" bindtap="ScanBtn" wx:if="{{userinfo.role_id == 1}}">
+            <image src="../../images/mine/ic_writeoff.png" mode="widthFix"></image>
+        </view>
+    </view>
+    <!-- 积分/优惠券 -->
+    <!-- <view class="integral_coupon">
+    <view class="border_r" bindtap="myScores"><view class="num">{{score}}</view><view class="name">积分</view></view>
+    <view class="coupon" bindtap="myCoupon"><view class="num">{{card}}<view>NEW</view></view><view class="name">优惠券</view></view>
+  </view> -->
+    <view class="part">
+        <view class="part_title">
+            <text>我的订单</text>
+            <view bindtap="goOrderList" data-type="0">
+                查看全部订单
+                <image src="../../images/ic_arrow_r.png" mode="widthFix"></image>
+            </view>
+        </view>
+        <view class="part_body">
+            <view bindtap="goOrderList" data-type="1">
+                <image src="../../images/mine/ic_order_waitpay.png" mode="widthFix"></image>
+                <view>待付款</view>
+                <text wx:if="{{orderList.stayPaymentStats != 0}}">{{orderList.stayPaymentStats < 100 ? orderList.stayPaymentStats : '···' }}</text>
+            </view>
+            <view bindtap="goOrderList" data-type="2">
+                <image src="../../images/mine/ic_order_waitsend.png" mode="widthFix"></image>
+                <view>待发货</view>
+                <text wx:if="{{orderList.stayDeliverStats != 0}}">{{orderList.stayDeliverStats < 100 ? orderList.stayDeliverStats : '···' }}</text>
+            </view>
+            <view bindtap="goOrderList" data-type="3">
+                <image src="../../images/mine/ic_order_waitget.png" mode="widthFix"></image>
+                <view>待收货</view>
+                <text wx:if="{{orderList.stayReceivStats != 0}}">{{orderList.stayReceivStats < 100 ? orderList.stayReceivStats : '···' }}</text>
+            </view>
+            <view bindtap="goOrderList" data-type="4">
+                <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
+                <view>已完成</view>
+                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
+            </view>
+            <view bindtap="refundList">
+                <image src="../../images/mine/ic_order_returnback.png" mode="widthFix"></image>
+                <view>退款/退货</view>
+                <text wx:if="{{orderList.stayRefundStats != 0}}">{{orderList.stayRefundStats < 100 ? orderList.stayRefundStats : '···' }}</text>
+            </view>
+        </view>
+    </view>
+    <view class="part server">
+        <view class="part_title">
+            <text>营销服务</text>
+        </view>
+        <view class="part_body">
+            <view bindtap="grouponOrder">
+                <image src="../../images/mine/ic_pintuan.png" mode="widthFix"></image>
+                <view>拼团订单</view>
+            </view>
+            <view bindtap="bonusPoints">
+                <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
+                <view>消费积分</view>
+                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
+            </view>
+            <view bindtap="scanPoints" wx:if="{{worker == true}}">
+                <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
+                <view>扫描积分</view>
+                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
+            </view>
+            <view bindtap="goMyTeam" wx:if="{{worker == true}}">
+                <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
+                <view>我的团队</view>
+                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
+            </view>
+        </view>
+    </view>
+    <view class="part server">
+        <view class="part_title">
+            <text>我的服务</text>
+        </view>
+        <view class="part_body">
+            <view bindtap="customerOrder" wx:if="{{userinfo.role_id == 1 || userinfo.role_id == 2 || userinfo.level_id == 3}}">
+                <image src="../../images/mine/ic_customer_order.png" mode="widthFix"></image>
+                <view>顾客订单</view>
+            </view>
+            <view bindtap="goMaterial">
+                <image src="../../images/mine/ic_material.png" mode="widthFix"></image>
+                <view>素材库</view>
+            </view>
+            <view bindtap="sharePoster" wx:if="{{userinfo.role_id == 1 || userinfo.role_id == 2 || userinfo.level_id == 3}}">
+                <image src="../../images/mine/ic_poster.png" mode="widthFix"></image>
+                <view>邀请匠选官</view>
+            </view>
+            <view bindtap="goInstrument">
+                <image src="../../images/mine/ic_instrument.png" mode="widthFix"></image>
+                <view>肌肤报警器</view>
+            </view>
+            <view bindtap="myCoupon">
+                <image src="../../images/mine/ic_card.png" mode="widthFix"></image>
+                <view>我的卡券</view>
+            </view>
+            <view bindtap="xiaoMei" wx:if="{{xiaomei == true}}">
+                <image src="../../images/mine/ic_xiaomei.png" mode="widthFix"></image>
+                <view>小美</view>
+            </view>
+            <view bindtap="genetest">
+                <image src="../../images/mine/ic_gene.png" mode="widthFix"></image>
+                <view>基因检测</view>
+            </view>
+        </view>
+    </view>
+    <view class="part server">
+        <view class="part_title">
+            <text>其他功能</text>
+        </view>
+        <view class="part_body">
+            <view bindtap="agreementList">
+                <image src="../../images/mine/ic_agreement.png" mode="widthFix"></image>
+                <view>我的协议</view>
+            </view>
+            <view bindtap="myAddress">
+                <image src="../../images/mine/ic_location.png" mode="widthFix"></image>
+                <view>收货地址</view>
+            </view>
+            <view bindtap="messageList">
+                <image src="../../images/mine/ic_news.png" mode="widthFix"></image>
+                <view>消息</view>
+                <text wx:if="{{message != 0}}">{{message}}</text>
+            </view>
+            <view class="contact" bindtap="goCustService" wx:if="{{userinfo.role_id == 0}}">
+                <image src="../../images/mine/ic_service.png" mode="widthFix"></image>
+                <view>联系客服</view>
+            </view>
+            <view bindtap="feedBack">
+                <image src="../../images/mine/ic_feedback.png" mode="widthFix"></image>
+                <view>意见反馈</view>
+            </view>
+            <!-- <view bindtap="questionBtn"><image src="../../images/mine/ic_question.png" mode="widthFix"></image><view>常见问题</view></view> -->
+            <view bindtap="logoutBtn" wx:if="{{logType == true}}">
+                <image src="../../images/mine/ic_signout.png" mode="widthFix"></image>
+                <view>退出登录</view>
+            </view>
+            <view bindtap="moreFun" wx:if="{{logType == true}}">
+                <image src="../../images/mine/ic_more.png" mode="widthFix"></image>
+                <view>更多</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view wx:if="{{showActionsheet == true}}">
+    <view class="mask" bindtap="logoutCancel"></view>
+    <view class="actionSheet">
+        <view class="btnlist">
+            <!-- <view bindtap="logoutBtn">退出账号</view> -->
+            <view bindtap="logoutBtn">注销账号</view>
+        </view>
+        <view class="cancel" bindtap="logoutCancel">取消</view>
+    </view>
+</view>
+<view wx:if="{{writeOffShow == true}}">
+    <view class="mask"></view>
+    <view class="write_off">
+        <view class="info">
+            <image wx:if="{{scanInfo.image != ''}}" src="{{scanInfo.image}}" mode="aspectFill"></image>
+            <view class="title" wx:if="{{scanInfo.name != ''}}">{{scanInfo.name}}</view>
+            <view class="price" wx:if="{{scanInfo.coupon_value != ''}}">
+                ¥{{scanInfo.coupon_value}}
+            </view>
+            <view class="cardnum" wx:if="{{scanInfo.card_no != ''}}">卡号：{{scanInfo.card_no}}</view>
+            <view wx:if="{{scanInfo.order.length != 0}}">
+                <view class="cardnum">订单编号：{{scanInfo.order.order_sn}}</view>
+                <view class="cardnum">支付时间：{{scanInfo.order.pay_time}}</view>
+            </view>
+        </view>
+        <view class="write_off_btn" bindtap="writeOffBtn">
+            <view>确认核销</view>
+        </view>
+        <image src="../../images/ic_close.png" mode="widthFix" class="close_btn" bindtap="logoutCancel"></image>
+    </view>
+</view>

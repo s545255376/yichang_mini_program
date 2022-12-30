@@ -1,0 +1,133 @@
+
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view wx:else>
+  <!-- 详情 -->
+  <view class="goods" wx:for="{{info.goods}}" wx:key="orderGoods">
+    <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+    <view class="tips" wx:if="{{item.type == 2}}">
+        <image src="../../../images/order/ic_gifts.png" mode="widthFix"></image>
+        <view>赠品</view>
+      </view>
+    <view class="info">
+      <view class="title">{{item.goods_name}}</view>
+      <view class="desc">{{item.goods_sub}}</view>
+      <view class="norms"><text>{{item.item}}</text></view>
+      <view class="price">
+        <view class="pay_price"><text>¥</text>{{item.goods_price}}<view class="market_price">¥{{item.market_price}}</view></view>
+        <view class="paynum">x {{item.num}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 奖品 -->
+  <view wx:if="{{prizelist.length != 0}}">
+    <view class="order_title"><image src="../../../images/order/ic_gift.png" mode="widthFix"></image>奖品</view>
+    <view class="gifts">
+      <view class="gift_img">
+        <image src="{{item.image}}" mode="widthFix" wx:for="{{prizelist}}" wx:key="prizelist" wx:if="{{index < 3}}"></image>
+      </view>
+      <view class="show_more">
+        <view class="info" bindtap="showMoreGifts">
+          <view>查</view><view>看</view><view>更</view><view>多</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="form">
+    <view class="list" wx:if="{{order_status == 2}}">
+      <view class="name">退货类型</view>
+      <view class="{{typeCheck == -1?'unclick':''}} info" bindtap="openTypeToast">{{typeCheck == -1?'请选择':typeCheck == 0?'我要退款（无需退货）':'我要退款退货'}}<image src="../../../images/ic_arrow_r.png" mode="widthFix"></image></view>
+    </view>
+    <view class="list">
+      <view class="name">{{order_status == 1?'退款':'退货'}}原因</view>
+      <view class="{{reasonCheck == -1?'unclick':''}} info" bindtap="openReasonToast">{{reasonCheck == -1?'请选择':reasonList[reasonCheck].content}}<image src="../../../images/ic_arrow_r.png" mode="widthFix"></image></view>
+    </view>
+    <view class="list">
+      <view class="name">退款金额</view>
+      <view class="info"><text>¥</text>{{info.pay_price}}</view>
+    </view>
+  </view>
+  
+  <view class="form part2">
+    <view class="list">
+      <view class="name">{{order_status == 1?'退款':'退货'}}说明</view>
+      <textarea placeholder="请输入退货说明" bindinput="contentInput" value="{{content}}"  wx:if="{{upToast == false}}"></textarea>
+    </view>
+    <view class="list">
+      <view class="name">上传凭证</view>
+      <view class="upload">
+        <view class="img" wx:for="{{uploadimg}}" wx:key="returnImgList">
+          <image src="{{item.img}}" mode="aspectFill"></image>
+          <view data-idx="{{index}}" bindtap="delImg">删除</view>
+        </view>
+        <view class="upload_btn" bindtap="uploadImg">+</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- <view wx:if="{{order_status == 2 && typeCheck == 1}}">
+    <view class="logistics">物流信息</view>
+    <view class="form part3">
+      <view class="list">
+        <view class="name">快递公司</view>
+        <view class="info {{expressCheck == -1?'unclick':''}}" bindtap="openExpressToast">{{expressCheck == -1?'请选择':expressList[expressCheck].name}}<image src="../../../images/ic_arrow_r.png" mode="widthFix"></image></view>
+      </view>
+      <view class="list">
+        <view class="name">快递单号（必填）</view>
+        <view class="info">
+          <input placeholder="请填写物流单号" placeholder-style="color:#D3D2D2;" bindinput="expressInput" value="{{express_sn}}"></input>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  
+  <view class="submit"><view bindtap="submitBtn">提交</view></view>
+  
+  
+  
+  <!-- 退款原因 -->
+  <view wx:if="{{upToast == true}}">
+    <view class="mask" bindtap="closeToast" catchtouchmove="false"></view>
+    <view class="toast">
+      <view class="toast_name" catchtouchmove="false">
+        <view>{{reasonToast == true?'退款原因':typeToast == true?'退货类型':'快递公司'}}</view>
+        <image src="../../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeToast"></image>
+      </view>
+      <!-- 退款原因 -->
+      <radio-group bindchange="reasonChange" class="toast_body" wx:if="{{reasonToast == true}}">
+        <label wx:for="{{reasonList}}" wx:key="reasonList">
+          <view class="info">{{item.content}}</view>
+          <radio value="{{index}}" class="radio" checked="{{index == reasonCheck}}"/>
+        </label>
+      </radio-group>
+      <!-- 退货类型 -->
+      <radio-group bindchange="typeChange" class="toast_body toast_type" wx:elif="{{typeToast == true}}">
+        <label>
+          <view class="info">
+            <view class="title">我要退款（无需退货）</view>
+            <view class="desc">已收到货，与商家协商同意后不用退货只退款</view>
+          </view>
+          <radio class="radio" value="0" checked="{{typeCheck == 0}}"/>
+        </label>
+        <label>
+          <view class="info">
+            <view class="title">我要退款退货</view>
+            <view class="desc">已收到货，需要退换收到的货物</view>
+          </view>
+          <radio class="radio"  value="1" checked="{{typeCheck == 1}}"/>
+        </label>
+      </radio-group>
+      <!-- 快递公司 -->
+      <radio-group bindchange="expressChange" class="toast_body" wx:if="{{expressToast == true}}">
+        <label wx:for="{{expressList}}" wx:key="expressList">
+          <view class="info">{{item.name}}</view>
+          <radio value="{{index}}" class="radio" checked="{{index == expressCheck}}"/>
+        </label>
+      </radio-group>
+      <view class="submit_btn" catchtouchmove="false"><button bindtap="confirmReason">确认</button></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+.input_box{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+}
+.input_line{
+    width: 80%;
+}
+.input_button{
+    border: solid;
+    border-radius: 20%;
+    width: 15%;
+    text-align: center;
+}

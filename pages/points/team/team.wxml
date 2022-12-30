@@ -1,0 +1,12 @@
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="part" wx:else>
+    <view class="part_title">我的积分: {{points}}</view>
+    <view class="part_body">
+        <view>我的团队:</view>
+        <view></view>
+    </view>
+</view>
+

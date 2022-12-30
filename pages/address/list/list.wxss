@@ -1,0 +1,78 @@
+.ic_empty{
+  margin-top: -300rpx;
+}
+.page_bottom_btn{
+  background: #231F20;
+  color: #ffffff;
+  text-align: center;
+  position: fixed;
+  left: 30rpx;
+  bottom: 30rpx;
+  width: calc(100% - 60rpx);
+  font-size: 32rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+/* 列表 */
+.address {
+  width: 100%;
+  height: auto;
+  padding-bottom: 180rpx;
+}
+.address .body{
+  width: calc(100% - 60rpx);
+  padding: 0 30rpx;
+  background: #ffffff;
+  margin-top: 30rpx;
+}
+.address .detail{
+  padding: 30rpx 0;
+}
+.address .receiver{
+  font-size: 28rpx;
+  color: #231F20;
+  width: 100%;
+  line-height: 60rpx;
+}
+.address .receiver text{
+  float: right;
+}
+.address .info{
+  font-size: 26rpx;
+  color: #7B7979;
+  text-align: justify;
+  line-height: 40rpx;
+}
+.operation{
+  width: 100%;
+  border-top: 1px solid #EAEBEE;
+  padding: 30rpx 0;
+}
+.operation view{
+  display: inline-block;
+  color: #7B7979;
+  font-size: 30rpx;
+  line-height: 34rpx;
+}
+.operation image{
+  width: 34rpx;
+  margin-right: 15rpx;
+  vertical-align: bottom;
+}
+radio .wx-radio-input{
+  border-color: #7B7979;
+}
+radio .wx-radio-input.wx-radio-input-checked{
+  background: #C2253A;
+}
+radio .wx-radio-input.wx-radio-input-checked::before{
+  color: #ffffff;
+}
+.address_btn{
+  float: right;
+  text-align: right;
+  margin: 5rpx 0;
+}
+.address_btn view{
+  margin-left: 50rpx;
+}

@@ -1,0 +1,59 @@
+.title,.list{
+  background: #fff;
+  border-radius: 10rpx;
+  line-height: 70rpx;
+  margin: 20rpx 0;
+  padding: 0 30rpx;
+  color: #231F20;
+  font-size: 28rpx;
+}
+.title image{
+  width: 25rpx;
+  height: 25rpx;
+  margin-left: 16rpx;
+}
+.underline{
+  border-bottom: 1px solid #F1F1F4;
+}
+/* list */
+.list{
+  padding: 0;
+}
+.row{
+  position: relative;
+  left: 40rpx;
+  width: calc(100% - 40rpx);
+  border-left: 1px dotted #F1F1F4;
+}
+.row image{
+  position: absolute;
+  left: -16rpx;
+  top: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: -15rpx;
+}
+.row .info{
+  border-bottom: 1px solid #F1F1F4;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+}
+.row .info_detail{
+  line-height: 40rpx;
+  color: #333333;
+  font-size: 26rpx;
+  width: calc(100% - 30rpx);
+}
+.row .info_detail view{
+  display: inline-block;
+}
+.row .info_detail .telnum{
+  color: #007AFF !important;
+}
+.row .date{
+  font-size: 24rpx;
+  color: #999999;
+}
+.last_row,.last_row .info{
+  border-bottom: none;
+}

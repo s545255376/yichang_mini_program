@@ -1,0 +1,35 @@
+<view class="{{needAdapt ? 'iphone_pandding' : ''}}">
+  <view class="form">
+    <view class="label">
+      <view>收货人</view>
+      <input placeholder="请填写收货人姓名" placeholder-style="color:#D3D2D2;" bindinput="inputChange" value="{{name}}" data-type="name"></input>
+    </view>
+    <view class="label">
+      <view>联系电话</view>
+      <input placeholder="请填写收货手机号" type="text" placeholder-style="color:#D3D2D2;" maxlength="11" bindinput="inputChange" value="{{tel}}" data-type="tel"></input>
+    </view>
+    <view class="label">
+      <view>所在地区</view>
+      <picker  mode="multiSelector" bindchange="areaSearch" bindcolumnchange="pickerChange" value="{{region}}" range="{{regionArray}}" class="address_check">
+        <input placeholder="省市区、乡镇等" placeholder-style="color:#D3D2D2;" value="{{regionInfo}}" disabled="true"></input>
+      </picker>
+    </view>
+    <view class="label">
+      <view>详细地址</view>
+      <input placeholder="街道、楼牌号等" placeholder-style="color:#D3D2D2;" value="{{address}}" bindinput="inputChange" data-type="address"></input>
+    </view>
+  </view>
+
+
+  <view class="default">
+    <view>设为默认地址</view>
+    <switch class="switch" checked="{{defaultChecked}}" bindchange="switchChange"/>
+  </view>
+  <view class="tips">提醒：每次下单时会默认推荐使用该地址</view>
+
+  <view class="save_btn page_bottom_btn" wx:if="{{type == 'new'}}" bindtap="addNew">保存</view>
+  <view class="btn footer" wx:else>
+    <view class="del_btn" bindtap="delBtn">删除</view>
+    <view class="change_btn" bindtap="changeBtn">保存</view>
+  </view>
+</view>

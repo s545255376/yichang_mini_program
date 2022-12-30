@@ -1,0 +1,238 @@
+/* genetest/pages/register/register.wxss */
+#register {
+    background-image: url('https://cmjx.chengmeijiangxuan.com/static/web/genetest/indexbg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    padding: 60rpx 50rpx 0 50rpx;
+}
+
+#mainBox {
+    background: #fff;
+    padding: 70rpx 40rpx 100rpx 40rpx;
+    box-sizing: border-box;
+    color: #000;
+}
+
+#mainBox_title {
+    font-size: 42rpx;
+    color: #000;
+    margin-bottom: 45rpx;
+    text-align: center;
+}
+
+.stepBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* .stepBox .title {
+    color: rgba(35, 31, 32, 0.16);
+    font-size: 60rpx;
+    position: relative;
+    top: 18rpx;
+} */
+.stepBox .title image {
+    width: 170rpx;
+    display: block;
+    position: relative;
+    left: -3rpx;
+}
+
+.stepBox .info {
+    font-size: 24rpx;
+    color: #fff;
+    background: #231F20;
+    padding: 0 10rpx;
+}
+
+.register_item {
+    margin-bottom: 60rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.register_item .item_title {
+    font-size: 28rpx;
+    color: #000;
+    margin-top: 2rpx;
+}
+
+.register_item .item_input {
+    border-bottom: 1rpx solid #D1CBCD;
+    flex: 1;
+    height: 60rpx;
+    font-size: 28rpx;
+    position: relative;
+}
+
+#register_box {
+    margin-top: 60rpx;
+    margin-bottom: 70rpx;
+}
+
+.item_input::placeholder {
+    color: #D3D3D3;
+    font-size: 28rpx;
+}
+
+.item_input .van-icon {
+    position: absolute;
+    right: 0;
+    top: 10rpx;
+    color: #979797;
+}
+
+#scanBox {
+    border: 1rpx solid #484848;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20rpx 0;
+    margin: 40rpx 0;
+}
+
+#scanBox view {
+    width: 80%;
+    text-align: center;
+}
+
+#scanBox image {
+    position: absolute;
+    right: 20rpx;
+    width: 46rpx;
+    height: 46rpx;
+}
+
+.button_group {
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin-top: 80rpx;
+}
+
+.button_group .btn {
+    height: 88rpx;
+    line-height: 88rpx;
+    margin-bottom: 20rpx;
+    font-size: 32rpx;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.policy {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.policy view {
+    color: #ACACAC;
+    font-size: 24rpx;
+}
+
+.policy view text {
+    display: inline-block;
+    color: #231F20;
+}
+
+.notice_title {
+    color: #000;
+    font-size: 38rpx;
+    border-bottom: 1px solid #C1C1C1;
+    margin-bottom: 30rpx;
+    padding-bottom: 40rpx;
+}
+
+.notice_desc {
+    color: #000;
+    font-size: 24rpx;
+    line-height: 48rpx;
+    margin-bottom: 20rpx;
+}
+
+.emphasize {
+    font-size: 34rpx;
+    color: #000;
+    margin-bottom: 30rpx;
+}
+
+.fixed .btn {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    margin-bottom: 0;
+}
+
+.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0;
+}
+
+.fixed>view {
+    width: 100%;
+    font-size: 34rpx !important;
+}
+
+.fixed.needAdapt>view {
+    padding-bottom: 30rpx;
+}
+
+#sendback {
+    padding-bottom: 88rpx;
+}
+
+#sendback image {
+    width: 464rpx;
+    margin: 30rpx 0;
+}
+
+/* 二维码 */
+.pop_custome_main {
+    width: 634rpx;
+    box-sizing: border-box;
+    background: #fff;
+    height: 718rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background-image: url('https://cmjx.chengmeijiangxuan.com/static/web/genetest/indexbg.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    padding: 50rpx;
+}
+
+.pop_custome_main>view:nth-child(1) {
+    font-size: 36rpx;
+    color: #000;
+}
+
+.pop_custome_main>image:nth-child(2) {
+    width: 336rpx !important;
+    height: 336rpx !important;
+    margin: 30rpx 0;
+}
+
+.pop_custome_main>view:nth-child(3) {
+    font-size: 26rpx;
+    color: #393939;
+    width: 100%;
+    text-align: left;
+}
+
+.pop_custome_main>view:nth-child(4) {
+    font-size: 26rpx;
+    color: #000;
+    margin-top: 12rpx;
+    width: 100%;
+    text-align: left;
+}

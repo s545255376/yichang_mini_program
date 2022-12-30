@@ -1,0 +1,28 @@
+
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view wx:else>
+  <view wx:for="{{list}}" wx:key="tracesAllList">
+    <view class="title">
+      <view class="underline"><text>物流公司：{{item.ShipperCode}}</text></view>
+      <view>
+        <text>运单编号：{{item.LogisticCode}}</text>
+        <image src="../../../images/order/ic_copy.png" mode="widthFix" bindtap="copyText"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="row {{index == (item.Traces.length-1)?'last_row':''}}" wx:for="{{item.Traces}}" wx:key="tracesList" wx:for-item="itemlist" wx:for-index="itemindex">
+        <image src="../../../images/order/ic_logistics_greendot.png" mode="widthFix" wx:if="{{itemindex == 0}}"></image>
+        <image src="../../../images/order/ic_logistics_graydot.png" mode="widthFix" wx:else></image>
+        <view class="info">
+          <view class="info_detail">
+            <text wx:for="{{itemlist.AcceptStation}}" wx:key="AcceptStation" wx:for-item="Accept" wx:for-index="Acceptidx" class="{{Accept.type == 'tel'?'telnum':''}}">{{Accept.msg}}</text>
+          </view>
+          <view class="date">{{itemlist.AcceptTime}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

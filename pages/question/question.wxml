@@ -1,0 +1,14 @@
+<view class="list" wx:if="{{list.length != 0}}">
+  <view class="essay" bindtap="goInfo" wx:for="{{list}}" wx:key="essay" data-idx="{{index}}">
+    <view class="title">{{item.title}}</view>
+    <image src="../../images/ic_arrow_r.png" mode="widthFix"></image>
+  </view>
+</view>
+<view class="ic_empty" wx:elif="{{loadState == false}}">
+  <image src="../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="ic_empty" wx:else>
+  <image src="../../images/ic_empty_box.png" mode="widthFix"></image>
+  <view>空空如也～</view>
+</view>

@@ -1,0 +1,114 @@
+<!--groupon/pages/tuaninfo/tuaninfo.wxml-->
+<view class="wholepage">
+    <view id="tuanInfo">
+        <!-- 从payment支付页过来的 提示一个支付成功 -->
+        <view id="paySuccess" wx:if="{{is_frompayment}}">
+            <view>
+                <image src="../../images/success.png" mode="widthFix"></image>
+                <text>支付成功</text>
+            </view>
+            <view>分享给好友一起参与拼团～</view>
+        </view>
+        <view id="content">
+            <view id="productInfo">
+                <image src="{{goods.image}}" ></image>
+                <view>
+                    <view>{{goods.goods_name}}</view>
+                    <view>
+                        <view>
+                            <text>¥</text>
+                            <text>{{goods.price}}</text>
+                        </view>
+                        <text>{{goods.market_price}}</text>
+                    </view>
+                </view>
+            </view>
+            <!-- 拼团 -->
+            <block wx:if="{{info.is_tuan == 1}}">
+                <!-- 团进行中的 -->
+                <view wx:if="{{info.pd_status == 0}}">
+                    <view id="slogan">{{info.pd_number}}单成团，单满即可拼团成功</view>
+                    <view id="countdown">
+                        <block wx:if="{{timeCount}}">
+                            <text>距离结束还剩：</text>
+                            <van-count-down use-slot time="{{ timeCount }}" bind:change="onChange">
+                                <text class="special" wx:if="{{timeData.days !== '0'}}">{{ timeData.days }}天</text>
+                                <text class="item">{{ timeData.hours }}</text>
+                                <text class="colon">:</text>
+                                <text class="item">{{ timeData.minutes }}</text>
+                                <text class="colon">:</text>
+                                <text class="item">{{ timeData.seconds }}</text>
+                            </van-count-down>
+                        </block>
+                    </view>
+                    <view id="progress">
+                        <image src="../../images/fire.png" mode="widthFix"></image>
+                        <van-progress 
+                            percentage="{{progress}}"
+                            stroke-width="22"
+                            color="#C2253A"
+                            pivot-text="{{progressWord}}"
+                        />
+                    </view>
+                </view>
+                <!-- 团结束并且成功 -->
+                <view class="pay_prompt" wx:if="{{info.pd_status == 1}}">
+                    <image src="../../images/success.png" mode="widthFix"></image>
+                    <view>本团已成团</view>
+                </view>
+                <!-- 团结束并且失败 -->
+                <view class="pay_prompt failed" wx:if="{{info.pd_status == 2}}">
+                    <image src="../../images/failed.png" mode="widthFix"></image>
+                    <view>拼团失败</view>
+                </view>
+            </block>
+            <!-- 如果是单独购的 因为不涉及到分享所以只显示购买成功 -->
+            <block wx:if="{{info.is_tuan == 0}}">
+                <view class="pay_prompt">
+                    <image src="../../images/success.png" mode="widthFix"></image>
+                    <view>已成功购买</view>
+                </view>
+            </block>
+            <!-- 自己的团可以处理分享和再来一单 -->
+            <view id="buttonGroup" wx:if="{{notice !== 1}}">
+                <block wx:if="{{info.pd_status == 0}}">
+                    <view class="btn sharebtn black" wx:if="{{info.attended == 1}}">
+                        <text>邀请好友拼团</text>
+                        <button open-type="share"></button>
+                    </view>
+                    <!-- {{info.owner ? 'white' : 'black'}} -->
+                    
+                    <block wx:if="{{info.attended == 1}}">
+                        <view class="btn white"  bindtap="joinTuan" data-type="0">再来一单</view>
+                    </block>
+                    <block wx:else>
+                        <view class="btn black"  bindtap="joinTuan" data-type="0">立即参与</view>
+                    </block>
+                </block>
+                <!-- 只要团不在进行中都显示再来一单 表示可以重新进入商品详情 -->
+                <block wx:else>
+                    <view class="btn white" bindtap="joinTuan" data-type="1">再来一单</view>
+                </block>
+            </view>
+            <!-- 店老板和美容师可以看到团成员信息 -->
+            <view id="buylist" wx:if="{{is_storeStaff && notice !== 1}}">
+                <view id="buylist_title"></view>
+                <view class="buylist_item" wx:for="{{info.buy_list}}" wx:key="index">
+                    <view class="buylist_item_header">
+                        <image src="{{item.user.portrait}}"></image>
+                        <view class="tuanzhang" wx:if="{{item.user.is_owner == 1}}"><text>团长</text></view>
+                    </view>
+                    <view class="buylist_item_content">
+                        <view>{{item.user.username}}</view>
+                        <view class="goodsitem" wx:for="{{item.lists}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+                            <text>{{items.goods_name}}</text>
+                            <text>+{{items.num}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view id="tips" wx:if="{{info.fictitious_flag == 1}}">提示：由于本团未再规定的时间内达到成团订单数量，因此系统创建“虚拟会员”为其成团</view>
+            </view>
+            <view class="clearfix"></view>
+        </view>
+    </view>
+</view>

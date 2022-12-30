@@ -1,0 +1,28 @@
+/* pages/points/team/team.wxss */
+.part{
+    width: calc(100% - 60rpx);
+    padding: 0 30rpx;
+    background: #ffffff;
+    margin-bottom: 16rpx;
+  }
+  .part_title{
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid #EAEBEE;
+    padding: 30rpx 0;
+    height: 30rpx;
+    line-height: 30rpx;
+  }
+  .part_title text{
+    color: #231F20;
+    font-size: 30rpx;
+  }
+  .part_title view{
+    float: right;
+    color: #A7A5A6;
+    font-size: 26rpx;
+  }
+  .part_title image{
+    width: 30rpx;
+    vertical-align: middle;
+  }

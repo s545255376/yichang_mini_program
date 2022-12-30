@@ -1,0 +1,22 @@
+<import src="../wxParse/wxParse.wxml"/>
+<view class="tabbar">
+  <view class="{{tabbarNum == index?'tabbar_click':''}}" bindtap="tabbarChange" data-num="{{index}}" wx:for="{{list}}" wx:key="contractList"><text>{{item.title}}</text></view>
+</view>
+
+<view class="body">
+  <template is="wxParse" data="{{wxParseData:contentname.nodes}}"></template>
+</view>
+
+
+<!-- <view class="footer">
+  <label>
+    <checkbox-group bindchange="checkboxChange">
+      <checkbox value="true" class="checkbox" checked="{{checkBtn}}" />
+      <view>选择代表您已同意 <text wx:for="{{list}}" wx:key="contractTips">{{index == 0?'':'、'}}《{{item.title}}》</text></view>
+    </checkbox-group>
+  </label>
+  <view class="btn">
+    <view class="cancel" bindtap="cancelBtn">取消</view>
+    <view class="confirm" bindtap="confirmBtn">确定</view>
+  </view>
+</view> -->

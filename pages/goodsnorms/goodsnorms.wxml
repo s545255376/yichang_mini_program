@@ -1,0 +1,35 @@
+<view class="page">
+  <view wx:if="{{loading == true}}"></view>
+  <view class="ic_empty" wx:elif="{{loadState == false}}">
+    <image src="../../images/ic_error_network.png" mode="widthFix"></image>
+    <view>网络异常，请重新登陆～</view>
+  </view>
+  <view wx:else>
+    <view class="footer">
+      <button bindtap="checkedBtn">确认选择</button>
+    </view>
+
+    <radio-group bindchange="normsSearch" class="cart_body" wx:if="{{list.length != 0}}">
+      <label class="cart" wx:for="{{list}}" wx:key="childlist">
+        <view class="check_icon"><radio value="{{index}}" class="checkbox" checked="{{checkedNum == index}}"/></view>
+        <view class="detail">
+          <image src="{{item.image}}" mode="aspectFill" class="goods_thumb" bindtap="goGoodsInfo"></image>
+          <view class="info">
+            <view class="title">{{item.goods_name}}</view>
+            <!-- <view class="desc">MISSSHOP素颜凝胶水</view>
+            <view class="cart_norms">30ml</view> -->
+            
+            <view class="price">
+              <view class="pay_price"><text>¥</text>{{item.price}}<view class="market_price"  wx:if="{{item.market_price != 0}}">¥{{item.market_price}}</view></view>
+              <view class="paynum">x 1</view>
+            </view>
+          </view>
+        </view>
+      </label>
+    </radio-group>
+    
+
+  </view>
+</view>
+
+

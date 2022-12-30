@@ -1,0 +1,22 @@
+<view class="ic_empty" wx:if="{{loadState == false}}">
+    <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+    <view>网络异常，请重新登陆～</view>
+</view>
+<view class="ic_empty" wx:elif="{{list.length == 0}}">
+    <image src="../../../images/ic_empty_order.png" mode="widthFix"></image>
+    <view>暂无卡券～</view>
+</view>
+<view class="list" wx:else>
+    <view wx:for="{{list}}" wx:key="couponList">
+        <button class="part" open-type="share" data-idx="{{index}}" style="color:{{item.font_color}};">
+            <image src="{{item.image}}" mode="widthFix"></image>
+            <view class="info">
+                <view>
+                    <text>{{item.coupon_value}}</text>
+                    {{item.unit}}
+                </view>
+                <view>{{item.name}}{{item.type == 0?'激活':'发放'}}</view>
+            </view>
+        </button>
+    </view>
+</view>

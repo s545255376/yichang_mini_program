@@ -1,0 +1,62 @@
+<view id="life">
+    <view class="clearfix"></view>
+    <view id="top">
+        <view class="{{tabbarNum == '1'?'click':''}}" data-type="1" bindtap="onChange"><text>正在直播</text></view>
+        <view class="{{tabbarNum == '0'?'click':''}}" data-type="0" bindtap="onChange"><text>往期直播</text></view>
+    </view>
+
+    <view class="ic_empty" wx:if="{{loadState == false}}">
+        <image src="../../images/ic_error_network.png" mode="widthFix"></image>
+        <view>网络异常，请重新登陆～</view>
+    </view>
+    <view class="ic_empty" wx:elif="{{list.length == 0}}">
+        <image src="../../images/ic_empty_order.png" mode="widthFix"></image>
+        <view>暂无直播～</view>
+    </view>
+    <view id="contant">
+        <view class="liveList {{index%2 == 0 ? '' : 'sec'}}" wx:for="{{list}}" wx:key="index" bindlongpress="popAcitve" catchtap="activeIntoBefore" data-item="{{item}}" data-index="{{index}}" data-popactive="show" style="z-index: {{item.zindex}}">
+            <view class="cover">
+                <image src="{{item.feeds_img}}" mode="widthFix"></image>
+                <view class="live_status {{item.live_status == 101 ? 'liveing' : ''}}"><text></text><text>{{item.live_status == '101' ? '直播中' : item.live_status == '102' ? '未开始' : item.live_status == '103' ? '已结束' : '暂停中'}}</text></view>
+            </view>
+            <view class="info">
+                <view class="title">{{item.name}}</view>
+                <view>主播：<text>{{item.anchor_name}}</text></view>
+                <view>时间：{{item.start_time}}</view>
+            </view>
+            <view class="fix" wx:if="{{item.shareshow}}">
+                <view class="infobox">
+                    <image src="../../images/ic_share_live.png" mode="widthFix"></image>
+                    <view class="infos">分享直播间</view>
+                    <button catchtap="share" open-type="share" data-item="{{item}}"></button>
+                </view>
+                <image class="close" src="../../images/ic_close.png" mode="widthFix" catchtap="popAcitve" data-index="{{index}}" data-popactive="hide"></image>
+            </view>
+        </view>
+    </view>
+    <view class="clearfix"></view>
+    <view class="toolBarHeight"></view>
+</view>
+<toolbar activeName="life" activeIndex="{{3}}"></toolbar>
+
+
+<pop bindeventclose="closeToast" popname="passwordToast" wx:if="{{passwordToast}}">
+    <view id="pop_password_main">
+        <view id="title">直播间秘钥</view>
+        <view id="main">
+            <van-field value="{{ password }}" placeholder="请输入直播间秘钥" border="{{ false }}" bind:change="passwordOnChange" />
+        </view>
+        <view id="buttonGroup" bindtap="confirmCheck">
+            <view>确定</view>
+        </view>
+    </view>
+</pop>
+
+<pop bindeventclose="closeToast" popname="guideToast" wx:if="{{guideToast}}" hidecloseicon="{{true}}" customclass="guideToast">
+    <view class="pop_guide_main">
+        <view class="tips">长按直播卡片可以弹出分享按钮哦</view>
+        <view class="buttonGroup">
+            <view bindtap="guideConfirm">我知道了</view>
+        </view>
+    </view>
+</pop>

@@ -1,0 +1,738 @@
+.fudai_float2 {
+    right: 150rpx !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 50% !important;
+    color: #fff !important;
+    background-color: #c2253a !important;
+}
+
+.indication {
+    width: 444rpx;
+    height: auto;
+    position: absolute;
+    top: 1128rpx;
+    left: calc(50% - 222rpx);
+}
+
+.indication .line {
+    width: 100%;
+    height: 2rpx;
+    border-radius: 1rpx;
+    opacity: 0.3;
+    background-color: #ffffff;
+}
+
+.indication .current {
+    background-color: #ffffff;
+    position: absolute;
+    top: -2rpx;
+    left: 0;
+    height: 6rpx;
+    width: 70%;
+}
+
+.logoname {
+    position: fixed;
+    left: 10px;
+    height: 17px;
+    line-height: 17px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #000000;
+    z-index: 999;
+}
+
+.banner {
+    text-align: center;
+    height: 1188rpx;
+    background: #000;
+}
+
+.swiper-item {
+    height: 100%;
+}
+
+.banner image {
+    width: 100%;
+    height: 100%;
+}
+
+/* 定位 */
+.location_list {
+    width: calc(100% - 80rpx);
+    background: #ffffff;
+    padding: 70rpx 40rpx;
+    overflow: hidden;
+}
+
+.location_scroll {
+    white-space: nowrap;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+    height: 80rpx;
+}
+
+.location_scroll view {
+    font-size: 28rpx;
+    line-height: 28rpx;
+    color: #9f9d9e;
+    padding: 20rpx 30rpx;
+    border-radius: 12rpx;
+    background: #f3f3f3;
+    margin-right: 24rpx;
+    width: fit-content;
+    display: inline-block;
+}
+
+.location_list .row {
+    overflow-y: hidden;
+    display: -webkit-box;
+    flex-direction: column;
+}
+
+.location_list .row view {
+    font-size: 28rpx;
+    line-height: 28rpx;
+    color: #9f9d9e;
+    padding: 20rpx 30rpx;
+    border-radius: 12rpx;
+    background: #f3f3f3;
+    margin-right: 24rpx;
+    width: fit-content;
+}
+
+.location_list .row view:last-child {
+    margin-right: 0;
+}
+
+.location_fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 30rpx 40rpx;
+    z-index: 999;
+}
+
+.location_click {
+    background: #c2253a !important;
+    color: #ffffff !important;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.jxgoods {
+    text-align: center;
+    background: #ffffff;
+    width: calc(100% - 80rpx);
+    height: 220rpx;
+    padding: 70rpx 40rpx 0;
+}
+
+.home_tabbar {
+    position: relative;
+    display: block;
+}
+
+.home_tabbar .tabbar_bg {
+    width: 100%;
+    height: 400rpx;
+    display: block;
+}
+
+.mainkv {
+    width: calc(100% - 40rpx);
+    display: flex;
+    padding: 0 20rpx;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    margin-top: -69rpx;
+}
+
+.mainkv view {
+    width: calc(100% - 40rpx);
+    padding: 0 20rpx;
+    color: #4f4c4d;
+}
+
+.mainkv image {
+    width: 90rpx;
+    margin: 0 auto;
+}
+
+.mainkv view view {
+    width: 100%;
+    display: block;
+    padding: 0;
+    text-align: center;
+    font-size: 28rpx;
+    margin-top: 20rpx;
+}
+
+/* 热销专区 */
+
+.hot_title {
+    text-align: center;
+    color: #231f20;
+    padding: 100rpx 0;
+    background: #ffffff;
+}
+
+.hot_title .en {
+    font-size: 22rpx;
+    letter-spacing: 7rpx;
+    color: #a7a5a6;
+    margin-top: 20rpx;
+}
+
+.hot_title .ch {
+    font-size: 40rpx;
+    letter-spacing: 2rpx;
+}
+
+/* 列表 */
+.part {
+    width: 100%;
+    display: block;
+}
+
+.part .part_onlyimg_title {
+    width: calc(100% - 60rpx);
+    padding: 0 30rpx 30rpx;
+    background: #ffffff;
+}
+
+.part .part_onlyimg_title image {
+    width: 100%;
+}
+
+.part .part_title {
+    text-align: center;
+    color: #231f20;
+    padding: 95rpx 95rpx;
+    box-sizing: border-box;
+}
+
+.part .part_title image {
+    width: 100%;
+}
+
+.part .part_title .ch_top {
+    margin-top: 80rpx;
+}
+
+.part .part_title .ch {
+    font-size: 34rpx;
+    letter-spacing: 12rpx;
+}
+
+.part .part_title .en {
+    font-size: 22rpx;
+    color: #a7a5a6;
+    margin-top: 20rpx;
+    letter-spacing: 7rpx;
+}
+
+.part .white_top .goodslist {
+    padding: 0 0 0 30rpx;
+}
+
+.part .goodslist {
+    width: calc(100% - 30rpx);
+    padding: 40rpx 0 0 30rpx;
+    background: #ffffff;
+}
+
+.part .hot .goodslist {
+    width: 100%;
+    padding: 0;
+}
+
+/* 调查问卷弹窗 */
+#pop_questionnaire {
+    width: 90%;
+    margin: 0 auto;
+    height: 1000rpx;
+    padding: 40rpx;
+    box-sizing: border-box;
+    z-index: 999;
+    background-color: #fff;
+    overflow-y: scroll;
+}
+
+#pop_questionnaire .buttonGroup {
+    position: unset;
+    bottom: unset;
+}
+
+#pop_questionnaire #questionHead {
+    border-bottom: 2rpx dotted #000;
+    padding-bottom: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+#questionHead .describe {
+    font-size: 24rpx;
+}
+
+#questionHead .title {
+    font-size: 32rpx;
+    text-align: center;
+    color: #000;
+    margin: 30rpx 0;
+    color: #1989fa;
+}
+
+#questionList .questionTitle {
+    font-size: 28rpx;
+    margin: 20rpx 0;
+}
+
+#questionList .questionTitle i {
+    color: #c2253a;
+}
+
+#questionList .questionDest {
+    font-size: 24rpx;
+}
+
+#questionList .van-checkbox {
+    margin-bottom: 10rpx;
+    font-size: 28rpx;
+}
+
+#questionList .img {
+    width: 140rpx;
+    height: 140rpx;
+    position: relative;
+    display: inline-flex;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+}
+
+#questionList .img image {
+    width: 100%;
+}
+
+#questionList .img view {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #000000;
+    color: #ffffff;
+    font-size: 22rpx;
+    text-align: center;
+    height: 40rpx;
+    line-height: 40rpx;
+    width: 100%;
+    opacity: 0.6;
+}
+
+/* #questionnaireToast .buttonGroup {
+    position: fixed;
+} */
+
+/* 新人优惠券 */
+#coupon_toast {
+    width: 554rpx;
+    margin: 0 auto;
+    height: 820rpx;
+    padding: 30rpx;
+    z-index: 999;
+    background-image: url('https://fenxiaopic.missshop.com/guoxin/coupon_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#coupon_toast .info {
+    width: 100%;
+    height: calc(100% - 140rpx);
+    position: relative;
+}
+
+#coupon_toast .border {
+    width: 30rpx;
+    height: 30rpx;
+    border: 2px dotted #ffffff;
+    position: absolute;
+    z-index: 999;
+    background: #ffffff;
+}
+
+#coupon_toast .border_l {
+    left: -5rpx;
+    top: -5rpx;
+    border-radius: 0 0 30rpx 0;
+    border-right: 2px dotted #bdbbbc;
+    border-bottom: 2px dotted #bdbbbc;
+}
+
+#coupon_toast .border_r {
+    right: -5rpx;
+    top: -5rpx;
+    border-radius: 0 0 0 30rpx;
+    border-left: 2px dotted #bdbbbc;
+    border-bottom: 2px dotted #bdbbbc;
+}
+
+#coupon_toast .coupon_btn {
+    background: #c2253a;
+    color: #ffffff;
+    font-size: 32rpx;
+    text-align: center;
+    line-height: 90rpx;
+    margin-top: 20rpx;
+}
+
+#coupon_toast .coupon_unbtn {
+    opacity: 0.4;
+}
+
+#coupon_toast .coupon_title {
+    font-size: 42rpx;
+    color: #231f20;
+    line-height: 42rpx;
+    text-align: center;
+    margin-top: 35rpx;
+}
+
+#coupon_toast .coupon_desc {
+    color: #231f20;
+    opacity: 0.6;
+    font-size: 26rpx;
+    line-height: 38rpx;
+    margin-top: 15rpx;
+    text-align: center;
+}
+
+#coupon_toast .coupon_list {
+    width: 100%;
+    height: calc(100% - 142rpx);
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 45rpx;
+}
+
+#coupon_toast .list {
+    width: 100%;
+    position: relative;
+    display: flex;
+    margin-bottom: 10rpx;
+    background-image: url('https://fenxiaopic.missshop.com/guoxin/card_bg.png');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 55rpx 0;
+}
+
+#coupon_toast .list_l {
+    width: calc(65% - 83rpx);
+    height: 100%;
+    padding: 0 40rpx;
+    border-right: 3rpx solid #f8f8f9;
+}
+
+#coupon_toast .price {
+    font-size: 55rpx;
+    line-height: 55rpx;
+}
+
+#coupon_toast .price text {
+    font-size: 24rpx;
+}
+
+#coupon_toast .term {
+    font-size: 17rpx;
+    line-height: 20rpx;
+}
+
+#coupon_toast .list_r {
+    width: calc(35% - 80rpx);
+    height: 100%;
+    text-align: center;
+    color: #c2253a;
+    vertical-align: middle;
+    padding: 0 40rpx;
+}
+
+#coupon_toast .name {
+    font-size: 32rpx;
+    line-height: 32rpx;
+}
+
+#coupon_toast .desc {
+    font-size: 20rpx;
+    line-height: 20rpx;
+    color: #7b7979;
+    margin-top: 24rpx;
+}
+
+.ic_empty {
+    position: relative;
+    margin-top: 0;
+    padding: 30rpx 0;
+}
+
+.notice_part {
+    width: calc(100% - 60rpx);
+    padding: 30rpx 30rpx;
+    background: #f2ebe1;
+    display: flex;
+}
+
+.notice_part image {
+    width: 38rpx;
+    margin-right: 16rpx;
+    vertical-align: middle;
+}
+
+.notice_part .msg {
+    padding-left: 16rpx;
+    width: calc(100% - 70rpx);
+    height: 26rpx;
+    line-height: 26rpx;
+    margin: auto;
+    border-left: 2rpx solid #d2d2d2;
+    vertical-align: middle;
+}
+
+.notice_part .info {
+    width: 100%;
+    font-size: 26rpx;
+    color: #171717;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.notice_part .info view {
+    width: fit-content;
+}
+
+.notice_part .info text {
+    padding-right: 40rpx;
+}
+
+.cart_btn,
+.return_top {
+    position: fixed;
+    right: 32rpx;
+    width: 82rpx;
+    height: 82rpx;
+    border-radius: 50%;
+    background: #000000;
+    text-align: center;
+}
+
+.return_top {
+    bottom: 60rpx;
+}
+
+.cart_btn {
+    bottom: 170rpx;
+}
+
+.cart_btn image,
+.return_top image {
+    width: 48rpx;
+    display: block;
+    margin: 17rpx auto;
+}
+
+.cart_btn .dom {
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 50%;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    margin-top: -18rpx;
+    margin-right: -20rpx;
+    background: #d90b33;
+}
+
+.live_btn {
+    position: fixed;
+    right: 20rpx;
+    bottom: 282rpx;
+    width: 104rpx;
+    height: 104rpx;
+    border-radius: 50%;
+    background: #c2253a;
+    text-align: center;
+}
+
+.live_btn image {
+    width: 34rpx;
+    display: block;
+    margin: 15rpx auto 0;
+}
+
+.live_btn .date {
+    display: block;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16rpx;
+    line-height: 18rpx;
+    text-align: center;
+    margin: 4rpx auto 0;
+}
+
+.live_btn .date view {
+    word-break: keep-all;
+}
+
+.live_play {
+    position: fixed;
+    right: 20rpx;
+    bottom: 295rpx;
+    width: 126rpx;
+    height: 196rpx;
+    border-radius: 8.4rpx;
+    border: 2rpx solid #c2253a;
+    text-align: center;
+    overflow: hidden;
+}
+
+.live_play .live_bg {
+    width: 100%;
+    height: 100%;
+}
+
+.live_play .live_title {
+    position: absolute;
+    top: 16rpx;
+    left: 17rpx;
+    width: 92rpx;
+    height: 24rpx;
+    line-height: 24rpx;
+    font-size: 14rpx;
+    text-align: center;
+    background: #c2253a;
+    color: #ffffff;
+    border-radius: 13rpx;
+}
+
+.live_play .live_title image {
+    width: 11rpx;
+    margin-left: 4rpx;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.live_play .live_playbtn {
+    position: absolute;
+    top: 90rpx;
+    left: 45rpx;
+    width: 36rpx;
+}
+
+.more {
+    padding-bottom: 96rpx;
+    width: calc(100% - 30rpx);
+}
+
+.more view {
+    text-align: center;
+    color: #7b7979;
+    font-size: 26rpx;
+    line-height: 80rpx;
+    border-top: 1rpx solid #d5d5d5;
+    border-bottom: 1rpx solid #d5d5d5;
+}
+
+.more image {
+    width: 22rpx;
+    margin-left: 12rpx;
+    display: inline-block;
+}
+
+.goodslist_two .more {
+    width: calc(100% - 60rpx);
+    padding-left: 30rpx;
+    padding-top: 72rpx;
+}
+
+.mask {
+    opacity: 0 !important;
+}
+
+.noColumnGoods {
+    text-align: center;
+    font-size: 24rpx;
+    color: #a7a5a6;
+    padding-bottom: 95rpx;
+}
+
+.noColumnGoods.white_top {
+    background: #fff;
+}
+
+/* 拼团相关 */
+#grouponEntry {
+    width: 140rpx;
+    height: 140rpx;
+    position: fixed;
+    right: 0;
+    bottom: 267rpx;
+}
+
+#grouponEntry image {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* 判断当存在直播时拼团浮标的位置 */
+#grouponEntry.hasNotice {
+    bottom: 405rpx !important;
+}
+
+#grouponEntry.hasLive {
+    bottom: 510rpx !important;
+}
+
+/* 拼团弹窗 */
+#pop_custome_main {
+    width: 550rpx;
+    box-sizing: border-box;
+    background: #fff;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+    border-radius: 20rpx;
+    margin: 0 auto;
+}
+
+#pop_custome_main image {
+    width: 100%;
+    height: 100%;
+    border-radius: 20rpx;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    bottom: 45rpx;
+}
+
+.buttonGroup view {
+    width: 80%;
+    text-align: center;
+    padding: 20rpx 0;
+    background: #231f20;
+    color: #fff;
+}

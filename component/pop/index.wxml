@@ -1,0 +1,11 @@
+<!-- component/pop/index.wxml -->
+<view class="modal-box customclass">
+    <view class="modal-body">
+        <view class="modal-content">
+            <slot></slot>
+            <view class="modal-close" wx:if="{{!hidecloseicon}}">
+                <image class="tagimage" src="../../images/ic_close.png" mode="widthFix" bindtap="close"></image>
+            </view>
+        </view>
+    </view>
+</view>

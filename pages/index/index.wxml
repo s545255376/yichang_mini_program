@@ -1,0 +1,267 @@
+<view class="home {{pageShow == true?'wholepage':''}}">
+    <view wx:if="{{banner.length != 0}}">
+        <swiper current="{{currentIndex}}" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="500" class="banner" bindchange="swiperChange">
+            <!-- style="height:calc({{windowHeight}}px - 400rpx);" -->
+            <swiper-item wx:for="{{banner}}" wx:key="homebanner">
+                <view class="swiper-item">
+                    <image src="{{item.image}}" mode="aspectFill" data-imgnum="{{index}}" lazy-load="true" bindtap="bannerClick"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="indication">
+            <view class="line"></view>
+            <view class="current" style="width:{{bannerleft + '%'}}"></view>
+        </view>
+    </view>
+    <view class="notice_part" wx:if="{{notice.info.length != 0}}">
+        <image src="../../images/home/ic_notice.png" mode="widthFix"></image>
+        <view class="msg">
+            <view class="info">
+                <view class="notice_msg" style="margin-left:{{notice.left}}px;">
+                    <text bindtap="goNotice" data-id="{{item.id}}" wx:for="{{notice.info}}" wx:key="noticeList">
+                        {{item.title}}
+                    </text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="ic_empty" wx:if="{{errorShow == true}}">
+        <image src="../../images/ic_error_network.png" mode="widthFix"></image>
+        <view>网络异常，请重新登陆～</view>
+    </view>
+    <view class="ic_empty" wx:elif="{{list.length == 0}}">
+        <image src="../../images/ic_empty_box.png" mode="widthFix"></image>
+        <view>门店暂时没有商品哦～</view>
+    </view>
+    <view wx:else>
+        <!-- 匠选商品 -->
+        <swiper current="{{currentIndex}}" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="500" class="jxgoods" bindchange="swiperChange" wx:if="{{jxlist.length != 0}}">
+            <swiper-item wx:for="{{jxlist}}" wx:key="homebanner">
+                <view class="swiper-item">
+                    <image src="{{item.image}}" mode="widthFix" data-imgnum="{{index}}" lazy-load="true" bindtap="goGoodsInfo" data-goodsid="{{item.id}}"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="location_list" id="locationStay">
+            <scroll-view scroll-x="true" scroll-left="{{scrollLeft}}">
+                <view class="row">
+                    <view wx:for="{{list}}" wx:key="locationList" wx:if="{{item.title != '' || item.subtitle != ''}}" data-idx="{{index}}" bindtap="goCate" class="{{locationNum == index?'location_click ':''}}">{{item.title != ''?item.title:item.subtitle}}</view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="location_list location_fixed" wx:if="{{locationShow == true}}">
+            <scroll-view scroll-x="true" scroll-left="{{scrollLeft}}" class="location_scroll">
+                <block>
+                    <view wx:for="{{list}}" wx:key="locationList" wx:if="{{item.title != '' || item.subtitle != ''}}" data-idx="{{index}}" bindtap="goCate" id="locationhead{{index}}" class="{{locationNum == index?'location_click':''}}">{{item.title != ''?item.title:item.subtitle}}</view>
+                </block>
+            </scroll-view>
+        </view>
+        <view wx:for="{{list}}" wx:key="indexList" id="homeGoods-{{index}}">
+            <view class="part" bindtap="goLevelTwoPage" data-position="{{item.is_position}}" data-idx="{{index}}">
+                <!-- 有二级页面 -->
+                <view wx:if="{{item.is_position == 1}}" class="part_onlyimg_title">
+                    <image src="{{item.image}}" mode="widthFix" wx:if="{{item.image.length != 0}}"></image>
+                </view>
+                <!-- 白色背景 -->
+                <view class="hot_title" wx:elif="{{(item.title.length != 0 || item.subtitle.length != 0) && item.image.length == 0}}">
+                    <view class="ch">| {{item.title}} |</view>
+                    <view class="en">{{item.subtitle}}</view>
+                </view>
+                <!-- 灰色背景 -->
+                <view wx:else>
+                    <view class="{{item.image.length == 0?'hot_title':'part_title'}}" wx:if="{{item.image.length != 0 || item.title.length != 0 || item.subtitle.length != 0}}">
+                        <image src="{{item.image}}" mode="widthFix" wx:if="{{item.image.length != 0}}"></image>
+                        <view class="ch {{item.image.length != 0 ? 'ch_top':''}}">| {{item.title}} |</view>
+                        <view class="en">{{item.subtitle}}</view>
+                    </view>
+                </view>
+                <view class="{{(item.title.length != 0 || item.subtitle.length != 0) && item.image.length == 0?'white_top':'gray_top'}}" wx:if="{{item.is_position == 0}}">
+                    <block wx:if="{{item.columnGoods.length > 0}}">
+                        <!-- 1个商品一行 -->
+                        <view class="goodslist_two" wx:if="{{item.style == 1}}">
+                            <view class="image" bindtap="goGoodsInfo" wx:for="{{item.columnGoods}}" wx:key="goodsList" wx:for-item="list" wx:for-index="idx" data-goodsid="{{list.goods_id}}" wx:if="{{item.showAll == true?idx<(item.columnGoods.length):idx < 6}}">
+                                <image src="{{list.image}}" mode="widthFix"></image>
+                            </view>
+                            <view class="more" wx:if="{{6 < item.columnGoods.length}}">
+                                <view bindtap="showMoreList" data-index="{{index}}">
+                                    <text>{{item.showAll == true?'收起':'查看更多'}}</text>
+                                    <image src="{{item.showAll == true?'../../images/home/ic_close_more.png':'../../images/home/ic_more.png'}}" mode="widthFix"></image>
+                                </view>
+                            </view>
+                        </view>
+                        <!-- 2个商品一行 -->
+                        <view class="goodslist" wx:elif="{{item.style == 2}}">
+                            <view class="goodspart" wx:for="{{item.columnGoods}}" wx:key="goodsList" wx:for-item="list" wx:for-index="idx" bindtap="goGoodsInfo" data-goodsid="{{list.goods_id}}" wx:if="{{item.showAll == true?idx<(item.columnGoods.length):idx < 6}}">
+                                <view class="image">
+                                    <image src="{{list.image}}" mode="widthFix"></image>
+                                </view>
+                                <view class="info">
+                                    <view class="title">{{list.goods_name}}</view>
+                                    <view class="price">¥{{list.price}}<text wx:if="{{list.market_price != 0}}">¥{{list.market_price}}</text></view>
+                                </view>
+                            </view>
+                            <view class="more" wx:if="{{6 < item.columnGoods.length}}">
+                                <view bindtap="showMoreList" data-index="{{index}}">
+                                    <text>{{item.showAll == true?'收起':'查看更多'}}</text>
+                                    <image src="{{item.showAll == true?'../../images/home/ic_close_more.png':'../../images/home/ic_more.png'}}" mode="widthFix"></image>
+                                </view>
+                            </view>
+                        </view>
+                        <!-- 1-2个商品一行 -->
+                        <view class="hot" wx:elif="{{item.style == 3}}">
+                            <view class="hot_recommend goodspart" bindtap="goGoodsInfo" wx:if="{{item.columnGoods.length != 0}}" data-goodsid="{{item.columnGoods[0].goods_id}}">
+                                <view class="image">
+                                    <image src="{{item.columnGoods[0].image}}" mode="widthFix"></image>
+                                </view>
+                                <view class="info">
+                                    <view class="title">
+                                        <view>{{item.columnGoods[0].goods_name}}</view>
+                                    </view>
+                                    <view class="price">¥{{item.columnGoods[0].price}}<text wx:if="{{item.columnGoods[0].market_price != 0}}">¥{{item.columnGoods[0].market_price}}</text></view>
+                                </view>
+                            </view>
+                            <view class="goodslist">
+                                <view class="goodspart" wx:for="{{item.columnGoods}}" wx:key="hotList" wx:for-item="list" wx:for-index="idx" bindtap="goGoodsInfo" data-goodsid="{{list.goods_id}}" wx:if="{{item.showAll == true?idx != 0 && idx<item.columnGoods.length:idx != 0 && idx < 5}}">
+                                    <view class="image">
+                                        <image src="{{list.image}}" mode="widthFix"></image>
+                                    </view>
+                                    <view class="info">
+                                        <view class="title">{{list.goods_name}}</view>
+                                        <view class="price">¥{{list.price}}<text wx:if="{{list.market_price != 0}}">¥{{list.market_price}}</text></view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="more" wx:if="{{5 < item.columnGoods.length }}">
+                                <view bindtap="showMoreList" data-index="{{index}}">
+                                    <text>{{item.showAll == true?'收起':'查看更多'}}</text>
+                                    <image src="{{item.showAll == true?'../../images/home/ic_close_more.png':'../../images/home/ic_more.png'}}" mode="widthFix"></image>
+                                </view>
+                            </view>
+                        </view>
+                        <!-- 2N-1个商品一行 -->
+                        <view class="goodslist_blend" wx:elif="{{item.style == 7}}">
+                            <view class="double_list">
+                                <view class="goodspart" wx:for="{{item.columnGoods}}" wx:key="goodsList" wx:for-item="list" wx:for-index="idx" bindtap="goGoodsInfo" data-goodsid="{{list.goods_id}}" wx:if="{{idx<item.num}}">
+                                    <view class="image">
+                                        <image src="{{list.image}}" mode="widthFix"></image>
+                                    </view>
+                                    <view class="info">
+                                        <view class="title">{{list.goods_name}}</view>
+                                        <view class="price">¥{{list.price}}<text wx:if="{{list.market_price != 0}}">¥{{list.market_price}}</text></view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="image_single" bindtap="goGoodsInfo" wx:for="{{item.columnGoods}}" wx:key="goodsList" wx:for-item="list" wx:for-index="idx" data-goodsid="{{list.goods_id}}" wx:if="{{item.num<=idx}}">
+                                <image src="{{list.image}}" mode="widthFix"></image>
+                            </view>
+                        </view>
+                    </block>
+                    <!-- 商品列表为空 -->
+                    <view class="noColumnGoods {{(item.title.length != 0 || item.subtitle.length != 0) && item.image.length == 0 ?'white_top':'gray_top'}}" wx:else>暂无商品</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 通用浮标 -->
+<view class="return_top" bindtap="returnTop">
+    <image src="../../images/home/ic_gotop.png" mode="widthFix"></image>
+</view>
+<view class="cart_btn" bindtap="goCart">
+    <image src="../../images/home/ic_cart.png" mode="widthFix"></image>
+    <view class="dom" wx:if="{{cartNum != 0}}"></view>
+</view>
+<!-- 直播相关 -->
+<view class="live_btn" bindtap="goLive" wx:if="{{liveBroadcast == true && liveInfo.live_status == 102}}">
+    <image src="../../images/home/ic_live.png" mode="widthFix"></image>
+    <view class="date">
+        <view>{{liveInfo.date[0]}}</view>
+        <view>{{liveInfo.date[1]}}</view>
+    </view>
+</view>
+<view class="live_play" bindtap="goLive" wx:elif="{{liveBroadcast == true && (liveInfo.live_status == 101 || liveInfo.live_status == 105)}}">
+    <image src="{{liveInfo.cover_img}}" mode="aspectFill" class="live_bg"></image>
+    <view class="live_title">{{liveInfo.live_status == 101?'正在直播':'暂停中'}}<image src="../../images/home/ic_wave.png" mode="widthFix"></image>
+    </view>
+    <image src="../../images/home/ic_play.png" mode="widthFix" class="live_playbtn" wx:if="{{liveInfo.live_status == 101}}"></image>
+    <image src="../../images/home/ic_suspend.png" mode="widthFix" class="live_playbtn" wx:else></image>
+</view>
+<!-- 拼团相关 -->
+<view id="grouponEntry" class="{{liveBroadcast == true ? liveInfo.live_status == 102 ? 'hasNotice' : (liveInfo.live_status == 101 || liveInfo.live_status == 105) ? 'hasLive' : '' : ''}}" bindtap="goGroupon">
+    <image src="{{grouponShow.eject_fb_image}}" mode="widthFix"></image>
+</view>
+<view class="mask" wx:if="{{pageScroll == false}}" catchtouchmove="noScroll"></view>
+<!-- 拼团活动弹窗 -->
+<pop bindeventclose="closeToast" popname="grouponToast" wx:if="{{grouponToast}}">
+    <view id="pop_custome_main">
+        <image src="{{grouponShow.eject_tc_image}}" mode="widthFix"></image>
+        <view class="buttonGroup" bindtap="goGroupon">
+            <view>成为会员</view>
+        </view>
+    </view>
+</pop>
+<!-- 新人优惠券弹窗 -->
+<pop bindeventclose="closeToast" popname="couponToast" wx:if="{{couponToast}}">
+    <view id="coupon_toast">
+        <view class="info">
+            <view catchtouchmove="false">
+                <view class="coupon_title">新人专享礼包</view>
+                <view class="coupon_desc">券不领是不可能的，万一剁手了呢</view>
+            </view>
+            <view class="coupon_list">
+                <view class="list" wx:for="{{coupons}}" wx:key="newAddCoupon">
+                    <view class="list_l">
+                        <view class="name">{{item.name}}</view>
+                        <view class="desc">·{{item.remark}}</view>
+                    </view>
+                    <view class="list_r">
+                        <view class="price">
+                            <text>¥</text>
+                            {{item.coupon_value}}
+                        </view>
+                        <view class="term" wx:if="{{item.order_pay_price == '' || item.pay_price_full == ''}}">无门槛使用</view>
+                        <view class="term" wx:elif="{{item.order_pay_price != '' && item.pay_price_full == ''}}">减至{{item.order_pay_pric}}</view>
+                        <view class="term" wx:elif="{{item.pay_price_full != '' && item.order_pay_price == ''}}">满{{item.pay_price_full}}元使用</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="coupon_btn {{couponbtn == true?'':'coupon_unbtn'}}" catchtouchmove="false" bindtap="getCoupon">{{couponbtn == true?'立即领取':'查看我的优惠券 >>'}}</view>
+    </view>
+</pop>
+<!-- 调查问卷弹窗 -->
+<pop bindeventclose="closeToast" popname="questionnaireToast" wx:if="{{questionnaireToast}}">
+    <view id="pop_questionnaire">
+        <view id="questionHead" bindtap="onchange">
+            <view class="title">{{getQuestionnaire.title}}</view>
+            <view class="describe">{{getQuestionnaire.desc}}</view>
+        </view>
+        <view id="questionList">
+            <view class="questionTitle"><i>*</i>{{1}}.{{getQuestionnaire.subjects && getQuestionnaire.subjects[0].subject}}</view>
+            <van-checkbox-group value="{{duoxuan1}}" bind:change="onChange" data-name="duoxuan1">
+                <van-checkbox wx:for="{{getQuestionnaire.subjects && getQuestionnaire.subjects[0].answer}}" wx:key="index" name="{{item.option}}">{{item.flag}}.{{item.option}}</van-checkbox>
+            </van-checkbox-group>
+
+            <view class="questionTitle"><i>*</i>{{2}}.{{getQuestionnaire.subjects && getQuestionnaire.subjects[1].subject}}</view>
+            <van-checkbox-group value="{{duoxuan2}}" bind:change="onChange" data-name="duoxuan2">
+                <van-checkbox wx:for="{{getQuestionnaire.subjects && getQuestionnaire.subjects[1].answer}}" wx:key="index" name="{{item.option}}">{{item.flag}}.{{item.option}}</van-checkbox>
+            </van-checkbox-group>
+
+            <view class="questionTitle"><i>*</i>{{3}}.{{getQuestionnaire.subjects && getQuestionnaire.subjects[2].subject}}</view>
+            <view class="questionDest">{{getQuestionnaire.subjects && getQuestionnaire.subjects[2].subject_desc}}</view>
+            <van-field model:value="{{ tiankong }}" placeholder="请输入您的实际感受" border="{{ false }}" />
+
+            <view class="questionTitle"><i>*</i>{{4}}.{{getQuestionnaire.subjects && getQuestionnaire.subjects[3].subject}}</view>
+            <view class="img" wx:for="{{questunloadimg}}" wx:key="returnImgList">
+                <image src="{{item.img}}" mode="aspectFill"></image>
+                <view data-idx="{{index}}" bindtap="delImg">删除</view>
+            </view>
+            <view class="img" bindtap="uploadImg" wx:if="{{questunloadimg.length < 1}}">
+                <image src="../../images/mine/ic_feedback_upload.png" mode="aspectFill"></image>
+            </view>
+        </view>
+        <view class="buttonGroup" bindtap="confirmQuestion">
+            <view>立即提交</view>
+        </view>
+    </view>
+</pop>

@@ -1,0 +1,30 @@
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="{{needAdapt ? 'iphone_pandding' : ''}}" wx:else>
+  <view class="ic_empty" wx:if="{{list.length == 0}}">
+    <image src="../../../images/ic_empty_box.png" mode="widthFix"></image>
+    <view>空空如也～</view>
+  </view>
+  
+  <view class="address" wx:else>
+    <radio-group bindchange="radioChange">
+      <view class="body" wx:for="{{list}}" wx:key="addressList">
+        <view class="detail" bindtap="addressChange" data-id="{{item.id}}">
+          <view class="receiver">收货人：{{item.consignee}}<text>{{item.mobile}}</text></view>
+          <view class="info">收货地址：{{item.province_name}} {{item.city_name}} {{item.district_name}} {{item.address}}</view>
+        </view>
+        <view class="operation">
+          <label><view class="default_btn"><radio value="{{item.id}}" checked="{{item.is_default == 1}}" class="radio"/>设为默认地址</view></label>
+          <view class="address_btn">
+            <view bindtap="changeBtn" data-id="{{item.id}}"><image src="../../../images/ic_edit.png" mode="widthFix"></image>编辑</view>
+            <view bindtap="delBtn" data-id="{{item.id}}" data-idx="{{index}}"><image src="../../../images/ic_trash.png" mode="widthFix"></image>删除</view>
+          </view>
+        </view>
+      </view>
+      
+    </radio-group>
+  </view>
+  <view class="page_bottom_btn" bindtap="addNew">新建收货地址</view>
+</view>

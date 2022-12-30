@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "pop": "../../component/pop",
+        "van-checkbox": "@vant/weapp/checkbox/index",
+        "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+        "van-field": "@vant/weapp/field/index"
+    },
+    "enablePullDownRefresh": true
+}

@@ -1,0 +1,40 @@
+.list{
+  width: calc(100% - 60rpx);
+  padding: 35rpx 30rpx;
+  color: #111111;
+  font-size: 32rpx;
+  line-height: 45rpx;
+  margin-top: 20rpx;
+  background: #ffffff;
+}
+.list text{
+  float: right;
+  color: #027BE8;
+}
+.sendtel{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  width: 100%;
+  z-index: 999;
+  background: #F8F8F9;
+  border-radius: 16rpx 16rpx 0px 0px;
+  overflow: hidden;
+}
+.sendtel view{
+  background: #ffffff;
+}
+.sendtel .tel{
+  border-bottom:1rpx solid #F8F8F9;
+  color: #A7A5A6;
+}
+.sendtel .send{
+  color: #232C3F;
+  margin-bottom: 12rpx;
+}
+.sendtel .cancel{
+  color: #027BE8;
+}

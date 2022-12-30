@@ -1,0 +1,133 @@
+/* genetest/pages/index/index.wxss */
+#index {
+    background-image: url('https://cmjx.chengmeijiangxuan.com/static/web/genetest/indexbg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    padding: 60rpx 50rpx;
+}
+
+#mainBox {
+    background: #fff;
+    padding: 113rpx 66rpx 56rpx 66rpx;
+    box-sizing: border-box;
+    color: #000;
+}
+
+#title {
+    font-size: 42rpx;
+}
+
+#disc {
+    font-size: 22rpx;
+    color: #797677;
+}
+
+#line {
+    width: 80rpx;
+    background: #000;
+    height: 2rpx;
+    margin-top: 20rpx;
+}
+
+#step {
+    margin-top: 108rpx;
+    position: relative;
+    width: 100%;
+}
+
+.step_item {
+    margin-bottom: 56rpx;
+    position: relative;
+}
+
+.step_item:after {
+    content: '';
+    width: 1rpx;
+    height: 60rpx;
+    position: absolute;
+    left: 39rpx;
+    top: calc(50% + 15rpx);
+    background: #C5C5C5;
+}
+
+.step_item:last-child::after {
+    display: none;
+}
+
+.stepitem:last-child {
+    margin-bottom: 0;
+}
+
+.step_title {
+    color: #000;
+    font-size: 30rpx;
+}
+
+.step_decs {
+    color: #231F20;
+    font-size: 22rpx;
+    padding-left: 110rpx;
+    line-height: 40rpx;
+}
+
+.index_main_group {
+    flex-direction: column;
+    margin-top: 120rpx;
+}
+
+.index_main_group .btn {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    margin-bottom: 20rpx;
+    font-size: 32rpx;
+}
+
+.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.fixed>view {
+    width: 100%;
+    font-size: 34rpx !important;
+}
+
+.fixed.needAdapt>view {
+    padding-bottom: 30rpx;
+}
+
+#notice {
+    text-align: center;
+    color: #797677;
+    font-size: 26rpx;
+    text-decoration: underline;
+    margin-top: 35rpx;
+}
+
+.notice_title {
+    color: #000;
+    font-size: 38rpx;
+    border-bottom: 1px solid #C1C1C1;
+    margin-bottom: 30rpx;
+    padding-bottom: 40rpx;
+}
+
+.notice_desc {
+    color: #000;
+    font-size: 24rpx;
+    line-height: 48rpx;
+}
+
+.paragraph {
+    margin-bottom: 82rpx;
+}
+
+.button_group .btn {
+    height: 86rpx;
+    line-height: 86rpx;
+}

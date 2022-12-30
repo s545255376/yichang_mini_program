@@ -1,0 +1,15 @@
+/* pages/poster/huodong20220325.wxss */
+.part {
+    width: 100%;
+    display: block;
+}
+
+.part .part_onlyimg_title {
+    width: calc(100% - 60rpx);
+    padding: 0 30rpx 30rpx;
+    background: #ffffff;
+}
+
+.part .part_onlyimg_title image {
+    width: 100%;
+}

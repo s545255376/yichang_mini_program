@@ -1,0 +1,63 @@
+/* @import "../wxParse/wxParse.wxss"; */
+.essay{
+  background: #ffffff;
+  width: calc(100% - 60rpx);
+  padding: 30rpx;
+}
+.essay .title{
+  font-weight: bold;
+  line-height: 40rpx;
+  font-size: 38rpx;
+  text-align: justify;
+  color: #231F20;
+}
+.essay .date{
+  font-size: 24rpx;
+  color: #A7A5A6;
+  padding: 15rpx 0;
+}
+.essay .content{
+  width: 100%;
+  word-break: break-all;
+}
+.recommend{
+  margin-top: 20rpx;
+  width: calc(100% - 60rpx);
+  padding: 0 30rpx;
+  background: #ffffff;
+}
+.recommend .recommend_title{
+  font-size: 30rpx;
+  color: #231F20;
+  line-height: 100rpx;
+}
+/* shang */
+.goodslist{
+  width: 100%;
+  text-align: justify;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling:touch;
+  box-sizing: border-box;
+  white-space: nowrap;
+  column-count: auto;
+  column-gap: initial;
+}
+.goodspart{
+  width: 247.5rpx;
+  height: auto;
+  display: inline-block;
+  margin-right: 30rpx;
+}
+.goodspart image{
+  width: 100%;
+  height: 273rpx;
+}
+.goodspart .price {
+  font-size: 26rpx;
+  margin-top: 30rpx;
+}
+.goodspart .price text{
+  font-size: 20rpx;
+  margin-left: 10rpx;
+}

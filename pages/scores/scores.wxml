@@ -1,0 +1,54 @@
+<view class="head">
+  <image src="../../images/integral/head.png" mode="aspectFill"></image>
+  <view class="info">
+    <view class="num">{{score}}</view>
+    <view class="tips">可用积分</view>
+  </view>
+</view>
+<view class="tabbar">
+  <view class="{{tabbarNum == index?'tabbar_click':''}}" bindtap="tabbarChange" wx:for="{{tabbar}}"  wx:key="tabbar" wx:for-item="item" wx:for-index="index" data-idx="{{index}}">{{item}}</view>
+</view>
+<view class="page">
+  <view class="ic_empty" wx:if="{{loadState == false}}">
+    <image src="../../images/ic_error_network.png" mode="widthFix"></image>
+    <view>网络异常，请重新登陆～</view>
+  </view>
+  <view class="ic_empty" wx:elif="{{list.length == 0}}">
+    <image src="../../images/ic_empty_box.png" mode="widthFix"></image>
+    <view>空空如也～</view>
+  </view>
+  <view wx:else>
+    <view wx:if="{{tabbarNum == 0}}">
+      <view class="part" wx:for="{{list}}" wx:key="scoresList">
+        <view class="month">{{item.ref_date}}</view>
+        
+        <view class="list" wx:for="{{item.log}}" wx:key="scoresLog" wx:for-item="info">
+          <view class="list_order">
+            <view class="order_num">订单号：894876275674365</view>
+            <view class="num {{info.before_score < info.after_score?'addnum':''}}">{{info.before_score < info.after_score?'+':'-'}}{{info.change_score}}</view>
+          </view>
+
+          <view class="list_info">
+            <view>素颜凝胶水透感凝胶保湿锁水素颜凝胶水透感凝胶保湿锁水</view>
+            <view>素颜凝胶水透感凝胶保湿锁水素颜凝胶水透感凝胶保湿锁水</view>
+            <view>素颜凝胶水透感凝胶保湿锁水素颜凝胶水透感凝胶保湿锁水</view>
+          </view>
+
+          <view class="date" wx:if="{{info.update_time}}">{{info.update_time}}</view>
+          <view class="date" wx:else>{{info.create_time}}</view>
+          <!-- <view class="list_info">
+            <view class="name">{{info.remark}}</view>
+            <view class="date" wx:if="{{info.update_time}}">{{info.update_time}}</view>
+            <view class="date" wx:else>{{info.create_time}}</view>
+          </view>
+          <view class="num {{info.before_score < info.after_score?'addnum':''}}">{{info.before_score < info.after_score?'+':'-'}}{{info.change_score}}</view> -->
+        </view>
+        
+      </view>
+    </view>
+    <view wx:else class="intro">
+      <view>1、积分说明积分说明积分说明积分说明积分说明积分说明积分说明积分说明</view>
+      <view>2、积分说明积分说明积分说明积分说明积分说明积分说明积分说明积分说明</view>
+    </view>
+  </view>
+</view>

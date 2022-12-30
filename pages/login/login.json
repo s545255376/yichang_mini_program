@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "pop": "../../component/pop",
+        "van-field": "@vant/weapp/field/index"
+    }
+}

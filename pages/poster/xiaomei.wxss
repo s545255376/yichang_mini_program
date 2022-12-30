@@ -1,0 +1,59 @@
+/* pages/temporaryPackages/pages/newRetail/singlepage0227.wxss */
+#main image {
+  width:100%;
+}
+#main {
+  position: relative;
+}
+#main::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  pointer-events: none;
+  background-image: linear-gradient(to top,rgb(255, 255, 255, 0),rgb(255, 255, 255, 1));
+  width: 100%;
+  height: 30px;
+}
+#main::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-image: linear-gradient(to bottom, rgb(255, 255, 255, 0),rgb(255, 255, 255));
+  width: 100%;
+  height: 100px;
+}
+#sharefloatButton {
+  background: #D3B26C;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  right: 0;
+  bottom: 200rpx;
+  padding: 20rpx 10rpx;
+  border-radius: 16rpx 0 0 16rpx;
+  z-index: 2;
+}
+#sharefloatButton .button {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#sharefloatButton image {
+  width:50rpx;
+}
+#sharefloatButton > view {
+  color: #fff;
+}

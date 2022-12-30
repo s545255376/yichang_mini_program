@@ -1,0 +1,50 @@
+<!--pages/temporaryPackages/pages/newRetail/articleQRcollection.wxml-->
+<view id="articleQRcollection" style="{{'min-height:'+ screenHeight + 'px'}}">
+    <canvas type="2d" class="canvas-poster" id="canvasPoster" style="width:{{canvasWidth}}px;height:{{canvasHeight}}px" canvas-id="canvasPoster"></canvas>
+    <view class="clearfix"></view>
+    <view id="contant">
+        <view class="articleList" wx:for="{{articleList.list}}" wx:key="index">
+            <view class="main">
+                <!-- <view class="text {{item.showAll ? 'all-text' : ''}}">{{item.content}}</view>
+                <view 
+                    class="showAll"
+                    catchtap="showAll" 
+                    data-index="{{index}}"
+                    wx:if="{{item.hasArrow}}"
+                >
+                    <text>{{item.showAll ? '收起' : '全文'}}</text>
+                    <image class="{{item.showAll ? 'arrow-roleup' : ''}}" src="https://pin.qunarmei.com/static/xcx/xinlingshou/icon-arrowdown@2x.png"></image>
+                </view> -->
+                <view class="text all-text">{{item.content}}</view>
+            </view>
+            <view class="imgList {{item.material.length == 1 ? 'x1' : item.material.length == 2 ? 'x2' : 'x3'}}">
+                <view wx:for="{{item.material}}" wx:for-item="items" wx:key="index">
+                    <block wx:if="{{items.type == 'image'}}">
+                        <image src="{{items.url}}" mode="aspectFit" bindtap="previewImages" data-material="{{item.material}}" data-item="{{items}}"></image>
+                    </block>
+                    <block wx:elif="{{items.type == 'video'}}">
+                        <video src="{{items.url}}" custom-cache="{{false}}" initial-time="{{1}}" muted="true" show-mute-btn="true" controls="true" ></video>
+                    </block>
+                </view>
+            </view>
+            <view class="ctlPanel">
+                <view class="collect" bindtap="getCollection" data-mid="{{item.id}}" data-collection="{{item.collection}}" data-index="{{index}}">
+                    <image src="https://pin.qunarmei.com/static/xcx/xinlingshou/{{item.collection == 0 ? 'collect@2x' : 'collect_active@2x'}}.png"></image>
+                </view>
+                <view class="buttonGroup">
+                    <block>
+                        <view class="button-white" bindtap="copyClipboard" data-content="{{item.content}}" wx:if="{{item.content.length > 0}}">复制文案</view>
+                    </block>
+                    <block>
+                        <view class="button-red" bindtap="downloadAll" data-item="{{item}}" wx:if="{{item.material.length > 0}}">一键下载</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+    
+    <view class="ic_empty" wx:if="{{errorMsg.isError == true}}">
+        <image src="../../../../images/ic_empty_order.png" mode="widthFix"></image>
+        <view>暂无内容～</view>
+    </view>
+</view>

@@ -1,0 +1,82 @@
+.tabbar view{
+  width: 100%;
+}
+.tabbar .tabbar_click{
+  border: none;
+}
+.tabbar .tabbar_click text{
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 4rpx solid #363641;
+  display: inline-block;
+}
+.body{
+  width: calc(100% - 60rpx);
+  padding: 90rpx 30rpx 60rpx 30rpx;
+  color: #7B7979;
+  font-size: 28rpx;
+  line-height: 50rpx;
+}
+.body view{
+  margin-bottom: 20rpx;
+}
+.body .bold{
+  font-weight: bold;
+  color: #231F20;
+}
+.body .title{
+  font-size: 32rpx;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  color: #231F20;
+  line-height: 80rpx;
+  margin-bottom: 0rpx;
+}
+.body .tips{
+  color: #C2253A;
+}
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: calc(100% - 60rpx);
+  padding: 0 30rpx;
+  border-top: 1px solid #cccccc;
+  background: #ffffff;
+}
+.footer label{
+  width: 100%;
+  color: #C2253A;
+  font-size: 24rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.footer label .checkbox{
+  vertical-align: top;
+  margin-right: 10rpx;
+}
+.footer label view{
+  display: inline-block;
+  max-width: calc(100% - 60rpx);
+  line-height: 40rpx;
+  padding-top: 32rpx;
+}
+.footer .btn{
+  width: 100%;
+  display: flex;
+  margin-bottom: 30rpx;
+}
+.footer .btn view{
+  width: calc(50% - 10rpx);
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1px solid #231F20;
+  border-radius: 10rpx;
+}
+.confirm{
+  margin-left: 20rpx;
+  background: #231F20;
+  color: #ffffff;
+}

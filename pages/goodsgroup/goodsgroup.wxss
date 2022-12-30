@@ -1,0 +1,8 @@
+.goodslist{
+  width: calc(100% - 30rpx);
+  padding-left: 30rpx;
+  padding-top: 30rpx;
+}
+.goodslist_two{
+  padding: 20rpx;
+}

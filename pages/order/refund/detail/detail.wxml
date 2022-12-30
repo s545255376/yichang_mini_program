@@ -1,0 +1,157 @@
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="{{needAdapt ? 'iphone_pandding' : ''}}" wx:else>
+  <view class="head" wx:if="{{info.order.order_status == 6}}">
+    <image src="../../../../images/order/ic_return.png" mode="widthFix"></image>
+    <view class="haspay">{{info.return_status}}</view>
+  </view>
+  <view class="head" wx:elif="{{info.order.order_status == 7}}">
+    <image src="../../../../images/order/ic_refund_success.png" mode="widthFix" wx:if="{{info.return.status == 3}}"></image>
+    <image src="../../../../images/order/ic_refund_fail.png" mode="widthFix" wx:elif="{{info.return.status == 4}}"></image>
+    <image src="../../../../images/order/ic_refund_close.png" mode="widthFix" wx:elif="{{info.return.status == 5}}"></image>
+    <view class="waitpay">
+      <view class="name">{{info.return_status}}</view>
+      <view class="desc">{{info.process_time}}</view>
+    </view>
+  </view>
+  
+
+  <!-- 已同意退货填写物流单号 -->
+  <view class="return_form"  wx:if="{{info.status == 1 && info.type == 1}}">
+    <view class="logs_title">商家已同意退货申请，请按照给出的退货地址退货，并记录退货运单号。</view>
+    <view class="logs_form">
+      <view class="logs_list">
+        <view class="logs_name">快递公司</view>
+        <view class="logs_info {{expressCheck == -1?'unclick':''}}" bindtap="openExpressToast"  wx:if="{{info.express_name.length == 0}}">{{expressCheck == -1?'请选择':expressList[expressCheck].name}}<image src="../../../../images/ic_arrow_r.png" mode="widthFix"></image></view>
+        <view class="logs_info" wx:else>{{info.express_name}}</view>
+      </view>
+      <view class="logs_list">
+        <view class="logs_name">快递单号（必填）</view>
+        <view class="logs_info">
+          <input placeholder="请填写物流单号" placeholder-style="color:#D3D2D2;" bindinput="expressInput" value="{{express_sn}}"  wx:if="{{info.express_sn.length == 0}}"></input>
+          <input placeholder="请填写物流单号" placeholder-style="color:#D3D2D2;" bindinput="expressInput" value="{{express_sn}}" wx:else disabled="true"></input>
+        </view>
+      </view>
+      <view class="logs_list" wx:if="{{info.express_sn.length == 0}}"><view class="logs_btn" bindtap="refuseLogs">提交</view></view>
+    </view>
+  </view>
+  <view class="return_form"  wx:elif="{{info.status == 2 && info.type == 1}}">
+    <view class="logs_title">货运单号</view>
+    <view class="logs_form">
+      <view class="logs_list">
+        <view class="logs_name">快递公司</view>
+        <view class="logs_info">{{info.express_name}}</view>
+      </view>
+      <view class="logs_list">
+        <view class="logs_name">快递单号（必填）</view>
+        <view class="logs_info">{{info.express_sn}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 详情 -->
+  <view class="goods_part">
+    <view class="order_title">{{info.refund_type}}信息</view>
+    <view class="goods" wx:for="{{info.order.goods}}" wx:key="orderGoods" bindtap="goGoodsInfo" data-idx="{{index}}" wx:if="{{item.type != 3}}">
+      <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+      <view class="tips" wx:if="{{item.type == 2}}">
+        <image src="../../../../images/order/ic_gifts.png" mode="widthFix"></image>
+        <view>赠品</view>
+      </view>
+      <view class="info">
+        <view class="title">{{item.goods_name}}</view>
+        <view class="desc">{{item.goods_sub}}</view>
+        <view class="norms"><text>{{item.item}}</text></view>
+        <view class="price">
+          <view class="pay_price"><text>¥</text>{{item.goods_price}}
+            <!-- <view class="market_price">¥{{item.market_price}}</view> -->
+        </view>
+          <view class="paynum">x {{item.num}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 奖品 -->
+    <view wx:if="{{prizelist.length != 0}}">
+      <view class="order_title"><image src="../../../../images/order/ic_gift.png" mode="widthFix"></image>奖品</view>
+      <view class="gifts">
+        <view class="gift_img">
+          <image src="{{item.image}}" mode="widthFix" wx:for="{{prizelist}}" wx:key="prizelist" wx:if="{{index < 3}}"></image>
+        </view>
+        <view class="show_more">
+          <view class="info" bindtap="showMoreGifts">
+            <view>查</view><view>看</view><view>更</view><view>多</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  
+  <view class="order_msg">
+    <!-- <view class="statistics">
+      <text class="num">共{{info.order.total}}件商品</text>
+    </view> -->
+    <view class="total return_total">
+      <view class="list">订单编号：<text>{{info.order.order_sn}}</text></view>
+      <view class="list">退款金额：<text class="{{info.type == 1?'red_c':''}}">¥ {{info.return_price}}</text></view>
+      <view class="list">退款说明：<text>{{info.return_content}}</text></view>
+      <view class="list">申请时间：<text>{{info.apply_time}}</text></view>
+      <view class="list">退款编号：<text>{{info.return_sn}}</text></view>
+    </view>
+    <view class="upload_list" wx:if="{{info.return_voucher.length != 0}}">
+      <view class="name">上传凭证</view>
+      <view class="upload">
+        <view class="img" wx:for="{{info.return_voucher}}" wx:key="returnImgList">
+          <image src="{{item}}" mode="aspectFill" lazy-load="true" bindtap="bannerClick" data-idx="{{index}}"></image>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{info.express_sn && 3 <= info.status}}">
+      <view class="logistics_detail_title">物流信息</view>
+      <view class="total return_total express_part">
+        <view class="list">快递公司：<text>{{info.express_name}}</text></view>
+        <view class="list">快递单号：<text>{{info.express_sn}}</text></view>
+      </view>
+    </view>
+    <view wx:if="{{info.status == 3 || info.status == 4}}">
+      <view class="logistics_detail_title">退款详情</view>
+      <view class="total return_total express_part">
+        <view class="list" wx:if="{{info.status == 4}}">失败原因：<text>{{info.reject_reason}}</text></view>
+        <view wx:else>
+          <view class="list">退款金额：<text>{{info.return_price}}</text></view>
+          <view class="list">退还至：<text>微信账户</text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer_btn">
+    <view class="white_btn" bindtap="customerService">联系客服</view>
+    <!-- <button class="white_btn" open-type="contact" bindcontact="handleContact"  send-message-title="客服">联系客服</button> -->
+    <view class="white_btn" bindtap="returnApply" wx:if="{{info.status <= 1}}">撤回申请</view>
+  </view>
+</view>
+
+
+
+<!-- 退款原因 -->
+<view wx:if="{{expressToast == true}}">
+  <view class="mask" bindtap="closeToast" catchtouchmove="false"></view>
+  <view class="toast">
+    <view class="toast_name" catchtouchmove="false">
+      <view>快递公司</view>
+      <image src="../../../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeToast"></image>
+    </view>
+    <!-- 快递公司 -->
+    <radio-group bindchange="expressChange" class="toast_body">
+      <label wx:for="{{expressList}}" wx:key="expressList">
+        <view class="info">{{item.name}}</view>
+        <radio value="{{index}}" class="radio" checked="{{index == expressCheck}}"/>
+      </label>
+    </radio-group>
+    <view class="submit_btn" catchtouchmove="false"><button bindtap="confirmReason">确认</button></view>
+  </view>
+</view>

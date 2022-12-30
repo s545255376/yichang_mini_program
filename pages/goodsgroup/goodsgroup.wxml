@@ -1,0 +1,83 @@
+<view class="ic_empty" wx:if="{{errorShow == true}}">
+  <image src="../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="ic_empty" wx:elif="{{list.columnGoods.length == 0}}">
+  <image src="../../images/ic_empty_box.png" mode="widthFix"></image>
+  <view>门店暂时没有商品哦～</view>
+</view>
+<view wx:key="indexList" class="home">
+  <view class="part" bindtap="goLevelTwoPage" data-position="{{list.is_position}}">
+    <view class="white_top">
+      <!-- 1个商品一行 -->
+      <view class="goodslist_two" wx:if="{{list.style == 1}}">
+        <view class="image" bindtap="goGoodsInfo" wx:for="{{list.columnGoods}}" wx:key="goodsList" wx:for-item="list" wx:for-index="idx"  data-goodsid="{{list.goods_id}}">
+          <image src="{{list.image}}" mode="widthFix"></image>
+          <!-- <view wx:if="{{list.tag.length != 0}}"><text wx:for="{{list.tag}}" wx:key="tagShow" wx:for-item="tag" wx:for-index="tagidx" >{{tag}}</text></view> -->
+        </view>
+      </view>
+      <!-- 2个商品一行 -->
+      <view class="goodslist" wx:elif="{{list.style == 2}}">
+        <view class="goodspart" wx:for="{{list.columnGoods}}" wx:key="goodsList" wx:for-item="list" wx:for-index="idx" bindtap="goGoodsInfo" data-goodsid="{{list.goods_id}}">
+          <view class="image">
+            <image src="{{list.image}}" mode="widthFix"></image>
+            <!-- <view wx:if="{{list.tag.length != 0}}"><text wx:for="{{list.tag}}" wx:key="tagShow" wx:for-item="tag" wx:for-index="tagidx" >{{tag}}</text></view> -->
+          </view>
+          <view class="info">
+            <view class="title">{{list.goods_name}}</view>
+            <!-- <view class="desc">{{list.goods_sub}}</view> -->
+            <view class="price">¥{{list.price}}<text wx:if="{{list.market_price != 0}}">¥{{list.market_price}}</text></view>
+          </view>
+        </view>
+      </view>
+      <!-- 1-2个商品一行 -->
+      <view class="hot" wx:elif="{{list.style == 3}}">
+        <view class="hot_recommend goodspart" bindtap="goGoodsInfo" wx:if="{{list.columnGoods.length != 0}}" data-goodsid="{{list.columnGoods[0].goods_id}}">
+          <view class="image">
+            <image src="{{list.columnGoods[0].image}}" mode="widthFix"></image>
+          </view>
+          <view class="info">
+            <view class="title">
+              <view>{{list.columnGoods[0].goods_name}}</view>
+              <!-- <text>¥ {{list.columnGoods[0].price }}</text> -->
+            </view>
+            <view class="price">¥{{list.columnGoods[0].price}}<text wx:if="{{list.columnGoods[0].market_price != 0}}">¥{{list.columnGoods[0].market_price}}</text></view>
+            <!-- <view class="desc"><view>{{list.columnGoods[0].goods_sub}}</view><text>¥ {{list.columnGoods[0].market_price}}</text></view> -->
+          </view>
+        </view>
+        
+        <view class="goodslist">
+          <view class="goodspart" wx:for="{{list.columnGoods}}" wx:key="hotList" wx:for-item="list" wx:for-index="idx" bindtap="goGoodsInfo" data-goodsid="{{list.goods_id}}">
+            <view class="image">
+              <image src="{{list.image}}" mode="widthFix"></image>
+            </view>
+            <view class="info">
+              <view class="title">{{list.goods_name}}</view>
+              <!-- <view class="desc">{{list.goods_sub}}</view> -->
+              <view class="price">¥{{list.price}}<text wx:if="{{list.market_price != 0}}">¥{{list.market_price}}</text></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 2N-1个商品一行 -->
+      <view class="goodslist_blend" wx:elif="{{list.style == 7}}">
+        <view class="double_list">
+          <view class="goodspart" wx:for="{{list.columnGoods}}" wx:key="goodsList" wx:for-item="info" wx:for-index="idx" bindtap="goGoodsInfo" data-goodsid="{{info.goods_id}}" wx:if="{{idx<list.num}}">
+            <view class="image">
+              <image src="{{info.image}}" mode="widthFix"></image>
+            </view>
+            <view class="info">
+              <view class="title">{{info.goods_name}}</view>
+              <view class="price">¥{{info.price}}<text wx:if="{{info.market_price != 0}}">¥{{info.market_price}}</text></view>
+            </view>
+          </view>
+        </view>
+        <view class="image_single" bindtap="goGoodsInfo" wx:for="{{list.columnGoods}}" wx:key="goodsList" wx:for-item="info" wx:for-index="idx"  data-goodsid="{{info.goods_id}}" wx:if="{{list.num<=idx}}">
+          <image src="{{info.image}}" mode="widthFix"></image>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+</view>

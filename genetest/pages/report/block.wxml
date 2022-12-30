@@ -1,0 +1,7 @@
+<!--genetest/pages/report/block.wxml-->
+<view id="block" style="{{'min-height:'+ screenHeight + 'px'}}">
+    <view>
+        <image src="../../image/report.png"></image>
+        <view>正在下载中...</view>
+    </view>
+</view>

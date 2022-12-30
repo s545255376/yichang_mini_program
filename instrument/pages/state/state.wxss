@@ -1,0 +1,143 @@
+page{
+  background: #ffffff;
+}
+.nextbtn.nextunclick view{
+  background: #BDBBBC !important;
+}
+.head{
+  color: #231F20;
+  font-size: 46rpx;
+  line-height: 46rpx;
+  margin-top: 60rpx;
+  margin-bottom: 18rpx;
+  font-weight: bold;
+  width: calc(100% - 100rpx);
+  padding: 0 50rpx;
+}
+.tips{
+  color: #A7A5A6;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  width: calc(100% - 100rpx);
+  padding: 0 50rpx;
+}
+.title{
+  color: #A7A5A6;
+  font-size: 34rpx;
+  line-height: 34rpx;
+  margin-top: 100rpx;
+  margin-bottom: 46rpx;
+  text-align: center;
+}
+.sex_picker{
+  width: 400rpx;
+  margin-left: calc(50% - 200rpx);
+  background: #F8F8F8;
+  height: 88rpx;
+  border-radius: 44rpx;
+  display: flex;
+  text-align: center;
+}
+.sex_picker view{
+  width: 50%;
+  background: none;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 44rpx;
+  color: #A7A5A6;
+  font-size: 30rpx;
+}
+.sex_picker .sex_checked{
+  background: #D9C392;
+  color: #ffffff;
+}
+.sex_picker image{
+  width: 32rpx;
+  vertical-align: middle;
+  margin-right: 16rpx;
+}
+
+.time_picker{
+  color: #D3D2D2;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  text-align: center;
+}
+.time_picker .date_checked{
+  color: #231F20;
+}
+
+/* 肤质选择 */
+.classify{
+  width: calc(100% - 100rpx);
+  margin: 56rpx 50rpx 144rpx;
+}
+.classify .row{
+  width: 100%;
+  height: 180rpx;
+  border-radius: 90rpx;
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 30rpx;
+  background: #F8F8F8;
+}
+.classify .row .image{
+  width: 220rpx;
+  text-align: center;
+  background: #E9E9E9;
+}
+.classify .row .image image{
+  width: 190rpx;
+}
+.classify .row .row_info{
+  width: calc(100% - 260rpx);
+  padding: 0 20rpx;
+  margin: 35rpx 0;
+}
+.classify .row .row_title{
+  font-size: 32rpx;
+  color: #231F20;
+  line-height: 50rpx;
+}
+.classify .row .row_desc{
+  color: #A7A5A6;
+  font-size: 24rpx;
+  line-height: 35rpx;
+}
+.classify .row.checked{
+  background: #F0E7D3 !important;
+}
+.classify .row.checked .image{
+  background: #D9C392 !important;
+}
+
+
+
+
+
+
+
+
+
+.skinbtn{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  font-size: 36rpx;
+}
+.skinbtn view{
+  width: 50%;
+  text-align: center;
+}
+.gocheck{
+  background: #231F20;
+  color: #ffffff;
+}
+.lastbtn{
+  color: #BCBABC;
+  background:#F8F8F8;
+}

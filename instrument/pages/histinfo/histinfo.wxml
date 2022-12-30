@@ -1,0 +1,79 @@
+<wxs module="Fix" src="../../../utils/count.wxs"></wxs>
+<!-- <view class="date">
+  <image src="../../images/ic_arror_l.png" mode="widthFix" class="ic_arror_l" bindtap="lastDate"></image> -->
+  <!-- 2月1日-2月7日 -->
+  <!-- {{daytype == 'day'?today.today:daytype == 'week'?today.lastweek+'-'+today.today:today.lastmonth+'-'+today.today}}
+  <image src="{{dateNextBtn == true?'../../images/ic_arror_r.png':'../../images/ic_arror_r_unclick.png'}}" mode="widthFix" class="ic_arror_r" bindtap="nextDate"></image>
+</view> -->
+
+<view class="part perpart">
+  <view class="per">
+    <view class="title">肌肤水分为<text>{{type == 0?Fix.toFix(info.before_moisture_content):Fix.toFix(info.moisture_content)}}%</text>
+      <view>{{(type == 0?Fix.toFix(info.before_moisture_content):Fix.toFix(info.moisture_content))<15?'特别干燥':(type == 0?Fix.toFix(info.before_moisture_content):Fix.toFix(info.moisture_content))<25?'干燥':(type == 0?Fix.toFix(info.before_moisture_content):Fix.toFix(info.moisture_content))<35?'正常':'湿润'}}</view>
+    </view>
+    <view class="info waterline">
+      <view class="pernum perline"><view>0%</view><view>15%</view><view>25%</view><view>35%</view><view>60%</view></view>
+      <view class="perline"><view></view><view></view><view></view><view></view><view class="perball" style="left:{{left.moisture_content}}%"></view></view>
+      <view class="perstate perline"><view>特别干燥</view><view>干燥</view><view>正常</view><view>湿润</view></view>
+    </view>
+  </view>
+
+  <view class="per">
+    <view class="title">肌肤油分为<text>{{type == 0?Fix.toFix(info.before_oil_content):Fix.toFix(info.oil_content)}}%</text>
+      <view>{{(type == 0?Fix.toFix(info.before_oil_content):Fix.toFix(info.oil_content))<25?'少量':(type == 0?Fix.toFix(info.before_oil_content):Fix.toFix(info.oil_content))<=34?'平衡':'多量'}}</view>
+    </view>
+    <view class="info otherline">
+      <view class="pernum perline"><view>10%</view><view>25%</view><view>34%</view><view>51%</view></view>
+      <view class="perline"><view></view><view></view><view></view><view class="perball" style="left:{{left.oil_content}}%"></view></view>
+      <view class="perstate perline"><view>少量</view><view>平衡</view><view>多量</view></view>
+    </view>
+  </view>
+  <!-- 肌肤弹性为 -->
+  <view class="per">
+    <view class="title">肌肤弹性为<text>{{type == 0?Fix.toFix(info.before_compactness):Fix.toFix(info.compactness)}}</text>
+      <view>{{(type == 0?Fix.toFix(info.before_compactness):Fix.toFix(info.compactness))<0.2?'弱':(type == 0?Fix.toFix(info.before_compactness):Fix.toFix(info.compactness))<=0.45?'正常':'强'}}</view>
+    </view>
+    <view class="info otherline">
+      <view class="pernum perline"><view>0</view><view>0.2</view><view>0.45</view><view>0.55</view></view>
+      <view class="perline"><view></view><view></view><view></view><view class="perball" style="left:{{left.compactness}}%"></view></view>
+      <view class="perstate perline"><view>弱</view><view>正常</view><view>强</view></view>
+    </view>
+  </view>
+</view>
+
+
+<view class="ins_tabbar">
+  <view class="{{tabbaridx == 0?'click':''}}" bindtap="changeTab" data-type="0">肌肤水份概况</view>
+  <view class="{{tabbaridx == 1?'click':''}}" bindtap="changeTab" data-type="1">肌肤紧致概况</view>
+</view>
+<view class="part canvaspart {{daytype != 'day'?'':'hide'}}">
+  <view class="canvas"><ec-canvas canvas-id="poster" ec="{{ec}}" force-use-old-canvas="true"></ec-canvas></view>
+  <view class="tips">左右滑动查看更多数据</view>
+</view>
+
+<view class="part round">
+  <view class="round_part pink_c">
+    <image src="../../images/ic_nursing_before.png" mode="widthFix"></image>
+    <view class="info">
+      <view class="draw_round">
+        <view class="title">护理前</view>
+        <view class="num">{{Fix.toFix(info.before_moisture_content)}}%</view>
+        <view class="state">平均</view>
+      </view>
+      <view class="times">监控次数：{{info.before_count}}</view>
+    </view>
+  </view>
+
+
+  <view class="round_part blue_c">
+    <image src="../../images/ic_nursing_after.png" mode="widthFix"></image>
+    <view class="info">
+      <view class="draw_round">
+        <view class="title">护理后</view>
+        <view class="num">{{Fix.toFix(info.moisture_content)}}%</view>
+        <view class="state">平均</view>
+      </view>
+      <view class="times">监控次数：{{info.count}}</view>
+    </view>
+  </view>
+</view>

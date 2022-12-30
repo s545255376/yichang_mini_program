@@ -1,0 +1,64 @@
+<view class="basic">
+  <view class="part"><view class="msg">{{info.position == 0?'手部':info.position == 1?'脸部':'眼部'}}</view><view class="title">部位</view></view>
+  <view class="part"><view class="msg">{{info.sex == 0?'女':'男'}}</view><view class="title">性别</view></view>
+  <view class="part"><view class="msg">{{info.age}}</view><view class="title">年龄</view></view>
+  <view class="part"><view class="msg">{{skin_type==1?'干性':skin_type==2?'油性':skin_type==3?'混干':'混油'}}</view><view class="title">肤质</view></view>
+</view>
+
+<view class="nursing">
+  <view class="title">
+    <image src="../../images/ic_nursing_result.png" mode="widthFix"></image>{{type == 0?'护理前':'护理后'}}
+  </view>
+  <view class="info">
+    <view class="result other">
+      <view class="result_num">
+        肌肤水份为
+        <text>{{info.moisture_content}}%</text>
+        <view>{{info.moisture_content < 15 ?'干燥':info.moisture_content < 25?'较干燥':info.moisture_content < 35?'标准':'较湿润'}}</view>
+      </view>
+      <view class="result_per waterline">
+        <view class="pernum perline"><view>0%</view><view>15%</view><view>25%</view><view>35%</view><view>60%</view></view>
+        <view class="perline"><view></view><view></view><view></view><view></view><view class="perball" style="left:{{left.moisture_content}}%"></view></view>
+        <view class="perstate perline"><view>特别干燥</view><view>干燥</view><view>正常</view><view>湿润</view></view>
+      </view>
+    </view>
+    <view class="result other">
+      <view class="result_num">
+        肌肤油份为
+        <text>{{info.oil_content}}%</text>
+        <view>{{info.oil_content < 25?'少量':info.oil_content < 34?'平衡':'多量'}}</view>
+      </view>
+      <view class="result_per otherline">
+        <view class="pernum perline"><view>10%</view><view>25%</view><view>34%</view><view>51%</view></view>
+        <view class="perline"><view></view><view></view><view></view><view class="perball" style="left:{{left.oil_content}}%"></view></view>
+        <view class="perstate perline"><view>少量</view><view>平衡</view><view>多量</view></view>
+      </view>
+    </view>
+    <view class="result other">
+      <view class="result_num">
+        肌肤紧致度为
+        <text>{{info.compactness}}</text>
+        <view>{{info.compactness < 0.25?'弱':info.compactness < 0.34?'正常':'强'}}</view>
+      </view>
+      <view class="result_per otherline">
+        <view class="pernum perline"><view>0</view><view>0.2</view><view>0.45</view><view>0.55</view></view>
+        <view class="perline"><view></view><view></view><view></view><view class="perball" style="left:{{left.compactness}}%"></view></view>
+        <view class="perstate perline"><view>弱</view><view>正常</view><view>强</view></view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="nursing">
+  <view class="title">
+    <image src="../../images/ic_skin_result.png" mode="widthFix"></image>肌肤状况
+  </view>
+  <view class="info">{{info.skin_condition}}</view>
+</view>
+
+<view class="nursing end_nursing">
+  <view class="title">
+    <image src="../../images/ic_nursing_suggest.png" mode="widthFix"></image>护肤建议
+  </view>
+  <view class="info">{{info.skin_care_advice}}</view>
+</view>

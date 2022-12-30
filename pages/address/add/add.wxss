@@ -1,0 +1,81 @@
+.form{
+  width: calc(100% - 60rpx);
+  padding: 0 30rpx;
+  background: #ffffff;
+}
+.label{
+  width: 100%;
+  line-height: 40rpx;
+  padding: 30rpx 0;
+  display: flex;
+  border-bottom: 1px solid #EAEBEE;
+}
+.label view{
+  width: 160rpx;
+}
+.label input{
+  width: calc(100% - 160rpx);
+}
+.label .address_check{
+  width: calc(100% - 160rpx);
+}
+.label .address_check input{
+  width: 100%;
+}
+.default{
+  margin-top: 30rpx;
+  width: calc(100% - 60rpx);
+  padding: 30rpx;
+  background: #ffffff;
+  line-height: 40rpx;
+}
+.default view{
+  display: inline-block;
+  line-height: 60rpx;
+}
+.default .switch{
+  float: right;
+}
+.tips{
+  color: #A7A5A6;
+  font-size: 24rpx;
+  margin: 30rpx;
+}
+.save_btn{
+  background: #231F20;
+  color: #ffffff;
+  height: 90rpx;
+  line-height: 90rpx;
+  width: calc(100% - 60rpx);
+  position: fixed;
+  left: 30rpx;
+  bottom: 30rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+.btn{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+  width: calc(100% - 50rpx);
+  padding: 30rpx 25rpx;
+  display: flex;
+}
+.btn view{
+  width: calc(100% - 30rpx);
+  margin: 0 15rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 32rpx;
+  border: 1px solid #231F20;
+}
+.btn .change_btn{
+  background: #231F20;
+  color: #ffffff;
+}
+.btn .del_btn{
+  background: #ffffff;
+  color: #231F20;
+}

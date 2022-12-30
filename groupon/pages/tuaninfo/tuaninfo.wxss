@@ -1,0 +1,256 @@
+/* groupon/pages/tuaninfo/tuaninfo.wxss */
+#tuanInfo {
+    background: rgba(249, 249, 249, 1);
+    padding:20rpx;
+    box-sizing: border-box;
+}
+
+/* 支付成功 */
+#paySuccess {
+    border-radius: 15rpx;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:144rpx;
+    margin-bottom:16rpx;
+}
+#paySuccess > view:first-child {
+    display: flex;
+    align-items: center;
+    font-size:32rpx;
+    color: rgba(97, 204, 115, 1);
+}
+#paySuccess > view:first-child image {
+    width:45rpx;
+    height:45rpx;
+    margin-right:15rpx;
+}
+#paySuccess > view:last-child {
+    margin-top:15rpx;
+    color: rgba(167, 165, 166, 1);
+    font-size:24rpx;
+}
+
+/* 主体 */
+#content {
+    background: #fff;
+    border-radius: 15rpx;
+    padding:30rpx 0;
+}
+#productInfo {
+    display: flex;
+    background: rgba(245, 245, 245, 1);
+    padding:24rpx;
+    box-sizing: border-box;
+    margin:0 18rpx 70rpx 18rpx;
+    border-radius: 12rpx;
+}
+#productInfo image {
+    width:122rpx;
+    height:122rpx;
+    border-radius: 6rpx;
+    margin-right:20rpx;
+}
+#productInfo > view {
+    height:100%;
+    height:122rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#productInfo > view > view:first-child {
+    font-size:28rpx;
+    color: rgba(0, 0, 0, 1);
+}
+#productInfo > view > view:last-child > view {
+    font-size:26rpx;
+    color: rgba(194, 37, 58, 1);
+    display: inline-block;
+    margin-right:15rpx;
+}
+#productInfo > view > view:last-child > view text:last-child {
+    font-size:34rpx;
+}
+#productInfo > view > view:last-child > text {
+    text-decoration: line-through;
+    font-size:24rpx;
+    color: rgba(167, 165, 166, 1);
+}
+#slogan {
+    width:100%;
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+    font-size:32rpx;
+    margin-bottom:22rpx;
+}
+#countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:60rpx;
+}
+#countdown > text {
+    color: rgba(167, 165, 166, 1);
+    font-size:26rpx;
+    display: inline-block;
+    margin-right:10rpx;
+}
+#countdown .item {
+    display: inline-block;
+    padding:0 5rpx;
+    color: #fff;
+    font-size: 28rpx;
+    text-align: center;
+    background-color: #C2253A;
+    border-radius: 8rpx;
+}
+#countdown .special {
+    color: #C2253A;
+    margin-right:16rpx;
+}
+#countdown .colon {
+    display: inline-block;
+    margin: 0 8rpx;
+    font-size:28rpx;
+    color: rgba(167, 165, 166, 1);
+}
+#progress {
+    padding:0 46rpx;
+    position: relative;
+}
+#progress image {
+    width:63rpx;
+    height:56rpx;
+    position: absolute;
+    left: 30rpx;
+    z-index: 1;
+    top: -5rpx;
+}
+.van-progress {
+    background: rgba(35, 31, 32, 0.2) !important;
+}
+.van-progress__portion {
+    position: unset !important;
+}
+.van-progress__pivot {
+    width:100% !important;
+    left:0 !important;
+    background: unset !important;
+    font-size:24rpx !important;
+}
+#buttonGroup {
+    width:100%;
+    padding:0 44rpx;
+    box-sizing: border-box;
+    margin-top:120rpx;
+}
+#buttonGroup .btn {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #ffffff;
+    font-size: 32rpx;
+    margin-bottom:20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#buttonGroup .btn.sharebtn button {
+    position: absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    opacity: 0;
+}
+#buttonGroup .btn.white {
+    color: #231F20;
+    border: 1px solid #D1D2D4;
+    background: #ffffff;
+}
+#buttonGroup .btn.black {
+    background: #231F20;
+}
+#buylist {
+    padding:0 46rpx 46rpx 46rpx;
+    margin-top:120rpx;
+}
+#buylist #tips {
+    color: #A7A5A6;
+    font-size:22rpx;
+}
+#buylist_title {
+    font-size:28rpx;
+    color: #000;
+    margin-bottom:30rpx;
+}
+.buylist_item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom:30rpx;
+}
+.buylist_item:last-child {
+    margin-bottom:0;
+}
+.buylist_item_header {
+    position: relative;
+    width:90rpx;
+    height:90rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right:21rpx;
+}
+.buylist_item_header .tuanzhang {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size:24rpx;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left:0;
+    bottom:0;
+}
+.tuanzhang text {
+    transform: scale(0.7);
+}
+.buylist_item_header image {
+    width:100%;
+    height:100%;
+}
+.buylist_item_content > view:nth-child(1) {
+    font-size:26rpx;
+    color: #000;
+}
+.goodsitem {
+    color: #A7A5A6;
+    font-size:24rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.goodsitem text:nth-child(1) {
+    display: inline-block;
+    margin-right:10rpx;
+}
+.pay_prompt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:32rpx;
+    color: #000;
+    border-radius: 6rpx;
+}
+.pay_prompt image {
+    width:80rpx;
+    height:80rpx;
+    margin-right:20rpx;
+}
+.pay_prompt.failed {
+    color: #C2253A;
+}

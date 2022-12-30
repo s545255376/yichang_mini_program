@@ -1,0 +1,16 @@
+/* genetest/pages/policy/policy.wxss */
+#policy {
+    background: #fff;
+    padding: 40rpx;
+}
+
+.paragraph {
+    font-size: 24rpx;
+    color: #000;
+    line-height: 48rpx;
+    margin-bottom: 24rpx;
+}
+
+.emphasize {
+    font-weight: bold;
+}

@@ -1,0 +1,24 @@
+<view class="{{needAdapt ? 'iphone_pandding' : ''}}">
+  <view class="list">
+    <view class="part">
+      <view class="title">{{intro.content}}</view>
+      <view class="imglist" wx:if="{{intro.image.length != 0}}">
+        <image src="{{img}}" mode="aspectFill" bindtap="bannerClick" wx:for="{{intro.image}}" wx:key="feedBackImg" wx:for-item="img" wx:for-index="idx" data-idx="{{idx}}" data-type="parent"></image>
+      </view>
+      <view class="create_time">{{intro.create_time}}</view>
+      <view class="feedback" wx:if="{{list.length != 0}}">
+        <view class="row" wx:for="{{list}}" wx:key="feedBackDetail">
+          <view class="title">{{item.type == 1?'商户答复':'用户回复'}}：<text class="date">{{item.create_time}}</text></view>
+          <view class="info">
+            {{item.reply_content}}
+            <view wx:if="{{item.image.length != 0}}" >
+              <image src="{{img}}" mode="aspectFill" bindtap="bannerClick" wx:for="{{item.image}}" wx:key="feedBackImg" wx:for-item="img" wx:for-index="idx" data-idx="{{idx}}" data-type="child"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="page_bottom_btn" bindtap="refuseBtn">回复</view>
+</view>

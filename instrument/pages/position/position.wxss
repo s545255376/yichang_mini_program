@@ -1,0 +1,150 @@
+page{
+  background: #ffffff;
+}
+.check_state{
+  width: 376rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  display: flex;
+  margin-left: calc(50% - 188rpx);
+  margin-top: 30rpx;
+  background: #F6F6F6;
+  border-radius: 35rpx;
+}
+.check_state view{
+  width: 188rpx;
+  border-radius: 35rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #A7A5A6;
+}
+.check_state .checked{
+  background:#231F20;
+  color: #ffffff;
+}
+
+.check_ani{
+  width: 654rpx;
+  height: 654rpx;
+  margin-left: calc(50% - 327rpx);
+  margin-top: 70rpx;
+  margin-bottom: 40rpx;
+  position: relative;
+}
+.check_ani view{
+  border-radius: 50%;
+  position: absolute;
+  background: #D9C392;
+}
+.check_ani .round{
+  animation: roundani 3s infinite linear;
+  border: 39rpx solid #ffffff;
+}
+.check_ani .round1{
+  width: 654rpx;
+  height: 654rpx;
+  top: -39rpx;
+  left: -39rpx;
+}
+.check_ani .round2{
+  width: 498rpx;
+  height: 498rpx;
+  top: 39rpx;
+  left: 39rpx;
+}
+.check_ani .round3{
+  width: 342rpx;
+  height: 342rpx;
+  top: 117rpx;
+  left: 117rpx;
+}
+.check_ani .round4{
+  width: 186rpx;
+  height: 186rpx;
+  top: 195rpx;
+  left: 195rpx;
+}
+.check_ani .round5{
+  width: 120rpx;
+  height: 120rpx;
+  top: 240rpx;
+  left: 240rpx;
+  border: 27rpx solid #D9C392;
+  background: #ffffff;
+  text-align: center;
+  color: #D9C392;
+  font-size: 30rpx;
+}
+.check_ani .round5 text{
+  line-height: 40rpx;
+  display: block;
+}
+.check_ani .round5 text:first-child{
+  margin-top: 20rpx;
+}
+@keyframes roundani{
+  0% {
+    transform: scale(0);
+  }
+  100% {
+      transform: scale(1);
+      opacity: 0;
+  }
+}
+
+
+
+.tips{
+  color: #A7A5A6;
+  font-size: 26rpx;
+  width: 100%;
+  text-align: center;
+}
+.position_check{
+  width: calc(100% - 80rpx);
+  margin: 40rpx;
+  text-align: center;
+}
+.position_check .btn{
+  width: 176rpx;
+  height: 176rpx;
+  border-radius: 50%;
+  background: #F7F5F7;
+  text-align: center;
+  display: inline-block;
+}
+.position_check .checked{
+  background: #F9F5EF !important;
+}
+.position_check .facebtn{
+  margin: 0 70rpx;
+}
+.position_check .btn image{
+  width: 70rpx;
+  margin-top: 28rpx;
+}
+.position_check .handbtn,.position_check .eyesbtn{
+  position: relative;
+  top: -80rpx;
+}
+.position_check .btn view{
+  color: #A2A0A2;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  margin-top: 5rpx;
+}
+.position_check .checked view{
+  color: #D9C392;
+}
+.history{
+  text-align: right;
+  padding: 0 48rpx;
+  width: calc(100% - 96rpx);
+  color: #231F20;
+  font-size: 28rpx;
+  line-height: 28rpx;
+}
+.history text{
+  border-bottom: 1px solid #231F20;
+  font-weight: bold;
+}

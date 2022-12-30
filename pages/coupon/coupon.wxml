@@ -1,0 +1,54 @@
+<view class="wholepage">
+    <view class="tabbar">
+        <view class="{{tabbarNum == index?'tabbar_click':''}}" bindtap="tabbarChange" wx:for="{{tabbar}}" wx:key="tabbar" wx:for-item="item" wx:for-index="index" data-idx="{{index}}">{{item}}</view>
+    </view>
+    <view class="ic_empty" wx:if="{{loadState == false}}">
+        <image src="../../images/ic_error_network.png" mode="widthFix"></image>
+        <view>网络异常，请重新登陆～</view>
+    </view>
+    <view class="ic_empty" wx:elif="{{list.length == 0}}">
+        <image src="../../images/ic_empty_box.png" mode="widthFix"></image>
+        <view>空空如也～</view>
+    </view>
+    <view class="list {{list[0].status != 1?'unclick':''}}" wx:else>
+        <view class="part" wx:for="{{list}}" wx:key="couponList">
+            <view class="part_l {{item.pay_price_full == 0?'only_price':''}}" wx:if="{{item.coupon_value != ''}}">
+                <view class="part_middle">
+                    <view class="money"><text>¥</text>{{item.coupon_value}}</view>
+                    <view class="condition" wx:if="{{item.pay_price_full != 0}}">满{{item.pay_price_full}}可使用</view>
+                </view>
+            </view>
+            <view class="part_l" wx:else>
+                <view class="part_middle">
+                    <image src="{{item.image}}" mode="aspectFill"></image>
+                </view>
+            </view>
+            <view class="part_r">
+                <view class="info">
+                    <view class="title">{{item.name}}</view>
+                    <view wx:if="{{item.remark.length != 0}}" class="desc {{item.more == true?'':'intercept'}}">
+                        <text>{{item.remark}}</text>
+                    </view>
+                    <view class="desc" bindtap="showRules" data-idx="{{index}}" wx:if="{{item.remark.length != 0}}">查看规则<image src="../../images/ic_arrow_d.png" mode="widthFix" class="{{item.more == true?'arror_tranform':''}}"></image></view>
+                </view>
+                <view class="btn" bindtap="showCode" data-idx="{{index}}" data-status="{{item.status}}" data-type="{{item.type}}">
+                    <view>{{item.status ==0?'已作废':item.status ==1?'立即使用':item.status ==2?'已使用':'待激活'}}</view>
+                </view>
+                <!-- 0:已作废,1:待使用,2:已使用 -->
+            </view>
+        </view>
+    </view>
+    <view catchtouchmove="false" class="{{posterToast == true?'':'hide'}}">
+        <view class="mask" bindtap="closeToast"></view>
+        <view class="poster">
+            <view class="head">
+                <image src="{{poster.image}}" mode="aspectFill" class="goods"></image>
+                <view>{{poster.title}}</view>
+            </view>
+            <image src="{{poster.code}}" mode="widthFix" class="code"></image>
+            <view class="instructions">使用说明</view>
+            <view class="instructions_info">请将二维码图片展示给店员进行核销，核销后将进行相关服务</view>
+            <image src="../../images/ic_close.png" mode="widthFix" class="close" bindtap="closeToast"></image>
+        </view>
+    </view>
+</view>

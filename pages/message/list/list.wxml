@@ -1,0 +1,39 @@
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="ic_empty" wx:elif="{{list.length == 0}}">
+  <image src="../../../images/ic_empty_box.png" mode="widthFix"></image>
+  <view>空空如也～</view>
+</view>
+<view class="part">
+  <view class="tabbar">
+    <view bindtap="tabbarChange" data-type="0">
+      <image src="../../../images/mine/ic_news.png" mode="widthFix" wx:if="{{tabNum == 0}}"></image>
+      <image src="../../../images/mine/ic_news_unclick.png" mode="widthFix" wx:else></image>
+      <view style="color:{{tabNum == 0?'#000000':'#999999'}};">系统通知</view>
+    </view>
+    <view bindtap="tabbarChange" data-type="1">
+      <image src="../../../images/mine/ic_notice.png" mode="widthFix" wx:if="{{tabNum == 1}}"></image>
+      <image src="../../../images/mine/ic_notice_unclick.png" mode="widthFix" wx:else></image>
+      <view style="color:{{tabNum == 1?'#000000':'#999999'}};">活动公告</view>
+    </view>
+  </view>
+
+  <view class="info" wx:if="{{tabNum == 0}}">
+    <view class="list" wx:for="{{list}}" wx:key="messageList" bindtap="goDetail" data-id="{{item.id}}" data-idx="{{index}}">
+      <view class="name">{{item.desc}}<view class="dom" wx:if="{{item.status == 0}}"></view></view>
+      <view class="desc">{{item.title}}</view>
+      <view class="date">{{item.create_time}}</view>
+    </view>
+  </view>
+
+  <view class="info" wx:elif="{{tabNum == 1}}">
+    <view class="list" wx:for="{{list}}" wx:key="messageList" bindtap="goDetail" data-id="{{item.id}}" data-idx="{{index}}">
+      <view class="name">{{item.notice_type}}<view class="dom" wx:if="{{item.is_read == 0}}"></view></view>
+      <view class="desc">{{item.title}}</view>
+      <view class="date">{{item.publish_time}}</view>
+    </view>
+  </view>
+
+</view>

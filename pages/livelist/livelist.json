@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "非常直播",
+    "usingComponents": {
+        "pop": "../../component/pop",
+        "van-field": "@vant/weapp/field/index"
+    }
+}

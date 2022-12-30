@@ -1,0 +1,21 @@
+.essay{
+  background: #ffffff;
+  width: calc(100% - 60rpx);
+  padding: 30rpx;
+}
+.essay .title{
+  font-weight: bold;
+  line-height: 40rpx;
+  font-size: 36rpx;
+  text-align: justify;
+  color: #231F20;
+}
+.essay .date{
+  font-size: 24rpx;
+  color: #A7A5A6;
+  padding: 15rpx 0;
+}
+.essay .content{
+  width: 100%;
+  word-break: break-all;
+}

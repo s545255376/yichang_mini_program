@@ -1,0 +1,314 @@
+<wxs module="showdate">
+  function formatNumber(n){
+    n = n.toString()
+    return n[1] ? n : '0' + n
+  }
+  var formatDate = function (datetime) {
+    var date = getDate(datetime);
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    return [year, month, day].map(formatNumber).join('-')+' ' +[hour, minute, second].map(formatNumber).join(':');
+  }
+  module.exports.formatDate = formatDate;
+</wxs>
+<view class="{{needAdapt ? 'iphone_pandding' : ''}}">
+    <view class="address_tips">请确认好收货地址，以便及时送达</view>
+    <view class="address">
+        <view class="search">
+            <view>选择配送方式</view>
+            <radio-group bindchange="radioChange" class="address_radio">
+                <label wx:for="{{pick}}" wx:key="pick">
+                    <radio class="radio" value="{{index}}" checked="{{modeval == index}}" />
+                    <text>{{item.name}}</text>
+                </label>
+            </radio-group>
+        </view>
+        <view class="no_address" wx:if="{{info.pick[0][modeval].address.length == 0}}" bindtap="addNewAddress">
+            暂无收货地址，
+            <text>请添加</text>
+        </view>
+        <view class="default_address" wx:else bindtap="changeAddress">
+            <image mode="widthFix" src="../../images/order/ic_goshop.png" wx:if="{{info.pick[0][modeval].val == 0}}"></image>
+            <image mode="widthFix" src="../../images/order/ic_gohome.png" wx:else></image>
+            <view class="info">
+                <view class="receiver">
+                    {{info.pick[0][modeval].address.depart}} {{info.pick[0][modeval].address.address}}
+                </view>
+                <view class="desc">
+                    收货人：{{info.pick[0][modeval].val == 0?info.pick[0][modeval].address.consignee_name:info.pick[0][modeval].address.consignee}}
+                </view>
+                <view class="desc">手机号：{{info.pick[0][modeval].address.mobile}}</view>
+                <view class="desc" wx:if="{{info.pick[0][modeval].val == 0}}">
+                    收货地址：{{info.pick[0][modeval].address.consignee}}
+                </view>
+            </view>
+            <image mode="widthFix" src="../../images/ic_arrow_r.png" class="ic_arror" wx:if="{{info.pick[0][modeval].val != 0}}"></image>
+        </view>
+    </view>
+    <!-- 参加减至xx活动 -->
+    <view wx:if="{{info.goods_vip.length != 0}}">
+        <view class="goods" wx:for="{{info.goods_vip}}" wx:key="payGoodsVipList">
+            <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+            <view class="info">
+                <view class="title">{{item.goods_name}}</view>
+                <view class="tips" wx:if="{{item.type == 2}}">
+                    <image src="../../images/order/ic_gifts.png" mode="widthFix"></image>
+                    <view>赠品</view>
+                </view>
+                <!-- 单品 -->
+                <view class="norms" wx:if="{{suit_sku_ids.length == 0}}">
+                    <text wx:for="{{item.item}}" wx:key="payGoodsItem" wx:for-item="norms">{{norms}}</text>
+                </view>
+                <!-- 套盒 -->
+                <view class="suitnorms" wx:else bindtap="showNorms" data-idx="{{index}}">
+                    <view wx:for="{{item.suit_list}}" wx:key="payGoodsSuitList" wx:for-item="suitlist" wx:for-index="suitidx">
+                        {{suitidx == 0?'':'+'}}
+                        <text wx:for="{{suitlist.item}}" wx:key="payGoodsItem" wx:for-item="norms" wx:for-index="suitnormsidx">{{suitnormsidx == 0?'':'+'}}{{norms}}</text>
+                    </view>
+                    <image src="../../images/ic_arrow_d.png" mode="widthFix"></image>
+                </view>
+                <view class="price">
+                    <view class="pay_price">
+                        <text>¥</text>{{item.price}}
+                        <view class="market_price" wx:if="{{item.market_price != 0}}">
+                            ¥{{item.market_price}}
+                        </view>
+                    </view>
+                    <view class="paynum">x {{item.num}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="coupon_switch">
+            使用{{info.cardVIP.name}}券减至
+            <text>{{info.cardVIP.coupon_value}}元</text>
+            <switch checked="{{switchChecked}}" bindchange="switchChange" class="switchbtn" />
+        </view>
+    </view>
+    <!-- 不参加减至xx活动 -->
+    <view class="goods" wx:for="{{info.goods_def}}" wx:key="payGoodsList">
+        <view class="tips" wx:if="{{item.type == 2}}">
+            <image src="../../images/order/ic_gifts.png" mode="widthFix"></image>
+            <view>赠品</view>
+        </view>
+        <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+        <view class="info">
+            <view class="title">{{item.goods_name}}</view>
+            <!-- 套盒 -->
+            <view class="suitnorms" wx:if="{{item.suit_list.length != 0}}" bindtap="showNorms" data-idx="{{index}}">
+                <block wx:if="{{is_pd == 0}}">
+                    <view wx:for="{{item.suit_list}}" wx:key="payGoodsSuitList" wx:for-item="suitlist" wx:for-index="suitidx">
+                    {{suitidx == 0?'':'+'}}
+                        <text wx:for="{{suitlist.item}}" wx:key="payGoodsItem" wx:for-item="norms" wx:for-index="suitnormsidx">{{suitnormsidx == 0?'':'+'}}{{norms}}</text>
+                    </view>
+                </block>
+                <!-- 是否是拼单显示不同的内容 -->
+                <block wx:else>  
+                    <view>规格列表</view>
+                </block>
+                <image src="../../images/ic_arrow_d.png" mode="widthFix"></image>
+            </view>
+            <!-- 单品 -->
+            <view class="norms" wx:else>
+                <text wx:for="{{item.item}}" wx:key="payGoodsItem" wx:for-item="norms">{{norms}}</text>
+            </view>
+            <view class="price">
+                <view class="pay_price">
+                    <text>¥</text>{{item.price}}
+                    <view class="market_price" wx:if="{{item.market_price != 0}}">
+                        ¥{{item.market_price}}
+                    </view>
+                </view>
+                <view class="paynum">x {{item.num}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 优惠 -->
+    <view class="discount" bindtap="searchCoupon">
+        优惠
+        <view class="info">
+            <view wx:if="{{couponid == -1}}">
+                共有
+                <text>{{info.coupon_num}}</text>
+                张可用优惠券
+            </view>
+            <view wx:else>
+                {{info.card[couponid].name}}
+                <text>-{{info.card[couponid].coupon_value}}元</text>
+            </view>
+            <image src="../../images/ic_arrow_r.png" mode="widthFix"></image>
+        </view>
+    </view>
+    <view class="total">
+        <view class="list">
+            <view>
+                商品金额
+                <view>
+                    <text>¥</text>{{info.amount.goods_price}}
+                </view>
+            </view>
+            <view wx:if="{{info.amount.discount_info != ''}}">
+                活动折扣
+                <view class="discount_num">{{info.amount.discount_info}}</view>
+            </view>
+            <view>
+                优惠券金额
+                <view>
+                    <text>¥</text>{{info.amount.coupon_price}}
+                </view>
+            </view>
+            <view>
+                运费
+                <view>
+                    <text>¥</text>{{info.amount.express_fee}}
+                </view>
+            </view>
+        </view>
+        <view class="statistics">
+            <text class="num">共{{info.amount.num}}件商品</text>
+            <view class="pay_price">
+                共优惠：
+                <view>
+                    <text>¥</text>{{info.amount.discount_price}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="remark {{level_id == 6 && is_jx_goods == 0?'jxremark':''}}">
+        <view>买家留言</view>
+        <textarea placeholder="留言建议提前协商（50字以内）" bindinput="remarkInput" value="{{remark}}" maxlength="50"></textarea>
+    </view>
+    <!-- <cover-view style="z-index:999"> -->
+    <cover-view wx:if="{{level_id == 6 && is_jx_goods == 0}}" class="jx_bottom">
+        <cover-view class="jx_part">
+            <cover-view class="jx_info">
+                成为匠选官，下单即享
+                <cover-view class="jx_text">8折优惠</cover-view>
+            </cover-view>
+            <cover-view class="jx_btn" bindtap="buyJxGoods">去看看</cover-view>
+        </cover-view>
+        <cover-image src="../../images/order/jx_logo.png" mode="widthFix" class="jx_image"></cover-image>
+    </cover-view>
+    <!-- </cover-view> -->
+    <view class="footer">
+        <view class="pay_info no_integral" wx:if="{{info.score != 0}}">
+            <view class="pay_total">
+                实付金额：
+                <view>
+                    <text>¥</text>{{info.amount.pay_price}}
+                </view>
+            </view>
+            <!-- <view class="integral">购买成功即可得{{info.score * info.amount.pay_price}}积分</view> -->
+        </view>
+        <view class="pay_info has_integral" wx:else>
+            <view class="pay_total">
+                合计：
+                <view>
+                    <text>¥</text>{{info.amount.pay_price}}
+                </view>
+            </view>
+        </view>
+        <view class="pay_btn" bindtap="setOrder">立即支付</view>
+    </view>
+</view>
+<!-- 优惠券 -->
+<view wx:if="{{couponToast == true}}">
+    <view class="mask" bindtap="closeToast" catchtouchmove="false"></view>
+    <view class="toast">
+        <view class="toast_name" catchtouchmove="false">
+            <view>优惠券</view>
+            <image src="../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeToast"></image>
+        </view>
+        <radio-group bindchange="couponChange" class="toast_body">
+            <label wx:for="{{info.card}}" wx:key="couponList">
+                <view class="coupon_list">
+                    <image src="../../images/card_bg.png" mode="widthFix" class="coupon_bg"></image>
+                    <view class="coupon {{item.coupon_status == 0?'disable':''}}">
+                        <view class="info">
+                            <view class="name">{{item.name}}</view>
+                            <view class="range">
+                                <!-- 全场可用（特殊商品除外） -->
+                            </view>
+                            <view class="dealline">
+                                {{item.end_time == 0?'永久有效':'有效期至 '+item.end_time}}
+                            </view>
+                        </view>
+                        <view class="coupon_btn">
+                            <view class="name">
+                                <text>¥</text>{{item.coupon_value}}
+                            </view>
+                            <view class="desc">满{{item.pay_price_full}}元使用</view>
+                            <radio value="{{index}}" class="radio" data-idx="{{index}}" checked="{{item.selected == 1}}" />
+                        </view>
+                    </view>
+                </view>
+            </label>
+        </radio-group>
+        <view class="submit_btn" catchtouchmove="false" bindtap="couponConfirm">
+            <button>确认</button>
+        </view>
+    </view>
+</view>
+<!-- 套盒规格弹窗 -->
+<view wx:if="{{goodsToast == true}}">
+    <view class="mask" catchtouchmove="false" bindtap="closeNorms"></view>
+    <block wx:if="{{is_pd == 0}}">
+        <view class="toast">
+            <view class="title" catchtouchmove="false">
+                <image src="../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeNorms"></image>
+                <image src="{{normsList.image}}" mode="aspectFill" class="goods_img"></image>
+                <view class="info">
+                    <view class="price">
+                        <text>￥</text>{{normsList.price}}
+                        <view>
+                            <text>￥</text>{{normsList.market_price}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- 规格 -->
+            <view class="norms">
+                <view class="suit_list" wx:for="{{normsList.suit_list}}" wx:key="goodsSuitList" wx:for-item="goodsitem" wx:for-index="goodsidx">
+                    <view class="name">{{goodsitem.goods_name}}：</view>
+                    <view class="btn_list">
+                        <view class="btn_click">
+                            <text wx:for="{{goodsitem.item}}" wx:key="goodsSuitItem">{{item}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="toast">
+            <view class="title" catchtouchmove="false">
+                <image src="../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeNorms"></image>
+                <image src="{{normsList.image}}" mode="aspectFill" class="goods_img"></image>
+                <view class="info">
+                    <view>
+                        {{normsList.goods_name}}
+                    </view>
+                </view>
+            </view>
+            <!-- 规格 -->
+            <view class="norms">
+                <view class="pd_skulist" wx:for="{{normsList.suit_list}}" catchtouchmove="false">
+                    <image src="{{item.sku_image}}" mode="aspectFill" class="goods_img"></image>
+                    <view class="info">
+                        <view>
+                            <view>{{item.sku_name}}</view>
+                            <view class="price">
+                                <text>￥</text>{{item.sku_price}}
+                            </view>
+                        </view>
+                        <view>x{{item.sku_num}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    
+</view>

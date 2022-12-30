@@ -1,0 +1,28 @@
+.list{
+  margin-top: 20rpx;
+  background: #ffffff;
+  padding: 0 30rpx;
+  width: calc(100% - 60rpx);
+}
+.essay{
+  padding: 30rpx 0;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+}
+.essay:last-child{
+  border-bottom: none;
+}
+.essay .title{
+  width: 100%;
+  text-align: justify;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #231F20;
+  -webkit-line-clamp: 1;
+  line-height: 40rpx;
+}
+.essay image{
+  width: 30rpx;
+  margin: 5rpx 0;
+}

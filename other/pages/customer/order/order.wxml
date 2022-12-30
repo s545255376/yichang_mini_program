@@ -1,0 +1,102 @@
+<view class="tabbar">
+  <view class="name_search">
+    <input placeholder="请输入用户名" placeholder-style="color:#A7A5A6;" bindinput="nameChange"/>
+    <view bindtap="searchConfirm">搜索</view>
+  </view>
+  <view class="picker_search">
+    <view class="picker_search_part">
+      <picker bindchange="shopnChange" value="{{index}}" range="{{shopnarr}}" disabled="{{is_boss == 0}}" class="picker">
+        <view class="label">{{is_boss == 0?shopnall[0].title:shopnnum == 0?'全部':shopnall[shopnnum].title}}</view>
+        <text class="arror" wx:if="{{is_boss != 0}}"></text>
+      </picker>
+    </view>
+    <view class="picker_search_part {{showDate.start == ''?'':'hasdate'}}" bindtap="openTimeCheck">
+      <view class="label" wx:if="{{showDate.start == ''}}">日期</view>
+      <view class="search_date" wx:else>
+        <view>{{showDate.start}}</view>
+        <view>{{showDate.end}}</view>
+      </view>
+      <text class="arror"></text>
+    </view>
+  </view>
+</view>
+
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="ic_empty" wx:elif="{{list.length == 0}}">
+  <image src="../../../../images/ic_empty_order.png" mode="widthFix"></image>
+  <view>暂无订单～</view>
+</view>
+<view wx:else class="page">
+  <view class="list" wx:for="{{list}}" wx:key="orderList">
+    <view class="head">
+      <image src="{{item.portrait}}" mode="aspectFill"></image>
+      <view class="cust_info">
+        <view class="cust_name">{{item.username}}</view>
+        <view class="cust_order">订单号：{{item.order_sn}}</view>
+      </view>
+    </view>
+    <!-- body -->
+    <view class="detail">
+      <view class="body" wx:for="{{item.goods}}" wx:key="orderGoodsList" wx:for-item="info" wx:for-index="idx">
+        <image src="{{info.image}}" mode="aspectFill"></image>
+        <view class="info">
+          <view class="title">{{info.goods_name}}</view>
+          <view class="desc">{{info.goods_sub}}</view>
+          <view class="norms"><text>{{info.item}}</text></view>
+          <view class="price"><text class="symbol">¥</text>{{info.goods_price}}<text class="num">x {{info.num}}</text></view>
+        </view>
+      </view>
+    </view>
+    <!-- footer -->
+    <view class="footer">
+      <view class="date">
+        <image src="../../../images/ic_date.png" mode="widthFix"></image>
+        {{item.pay_time}}
+      </view>
+      <view class="right">
+        共{{item.total}}件商品
+        <view>实付：<text>¥ {{item.pay_price}}</text></view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view wx:if="{{dateSearch == true}}">
+  <view class="mask" bindtap="timeCancel"></view>
+  <view class="time_picker">
+    <view class="month">
+      {{date.year}}年{{date.month}}月
+      <view>
+        <image src="../../../images/ic_timer_left.png" mode="widthFix" bindtap="monthChange" data-type="lastmonth"></image>
+        <image src="../../../images/ic_timer_right.png" mode="widthFix" bindtap="monthChange" data-type="nextmonth"></image>
+      </view>
+    </view>
+    <view class="account-box">
+      <view class="f-rili-table">
+        <view class="f-rili-head">
+          <view class="f-rili-th">S</view>
+          <view class="f-rili-th">M</view>
+          <view class="f-rili-th">T</view>
+          <view class="f-rili-th">W</view>
+          <view class="f-rili-th">T</view>
+          <view class="f-rili-th">F</view>
+          <view class="f-rili-th">S</view>
+          <view class="clear"></view>
+        </view>
+        <view class="f-tbody">
+          <view class="f-td {{item.bg == true?'datebg':''}} {{item.start == true?'datebg_start':''}} {{item.end == true?'datebg_end':''}}" wx:for="{{caleList}}" wx:key="caleDate" bindtap="changeDay" data-num="{{item.num}}" data-idx="{{index}}">
+            <view class="datenum {{item.check == true?'clickdom':''}} {{item.click == true?'':'unclick'}}">{{item.num}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn">
+      <view class="cancel" bindtap="timeCancel">取消</view>
+      <view class="confirm" bindtap="searchConfirm">确认</view>
+    </view>
+  </view>
+</view>

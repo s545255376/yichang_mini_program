@@ -1,0 +1,52 @@
+<!--genetest/pages/index/index.wxml-->
+<view id="index" class="wholepage" style="min-height:{{windowHeight}}px">
+    <view id="mainBox" wx:if="{{mainBox}}">
+        <view id="top">
+            <view id="title">美容基因检测</view>
+            <view id="disc">即刻让您的肌肤变得更健康</view>
+            <view id="line"></view>
+        </view>
+        <view id="step">
+            <view class="step_item">
+                <view class="step_title">
+                    Step1：完善并绑定个人信息
+                </view>
+                <view class="step_decs">完善个人信息 > 扫码绑定 > 阅读并同意协议 > 点击下一步</view>
+            </view>
+            <view class="step_item">
+                <view class="step_title">Step2：样本采集</view>
+                <view class="step_decs">采样准本 > 采样手法 > 样本保存 > 样本回寄</view>
+            </view>
+            <view class="step_item">
+                <view class="step_title">Step3：样本寄回，等待报告</view>
+                <view class="step_decs">扫码物流码 > 输入寄件地址 > 等待快递员取货</view>
+            </view>
+        </view>
+        <view class="button_group index_main_group">
+            <view class="btn black" bindtap="intoRegister">申请基因检测</view>
+            <view class="btn white" bindtap="buttonClick">查看检测记录</view>
+        </view>
+        <view id="notice" bindtap="showNotice">注意事项</view>
+    </view>
+    <view id="noticeBox" wx:if="{{notice}}">
+        <view class="paragraph">
+            <view class="notice_title">口腔拭子采样注意事项：</view>
+            <view class="notice_desc">1、采集样本前30分钟内请勿进食及饮用饮品。</view>
+            <view class="notice_desc">2、拭子采样冠除口腔内外请不要接触到其他物质，如不小心触碰到拭子采样冠或采样过程中采样冠脱落，请换用新的口腔拭子重新进行采样，以免样本被污染。</view>
+            <view class="notice_desc">3、采样完成后，请即时回寄样本。</view>
+            <view class="notice_desc">4、如发现包装开封或破损，请勿使用。</view>
+            <view class="notice_desc">5、请放置在婴幼儿触及不到的地方。</view>
+        </view>
+        <view class="paragraph">
+            <view class="notice_title">特殊存储条件、方法：</view>
+            <view class="notice_desc">包装后的产品应贮存在2℃~30℃，相对湿度40%~90%的无腐蚀性气体、通风良好、阴凉干燥、清洁的环境中。</view>
+        </view>
+        <view class="paragraph">
+            <view class="notice_title">有效期限：</view>
+            <view class="notice_desc">产品在规定的条件下贮存，灭菌失效期为二年。</view>
+        </view>
+        <view class="button_group fixed {{needAdapt ? 'needAdapt' : ''}}">
+            <view class="btn black" bindtap="intoRegister">申请检测</view>
+        </view>
+    </view>
+</view>

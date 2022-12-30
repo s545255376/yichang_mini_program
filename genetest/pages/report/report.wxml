@@ -1,0 +1,2 @@
+<!--genetest/pages/report/report.wxml-->
+<web-view src="{{urls}}"></web-view>

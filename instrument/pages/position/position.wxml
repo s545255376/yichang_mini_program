@@ -1,0 +1,29 @@
+<view class="check_state">
+  <view class="{{statenum == 0?'checked':''}}" bindtap="stateChange" data-num="0">护理前</view>
+  <view class="{{statenum == 1?'checked':''}}" bindtap="stateChange" data-num="1">护理后</view>
+</view>
+
+<view class="check_ani">
+  <view class="round1 round"></view>
+  <view class="round2 round"></view>
+  <view class="round3 round"></view>
+  <view class="round4 round"></view>
+  <view class="round5" bindtap="goNext"><text>进入</text><text>检测</text></view>
+</view>
+
+<view class="tips">请选择检测部位</view>
+<view class="position_check">
+  <view class="btn handbtn {{posinum == 0?'checked':''}}" bindtap="positionChange" data-num="0">
+    <image src="../../images/{{posinum == 0?'ic_hand_search':'ic_hand'}}.png" mode="widthFix"></image>
+    <view>手部</view>
+  </view>
+  <view class="btn facebtn {{posinum == 1?'checked':''}}" bindtap="positionChange" data-num="1">
+    <image src="../../images/{{posinum == 1?'ic_face_search':'ic_face'}}.png" mode="widthFix"></image>
+    <view>脸部</view>
+  </view>
+  <view class="btn eyesbtn {{posinum == 2?'checked':''}}" bindtap="positionChange" data-num="2">
+    <image src="../../images/{{posinum == 2?'ic_eyes_search':'ic_eyes'}}.png" mode="widthFix"></image>
+    <view>眼部</view>
+  </view>
+</view>
+<view class="history" bindtap="goHist"><text>历史记录</text></view>

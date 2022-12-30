@@ -1,0 +1,67 @@
+.part{
+  margin-top: 16rpx;
+  width: 100%;
+}
+.list{
+  width: calc(100% - 60rpx);
+  padding: 30rpx;
+  background: #ffffff;
+  border-bottom: 1px solid #EAEBEE;
+}
+.list:last-child{
+  border-bottom: none;
+}
+.name{
+  font-size: 34rpx;
+  color: #000000;
+  line-height: 50rpx;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.name .dom{
+  width: 10rpx;
+  height: 10rpx;
+  background: #DB4949;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 16rpx;
+  vertical-align: middle;
+}
+.desc{
+  color: #231F20;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  margin-top: 10rpx;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.date{
+  font-size: 24rpx;
+  color: #A7A5A6;
+  line-height: 40rpx;
+  margin-top: 30rpx;
+}
+
+.tabbar{
+  width: 100%;
+  display: flex;
+  padding: 30rpx 0;
+}
+.tabbar image{
+  width: 58rpx;
+}
+.tabbar view{
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 50rpx;
+}
+.info{
+  margin-top: 190rpx;
+}

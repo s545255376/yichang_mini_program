@@ -1,0 +1,216 @@
+page{
+  background: #ffffff;
+}
+.basic{
+  width: calc(100% - 40rpx);
+  padding: 40rpx 20rpx 60rpx;
+  display: flex;
+}
+.basic .part{
+  margin: 0 10rpx;
+  background: #F8F8F8;
+  width: calc(25% - 20rpx);
+  text-align: center;
+  padding: 34rpx 0;
+  border-radius: 20rpx;
+}
+.msg{
+  font-size: 32rpx;
+  line-height: 45rpx;
+  color: #231F20;
+}
+.title{
+  font-size: 26rpx;
+  line-height: 40rpx;
+  margin-top: 10rpx;
+  color: #A7A5A6;
+}
+
+.nursing{
+  width: calc(100% - 60rpx);
+  padding: 0 30rpx;
+}
+.nursing .title{
+  line-height: 54rpx;
+  height: 54rpx;
+  color: #231F20;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.nursing .title image{
+  width: 54rpx;
+  margin-right: 16rpx;
+  vertical-align: middle;
+}
+.nursing .info{
+  width: calc(100% - 60rpx);
+  padding: 30rpx;
+  margin: 30rpx 0 60rpx;
+  background: #F8F8F8;
+  border-radius: 20rpx;
+  color: #686868;
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+.nursing .info .result{
+  margin: 30rpx 0;
+}
+.nursing .result_num{
+  font-size: 30rpx;
+  line-height: 44rpx;
+  color: #231F20;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+}
+.nursing .result_num text{
+  font-size: 44rpx;
+  margin-left: 12rpx;
+  margin-right: 20rpx;
+}
+.nursing .result_num view{
+  display: inline-block;
+  color: #ffffff;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  height: 38rpx;
+  background: #676767;
+  padding: 0 14rpx;
+  border-radius: 19rpx;
+}
+
+.nursing .pernum{
+  width: 100%;
+  position: relative;
+  height: 38rpx !important;
+  padding-bottom: 15rpx;
+}
+.nursing .pernum view{
+  background: none !important;
+  text-align: left;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: #A7A5A6;
+  margin-left: -10rpx;
+}
+.nursing .pernum view:first-child{
+  margin-left: 0rpx;
+}
+/* .nursing .water .pernum view:first-child{
+  width: 35%;
+}
+.nursing .water .pernum view:nth-child(2){
+  width: 15%;
+}
+.nursing .water .pernum view:nth-child(3){
+  width: 50%;
+} */
+.nursing .result_per .pernum view:first-child{
+  text-align: left;
+}
+.nursing .result_per .pernum view:last-child{
+  text-align: right;
+}
+.nursing .pernum view:last-child{
+  width: 20rpx;
+}
+.nursing .result_per .perline{
+  width: 100%;
+  height: 12rpx;
+  border-radius: 6rpx;
+  position: relative;
+  margin: 15rpx 0;
+  display: flex;
+}
+/* .nursing .water .result_per .perone{
+  width: 35%;
+  background: #F1EAD9;
+  border-radius: 6rpx 0 0 6rpx;
+}
+.nursing .water .result_per .pertwo{
+  width: 15%;
+  background: #E6D8B8;
+}
+.nursing .water .result_per .perthree{
+  width: 50%;
+  background: #D9C392;
+  border-radius: 0 6rpx 6rpx 0;
+} */
+/* .nursing .other .result_per .perline{
+  background: linear-gradient(90deg, #F6E6DA 0%, #D9C392 100%);
+} */
+
+.nursing .perline view{
+  border-radius: 6rpx;
+  margin-right: 6rpx;
+}
+.nursing .waterline .perline view:first-child{
+  width: calc(33.33% - 3rpx);
+  background: #F3EDDE;
+}
+.nursing .waterline .perline view:nth-child(2){
+  width: calc(16.67% - 3rpx);
+  background: #E8DBBE;
+}
+.nursing .waterline .perline view:nth-child(3){
+  width: calc(16.67% - 3rpx);
+  background: #E8DBBE;
+}
+.nursing .waterline .perline view:nth-child(4){
+  width: calc(33.33% - 3rpx);
+  background: #D9C392;
+  margin-right: 0;
+}
+.nursing .waterline .pernum view:last-child{
+  width: 20rpx;
+}
+
+/* 油分 */
+/* 弹性 */
+.nursing .otherline .perline view:first-child{
+  width: calc(25% - 6rpx);
+  background: #F3EDDE;
+}
+.nursing .otherline .perline view:nth-child(2){
+  width: calc(50% - 6rpx);
+  background: #E8DBBE;
+}
+.nursing .otherline .perline view:nth-child(3){
+  width: 25%;
+  background: #D9C392;
+  margin-right: 0;
+}
+
+
+
+
+
+
+.nursing .result_per .perline .perball{
+  position: absolute;
+  left: 0%;
+  top: -10rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  border: 4rpx solid #ffffff;
+  box-shadow: 0px 0px 8px 0px rgba(217, 195, 146, 1);
+  background: #D9C392;
+}
+
+.nursing .perstate{
+  width: 100%;
+  display: flex;
+  font-size: 26rpx;
+  color: #A7A5A6;
+  line-height: 38rpx;
+  margin-top: 15rpx;
+  height: auto !important;
+}
+.nursing .perstate view{
+  width: 100%;
+  background: none !important;
+  text-align: center;
+}
+.end_nursing{
+  padding-bottom: 30rpx;
+}

@@ -1,0 +1,159 @@
+/* genetest/pages/list/list.wxss */
+#list {
+    padding: 30rpx;
+}
+
+.item {
+    border: 1rpx solid #E4E4E4;
+    margin-bottom: 30rpx;
+}
+
+.item_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 28rpx;
+    color: #000;
+    background: rgba(230, 230, 231, 0.4);
+    padding: 30rpx;
+}
+
+.item_title>view:last-child {
+    font-size: 24rpx;
+}
+
+.item_main {
+    padding: 40rpx 30rpx;
+}
+
+.item_main view {
+    color: #797677;
+    font-size: 24rpx;
+    margin-bottom: 22rpx;
+}
+
+.item_main view:last-child {
+    margin-bottom: 0;
+}
+
+.list_button_group {
+    justify-content: flex-end;
+    padding: 0 30rpx 30rpx 30rpx;
+}
+
+.list_button_group .btn {
+    padding: 0 42rpx !important;
+    margin-right: 20rpx;
+}
+
+.list_button_group .btn.white {
+    background: unset;
+}
+
+.list_button_group .btn:last-child {
+    margin-right: 0;
+}
+
+
+/* 二维码弹窗 */
+.pop_qrcode_main {
+    width: 634rpx;
+    box-sizing: border-box;
+    background: #fff;
+    height: 600rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background-image: url('https://cmjx.chengmeijiangxuan.com/static/web/genetest/indexbg.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    padding: 50rpx;
+}
+
+.pop_qrcode_main span {
+    color: #C2253A;
+}
+
+.pop_qrcode_main>view:nth-child(1) {
+    font-size: 36rpx;
+    color: #000;
+}
+
+/* .pop_qrcode_main>image:nth-child(2) {
+    width: 336rpx !important;
+    height: 336rpx !important;
+    margin: 30rpx 0;
+} */
+
+.pop_qrcode_main>view:nth-child(2) {
+    font-size: 26rpx;
+    color: #393939;
+    width: 100%;
+    text-align: left;
+    margin-top: 70rpx;
+    margin-bottom:
+}
+
+.pop_qrcode_main>view:nth-child(3) {
+    font-size: 26rpx;
+    color: #000;
+    margin-top: 12rpx;
+    margin-bottom: 70rpx;
+    width: 100%;
+    text-align: left;
+}
+
+.pop_qrcode_main .button_group view {
+    width: 100%;
+}
+
+/* 提醒弹窗 */
+.pop_minitoast_main {
+    width: 634rpx;
+    box-sizing: border-box;
+    background: #fff;
+    height: 455rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background-image: url('https://cmjx.chengmeijiangxuan.com/static/web/genetest/indexbg.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    padding: 65rpx 50rpx;
+}
+
+.pop_minitoast_main>view:nth-child(1) {
+    font-size: 36rpx;
+    color: #000;
+}
+
+.pop_minitoast_main>view:nth-child(2) {
+    font-size: 26rpx;
+    color: #393939;
+    width: 100%;
+    text-align: left;
+    margin-top: 49rpx;
+    margin-bottom: 53rpx;
+    line-height: 38rpx;
+}
+
+.mini_toast_group {
+    justify-content: space-between;
+}
+
+.mini_toast_group>view {
+    width: 245rpx;
+    font-size: 28rpx;
+}
+
+.mini_toast_group>view:first-child {
+    margin-right: 30rpx;
+}
+
+.mini_toast_group .btn.white {
+    background: unset;
+}

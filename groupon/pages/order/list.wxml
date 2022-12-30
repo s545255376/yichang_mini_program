@@ -1,0 +1,109 @@
+<!--groupon/pages/order/list.wxml-->
+<view class="tabbar">
+    <view class="{{tabbarNum == index?'tabbar_click':''}}" bindtap="tabbarChange" wx:for="{{tabbar}}"  wx:key="tabbar" wx:for-item="item" wx:for-index="index" data-idx="{{index}}">{{item}}</view>
+</view>
+<view class="ic_empty" wx:if="{{!loadState}}">
+    <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+    <view>网络异常，请重新登陆～</view>
+</view>
+<view class="ic_empty" wx:elif="{{list.length == 0}}">
+    <image src="../../../images/ic_empty_order.png" mode="widthFix"></image>
+    <view>暂无订单～</view>
+</view>
+<view wx:else class="page {{needAdapt ? 'iphone_pandding' : ''}}">
+    <view class="list_shell" wx:for="{{list}}" wx:key="index">
+        <view class="item">
+            <view class="item_header">
+                <view class="header_left">
+                    <block wx:if="{{is_storeStaff}}">
+                        <view>
+                            <image src="{{item.ownerInfo.portrait}}"></image>
+                            <view class="tuanzhang">
+                                <text>团长</text>
+                            </view>
+                        </view>
+                        <text>{{item.ownerInfo.username}}</text>
+                    </block>
+                </view>
+                <view class="header_right">
+                    <block wx:if="{{item.pd_status == 0}}">
+                        <view>还有</view>
+                        <van-count-down time="{{ item.deadline }}" />
+                        <view>结束</view>
+                    </block>
+                    <text class="status" wx:elif="{{item.pd_status == 1}}">拼团成功</text>
+                    <text class="status red" wx:else>拼团失败</text>
+                </view>
+            </view>
+            <view class="item_contant">
+                <view class="item_lists" wx:for="{{item.lists}}" wx:for-item="item_lists" wx:for-index="lists_index" wx:key="lists_index">
+                    <view class="item_order" wx:if="{{!is_storeStaff}}">订单编号：{{item_lists.order.order_sn}}</view>
+                    <view class="item_goods" wx:for="{{item_lists.order.goods}}" wx:for-item="item_goods" wx:for-index="goods_index" wx:key="goods_index">
+                        <image src="{{item_goods.image}}" mode="widthFix"></image>
+                        <view>
+                            <view>{{item_goods.goods_name}}</view>
+                            <view>
+                                <text>￥{{item_goods.goods_price}}</text>
+                                <text>x{{item_goods.num}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="item_order_consignee" wx:if="{{!is_storeStaff}}">
+                    <view>
+                        <image src="../../images/store.png"></image>
+                        <text>{{item.consignee.consignee}}</text>
+                    </view>
+                    <view>{{item.consignee.province}}{{item.consignee.district}}{{item.consignee.detail_address}}</view>
+                    <view>门店电话：{{item.consignee.mobile}}</view>
+                </view>
+            </view>
+            <view class="item_footer">
+                <view>
+                    <block wx:if="{{is_storeStaff}}">
+                        <view class="item_progress progressing" wx:if="{{item.pd_status == 0}}">
+                            <van-progress 
+                                percentage="{{item.progress}}"
+                                stroke-width="8"
+                                color="#C2253A"
+                                show-pivot="{{false}}"
+                            />
+                            <text>进行中</text>
+                        </view>
+                        <view class="item_progress success" wx:elif="{{item.pd_status == 1}}">
+                            <van-progress 
+                                percentage="{{item.progress}}"
+                                stroke-width="8"
+                                color="#61CC73"
+                                show-pivot="{{false}}"
+                            />
+                            <text>已成团</text>
+                        </view>
+                        <view class="item_progress failed" wx:else>
+                            <van-progress 
+                                percentage="{{item.progress}}"
+                                stroke-width="8"
+                                color="#7B7979"
+                                show-pivot="{{false}}"
+                            />
+                            <text>还差{{item.wait_order}}单</text>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view class="create_time">{{item.create_time}}</view>
+                    </block>
+                </view>
+                <view class="buttonGroup">
+                    <view class="btn white" bindtap="orderDetail" data-item="{{item}}">
+                        <text>拼团详情</text>
+                    </view>
+                    <view class="btn black" wx:if="{{item.owner == 1 && item.pd_status == 0}}">
+                        <text>邀请好友</text>
+                        <button open-type="share" data-gid="{{item.pd_goods_id}}" data-npdoid="{{item.pd_order_id}}"></button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="clearfix"></view>

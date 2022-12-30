@@ -1,0 +1,383 @@
+.page{
+  padding-bottom: 100rpx;
+}
+.ic_empty{
+  margin-top: -340rpx;
+}
+.ic_empty .goshoping{
+  background: #C2253A;
+  color: #ffffff;
+  font-size: 32rpx;
+  width: 200rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  margin-left: calc(50% - 100rpx);
+  margin-top: 40rpx;
+}
+/* 列表 */
+.cart_body{
+  width: 100%;
+  margin-top: 16rpx;
+}
+.cart{
+  width: calc(100% - 40rpx);
+  padding: 0 20rpx;
+  background: #ffffff;
+  display: flex;
+}
+
+.cart .check_icon{
+  margin: 114rpx 0;
+  text-align: center;
+  width: 70rpx;
+}
+.cart .check_icon .checkbox{
+  width: 28rpx;
+  margin: 0 auto;
+}
+.cart .detail{
+  width: calc(100% - 100rpx);
+  border-bottom: 1px solid #EAEBEE;
+  display: inline-flex;
+  margin-left: 20rpx;
+  padding: 30rpx 0;
+}
+.cart:last-child .detail{
+  border-bottom: none;
+}
+.cart .goods_thumb{
+  width: 180rpx;
+  height: 216rpx;
+}
+.cart .info{
+  width: calc(100% - 200rpx);
+  margin-left: 20rpx;
+}
+.cart .info .title{
+  font-size: 28rpx;
+   color: #231F20;
+   display: flex;
+}
+.cart .info .title view{
+  width: calc(100% - 30rpx);
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  line-height: 40rpx;
+}
+.cart .info .title image{
+  width: 26rpx;
+  margin: 5rpx 0;
+}
+.cart .info .desc{
+  width: 100%;
+  font-size: 24rpx;
+  color: #7B7979;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  line-height: 40rpx;
+  height: 40rpx;
+}
+.cart_norms{
+  margin-top: 20rpx;
+  width: max-content;
+  background: #F8F8F9;
+  color: #A7A5A6;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  padding: 0 18rpx;
+  display: flex;
+  max-width: calc(100% - 30rpx);
+}
+.cart_unnorms{
+  background: none;
+}
+.cart_norms image{
+  width: 32rpx;
+  margin: 9rpx 0;
+}
+.cart_norms view{
+  width: fit-content;
+  max-width: calc(100% - 40rpx);
+  margin-right: 8rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.price{
+  vertical-align: text-bottom;
+  display: flex;
+  width: 100%;
+}
+.pay_price{
+  width: calc(100% - 154rpx);
+  display: inline-flex;
+  margin-right: 16rpx;
+  
+  color: #C2253A;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  font-weight: bold;
+  margin-top: 36rpx;
+}
+.pay_price text{
+  font-size: 24rpx;
+}
+.market_price{
+  font-size: 20rpx;
+  color: #A7A5A6;
+  margin-left: 14rpx;
+  text-decoration: line-through;
+  font-weight: 100;
+}
+.cart .paynum{
+  float: right;
+  display: inline-flex;
+  margin-top: 24rpx;
+}
+.cart .paynum view{
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background: #F2F3F5;
+  color: #231F20;
+  text-align: center;
+  /* margin-top: 20rpx; */
+}
+.cart .paynum .num{
+  margin: 0 2rpx;
+}
+.cart .paynum .un_click{
+  background: #F7F8FA;
+  color: #A7A5A6;
+}
+.invalid{
+  width: 100%;
+  background: #ffffff;
+  margin-top: 20rpx;
+}
+.invalid .head{
+  width: calc(100% - 60rpx);
+  line-height: 40rpx;
+  padding: 30rpx;
+  color: #231F20;
+  font-size: 28rpx;
+}
+.invalid .head view{
+  float: right;
+  color: #A7A5A6;
+  font-size: 24rpx;
+}
+.invalid .head image{
+  width: 30rpx;
+  vertical-align: text-bottom;
+  margin-left: 10rpx;
+}
+.invalid_tips{
+  font-size: 22rpx;
+  background: #A7A5A6;
+  width: 70rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 20rpx;
+  margin: 114rpx 0;
+}
+.invalid .cart{
+  opacity: 0.6;
+}
+.invalid .cart .pay_price{
+  color: #231F20;
+}
+/* 弹窗 */
+.toast .title{
+  position: fixed;
+  left: 0;
+  bottom: calc(70% - 260rpx);
+  width: calc(100% - 60rpx);
+  height: 200rpx;
+  padding: 30rpx;
+  display: flex;
+  border-bottom: 1px solid #EAEBEE;
+}
+
+.toast .title .goods_img{
+  width: 200rpx;
+  height: 200rpx;
+}
+.toast .title .info{
+  width: calc(100% - 220rpx);
+  padding-left: 20rpx;
+}
+.toast .title .price{
+  font-size: 36rpx;
+  line-height: 60rpx;
+  margin-bottom: 10rpx;
+  display: table-cell;
+  vertical-align: bottom;
+}
+.toast .title .price text{
+  font-size: 30rpx;
+}
+.toast .title .price view{
+  display: inline-block;
+  font-size: 26rpx;
+  color: #A7A5A6;
+  text-decoration: line-through;
+}
+.toast .title .price view text{
+  font-size: 22rpx;
+}
+.toast .title .search_tips{
+  color: #A7A5A6;
+  font-size: 24rpx;
+}
+.toast .title .search_tips text{
+  margin-left: 10rpx;
+}
+.toast .title .stock{
+  position: absolute;
+  bottom: 20rpx;
+  left: 240rpx;
+  font-size: 24rpx;
+  color: #A7A5A6;
+}
+/* 规格 */
+.toast .norms{
+  width: calc(100% - 60rpx);
+  height: calc(100% - 450rpx);
+  padding: 30rpx;
+  margin-top: 260rpx;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling:touch;
+}
+.toast .norms .name{
+  font-size: 28rpx;
+  color: #231F20;
+  line-height: 40rpx;
+}
+.toast .norms .btn_list{
+  width: 100%;
+  display: table-cell;
+  padding-bottom: 30rpx;
+}
+.toast .norms .btn_list view{
+  background: #F7F8FA;
+  padding: 8rpx;
+  line-height: 45rpx;
+  font-size: 24rpx;
+  color: #231F20;
+  display: inline-flex;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+}
+.toast .norms .btn_list image{
+  width: 45rpx;
+  height: 45rpx;
+}
+.toast .norms .btn_list text{
+  padding: 0 20rpx;
+}
+.toast .norms .btn_click{
+  background: #FAE6E6 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 结算 */
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  display: inline-flex;
+  background: #ffffff;
+  border-top: 1rpx solid #EAEBEE;
+  z-index: 999;
+}
+.footer .checkpart{
+  font-size: 28rpx;
+  color: #231F20;
+  width: 120rpx;
+  display: inline-flex;
+  margin-left: 30rpx;
+}
+.footer view{
+  float: right;
+  text-align: left;
+  width: calc(100% - 200rpx);
+  padding: 0 15rpx;
+  color: #A7A5A6;
+  font-size: 24rpx;
+}
+.footer text{
+  color: #C2253A;
+}
+.footer .sumnum{
+  font-size: 32rpx;
+}
+.footer button{
+  height: 100%;
+  width: 200rpx;
+  background: #231F20;
+  color: #ffffff;
+  font-size: 34rpx;
+  float: right;
+  border: none;
+  border-radius: 0;
+}
+/* 20201209 */
+.paytips{
+  width: 100%;
+  font-size: 24rpx;
+  color: #C2253A;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #FCF2F3;
+}
+.cartpart{
+  width: 100%;
+  background: #ffffff;
+  margin-bottom: 20rpx;
+}
+.cartpart .head{
+  width: calc(100% - 60rpx);
+  line-height: 40rpx;
+  padding: 30rpx;
+  color: #231F20;
+  font-size: 28rpx;
+  border-bottom: 1px solid #EAEBEE;
+}
+
+.head checkbox .wx-checkbox-input{
+  border-color: #D3D2D2;
+}
+.head checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #000000;
+  border-color: #231F20;
+}
+.head checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  color: #ffffff;
+}

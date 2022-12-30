@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "van-count-down": "@vant/weapp/count-down/index",
+        "van-progress": "@vant/weapp/progress/index"
+    },
+    "navigationBarTitleText": "拼团订单",
+    "enablePullDownRefresh": true
+}

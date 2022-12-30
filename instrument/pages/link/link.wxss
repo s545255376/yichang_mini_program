@@ -1,0 +1,258 @@
+page {
+    background: #ffffff;
+}
+
+.head {
+    width: calc(100% - 100rpx);
+    padding: 0 50rpx;
+    font-size: 46rpx;
+    line-height: 46rpx;
+    color: #231F20;
+    margin-top: 90rpx;
+    margin-bottom: 20rpx;
+    font-weight: bold;
+}
+
+.desc {
+    width: calc(100% - 100rpx);
+    padding: 0 50rpx;
+    font-size: 30rpx;
+    line-height: 30rpx;
+    color: #A7A5A6;
+}
+
+.desc text {
+    color: #D9C392;
+    margin-left: 12rpx;
+}
+
+.tips {
+    font-size: 30rpx;
+    line-height: 30rpx;
+    color: #A7A5A6;
+    text-align: center;
+}
+
+.tips text {
+    color: #007AFF;
+    margin-left: 20rpx;
+}
+
+.tips view {
+    background: #52C41A;
+    width: 15rpx;
+    height: 15rpx;
+    border-radius: 50%;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 20rpx;
+}
+
+.link_success {
+    width: 100%;
+    margin-top: 30rpx;
+    text-align: center;
+    color: #231F20;
+    font-size: 30rpx;
+    line-height: 40rpx;
+}
+
+.link_success image {
+    width: 40rpx;
+    margin-right: 8rpx;
+    vertical-align: top;
+}
+
+.bg {
+    width: 100%;
+    text-align: center;
+}
+
+.bg image {
+    width: 100%;
+    margin: 130rpx auto 60rpx auto;
+}
+
+.start_pair {
+    width: 166rpx;
+    height: 166rpx;
+    background: #D4D4D4;
+    border-radius: 50%;
+    border: 12rpx solid #F2F2F2;
+    text-align: center;
+    color: #ffffff;
+    margin: 90rpx auto 60rpx;
+}
+
+.start_pair view {
+    line-height: 50rpx;
+    font-size: 40rpx;
+}
+
+.start_pair view:first-child {
+    margin-top: 33rpx;
+}
+
+.start_pair.pair_click {
+    background: #D9C392 !important;
+    border-color: #F3EDDE !important;
+}
+
+.hist {
+    color: #231F20;
+    font-size: 28rpx;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* ----------------------------------------------------------------------- */
+.list {
+    width: calc(100% - 120rpx);
+    margin: 90rpx 60rpx 0;
+}
+
+.list .row {
+    margin-bottom: 20rpx;
+    padding: 0 30rpx;
+    border-radius: 20rpx;
+    font-size: 26rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    background: #F8F8F8;
+}
+
+.list .row view {
+    width: calc(100% - 180rpx);
+    color: #231F20;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.list .row text {
+    float: right;
+    color: #007AFF;
+}
+
+.list .row .dbm {
+    margin-right: 10rpx;
+    color: #A7A5A6;
+}
+
+
+/* 解绑 */
+.unbundling {
+    width: calc(100% - 140rpx);
+    position: fixed;
+    top: 50%;
+    left: 70rpx;
+    background: #ffffff;
+    border-radius: 30rpx;
+    z-index: 999;
+    margin-top: -240rpx;
+}
+
+.unbundling .info {
+    width: calc(100% - 60rpx);
+    padding: 0 30rpx;
+}
+
+.unbundling .title {
+    color: #000000;
+    font-size: 34rpx;
+    height: 44rpx;
+    line-height: 44rpx;
+    text-align: center;
+    padding: 40rpx 0 50rpx;
+}
+
+.unbundling input {
+    width: calc(100% - 40rpx);
+    height: 80rpx;
+    line-height: 80rpx;
+    background: #F8F8F8;
+    padding: 0 20rpx;
+}
+
+.unbundling .tips {
+    font-size: 24rpx;
+    color: #D90B33;
+    line-height-step: 36rpx;
+    text-align: left;
+    margin-top: 10rpx;
+}
+
+.unbundling .btn {
+    width: 100%;
+    display: flex;
+    margin-top: 50rpx;
+    border-top: 1rpx solid rgba(60, 60, 67, 0.15);
+}
+
+.unbundling .btn view {
+    width: 100%;
+    text-align: center;
+    font-size: 32rpx;
+    height: 45rpx;
+    line-height: 45rpx;
+    padding: 20rpx 0;
+}
+
+.unbundling .btn .cancel {
+    color: #A7A5A6;
+    border-right: 1rpx solid rgba(60, 60, 67, 0.15);
+}
+
+.unbundling .btn .confirm {
+    color: #D9C392;
+}
+
+.explain {
+    position: fixed;
+    left: 60rpx;
+    top: 100rpx;
+    width: calc(100% - 200rpx);
+    height: calc(100% - 200rpx);
+    background: #ffffff;
+    overflow-y: scroll;
+    padding: 0 40rpx;
+    z-index: 999;
+    border-radius: 20rpx;
+}
+
+.explain .title {
+    font-size: 36rpx;
+    color: #231F20;
+    height: 36rpx;
+    line-height: 36rpx;
+    text-align: center;
+    padding: 45rpx 0 65rpx;
+}
+
+.explain .info {
+    width: 100%;
+    height: calc(100% - 246rpx);
+    overflow-y: scroll;
+}
+
+.explain image {
+    width: 100%;
+}
+
+.explain .btn {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #D9C392;
+    font-size: 32rpx;
+    text-align: center;
+}
+
+.lately {
+    font-size: 30rpx;
+    color: #A7A5A6;
+    width: calc(100% - 120rpx);
+    margin: 0 60rpx;
+}

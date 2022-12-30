@@ -1,0 +1,60 @@
+<view class="head">{{head}}</view>
+<view class="tips">{{tips}}</view>
+<!-- 个人信息第一页 -->
+<view wx:if="{{addpage == 1}}">
+  <view class="title">性别</view>
+  <view class="sex_picker">
+    <view class="{{sexnum == 0?'sex_checked':''}}" bindtap="sexChange" data-num="0"><image src="{{sexnum == 0?'../../images/ic_woman_white.png':'../../images/ic_woman_black.png'}}" mode="widthFix"></image>女士</view>
+    <view class="{{sexnum == 1?'sex_checked':''}}" bindtap="sexChange" data-num="1"><image src="{{sexnum == 1?'../../images/ic_man_white.png':'../../images/ic_man_black.png'}}" mode="widthFix"></image>男士</view>
+  </view>
+  <view class="title">年龄</view>
+  <view class="time_picker">
+    <input placeholder="请输入你的年龄" value="{{showDate}}" bindinput="bindDateChange" type="number"></input>
+    <!-- 
+      年龄下拉选择
+      <picker value="{{date}}" bindchange="bindDateChange" range="{{ageArr}}">
+        <view class="picker {{date == ''?'':'date_checked'}}">{{showDate}}</view>
+      </picker> 
+    -->
+  </view>
+  <view class="nextbtn {{showDate != ''?'':'nextunclick'}}">
+    <view bindtap="nextBtn"><image src="../../images/ic_next.png" mode="widthFix"></image></view>
+  </view>
+</view>
+<!-- 个人信息第二页 -->
+<view wx:else>
+  <view class="classify">
+    <view class="row {{skinnum == 1?'checked':''}}" bindtap="skinChange" data-num="1">
+      <view class="image"><image src="../../images/skin_dry.png" mode="widthFix"></image></view>
+      <view class="row_info">
+        <view class="row_title">干性皮肤</view>
+        <view class="row_desc">皮脂分泌少，皮肤干燥，毛孔细小而不明显，并易产生细小皱纹。</view>
+      </view>
+    </view>
+    <view class="row {{skinnum == 2?'checked':''}}" bindtap="skinChange" data-num="2">
+      <view class="image"><image src="../../images/skin_oily.png" mode="widthFix"></image></view>
+      <view class="row_info">
+        <view class="row_title">油性皮肤</view>
+        <view class="row_desc">油脂分泌旺盛，毛孔粗大，弹性佳，不易衰老。皮肤易吸收紫外线。</view>
+      </view>
+    </view>
+    <view class="row {{skinnum == 3?'checked':''}}" bindtap="skinChange" data-num="3">
+      <view class="image"><image src="../../images/skin_mixed_dry.png" mode="widthFix"></image></view>
+      <view class="row_info">
+        <view class="row_title">混干性皮肤</view>
+        <view class="row_desc">T区出油且U区不油，易长斑，两颊缺水易脱皮，且眼周皱纹较明显。</view>
+      </view>
+    </view>
+    <view class="row {{skinnum == 4?'checked':''}}" bindtap="skinChange" data-num="4">
+      <view class="image"><image src="../../images/skin_mixed_oily.png" mode="widthFix"></image></view>
+      <view class="row_info">
+        <view class="row_title">混油性皮肤</view>
+        <view class="row_desc">T区出油且U区不油，易有黑头白头痘痘等毛孔堵塞的问题。</view>
+      </view>
+    </view>
+  </view>
+  <view class="skinbtn">
+    <view class="lastbtn" bindtap="lastBtn">上一步</view>
+    <view class="gocheck" bindtap="goNext">进入检测</view>
+  </view>
+</view>
