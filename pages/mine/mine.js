@@ -1,9 +1,11 @@
 const app = getApp();
 const Font = require('../../utils/getFont');
 const getRequest = require('../../utils/getRequest');
+import drawQrcode from '../../utils/weapp.qrcode.esm'
 Page({
     data: {
         pageShow: false,
+        cancel_code: true,
         logType: false,
         userinfo: {
             username: '点击登录',
@@ -150,21 +152,50 @@ Page({
             })
         }
     },
-    //消费积分
-    bonusPoints: function () {
-        let logCheck = this.goLogin();
-        if (logCheck == true) {
-            wx.navigateTo({
-                url: '../points/spend/spend'
-            })
-        }
+    showCode: function () {
+        drawQrcode({
+            width: 200,
+            height: 200,
+            canvasId: 'myQrcode',
+            text: `${app.globalData.userInfo.id}`,     
+        })
+        this.setData({
+            cancel_code: false
+        })
     },
+    cancelCode: function () {
+        this.setData({
+            cancel_code: true
+        })
+    },
+    //消费积分
+    // bonusPoints: function () {
+    //     let logCheck = this.goLogin();
+    //     if (logCheck == true) {
+    //         wx.navigateTo({
+    //             url: '../points/spend/spend'
+    //         })
+    //     }
+    // },
     //扫描积分
     scanPoints: function () {
+        let _this = this;
         let logCheck = this.goLogin();
         if (logCheck == true) {
-            wx.navigateTo({
-                url: '../points/scan/scan'
+            wx.scanCode({
+              onlyFromCamera: true,
+              scanType: [],
+                success: (result) => {
+                    wx.navigateTo({
+                        url: `../points/spend/spend?usrid=${result.data.usrid}`
+                    })
+              },
+                fail: (res) => {
+                  
+              },
+              complete: (res) => {
+                  
+              },
             })
         }
     },
@@ -174,6 +205,15 @@ Page({
         if (logCheck == true) {
             wx.navigateTo({
                 url: '../points/team/team'
+            })
+        }
+    },
+    //积分明细
+    goDetail: function () {
+        let logCheck = this.goLogin();
+        if (logCheck == true) {
+            wx.navigateTo({
+                url: '../points/details/details'
             })
         }
     },
@@ -204,15 +244,6 @@ Page({
             })
         }
     },
-    //基因检测
-    genetest() {
-        // wx.navigateTo({
-        //     url: '../../genetest/pages/list/list'
-        // })
-        wx.navigateTo({
-            url: `/genetest/pages/index/index`,
-        })
-    },
     //分享海报
     sharePoster: function () {
         let logCheck = this.goLogin();
@@ -231,11 +262,11 @@ Page({
             })
         }
     },
-    grouponOrder() {
+    buyPoints() {
         let logCheck = this.goLogin();
         if (logCheck == true) {
             wx.navigateTo({
-                url: '../../groupon/pages/order/list'
+                url: '../fellow/fellow'
             })
         }
     },

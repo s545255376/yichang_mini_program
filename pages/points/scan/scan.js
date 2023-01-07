@@ -1,3 +1,5 @@
+const app = getApp()
+const getRequest = require('../../../utils/getRequest')
 Page({
 
     /**
@@ -5,14 +7,16 @@ Page({
      */
     data: {
         spendpoints: 0,
-        loadState: true,
+        customer: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        
+        this.setData({
+            customer: options.data.userid
+        })
     },
 
     /**
@@ -57,12 +61,7 @@ Page({
 
     },
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    },
+    
     getInputValue: function (e) {
         this.setData({
             spendpoints: e.detail.value
@@ -70,31 +69,19 @@ Page({
     },
     bonusPoints: function (e) {
         let _this = this;
-        wx.scanCode({
-            onlyFromCamera: true,
-            scanType: [],
-            success: (result) => {
-                postdata = {
+        postdata = {
                     
-                };
-                getRequest.post('index/order/points', postdata).then(function (res) {
+        };
+        getRequest.post('index/order/points', postdata).then(function (res) {
                     
-                  }).catch(function(err){//获取二维码失败
-                    console.log(err)
-                    _this.setData({loadState:true})
-                    setTimeout(() => {
-                      wx.navigateBack({
-                        delta: 1,
-                      })
-                    }, 1000);
-                  })
-            },
-            fail: (res) => {
-
-            },
-            complete: (res) => {
-
-            },
+        }).catch(function(err) {
+            console.log(err)
+            _this.setData({loadState:true})
+            setTimeout(() => {
+                wx.navigateBack({
+                    delta: 1,
+                })
+            }, 1000);
         })
-    }
+    },
 })

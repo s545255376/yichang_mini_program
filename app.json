@@ -37,7 +37,8 @@
         "pages/classifySearch/classifySearch",
         "pages/poster/huodong20220614",
         "pages/points/scan/scan",
-        "pages/points/spend/spend",
+        "pages/points/details/details",
+        "pages/fellow/fellow",
         "pages/points/team/team"
     ],
     "subpackages": [
@@ -99,12 +100,6 @@
                 "text": "分类"
             },
             {
-                "pagePath": "pages/livelist/livelist",
-                "iconPath": "images/ic_live.png",
-                "selectedIconPath": "images/ic_live_search.png",
-                "text": "直播"
-            },
-            {
                 "pagePath": "pages/intomyx/intomyx",
                 "iconPath": "images/icon_intomyx.png",
                 "selectedIconPath": "images/icon_intomyx_active.png",
@@ -121,19 +116,13 @@
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "诚美匠选",
+        "navigationBarTitleText": "夷畅岩茶",
         "navigationBarTextStyle": "black",
         "backgroundColor": "#f6f6f6"
     },
     "permission": {
         "scope.userLocation": {
             "desc": "您的位置信息将用于添加收货地址"
-        }
-    },
-    "plugins": {
-        "live-player-plugin": {
-            "version": "1.3.4",
-            "provider": "wx2b03c6e691cd7370"
         }
     },
     "sitemapLocation": "sitemap.json"

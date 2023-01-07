@@ -61,7 +61,6 @@ Page({
         getRequest
             .noToastPost("index/base/subscribe", {})
             .then(function (res) {
-                console.log(res);
                 app.globalData.subscribe = res.data.subscribe;
             });
     },

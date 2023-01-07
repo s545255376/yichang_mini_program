@@ -1,4 +1,10 @@
 <view class="{{pageShow == true?'wholepage':''}}">
+    <view hidden="{{cancel_code}}" class="code" bindtap="cancelCode">
+    <view class="code_box">
+        <view class="code_text">出示会员二维码扫一扫</view>
+        <canvas class="my_qrcode" style="width: 200px; height: 200px;" canvas-id="myQrcode"></canvas>
+    </view>
+    </view>
     <view class="mine">
         <image src="../../images/mine/ic_mine_bg.png" mode="widthFix" class="mine_bg"></image>
         <view class="user">
@@ -7,10 +13,11 @@
             <view>
                 <view class="username">{{userinfo.username}}</view>
                 <view class="store_name">
-                    <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>
-                    {{userinfo.store_name}}
+                    <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>我的积分:
+                    {{userinfo.points}}
                 </view>
             </view>
+            <image class="my_code" src="../../images/mine/code.png" bindtap="showCode"></image>
         </view>
         <view class="card">
             <image src="../../images/mine/ic_mine_cardbg.png" mode="aspectFill" class="mine_bg"></image>
@@ -70,28 +77,29 @@
             <text>营销服务</text>
         </view>
         <view class="part_body">
-            <view bindtap="grouponOrder">
+            <view bindtap="buyPoints">
                 <image src="../../images/mine/ic_pintuan.png" mode="widthFix"></image>
-                <view>拼团订单</view>
+                <view>充值积分</view>
             </view>
-            <view bindtap="bonusPoints">
-                <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
-                <view>消费积分</view>
-                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
-            </view>
+
             <view bindtap="scanPoints" wx:if="{{worker == true}}">
                 <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
                 <view>扫描积分</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
-            <view bindtap="goMyTeam" wx:if="{{worker == true}}">
+            <view bindtap="goMyTeam">
                 <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
                 <view>我的团队</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
+            <view bindtap="goDetail">
+                <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
+                <view>积分明细</view>
+                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
+            </view>
         </view>
     </view>
-    <view class="part server">
+    <!-- <view class="part server">
         <view class="part_title">
             <text>我的服务</text>
         </view>
@@ -125,7 +133,7 @@
                 <view>基因检测</view>
             </view>
         </view>
-    </view>
+    </view> -->
     <view class="part server">
         <view class="part_title">
             <text>其他功能</text>

@@ -1,11 +1,12 @@
+const app = getApp()
+const getRequest = require('../../../utils/getRequest')
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        points: 0,
-        team: '',
+        teams: [],
         loadState: true,
     },
 
@@ -74,12 +75,6 @@ Page({
      */
     onReachBottom() {
 
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
     }
+
 })

@@ -3,10 +3,14 @@
   <view>网络异常，请重新登陆～</view>
 </view>
 <view class="part" wx:else>
-    <view class="part_title">我的积分: {{points}}</view>
-    <view class="part_body">
-        <view>我的团队:</view>
-        <view></view>
+    <view class="history" wx:if="{{teams.length > 0}}">
+        <view class="head">团队记录:</view>
+        <view class="body" wx:for="{{teams}}" wx:for-item="item">
+            <view>{{item.time}}</view>
+            <view>{{item.phone}}</view>
+            <view>{{item.money}}</view>
+        </view>
     </view>
+    <view wx:else class="none">暂无记录</view>
 </view>
 

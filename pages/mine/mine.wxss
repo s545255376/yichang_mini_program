@@ -1,3 +1,29 @@
+.code {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 108%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(123, 121, 121, 50%);
+}
+.code_box {
+    border-radius: 6%;
+    background-color: white;
+    margin-top: 30%;
+    width: 80%;
+    height: 50%;
+}
+.code_text {
+    margin-top: 10%;
+    text-align: center;
+}
+.my_qrcode {
+    margin-top: 20%;
+    margin-left: 21%;
+}
 .mine{
   width: 100%;
   height: auto;
@@ -40,6 +66,12 @@
   vertical-align: text-bottom;
   margin-right: 8rpx;
 }
+
+.my_code{
+    width: 130rpx;
+    margin-left: 30%;
+}
+
 .card{
   position: absolute;
   bottom: 0;

@@ -1,0 +1,20 @@
+/* pages/fellow/fellow.wxss */
+.selecte_button view {
+    height: 300rpx;
+    background-size: cover;
+    margin-top: 4%;
+}
+.normal{
+    width: 100%;
+} 
+/* 按钮选中 */
+.selected{
+    border: solid 5rpx;
+    border-color: red;
+    width: 99%;
+}
+.click_button{
+    margin-top: 5%;
+    text-align: center;
+    font-size: 45rpx;
+}

@@ -1,17 +1,9 @@
-<view class="login">
-    <view class="logo">
-        <image src="../../images/mine/logo.png" mode="widthFix"></image>
-    </view>
-    <view class="name">夷畅岩茶</view>
-
-    <view class="title">为了给您提供完整功能需要获取以下权限</view>
-    <view class="tips">· {{tips}}</view>
+<view class="login" style="background-image: url(../../images/login/login_bg.png);">
+    <view class="name">夷 畅 岩 茶 蒸 着 喝</view>
 
     <!-- <button class="login_btn" wx:if="{{btnType == 0}}" bindtap="getUserInfo">同意授权</button> -->
-    <button class="login_btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{btnType == 1}}">同意授权</button>
+    <button class="login_btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{btnType == 1}}">微 信 授 权 登 录</button>
 </view>
-
-
 
 
 <!-- 协议 -->

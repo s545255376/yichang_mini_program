@@ -1,7 +1,7 @@
 // pages/poster/huodong20220614.js
 const app = getApp()
 const getRequest = require('../../utils/getRequest')
-const getLiveStatusFun = require('../../utils/getLiveStatusFun.js');
+// const getLiveStatusFun = require('../../utils/getLiveStatusFun.js');
 Page({
     data: {
         screenHeight: wx.getSystemInfoSync().windowHeight,

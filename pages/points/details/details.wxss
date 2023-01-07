@@ -1,3 +1,7 @@
+.points {
+    margin-top: 3%;
+    color: #757373;
+}
 .history {
     margin-top: 4%;
     color: #757373;

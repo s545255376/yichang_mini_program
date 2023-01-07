@@ -1,13 +1,17 @@
-// pages/order/points/points.js
+const app = getApp()
+const getRequest = require('../../../utils/getRequest')
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        code: '',
+        points: 0,
+        details: [
+            { time: '2020-01-01', point: '+800', detail: '充值' },
+            { time: '2020-01-02', point: '-600', detail: '消费' } 
+        ],
         loadState: true,
-
     },
 
     /**
@@ -19,9 +23,12 @@ Page({
             token: app.globalData.token,
             uid: app.globalData.userInfo.id,
         };
-        getRequest.post('index/order/points', postdata).then(function (res) {
-            _this.setData({code: res.data.img})
-          }).catch(function(err){//获取二维码失败
+        getRequest.post('index/team', postdata).then(function (res) {
+            _this.setData({
+                points: res.data.points,
+                team: res.data.team
+            })
+          }).catch(function(err){
             console.log(err)
             _this.setData({loadState:true})
             setTimeout(() => {
@@ -72,12 +79,6 @@ Page({
      */
     onReachBottom() {
 
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
     }
+
 })

@@ -1,4 +1,12 @@
-let livePlayer = requirePlugin('live-player-plugin')
+// let livePlayer = requirePlugin('live-player-plugin')
+
+//app.json
+// "plugins": {
+//     "live-player-plugin": {
+//         "version": "1.3.4",
+//         "provider": "wx2b03c6e691cd7370"
+//     }
+// },
 App({
     onLaunch: function () {
         const _this = this

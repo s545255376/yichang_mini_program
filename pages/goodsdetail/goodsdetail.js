@@ -1259,17 +1259,17 @@ Page({
         })
     },
     // 分享
-    onShareAppMessage: function (res) {
-        return {
-            title: this.data.list.is_pd == 1 ?
-                '小红书爆款清洁盲盒正在拼团中，不要错过噢' : this.data.list.goods_name,
-            imageUrl: this.data.list.image,
-            path: 'pages/login/login?u=' +
-                app.globalData.userInfo.id +
-                '&f=' +
-                app.globalData.userInfo.pid +
-                '&t=g&gid=' +
-                this.data.list.id,
-        }
-    },
+    // onShareAppMessage: function (res) {
+    //     return {
+    //         title: this.data.list.is_pd == 1 ?
+    //             '小红书爆款清洁盲盒正在拼团中，不要错过噢' : this.data.list.goods_name,
+    //         imageUrl: this.data.list.image,
+    //         path: 'pages/login/login?u=' +
+    //             app.globalData.userInfo.id +
+    //             '&f=' +
+    //             app.globalData.userInfo.pid +
+    //             '&t=g&gid=' +
+    //             this.data.list.id,
+    //     }
+    // },
 })

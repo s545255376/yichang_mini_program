@@ -2,10 +2,10 @@ const app = getApp()
 const cartNum = require('../../utils/cartNum.js')
 const Font = require('../../utils/getFont')
 const getRequest = require('../../utils/getRequest')
-const getLiveStatusFun = require('../../utils/getLiveStatusFun.js')
+// const getLiveStatusFun = require('../../utils/getLiveStatusFun.js')
 import {
     Queue,
-    liveHomeDate,
+    //liveHomeDate,
     objType
 } from '../../utils/util.js'
 const queryPop = new Queue() //弹窗队列
@@ -793,14 +793,10 @@ Page({
         })
     },
     goGroupon() {
-        const {
-            eject_goods_id = ''
-        } = this.data.grouponShow
-        if (eject_goods_id) {
-            wx.navigateTo({
-                url: `../goodsdetail/goodsdetail?goods_id=${eject_goods_id}&live=false`,
-            })
-        }
+
+        wx.navigateTo({
+            url: '../fellow/fellow',
+        })
     },
     //轮播图监听
     swiperChange: function (e) {
@@ -1058,7 +1054,7 @@ Page({
     //分享
     onShareAppMessage: function () {
         return {
-            title: '诚美匠选',
+            title: '夷畅岩茶',
             imageUrl: 'https://cmjx.chengmeijiangxuan.com/static/common/images/share.jpg',
             path: 'pages/login/login?u=' +
                 app.globalData.userInfo.id +
