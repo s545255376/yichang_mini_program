@@ -6,6 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        token:'',
         teams: [],
         loadState: true,
     },
@@ -15,14 +16,13 @@ Page({
      */
     onLoad(options) {
         let _this = this;
-        postdata = {
+        let postdata = {
             token: app.globalData.token,
-            uid: app.globalData.userInfo.id,
         };
-        getRequest.post('index/team', postdata).then(function (res) {
+        getRequest.post('index/Account/children', postdata).then(function (res) {
             _this.setData({
-                points: res.data.points,
-                team: res.data.team
+                // points: res.data.points,
+                team: res.data.data
             })
           }).catch(function(err){
             console.log(err)

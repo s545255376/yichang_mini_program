@@ -1,4 +1,4 @@
-<view class="list" bindtap="sendBtn" data-tel="{{userinfo.seller_mobile}}">美容师电话<text>{{userinfo.seller_mobile}}</text></view>
+<view class="list" bindtap="sendBtn" data-tel="{{userinfo.seller_mobile}}">茶艺师电话<text>{{userinfo.seller_mobile}}</text></view>
 <view class="list" bindtap="sendBtn" data-tel="{{userinfo.store_mobile}}">门店电话<text>{{userinfo.store_mobile}}</text></view>
 
 

@@ -30,8 +30,8 @@ App({
     },
     globalData: {
         examineStr: '20221008',
-        url: 'https://cmjx.chengmeijiangxuan.com/', //正式
-        // url: 'https://cmjxtest.shqlts.com/',//测试
+        //url: 'https://cmjx.chengmeijiangxuan.com/', //正式
+        url: 'http://101.43.21.82/',//测试
         //url: 'http://192.168.7.68:4411/', //本地
         token: '',
         icloading: false, //仪器云链接状态

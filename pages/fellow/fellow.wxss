@@ -14,7 +14,13 @@
     width: 99%;
 }
 .click_button{
-    margin-top: 5%;
+    border: solid;
+    background-color: #111;
+    color: white;
+    width: 80%;
+    line-height: 100rpx;
+    margin-top: 15%;
     text-align: center;
     font-size: 45rpx;
+    margin-left: 10%;
 }

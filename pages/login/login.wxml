@@ -28,7 +28,7 @@
 
 <pop bindeventclose="closeToast" popname="registerToast" wx:if="{{registerToast}}">
     <view id="pop_register_main">
-        <view id="title">绑定茶艺师</view>
+        <view id="title">绑定邀请人</view>
         <view id="main">
             <van-field value="{{ registerValue }}" placeholder="请输入茶艺师手机号" border="{{ false }}" bind:change="registerOnChange" />
         </view>

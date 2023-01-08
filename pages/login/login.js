@@ -161,6 +161,7 @@ Page({
                             mobile: gettoken.data.mobile,
                         });
                     })
+                
                 // .catch(function (tokenerr) {
                 //     getRequest.errlogPost("token获取", tokenerr, {
                 //         code: wxlogin.code,
@@ -342,7 +343,7 @@ Page({
                 if (err.code == 208) {
                     /**
                      * 208错误
-                     * 代表新客没有邀请进入需反向绑定美容师
+                     * 代表新客没有邀请进入需反向绑定邀请人
                      */
                     this.setData({
                         registerToast: true

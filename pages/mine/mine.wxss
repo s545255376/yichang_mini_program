@@ -23,6 +23,8 @@
 .my_qrcode {
     margin-top: 20%;
     margin-left: 21%;
+    width: 200px;
+    height: 200px;
 }
 .mine{
   width: 100%;
@@ -68,7 +70,8 @@
 }
 
 .my_code{
-    width: 130rpx;
+    width: 100rpx;
+    height: 100rpx;
     margin-left: 30%;
 }
 

@@ -4,6 +4,7 @@ const getRequest = require('../../utils/getRequest');
 import drawQrcode from '../../utils/weapp.qrcode.esm'
 Page({
     data: {
+        qrcode: '',
         pageShow: false,
         cancel_code: true,
         logType: false,
@@ -61,10 +62,10 @@ Page({
     },
     onShow: function () {
         wx.setStorageSync('intomyxprevpage', 'mine');
+        let _this = this;
 
         if (app.globalData.userInfo.id != '') { //用户已登录
-            let _this = this,
-                postdata = {
+            let postdata = {
                     uid: app.globalData.userInfo.id,
                     token: app.globalData.token
                 };
@@ -123,6 +124,15 @@ Page({
                 message: 0
             })
         }
+
+        getRequest.post('index/Account/hxQrcode', { token: app.globalData.token }).then(function (res) {
+            _this.setData({
+                qrcode: res.data.qrcode
+            })
+        })
+        .catch(function (err) {
+            
+        });
     },
     //去登陆--不需要
     goLogin: function () {

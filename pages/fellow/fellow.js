@@ -79,19 +79,21 @@ Page({
         })
     },
     spendMoney() {
+        let _this = this;
         let postdata = {
-            money: this.data.money
+            price: _this.data.money,
+            token: app.globalData.token,
         }
-        getRequest.post('index/order/points', postdata).then(function (res) {
-            
+        getRequest.post('index/Recharge/createOrder', postdata).then(function (res) {
+            console.log(res.data);
           }).catch(function(err) {
             console.log(err)
             _this.setData({loadState:true})
-            setTimeout(() => {
-              wx.navigateBack({
-                delta: 1,
-              })
-            }, 1000);
+            // setTimeout(() => {
+            //   wx.navigateBack({
+            //     delta: 1,
+            //   })
+            // }, 1000);
           })
     }
 })

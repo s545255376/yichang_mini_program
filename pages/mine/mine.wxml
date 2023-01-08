@@ -2,7 +2,8 @@
     <view hidden="{{cancel_code}}" class="code" bindtap="cancelCode">
     <view class="code_box">
         <view class="code_text">出示会员二维码扫一扫</view>
-        <canvas class="my_qrcode" style="width: 200px; height: 200px;" canvas-id="myQrcode"></canvas>
+        <!-- <canvas class="my_qrcode" style="width: 200px; height: 200px;" canvas-id="myQrcode"></canvas> -->
+        <image class="my_qrcode" src="{{qrcode}}"></image>
     </view>
     </view>
     <view class="mine">
