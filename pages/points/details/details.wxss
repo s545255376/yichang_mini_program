@@ -1,5 +1,13 @@
+.bk_img {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    opacity: 90%;
+}
 .points {
-    margin-top: 3%;
+    margin-top: 5%;
     color: #757373;
 }
 .history {

@@ -283,8 +283,8 @@ Page({
                                     avatar: _this.data.userinfo.avatarUrl,
                                     gender: "",
                                     fid: app.globalData.sharequery.f,
-                                    user_id: app.globalData.sharequery.u,
-                                    // invite_uid: app.globalData.sharequery.u,
+                                    user_id: '',
+                                    invite_uid: app.globalData.sharequery.u,
                                 });
                             })
                         // .catch(function (tokenerr) {
@@ -312,7 +312,8 @@ Page({
                     avatar: _this.data.userinfo.avatarUrl,
                     gender: "",
                     fid: app.globalData.sharequery.f,
-                    user_id: app.globalData.sharequery.u,
+                    user_id: '',
+                    invite_uid: app.globalData.sharequery.u,
                 });
             }
         } else {

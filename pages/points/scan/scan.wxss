@@ -1,14 +1,35 @@
-.input_box{
+/* .input_box{
     display: flex;
     flex-direction: row;
     margin-left: 5%;
+} */
+.bk_img {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    opacity: 90%;
 }
 .input_line{
     width: 80%;
+    height: 150rpx;
+    font-size: 60rpx;
+    margin-left: 10%;
+    margin-top: 50%;
+    color: #ffffff;
+}
+.placeholder_input {
+    color: #ffffff;
 }
 .input_button{
     border: solid;
-    border-radius: 20%;
-    width: 15%;
+    background-color: transparent;
+    color: white;
+    width: 80%;
+    line-height: 100rpx;
+    margin-top: 5%;
     text-align: center;
+    font-size: 45rpx;
+    margin-left: 10%;
 }

@@ -167,12 +167,6 @@ Page({
         }
     },
     showCode: function () {
-        drawQrcode({
-            width: 200,
-            height: 200,
-            canvasId: 'myQrcode',
-            text: `${app.globalData.userInfo.id}`,     
-        })
         this.setData({
             cancel_code: false
         })
@@ -201,15 +195,9 @@ Page({
               scanType: [],
                 success: (result) => {
                     wx.navigateTo({
-                        url: `../points/scan/scan?usrid=${result.data.usrid}`
+                        url: `../points/scan/scan?${result.result}`
                     })
-              },
-                fail: (res) => {
-                  
-              },
-              complete: (res) => {
-                  
-              },
+              }
             })
         }
     },

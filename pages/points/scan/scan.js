@@ -6,8 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        spendpoints: 0,
-        customer: ''
+        point: '',
+        user_id: ''
     },
 
     /**
@@ -15,7 +15,7 @@ Page({
      */
     onLoad(options) {
         this.setData({
-            customer: options.data.userid
+            user_id: options.userid
         })
     },
 
@@ -62,26 +62,32 @@ Page({
     },
 
     
-    getInputValue: function (e) {
+    getInputValue(e) {
         this.setData({
-            spendpoints: e.detail.value
+            point: e.detail.value
         })
     },
     bonusPoints: function (e) {
         let _this = this;
-        postdata = {
-                    
+        let postdata = {
+            point: _this.data.point,
+            token: app.globalData.token,
+            user_id: _this.data.user_id
         };
-        getRequest.post('index/order/points', postdata).then(function (res) {
-                    
+        getRequest.post('index/Account/hx', postdata).then(function (res) {
+            console.log(res);
+            wx.showToast({
+                title: '消费成功',
+                icon: "success"
+            })
         }).catch(function(err) {
             console.log(err)
             _this.setData({loadState:true})
-            setTimeout(() => {
-                wx.navigateBack({
-                    delta: 1,
-                })
-            }, 1000);
         })
+        setTimeout(() => {
+            wx.navigateBack({
+                delta: 1,
+            })
+        }, 1000);
     },
 })

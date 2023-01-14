@@ -13,6 +13,11 @@
     border-color: red;
     width: 99%;
 }
+
+.select_img {
+    width: 100%;
+    height: 100%;
+}
 .click_button{
     border: solid;
     background-color: #111;

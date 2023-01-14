@@ -3,10 +3,11 @@
   <view>网络异常，请重新登陆～</view>
 </view>
 <view class="part" wx:else>
+    <image class="bk_img" src="/images/login/login_bg.png"></image>
     <view class="history" wx:if="{{teams.length > 0}}">
         <view class="head">团队记录:</view>
         <view class="body" wx:for="{{teams}}" wx:for-item="item">
-            <view>{{item.create_time}}</view>
+            <view>{{item.add_time}}</view>
             <view>{{item.mobile}}</view>
             <view>{{item.point}}</view>
         </view>

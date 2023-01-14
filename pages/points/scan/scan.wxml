@@ -3,6 +3,7 @@
   <view>网络异常，请重新登陆～</view>
 </view>
 <view class="input_box" wx:else>
-    <input class="input_line" placeholder='金额' type="digit" bindinput='getInputValue'/>
+    <image class="bk_img" src="/images/login/login_bg.png"></image>
+    <input class="input_line" placeholder='请输入金额' type="digit" bindinput='getInputValue' placeholder-class="placeholder_input"/>
     <view class="input_button" bindtap="bonusPoints">确认</view>
 </view>
