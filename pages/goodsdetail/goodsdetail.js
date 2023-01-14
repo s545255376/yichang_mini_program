@@ -19,7 +19,7 @@ Page({
         banner: [],
         indicatorDots: false, //指示点
         autoplay: false, //自动播放
-        footerShow: false,
+        footerShow: true,
         current: 0,
 
         list: {

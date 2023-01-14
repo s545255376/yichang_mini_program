@@ -35,7 +35,7 @@ Page({
             name: "",
             order: []
         },
-        worker: true
+        store: 0
     },
     onLoad: function () {
         let _this = this,
@@ -66,6 +66,9 @@ Page({
         let _this = this;
 
         if (app.globalData.userInfo.id != '') { //用户已登录
+            _this.setData({
+                store: app.globalData.userInfo.store_id
+            })
             let postdata = {
                     uid: app.globalData.userInfo.id,
                     token: app.globalData.token
@@ -128,7 +131,7 @@ Page({
                                     wx.reLaunch({
                                       url: '../index/index',
                                     })
-                                }, 1500);
+                                }, 1200);
                             }
                         })
                     });

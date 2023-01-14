@@ -378,108 +378,66 @@ Page({
                     total: res.data.total,
                     body: res.data.body,
                 };
-                //微信支付
+                //积分支付
                 getRequest.post('index/pay/wxPay', orderdata).then((info) => {
-                    wx.requestPayment({
-                        nonceStr: info.data.nonceStr,
-                        package: info.data.package,
-                        paySign: info.data.paySign,
-                        timeStamp: info.data.timeStamp,
-                        signType: 'MD5',
-                        success(pay) {
-                            console.log(pay)
-                            //弹窗是否关注订单信息
-                            wx.requestSubscribeMessage({
-                                tmplIds: app.globalData.subscribe,
-                                complete(allow) {
-                                    app.toastFun('支付成功');
-                                    setTimeout(() => {
+                    wx.requestSubscribeMessage({
+                        tmplIds: app.globalData.subscribe,
+                        complete(allow) {
+                            app.toastFun('支付成功');
+                            setTimeout(() => {
 
-                                        if (app.globalData.sharequery.hasOwnProperty('gid') && app.globalData.sharequery.gid !== '') {
-                                            //通过分享直接消费的顾客进行上报
-                                            wx.reportEvent("impulsive_customer", {})
-                                        } else {
-                                            //自由消费顾客的上报
-                                            wx.reportEvent("hesitant_customer", {})
-                                        }
-
-                                        if (is_jx_goods == 1) { //匠选商品返回上两页
-                                            app.globalData.userInfo.level_id = 3;
-                                            wx.navigateBack({
-                                                delta: 2,
-                                            })
-                                        } else if (is_pd == 1) {
-                                            /**
-                                             * 新拼团
-                                             * 当订单支付完成后，缓存一些订单信息然后跳转回首页
-                                             * is_frompayment 是否是从payment页面跳转的
-                                             * pd_oid 订单id
-                                             * 
-                                             * 关于跳转
-                                             * 这里做一下测试
-                                             * 判断下页面栈的0下标是index的话  就使用新的跳转方法 不然还使用switchTab switchTab有个官方bug就是进入index 会执行两次onshow
-                                             */
-                                            const _cacheinfo = {
-                                                is_frompayment: true
-                                            }
-                                            app.router.cache_groupon = {
-                                                ..._cacheinfo
-                                            }
-                                            app.globalData.sharequery['t'] = 'm';
-                                            app.globalData.sharequery['npdoid'] = res.data.order_id;
-
-
-                                            const _pages = getCurrentPages();
-                                            if (_pages[0].route == 'pages/index/index') {
-                                                wx.navigateBack({
-                                                    delta: _pages.length,
-                                                })
-                                            } else {
-                                                wx.switchTab({
-                                                    url: '../index/index',
-                                                })
-                                            }
-
-                                        } else { //非匠选商品回到首页后跳转订单详情
-                                            app.router.orderid = res.data.order_id;
-                                            wx.switchTab({
-                                                url: '../index/index',
-                                            })
-                                        }
-                                    }, 1000)
+                                if (app.globalData.sharequery.hasOwnProperty('gid') && app.globalData.sharequery.gid !== '') {
+                                    //通过分享直接消费的顾客进行上报
+                                    wx.reportEvent("impulsive_customer", {})
+                                } else {
+                                    //自由消费顾客的上报
+                                    wx.reportEvent("hesitant_customer", {})
                                 }
-                            })
-                        },
-                        fail(pay) { //支付失败
-                            console.log(pay);
-                            app.toastFun('支付失败，请重试');
-                            //非匠选商品支付失败，回到首页后跳转订单详情
-                            if (is_jx_goods != 1) {
-                                setTimeout(() => {
-                                    if (is_pd == 1) {
-                                        const {
-                                            goods_id
-                                        } = _this.data;
-                                        app.globalData.sharequery['t'] = 'g';
-                                        app.globalData.sharequery['gid'] = goods_id;
-                                        const _pages = getCurrentPages();
-                                        if (_pages[0].route == 'pages/index/index') {
-                                            wx.navigateBack({
-                                                delta: _pages.length,
-                                            })
-                                        } else {
-                                            wx.switchTab({
-                                                url: '../index/index',
-                                            })
-                                        }
-                                    } else {
-                                        app.router.orderid = res.data.order_id;
+
+                                if (is_jx_goods == 1) { //匠选商品返回上两页
+                                    app.globalData.userInfo.level_id = 3;
+                                    wx.navigateBack({
+                                        delta: 2,
+                                    })
+                                } else if (is_pd == 1) {
+                                    /**
+                                     * 新拼团
+                                     * 当订单支付完成后，缓存一些订单信息然后跳转回首页
+                                     * is_frompayment 是否是从payment页面跳转的
+                                     * pd_oid 订单id
+                                     * 
+                                     * 关于跳转
+                                     * 这里做一下测试
+                                     * 判断下页面栈的0下标是index的话  就使用新的跳转方法 不然还使用switchTab switchTab有个官方bug就是进入index 会执行两次onshow
+                                     */
+                                    const _cacheinfo = {
+                                        is_frompayment: true
                                     }
+                                    app.router.cache_groupon = {
+                                        ..._cacheinfo
+                                    }
+                                    app.globalData.sharequery['t'] = 'm';
+                                    app.globalData.sharequery['npdoid'] = res.data.order_id;
+
+
+                                    const _pages = getCurrentPages();
+                                    if (_pages[0].route == 'pages/index/index') {
+                                        wx.navigateBack({
+                                            delta: _pages.length,
+                                        })
+                                    } else {
+                                        wx.switchTab({
+                                            url: '../index/index',
+                                        })
+                                    }
+
+                                } else { //非匠选商品回到首页后跳转订单详情
+                                    app.router.orderid = res.data.order_id;
                                     wx.switchTab({
                                         url: '../index/index',
                                     })
-                                }, 1000)
-                            }
+                                }
+                            }, 1000)
                         }
                     })
                 }).catch(function (err) {

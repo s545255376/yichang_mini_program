@@ -352,26 +352,13 @@ Page({
                 };
                 //获取微信支付参数
                 getRequest.post('index/pay/wxPay', orderdata).then(function (info) {
-                    //掉起微信支付
-                    wx.requestPayment({
-                        nonceStr: info.data.nonceStr,
-                        package: info.data.package,
-                        paySign: info.data.paySign,
-                        timeStamp: info.data.timeStamp,
-                        signType: 'MD5',
-                        success(pay) {
-                            //弹窗询问是否关注订单信息
-                            wx.requestSubscribeMessage({
-                                tmplIds: app.globalData.subscribe,
-                                complete(allow) {
-                                    app.toastFun('支付成功');
-                                    //支付成功后刷新页面
-                                    _this.getInfo(_this.data.order_id);
-                                }
-                            })
-                        },
-                        fail(pay) { //支付失败
-                            app.toastFun('支付失败，请重试');
+                    //掉起支付
+                    wx.requestSubscribeMessage({
+                        tmplIds: app.globalData.subscribe,
+                        complete(allow) {
+                            app.toastFun('支付成功');
+                            //支付成功后刷新页面
+                            _this.getInfo(_this.data.order_id);
                         }
                     })
                 }).catch(function (err) { //生成订单是白

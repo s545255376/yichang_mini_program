@@ -136,32 +136,20 @@ Page({
         body:res.data.body,
       };
       getRequest.post('index/pay/wxPay',orderdata).then(function(info){
-        wx.requestPayment({
-          nonceStr: info.data.nonceStr,
-          package: info.data.package,
-          paySign: info.data.paySign,
-          timeStamp: info.data.timeStamp,
-          signType:'MD5',
-          success(pay) {
-            wx.requestSubscribeMessage({
-              tmplIds: app.globalData.subscribe,
-              complete (allow) {
-                if(_this.data.tabbarNum == 1){
-                  list.splice(idx,1);
-                  _this.setData({list:list})
-                }
-                else{
-                  list[idx].order_status =1;
-                  _this.setData({list:list})
-                }
-                app.toastFun('支付成功');
+        wx.requestSubscribeMessage({
+            tmplIds: app.globalData.subscribe,
+            complete (allow) {
+              if(_this.data.tabbarNum == 1){
+                list.splice(idx,1);
+                _this.setData({list:list})
               }
-            })
-          },
-          fail(pay) { //支付失败
-            app.toastFun('支付失败，请重试');
-          }
-        })
+              else{
+                list[idx].order_status =1;
+                _this.setData({list:list})
+              }
+              app.toastFun('支付成功');
+            }
+          })
       }).catch(function(err){
         app.toastFun(err.msg);
         if(err.code == 204){

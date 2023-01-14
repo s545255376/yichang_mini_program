@@ -83,7 +83,7 @@
                 <view>充值积分</view>
             </view>
 
-            <view bindtap="scanPoints" wx:if="{{worker == true}}">
+            <view bindtap="scanPoints" wx:if="{{store > 0}}">
                 <image src="../../images/mine/scan.png" mode="widthFix"></image>
                 <view>扫描积分</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
