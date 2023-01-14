@@ -4,7 +4,7 @@ const Font = require('../../utils/getFont');
 const getRequest = require('../../utils/getRequest');
 Page({
     data: {
-        screenHeight: wx.getSystemInfoSync().windowHeight - wx.getSystemInfoSync().safeArea.top - 50,  //底部工具栏统一50px
+        screenHeight: wx.getSystemInfoSync().windowHeight,  
         activeKey: 0,
         classifyList: [],
         value:'',

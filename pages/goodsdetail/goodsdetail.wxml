@@ -118,13 +118,13 @@
         </view>
     </view>
 
-    <view class="share" wx:if="{{jxShow == true && liveStatus == 'false'}}">
+    <!-- <view class="share" wx:if="{{jxShow == true && liveStatus == 'false'}}"> -->
         <!-- <button open-type="share" class="share_link"><image src="../../images/ic_share_black.png" mode="widthFix"></image></button> -->
 
-        <view class="share_poster" bindtap="posterShow">
+        <!-- <view class="share_poster" bindtap="posterShow">
             <image src="../../images/ic_poster.png" mode="widthFix"></image>
         </view>
-    </view>
+    </view> -->
 
 
     <view class="footer" wx:if="{{footerShow == true}}">
@@ -161,7 +161,7 @@
         <view class="footer_r {{list.can_buy == 1?'':'unpay'}}" wx:else>
             <!-- <view class="b_btn add_cart" bindtap="addCart" wx:if="{{jxShow == true && liveStatus == 'false' && list.rakeback != 0 && list.is_enter_u8 != 0}}">加入购物袋</view> -->
             <view class="b_btn add_cart" bindtap="addCart" wx:if="{{list.can_add_cart != 0}}">加入购物袋</view>
-            <view class="b_btn paynow" bindtap="buyNow">{{jxShow == true?'立即购买':'成为匠选官'}}</view>
+            <view class="b_btn paynow" bindtap="buyNow">立即购买</view>
         </view>
 
 

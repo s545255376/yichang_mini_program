@@ -1,10 +1,4 @@
-<!-- {
-                "pagePath": "pages/livelist/livelist",
-                "iconPath": "images/ic_live.png",
-                "selectedIconPath": "images/ic_live_search.png",
-                "text": "直播"
-            }, -->
-
+<view class="notify">直播间待开通</view>
 <!-- <view id="life">
     <view class="clearfix"></view>
     <view id="top">

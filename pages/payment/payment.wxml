@@ -39,11 +39,11 @@
                     {{info.pick[0][modeval].address.depart}} {{info.pick[0][modeval].address.address}}
                 </view>
                 <view class="desc">
-                    收货人：{{info.pick[0][modeval].val == 0?info.pick[0][modeval].address.consignee_name:info.pick[0][modeval].address.consignee}}
+                    店老板：{{info.pick[0][modeval].val == 0?info.pick[0][modeval].address.consignee_name:info.pick[0][modeval].address.consignee}}
                 </view>
                 <view class="desc">手机号：{{info.pick[0][modeval].address.mobile}}</view>
                 <view class="desc" wx:if="{{info.pick[0][modeval].val == 0}}">
-                    收货地址：{{info.pick[0][modeval].address.consignee}}
+                    地址：{{info.pick[0][modeval].address.consignee}}
                 </view>
             </view>
             <image mode="widthFix" src="../../images/ic_arrow_r.png" class="ic_arror" wx:if="{{info.pick[0][modeval].val != 0}}"></image>
@@ -181,17 +181,6 @@
         <view>买家留言</view>
         <textarea placeholder="留言建议提前协商（50字以内）" bindinput="remarkInput" value="{{remark}}" maxlength="50"></textarea>
     </view>
-    <!-- <cover-view style="z-index:999"> -->
-    <cover-view wx:if="{{level_id == 6 && is_jx_goods == 0}}" class="jx_bottom">
-        <cover-view class="jx_part">
-            <cover-view class="jx_info">
-                成为匠选官，下单即享
-                <cover-view class="jx_text">8折优惠</cover-view>
-            </cover-view>
-            <cover-view class="jx_btn" bindtap="buyJxGoods">去看看</cover-view>
-        </cover-view>
-        <cover-image src="../../images/order/jx_logo.png" mode="widthFix" class="jx_image"></cover-image>
-    </cover-view>
     <!-- </cover-view> -->
     <view class="footer">
         <view class="pay_info no_integral" wx:if="{{info.score != 0}}">

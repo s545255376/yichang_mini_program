@@ -4,12 +4,13 @@
     z-index: -1;
     height: 100%;
     width: 100%;
-    opacity: 90%;
+}
+.part {
+    color: #ffffff;
 }
 .history {
     margin-top: 4%;
     height: 1200rpx;
-    color: #757373;
     overflow: scroll;
 }
 .body {

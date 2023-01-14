@@ -322,6 +322,7 @@ Page({
         }
     },
     mobileLogin(postdata) {
+        console.log(postdata);
         getRequest
             .noToastPost("index/user/getMobile", postdata)
             .then((info) => {

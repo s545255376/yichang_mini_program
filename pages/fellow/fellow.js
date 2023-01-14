@@ -8,11 +8,11 @@ Page({
      */
     data: {
         buttom: [
-            { id: 0, money: '5000', img: '../../images/fellow/tea.png',selected: false },
-            { id: 1, money: '10000', img: '../../images/fellow/tea.png',selected: false },
-            { id: 2, money: '20000', img: '../../images/fellow/tea.png',selected: true }
+            { id: 0, money: '0.01', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part1.jpg',selected: false },
+            { id: 1, money: '0.02', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part2.jpg',selected: false },
+            { id: 2, money: '0.03', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part3.jpg',selected: true }
         ],
-        money: '20000',
+        money: '0.03',
         loadState: true,
     },
 
@@ -93,16 +93,10 @@ Page({
                 timeStamp: res.data.timeStamp,
                 signType: res.data.signType,
                 success() {
-                    wx.showToast({
-                        title: '支付成功',
-                        icon: "success"
-                    })
+                    app.toastFun("支付成功");
                 },
                 fail() {
-                    wx.showToast({
-                        title: '支付失败',
-                        icon: "error"
-                    })
+                    app.toastFun("支付失败!");
                 }
             })
           }).catch(function(err) {

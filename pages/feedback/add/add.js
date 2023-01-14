@@ -42,7 +42,8 @@ Page({
                         filePath: tempFilePaths,
                         name: 'file',
                         formData: {
-                            'file': tempFilePaths
+                            'file': tempFilePaths,
+                            'token': app.globalData.token
                         },
                         success: (res) => {
                             const json = JSON.parse(res.data);

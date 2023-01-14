@@ -31,7 +31,6 @@ Page({
     //获取购物车列表
     getRequest.post('index/cart/index', {uid:app.globalData.userInfo.id,token:app.globalData.token}).then(function(res){
       list = [res.data.pick.store,res.data.pick.home,res.data.pick.home_store];
-      console.log(list)
       _this.setData({
         searchList:[],
         list:list,

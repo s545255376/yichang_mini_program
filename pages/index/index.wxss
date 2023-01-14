@@ -691,6 +691,11 @@
     height: 100%;
     display: block;
 }
+.small_ad {
+    border-radius: 50%;
+    height: 27rpx;
+    width: 27rpx;
+}
 
 /* 判断当存在直播时拼团浮标的位置 */
 #grouponEntry.hasNotice {

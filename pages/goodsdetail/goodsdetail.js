@@ -52,7 +52,7 @@ Page({
         codeimg: '',
 
         drawCanvasType: 'old', //canvas绘制方法 2.9.0以上new:新方法 old:老方法
-        jxShow: true, //匠选商品 false不显示分享，true显示分享
+        jxShow: false, //匠选商品 false不显示分享，true显示分享
 
         liveStatus: false, //是否是直播商品
 
@@ -481,67 +481,67 @@ Page({
     //     })
     // },
     //海报-弹窗
-    posterShow: function () {
-        if (this.data.codeimg == '') {
-            // 拼单处理
-            const {
-                is_pd
-            } = this.data.list
-            let _this = this,
-                image = this.data.list.image
-            let title = this.data.list.goods_name,
-                desc = this.data.list.goods_sub,
-                price =
-                is_pd == 1 ?
-                this.data.list.pd_setting.pd_price :
-                this.data.list.price
-            let scene =
-                'u=' +
-                app.globalData.userInfo.id +
-                '&f=' +
-                app.globalData.userInfo.pid +
-                '&t=g&gid=' +
-                this.data.list.id
+    // posterShow: function () {
+    //     if (this.data.codeimg == '') {
+    //         // 拼单处理
+    //         const {
+    //             is_pd
+    //         } = this.data.list
+    //         let _this = this,
+    //             image = this.data.list.image
+    //         let title = this.data.list.goods_name,
+    //             desc = this.data.list.goods_sub,
+    //             price =
+    //             is_pd == 1 ?
+    //             this.data.list.pd_setting.pd_price :
+    //             this.data.list.price
+    //         let scene =
+    //             'u=' +
+    //             app.globalData.userInfo.id +
+    //             '&f=' +
+    //             app.globalData.userInfo.pid +
+    //             '&t=g&gid=' +
+    //             this.data.list.id
 
-            let postdata = {
-                is_hyaline: 0,
-                width: 80,
-                scene: scene,
-                path: 'pages/login/login',
-                env_version: 'release',
-                token: app.globalData.token,
-            }
-            getRequest
-                .post('index/base/getQrCode', postdata)
-                .then(function (newqrcode) {
-                    _this.setData({
-                        codeimg: newqrcode.data.qrcode,
-                    })
-                    if (_this.data.drawCanvasType == 'new') {
-                        _this.saveImage(
-                            newqrcode.data.qrcode,
-                            image,
-                            title,
-                            desc,
-                            price
-                        )
-                    } else {
-                        _this.downImg(newqrcode.data.qrcode).then((res) => {
-                            _this.downImg(image).then((info) => {
-                                _this.saveImage(res, info, title, desc, price)
-                            })
-                        })
-                    }
-                })
-                .catch(function (err) {
-                    app.toastFun(err.msg)
-                })
-        } else {
-            this.setData({
-                posterToast: true,
-            })
-        }
-    },
+    //         let postdata = {
+    //             is_hyaline: 0,
+    //             width: 80,
+    //             scene: scene,
+    //             path: 'pages/login/login',
+    //             env_version: 'release',
+    //             token: app.globalData.token,
+    //         }
+    //         getRequest
+    //             .post('index/base/getQrCode', postdata)
+    //             .then(function (newqrcode) {
+    //                 _this.setData({
+    //                     codeimg: newqrcode.data.qrcode,
+    //                 })
+    //                 if (_this.data.drawCanvasType == 'new') {
+    //                     _this.saveImage(
+    //                         newqrcode.data.qrcode,
+    //                         image,
+    //                         title,
+    //                         desc,
+    //                         price
+    //                     )
+    //                 } else {
+    //                     _this.downImg(newqrcode.data.qrcode).then((res) => {
+    //                         _this.downImg(image).then((info) => {
+    //                             _this.saveImage(res, info, title, desc, price)
+    //                         })
+    //                     })
+    //                 }
+    //             })
+    //             .catch(function (err) {
+    //                 app.toastFun(err.msg)
+    //             })
+    //     } else {
+    //         this.setData({
+    //             posterToast: true,
+    //         })
+    //     }
+    // },
     //关闭弹窗
     closeToast: function () {
         this.setData({

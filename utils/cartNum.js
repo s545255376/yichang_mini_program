@@ -5,7 +5,10 @@ function changeTabCardNum() {
         let promise = new Promise(function (resolve, reject) {
             wx.request({
                 url: app.globalData.url + 'index/cart/stats',
-                data: { uid: app.globalData.userInfo.id },
+                data: {
+                    uid: app.globalData.userInfo.id,
+                    token: app.globalData.token
+                },
                 method: 'POST',
                 success: function (res) {
                     if (res.data.code == 200) {

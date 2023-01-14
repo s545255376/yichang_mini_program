@@ -5,7 +5,8 @@
   margin-top: -340rpx;
 }
 .ic_empty .goshoping{
-  background: #C2253A;
+  /* background: #C2253A; */
+  background: rgb(27, 26, 26);
   color: #ffffff;
   font-size: 32rpx;
   width: 200rpx;

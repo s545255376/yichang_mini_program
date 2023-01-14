@@ -3,7 +3,7 @@
   <view>网络异常，请重新登陆～</view>
 </view>
 <view class="part" wx:else>
-    <image class="bk_img" src="/images/login/login_bg.png"></image>
+    <image class="bk_img" src="http://rogkmohny.hd-bkt.clouddn.com/platform_pic/bk_img.png"></image>
     <view class="points">我的积分: {{point}}</view>
     <view class="history">
         <view wx:if="{{details.length > 0}}">

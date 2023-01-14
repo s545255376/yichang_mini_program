@@ -80,7 +80,7 @@
         <view class="part_body">
             <view bindtap="buyPoints">
                 <image src="../../images/mine/vip.png" mode="widthFix"></image>
-                <view>充值积分</view>
+                <view>会员充值</view>
             </view>
 
             <view bindtap="scanPoints" wx:if="{{store > 0}}">

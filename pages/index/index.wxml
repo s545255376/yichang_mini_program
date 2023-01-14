@@ -187,14 +187,11 @@
     <image src="../../images/home/ic_suspend.png" mode="widthFix" class="live_playbtn" wx:else></image>
 </view>
 <!-- 拼团相关 -->
-<view id="grouponEntry" class="{{liveBroadcast == true ? liveInfo.live_status == 102 ? 'hasNotice' : (liveInfo.live_status == 101 || liveInfo.live_status == 105) ? 'hasLive' : '' : ''}}" bindtap="goGroupon">
-    <image src="{{grouponShow.eject_fb_image}}" mode="widthFix"></image>
-</view>
 <view class="mask" wx:if="{{pageScroll == false}}" catchtouchmove="noScroll"></view>
 <!-- 拼团活动弹窗 -->
 <pop bindeventclose="closeToast" popname="grouponToast" wx:if="{{grouponToast}}">
     <view id="pop_custome_main">
-        <image src="{{grouponShow.eject_tc_image}}" mode="widthFix"></image>
+        <image src="http://rogkmohny.hd-bkt.clouddn.com/pl_pic/ad.jpg" mode="widthFix"></image>
         <view class="buttonGroup" bindtap="goGroupon">
             <view>成为会员</view>
         </view>

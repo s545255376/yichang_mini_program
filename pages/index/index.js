@@ -792,12 +792,6 @@ Page({
                 })
         })
     },
-    goGroupon() {
-
-        wx.navigateTo({
-            url: '../fellow/fellow',
-        })
-    },
     //轮播图监听
     swiperChange: function (e) {
         let bannerleft =

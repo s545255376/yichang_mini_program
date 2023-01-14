@@ -69,6 +69,10 @@ Page({
     },
     bonusPoints: function (e) {
         let _this = this;
+        if (_this.data.point == '') {
+            app.toastFun("请输入金额");
+            return;
+        }
         let postdata = {
             point: _this.data.point,
             token: app.globalData.token,
