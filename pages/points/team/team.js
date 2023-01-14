@@ -20,7 +20,6 @@ Page({
             token: app.globalData.token,
         };
         getRequest.post('index/Account/children', postdata).then(function (res) {
-            console.log(res.data.data);
             _this.setData({
                 // points: res.data.points,
                 teams: res.data.data

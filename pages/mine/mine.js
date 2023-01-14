@@ -103,7 +103,34 @@ Page({
                         })
                     })
                     .catch(function (err) {
-                        console.log(err);
+                        wx.removeStorage({
+                            key: 'logindata',
+                            success(res) {
+                                app.globalData.token = '';
+                                app.globalData.userInfo = {
+                                    mobile: '',
+                                    username: '',
+                                    portrait: '',
+                                    sex: '',
+                                    stauts: '',
+                                    fid: '',
+                                    id: ''
+                                };
+                                wx.hideTabBarRedDot({
+                                    index: 1
+                                });
+                                wx.clearStorage();
+                                _this.setData({
+                                    showActionsheet: false,
+                                })
+                                app.toastFun("用户登录信息已过期，请重新登录");
+                                setTimeout(() => {
+                                    wx.reLaunch({
+                                      url: '../index/index',
+                                    })
+                                }, 1500);
+                            }
+                        })
                     });
             }
         } else { //用户未登录(已弃置)
