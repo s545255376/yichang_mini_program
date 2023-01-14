@@ -9,23 +9,23 @@
     <view class="mine">
         <image src="../../images/mine/ic_mine_bg.png" mode="widthFix" class="mine_bg"></image>
         <view class="user">
-            <image wx:if="{{logType == false}}" src="../../images/mine/logo.png" mode="widthFix" class="logoavatar"></image>
-            <image wx:else src="{{userinfo.portrait}}" mode="aspectFill" class="avatar"></image>
+            <image src="../../images/logo.png" mode="widthFix" class="logoavatar"></image>
+            <!-- <image wx:else src="{{userinfo.portrait}}" mode="aspectFill" class="avatar"></image> -->
             <view>
-                <view class="username">{{userinfo.username}}</view>
+                <view wx:if="{{logType == false}}" bindtap="clicklogin" class="username">{{userinfo.username}}</view>
+                <view wx:else class="username">{{userinfo.username}}</view>
                 <view class="store_name">
                     <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>我的积分:
-                    {{userinfo.points}}
+                    {{point}}
                 </view>
             </view>
-            <image class="my_code" src="../../images/mine/code.png" bindtap="showCode"></image>
+            <image wx:if="{{logType == true}}" class="my_code" src="../../images/mine/code.png" bindtap="showCode"></image>
         </view>
         <view class="card">
             <image src="../../images/mine/ic_mine_cardbg.png" mode="aspectFill" class="mine_bg"></image>
             <view class="mine_tips">
                 <image src="../../images/mine/ic_vlog.png" mode="widthFix"></image>
                 <view>夷畅岩茶</view>
-                <button wx:if="{{logType ==  false}}">加入会员</button>
             </view>
         </view>
         <view class="ic_writeoff" bindtap="ScanBtn" wx:if="{{userinfo.role_id == 1}}">
@@ -75,26 +75,26 @@
     </view>
     <view class="part server">
         <view class="part_title">
-            <text>营销服务</text>
+            <text>积分服务</text>
         </view>
         <view class="part_body">
             <view bindtap="buyPoints">
-                <image src="../../images/mine/ic_pintuan.png" mode="widthFix"></image>
+                <image src="../../images/mine/vip.png" mode="widthFix"></image>
                 <view>充值积分</view>
             </view>
 
             <view bindtap="scanPoints" wx:if="{{worker == true}}">
-                <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
+                <image src="../../images/mine/scan.png" mode="widthFix"></image>
                 <view>扫描积分</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
             <view bindtap="goMyTeam">
-                <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
+                <image src="../../images/mine/friend.png" mode="widthFix"></image>
                 <view>我的团队</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
             <view bindtap="goDetail">
-                <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
+                <image src="../../images/mine/search.png" mode="widthFix"></image>
                 <view>积分明细</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>

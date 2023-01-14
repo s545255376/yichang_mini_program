@@ -6,9 +6,9 @@
     <view class="history" wx:if="{{teams.length > 0}}">
         <view class="head">团队记录:</view>
         <view class="body" wx:for="{{teams}}" wx:for-item="item">
-            <view>{{item.time}}</view>
-            <view>{{item.phone}}</view>
-            <view>{{item.money}}</view>
+            <view>{{item.create_time}}</view>
+            <view>{{item.mobile}}</view>
+            <view>{{item.point}}</view>
         </view>
     </view>
     <view wx:else class="none">暂无记录</view>

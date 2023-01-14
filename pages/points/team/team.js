@@ -20,9 +20,10 @@ Page({
             token: app.globalData.token,
         };
         getRequest.post('index/Account/children', postdata).then(function (res) {
+            console.log(res.data.data);
             _this.setData({
                 // points: res.data.points,
-                team: res.data.data
+                teams: res.data.data
             })
           }).catch(function(err){
             console.log(err)

@@ -43,6 +43,7 @@
   padding: 0 40rpx;
   display: flex;
   margin-top: -90rpx;
+  justify-content: space-around;
 }
 .user .logoavatar,.user .avatar{
   width: 126rpx;
@@ -72,7 +73,7 @@
 .my_code{
     width: 100rpx;
     height: 100rpx;
-    margin-left: 30%;
+    margin-left: 20%;
 }
 
 .card{

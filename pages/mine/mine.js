@@ -5,6 +5,7 @@ import drawQrcode from '../../utils/weapp.qrcode.esm'
 Page({
     data: {
         qrcode: '',
+        point: 0,
         pageShow: false,
         cancel_code: true,
         logType: false,
@@ -130,9 +131,12 @@ Page({
                 qrcode: res.data.qrcode
             })
         })
-        .catch(function (err) {
-            
-        });
+
+        getRequest.post('index/Account/point', { token: app.globalData.token }).then(function (res) {
+            _this.setData({
+                point: res.data.point
+            })
+        })
     },
     //去登陆--不需要
     goLogin: function () {
@@ -197,7 +201,7 @@ Page({
               scanType: [],
                 success: (result) => {
                     wx.navigateTo({
-                        url: `../points/spend/spend?usrid=${result.data.usrid}`
+                        url: `../points/scan/scan?usrid=${result.data.usrid}`
                     })
               },
                 fail: (res) => {
@@ -345,6 +349,34 @@ Page({
                     })
                 }
             },
+        })
+    },
+    clicklogin() {
+        let _this = this;
+        wx.removeStorage({
+            key: 'logindata',
+            success(res) {
+                app.globalData.token = '';
+                app.globalData.userInfo = {
+                    mobile: '',
+                    username: '',
+                    portrait: '',
+                    sex: '',
+                    stauts: '',
+                    fid: '',
+                    id: ''
+                };
+                wx.hideTabBarRedDot({
+                    index: 1
+                });
+                wx.clearStorage();
+                _this.setData({
+                    showActionsheet: false,
+                })
+                wx.reLaunch({
+                    url: '../login/login',
+                })
+            }
         })
     },
     //注销账号

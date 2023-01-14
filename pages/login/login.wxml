@@ -1,4 +1,4 @@
-<view class="login" style="background-image: url(../../images/login/login_bg.png);">
+<view class="login" style="background-image: url(/images/login/login_bg.png);">
     <view class="name">夷 畅 岩 茶 蒸 着 喝</view>
 
     <!-- <button class="login_btn" wx:if="{{btnType == 0}}" bindtap="getUserInfo">同意授权</button> -->

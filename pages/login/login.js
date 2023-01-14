@@ -279,11 +279,12 @@ Page({
                                     token: token,
                                     iv: e.detail.iv,
                                     encryptedData: e.detail.encryptedData,
-                                    nickName: this.data.userinfo.nickName,
-                                    avatar: this.data.userinfo.avatarUrl,
+                                    nickName: _this.data.userinfo.nickName,
+                                    avatar: _this.data.userinfo.avatarUrl,
                                     gender: "",
                                     fid: app.globalData.sharequery.f,
                                     user_id: app.globalData.sharequery.u,
+                                    // invite_uid: app.globalData.sharequery.u,
                                 });
                             })
                         // .catch(function (tokenerr) {
@@ -307,8 +308,8 @@ Page({
                     token: token,
                     iv: e.detail.iv,
                     encryptedData: e.detail.encryptedData,
-                    nickName: this.data.userinfo.nickName,
-                    avatar: this.data.userinfo.avatarUrl,
+                    nickName: _this.data.userinfo.nickName,
+                    avatar: _this.data.userinfo.avatarUrl,
                     gender: "",
                     fid: app.globalData.sharequery.f,
                     user_id: app.globalData.sharequery.u,
