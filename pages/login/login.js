@@ -284,7 +284,7 @@ Page({
                                     gender: "",
                                     fid: app.globalData.sharequery.f,
                                     user_id: '',
-                                    invite_uid: app.globalData.sharequery.u,
+                                    invitee_uid: app.globalData.sharequery.u,
                                 });
                             })
                         // .catch(function (tokenerr) {
@@ -313,7 +313,7 @@ Page({
                     gender: "",
                     fid: app.globalData.sharequery.f,
                     user_id: '',
-                    invite_uid: app.globalData.sharequery.u,
+                    invitee_uid: app.globalData.sharequery.u,
                 });
             }
         } else {

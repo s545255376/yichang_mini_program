@@ -85,7 +85,7 @@
 
             <view bindtap="scanPoints" wx:if="{{store > 0}}">
                 <image src="../../images/mine/scan.png" mode="widthFix"></image>
-                <view>扫描积分</view>
+                <view>门店核销</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
             <view bindtap="goMyTeam">

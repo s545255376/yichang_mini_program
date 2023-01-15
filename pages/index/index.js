@@ -65,7 +65,11 @@ Page({
         duoxuan1: [],
         duoxuan2: [],
     },
-    onLoad() {
+    onLoad(options) {
+        console.log(options);
+        if(options.pay == 'success') {
+            
+        }
         wx.hideShareMenu()
         if (app.globalData.userInfo.id == '') {
             wx.reLaunch({
@@ -983,6 +987,11 @@ Page({
                 '&live=false',
         })
     },
+    goGroupon() {
+        wx.navigateTo({
+          url: '../fellow/fellow',
+        })
+    },
     //跳转购物车
     goCart() {
         wx.navigateTo({
@@ -1049,7 +1058,7 @@ Page({
     onShareAppMessage: function () {
         return {
             title: '夷畅岩茶',
-            imageUrl: 'https://cmjx.chengmeijiangxuan.com/static/common/images/share.jpg',
+            imageUrl: 'http://rogkmohny.hd-bkt.clouddn.com/pl_pic/ad.jpg',
             path: 'pages/login/login?u=' +
                 app.globalData.userInfo.id +
                 '&f=' +

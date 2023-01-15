@@ -94,6 +94,11 @@ Page({
                 signType: res.data.signType,
                 success() {
                     app.toastFun("支付成功");
+                    setTimeout(() => {
+                        wx.redirectTo({
+                          url: '../index/index?pay=success',
+                        })
+                    }, 1200);
                 },
                 fail() {
                     app.toastFun("支付失败!");
