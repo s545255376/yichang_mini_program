@@ -15,6 +15,10 @@
                 <view wx:if="{{logType == false}}" bindtap="clicklogin" class="username">{{userinfo.username}}</view>
                 <view wx:else class="username">{{userinfo.username}}</view>
                 <view class="store_name">
+                    <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>我的余额:
+                    {{money}}
+                </view>
+                <view class="store_name">
                     <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>我的积分:
                     {{point}}
                 </view>

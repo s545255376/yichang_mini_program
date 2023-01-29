@@ -62,7 +62,7 @@
 .user .store_name{
   font-size: 26rpx;
   color: #231F20;
-  line-height: 63rpx;
+  /* line-height: 63rpx; */
   margin-left: 20rpx;
 }
 .user .store_name image{

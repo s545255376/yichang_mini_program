@@ -317,12 +317,11 @@ Page({
                 });
             }
         } else {
-            console.log(e);
+            // console.log(e);
             app.toastFun("手机号获取时发生系统错误，请重试");
         }
     },
     mobileLogin(postdata) {
-        console.log(postdata);
         getRequest
             .noToastPost("index/user/getMobile", postdata)
             .then((info) => {
