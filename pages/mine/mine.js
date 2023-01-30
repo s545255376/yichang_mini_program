@@ -66,8 +66,9 @@ Page({
         let _this = this;
 
         if (app.globalData.userInfo.id != '') { //用户已登录
+            console.log(app.globalData.userInfo)
             _this.setData({
-                store: app.globalData.userInfo.store_id
+                store: app.globalData.userInfo.role_id
             })
             let postdata = {
                     uid: app.globalData.userInfo.id,

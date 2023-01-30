@@ -35,13 +35,13 @@
     </view>
     <view wx:else>
         <!-- 匠选商品 -->
-        <swiper current="{{currentIndex}}" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="500" class="jxgoods" bindchange="swiperChange" wx:if="{{jxlist.length != 0}}">
+        <!-- <swiper current="{{currentIndex}}" indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="500" class="jxgoods" bindchange="swiperChange" wx:if="{{jxlist.length != 0}}">
             <swiper-item wx:for="{{jxlist}}" wx:key="homebanner">
                 <view class="swiper-item">
                     <image src="{{item.image}}" mode="widthFix" data-imgnum="{{index}}" lazy-load="true" bindtap="goGoodsInfo" data-goodsid="{{item.id}}"></image>
                 </view>
             </swiper-item>
-        </swiper>
+        </swiper> -->
         <view class="location_list" id="locationStay">
             <scroll-view scroll-x="true" scroll-left="{{scrollLeft}}">
                 <view class="row">
