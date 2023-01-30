@@ -92,14 +92,19 @@
                 <view>门店核销</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
+            <view bindtap="goDetail">
+                <image src="../../images/mine/recharge.png" mode="widthFix"></image>
+                <view>余额明细</view>
+                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
+            </view>
+            <view bindtap="goDetails">
+                <image src="../../images/mine/search.png" mode="widthFix"></image>
+                <view>积分明细</view>
+                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
+            </view>
             <view bindtap="goMyTeam">
                 <image src="../../images/mine/friend.png" mode="widthFix"></image>
                 <view>我的团队</view>
-                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
-            </view>
-            <view bindtap="goDetail">
-                <image src="../../images/mine/search.png" mode="widthFix"></image>
-                <view>积分明细</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
         </view>

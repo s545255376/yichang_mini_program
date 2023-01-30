@@ -162,9 +162,12 @@ Page({
             })
         })
 
-        getRequest.post('index/Account/point', { token: app.globalData.token }).then(function (res) {
+        getRequest.post('index/Account/point', {
+            token: app.globalData.token
+        }).then(function (res) {
             _this.setData({
-                point: res.data.point
+                point: res.data.point,
+                money: res.data.balance
             })
         })
     },
@@ -241,11 +244,20 @@ Page({
         }
     },
     //积分明细
-    goDetail: function () {
+    goDetails: function () {
         let logCheck = this.goLogin();
         if (logCheck == true) {
             wx.navigateTo({
                 url: '../points/details/details'
+            })
+        }
+    },
+    //余额明细
+    goDetail: function () {
+        let logCheck = this.goLogin();
+        if (logCheck == true) {
+            wx.navigateTo({
+                url: '../balance/detail/detail'
             })
         }
     },
@@ -298,7 +310,7 @@ Page({
         let logCheck = this.goLogin();
         if (logCheck == true) {
             wx.navigateTo({
-                url: '../fellow/fellow'
+                url: '../balance/fellow/fellow'
             })
         }
     },

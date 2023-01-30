@@ -1,4 +1,3 @@
-/* pages/fellow/fellow.wxss */
 .bk_img {
     position: absolute;
     top: 0;

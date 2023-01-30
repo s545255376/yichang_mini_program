@@ -989,7 +989,7 @@ Page({
     },
     goGroupon() {
         wx.navigateTo({
-          url: '../fellow/fellow',
+          url: '../balance/fellow/fellow',
         })
     },
     //跳转购物车

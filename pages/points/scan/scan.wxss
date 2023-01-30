@@ -33,3 +33,26 @@
     font-size: 45rpx;
     margin-left: 10%;
 }
+.spend {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.spend view { 
+    background-color: transparent;
+    width: 40%;
+    line-height: 100rpx;
+    margin-top: 5%;
+    text-align: center;
+    font-size: 45rpx;
+}
+.normal {
+    border: solid 5rpx;
+    border-color: white;
+    color: white;
+}
+.selected {
+    border: solid 5rpx;
+    border-color: yellow;
+    color: yellow;
+}

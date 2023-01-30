@@ -1,5 +1,5 @@
 const app = getApp()
-const getRequest = require('../../utils/getRequest')
+const getRequest = require('../../../utils/getRequest')
 
 Page({
 
@@ -96,7 +96,7 @@ Page({
                     app.toastFun("支付成功");
                     setTimeout(() => {
                         wx.redirectTo({
-                          url: '../index/index?pay=success',
+                          url: '../../index/index?pay=success',
                         })
                     }, 1200);
                 },
