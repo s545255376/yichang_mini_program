@@ -22,6 +22,10 @@
                     <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>我的积分:
                     {{point}}
                 </view>
+                <view class="store_name">
+                    <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>我的卡券:
+                    {{card_money}}
+                </view>
             </view>
             <image wx:if="{{logType == true}}" class="my_code" src="../../images/mine/code.png" bindtap="showCode"></image>
         </view>
@@ -32,9 +36,9 @@
                 <view>夷畅岩茶</view>
             </view>
         </view>
-        <view class="ic_writeoff" bindtap="ScanBtn" wx:if="{{userinfo.role_id == 1}}">
+        <!-- <view class="ic_writeoff" bindtap="ScanBtn" wx:if="{{userinfo.role_id == 1}}">
             <image src="../../images/mine/ic_writeoff.png" mode="widthFix"></image>
-        </view>
+        </view> -->
     </view>
     <!-- 积分/优惠券 -->
     <!-- <view class="integral_coupon">
@@ -92,14 +96,19 @@
                 <view>门店核销</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
-            <view bindtap="goDetail">
+            <!-- <view bindtap="goDetail">
                 <image src="../../images/mine/recharge.png" mode="widthFix"></image>
                 <view>余额明细</view>
+                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
+            </view> -->
+            <view bindtap="myCoupon">
+                <image src="../../images/mine/ic_card.png" mode="widthFix"></image>
+                <view>我的卡券</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
             <view bindtap="goDetails">
                 <image src="../../images/mine/search.png" mode="widthFix"></image>
-                <view>积分明细</view>
+                <view>消费明细</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
             <view bindtap="goMyTeam">
@@ -192,7 +201,7 @@
         <view class="cancel" bindtap="logoutCancel">取消</view>
     </view>
 </view>
-<view wx:if="{{writeOffShow == true}}">
+<!-- <view wx:if="{{writeOffShow == true}}">
     <view class="mask"></view>
     <view class="write_off">
         <view class="info">
@@ -212,4 +221,4 @@
         </view>
         <image src="../../images/ic_close.png" mode="widthFix" class="close_btn" bindtap="logoutCancel"></image>
     </view>
-</view>
+</view> -->

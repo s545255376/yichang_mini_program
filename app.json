@@ -37,10 +37,9 @@
         "pages/classifySearch/classifySearch",
         "pages/poster/huodong20220614",
         "pages/points/scan/scan",
-        "pages/points/details/details",
+        "pages/details/details",
         "pages/balance/fellow/fellow",
-        "pages/points/team/team",
-        "pages/balance/detail/detail"
+        "pages/points/team/team"
     ],
     "subpackages": [
         {
