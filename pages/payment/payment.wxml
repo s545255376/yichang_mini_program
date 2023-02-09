@@ -73,9 +73,9 @@
                 </view>
                 <view class="price">
                     <view class="pay_price">
-                        <text>¥</text>{{item.price}}
+                        <text></text>{{item.price}}积分
                         <view class="market_price" wx:if="{{item.market_price != 0}}">
-                            ¥{{item.market_price}}
+                            {{item.market_price}}积分
                         </view>
                     </view>
                     <view class="paynum">x {{item.num}}</view>
@@ -117,9 +117,9 @@
             </view>
             <view class="price">
                 <view class="pay_price">
-                    <text>¥</text>{{item.price}}
+                    <text></text>{{item.price}}积分
                     <view class="market_price" wx:if="{{item.market_price != 0}}">
-                        ¥{{item.market_price}}
+                        {{item.market_price}}积分
                     </view>
                 </view>
                 <view class="paynum">x {{item.num}}</view>
@@ -147,7 +147,7 @@
             <view>
                 商品金额
                 <view>
-                    <text>¥</text>{{info.amount.goods_price}}
+                    <text></text>{{info.amount.goods_price}}积分
                 </view>
             </view>
             <view wx:if="{{info.amount.discount_info != ''}}">
@@ -157,13 +157,13 @@
             <view>
                 优惠券金额
                 <view>
-                    <text>¥</text>{{info.amount.coupon_price}}
+                    <text></text>{{info.amount.coupon_price}}积分
                 </view>
             </view>
             <view>
                 运费
                 <view>
-                    <text>¥</text>{{info.amount.express_fee}}
+                    <text></text>{{info.amount.express_fee}}积分
                 </view>
             </view>
         </view>
@@ -172,7 +172,7 @@
             <view class="pay_price">
                 共优惠：
                 <view>
-                    <text>¥</text>{{info.amount.discount_price}}
+                    <text></text>{{info.amount.discount_price}}积分
                 </view>
             </view>
         </view>
@@ -187,7 +187,7 @@
             <view class="pay_total">
                 实付金额：
                 <view>
-                    <text>¥</text>{{info.amount.pay_price}}
+                    <text></text>{{info.amount.pay_price}}积分
                 </view>
             </view>
             <!-- <view class="integral">购买成功即可得{{info.score * info.amount.pay_price}}积分</view> -->
@@ -196,7 +196,7 @@
             <view class="pay_total">
                 合计：
                 <view>
-                    <text>¥</text>{{info.amount.pay_price}}
+                    <text></text>{{info.amount.pay_price}}积分
                 </view>
             </view>
         </view>
@@ -227,9 +227,9 @@
                         </view>
                         <view class="coupon_btn">
                             <view class="name">
-                                <text>¥</text>{{item.coupon_value}}
+                                <text></text>{{item.coupon_value}}积分
                             </view>
-                            <view class="desc">满{{item.pay_price_full}}元使用</view>
+                            <view class="desc">满{{item.pay_price_full}}积分使用</view>
                             <radio value="{{index}}" class="radio" data-idx="{{index}}" checked="{{item.selected == 1}}" />
                         </view>
                     </view>

@@ -8,7 +8,7 @@
         <view class="info">
             <view class="title">{{item.goods_name}}</view>
             <view class="price">
-                ¥{{item.price}}
+                {{item.price}}积分
             </view>
         </view>
     </view>

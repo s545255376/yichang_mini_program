@@ -19,9 +19,9 @@
 
     <view class="head">
         <view class="price">
-            <view class="sale_price"><text>¥</text>{{list.price}}</view>
-            <view class="overline" wx:if="{{list.is_pd == 1}}"><text>¥</text>{{list.pd_setting.pd_price}} ~ <text>¥</text>{{list.market_price}}</view>
-            <view class="overline" wx:elif="{{list.market_price != 0}}"><text>¥</text>{{list.market_price}}</view>
+            <view class="sale_price"><text></text>{{list.price}}积分</view>
+            <view class="overline" wx:if="{{list.is_pd == 1}}"><text></text>{{list.pd_setting.pd_price}}积分 ~ <text></text>{{list.market_price}}积分</view>
+            <view class="overline" wx:elif="{{list.market_price != 0}}"><text></text>{{list.market_price}}积分</view>
         </view>
         <view class="title">{{list.goods_name}}</view>
         <view class="desc">{{list.goods_sub}}</view>
@@ -150,11 +150,11 @@
         </view>
         <view class="footer_r {{list.can_buy == 1 ? '' : 'unpay'}}" wx:elif="{{list.is_pd == 1}}">
             <view class="b_btn add_cart groupon_btn {{pd_oid ? 'btn_opacity' : ''}}" bindtap="ptBuyNow" data-pt_buytype="0">
-                <text>¥{{list.price}}</text>
+                <text>{{list.price}}积分</text>
                 <text>单独购买</text>
             </view>
             <view class="b_btn paynow groupon_btn" bindtap="ptBuyNow" data-pt_buytype="1">
-                <text>¥{{list.pd_setting.pd_price}}</text>
+                <text>{{list.pd_setting.pd_price}}积分</text>
                 <text>{{list.pd_setting.pd_total}}单拼团价</text>
             </view>
         </view>
@@ -195,7 +195,7 @@
                     <view class="pt_item_info">
                         <view>{{item.items}}</view>
                         <view class="pt_item_info_priceanum">
-                            <view><text>¥</text><text>{{pt_buytype == 1 ? list.pd_setting.pd_price : item.market_price}}</text></view>
+                            <view><text></text><text>{{pt_buytype == 1 ? list.pd_setting.pd_price : item.market_price}}积分</text></view>
                             <view>
                                 <view class="paynum">
                                     <view class="{{item.num == 0 ? 'un_click':''}}" bindtap="delNum" data-index="{{index}}">-</view>
@@ -221,13 +221,13 @@
                 <image src="{{list.is_suit == 0?goods_search.image:list.images[0].image}}" mode="aspectFill" class="goods_img"></image>
                 <view class="info">
                     <view class="price">
-                        <text>￥</text>
+                        <text></text>
                         {{list.is_suit == 0?goods_search.price:sumprice.price}}
                         <view>
-                            <text wx:if="{{list.is_suit == 0 && goods_search.market_price != 0}}">￥</text>
-                            {{goods_search.market_price == 0?'':goods_search.market_price}}
-                            <text wx:if="{{list.is_suit == 1 && sumprice.market_price != 0}}">￥</text>
-                            {{sumprice.market_price == 0?'':sumprice.market_price}}
+                            <text wx:if="{{list.is_suit == 0 && goods_search.market_price != 0}}"></text>
+                            {{goods_search.market_price == 0?'':goods_search.market_price + '积分'}}
+                            <text wx:if="{{list.is_suit == 1 && sumprice.market_price != 0}}"></text>
+                            {{sumprice.market_price == 0?'':sumprice.market_price + '积分'}}
                         </view>
                     </view>
 

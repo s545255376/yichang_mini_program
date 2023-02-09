@@ -15,7 +15,7 @@
       <!-- <checkbox-group bindchange="searchAll" class="checkpart">
         <checkbox value="all" checked="{{modelall}}">全选</checkbox>
       </checkbox-group> -->
-      <view class="sumprice">合计：<text>¥</text><text class="sumnum">{{sumprice}}</text></view>
+      <view class="sumprice">合计：<text></text><text class="sumnum">{{sumprice}}积分</text></view>
       <button bindtap="goPayment">结算</button>
     </view>
 
@@ -53,7 +53,7 @@
 
   
                 <view class="price">
-                  <view class="pay_price"><text>¥</text>{{item.price}}<view class="market_price" wx:if="{{item.market_price != 0}}">¥{{item.market_price}}</view></view>
+                  <view class="pay_price"><text></text>{{item.price}}积分<view class="market_price" wx:if="{{item.market_price != 0}}">{{item.market_price}}积分</view></view>
                   <view class="paynum">
                     <view class="{{item.num<=1?'un_click':''}}" bindtap="delNum" data-type="{{partnum}}" data-idx="{{index}}">-</view><view class="num">{{item.num}}</view><view bindtap="addNum" data-type="{{partnum}}" data-idx="{{index}}">+</view>
                   </view>
@@ -99,7 +99,7 @@
             </view>
 
             <view class="price">
-              <view class="pay_price"><text>¥</text>{{item.price}}<view class="market_price" wx:if="{{item.market_price != 0}}">¥{{item.market_price}}</view></view>
+              <view class="pay_price"><text></text>{{item.price}}积分<view class="market_price" wx:if="{{item.market_price != 0}}">{{item.market_price}}积分</view></view>
               <view class="paynum">
                 <view class="un_click">-</view><view class="num">{{item.num}}</view><view class="un_click">+</view>
               </view>
