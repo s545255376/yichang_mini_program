@@ -40,7 +40,7 @@
 }
 .spend view { 
     background-color: transparent;
-    width: 40%;
+    width: 28%;
     line-height: 100rpx;
     margin-top: 5%;
     text-align: center;

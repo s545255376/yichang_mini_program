@@ -44,13 +44,14 @@
   width: calc(100% - 80rpx);
   padding: 0 40rpx;
   display: flex;
-  margin-top: -90rpx;
+  margin-top: -110rpx;
 }
 .user .logoavatar,.user .avatar{
-  width: 126rpx;
-  height: 126rpx;
-  border-radius: 50%;
-  border: 3rpx solid #ffffff;
+    margin-top: 5%;
+    width: 126rpx;
+    height: 126rpx;
+    border-radius: 50%;
+    border: 3rpx solid #ffffff;
 }
 .user .username{
   font-size: 32rpx;
@@ -74,6 +75,7 @@
 .my_code{
     width: 100rpx;
     height: 100rpx;
+    margin-top: 5%;
     margin-left: 23%;
 }
 

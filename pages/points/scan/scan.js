@@ -8,7 +8,8 @@ Page({
     data: {
         point: '',
         user_id: '',
-        pay_mode: 2
+        pay_mode: '2',
+        pay_type: ['积分','余额','卡券']
     },
 
     /**
@@ -67,16 +68,10 @@ Page({
             point: e.detail.value
         })
     },
-    change() {
-        if (this.data.pay_mode == 1) {
-            this.setData({
-                pay_mode: 2
-            })
-        } else if (this.data.pay_mode == 2) {
-            this.setData({
-                pay_mode: 1
-            })
-        }
+    change(val) {
+        this.setData({
+            pay_mode: val.target.id
+        })
     },
     bonusPoints: function (e) {
         let _this = this;
@@ -87,7 +82,7 @@ Page({
         wx.showModal({
           cancelText: '取消',
           confirmText: '确认',
-          content: `目前消费${_this.data.pay_mode == 1 ? "积分" : "余额"},消费金额${_this.data.point}`,
+          content: `目前消费${_this.data.pay_type[(_this.data.pay_mode - '0') - 1]},消费金额${_this.data.point}`,
           editable: false,
           showCancel: true,
           title: '消费确认',

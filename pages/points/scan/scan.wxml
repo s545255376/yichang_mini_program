@@ -6,8 +6,9 @@
     <image class="bk_img" src="http://rogkmohny.hd-bkt.clouddn.com/platform_pic/bk_img.png"></image>
     <input class="input_line" placeholder='请输入金额' type="digit" bindinput='getInputValue' placeholder-class="placeholder_input"/>
     <view class="spend" bindtap="change">
-        <view class="{{pay_mode == 2 ? 'selected' : 'normal'}}">余额消费</view>
-        <view class="{{pay_mode == 1 ? 'selected' : 'normal'}}">积分消费</view>
+        <view class="{{pay_mode == 2 ? 'selected' : 'normal'}}" id='2'>余额消费</view>
+        <view class="{{pay_mode == 1 ? 'selected' : 'normal'}}" id='1'>积分消费</view>
+        <view class="{{pay_mode == 3 ? 'selected' : 'normal'}}" id='3'>卡券消费</view>
     </view>
     <view class="input_button" bindtap="bonusPoints">确认</view>
 </view>

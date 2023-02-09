@@ -6,6 +6,8 @@ Page({
     data: {
         qrcode: '',
         point: 0,
+        money: 0,
+        card_money: 0,
         pageShow: false,
         cancel_code: true,
         logType: false,
@@ -168,7 +170,8 @@ Page({
         }).then(function (res) {
             _this.setData({
                 point: res.data.point,
-                money: res.data.balance
+                money: res.data.balance,
+                card_money: res.data.card_money
             })
         })
     },
@@ -244,21 +247,12 @@ Page({
             })
         }
     },
-    //积分明细
+    //消费明细
     goDetails: function () {
         let logCheck = this.goLogin();
         if (logCheck == true) {
             wx.navigateTo({
-                url: '../points/details/details'
-            })
-        }
-    },
-    //余额明细
-    goDetail: function () {
-        let logCheck = this.goLogin();
-        if (logCheck == true) {
-            wx.navigateTo({
-                url: '../balance/detail/detail'
+                url: '../details/details'
             })
         }
     },
@@ -280,7 +274,7 @@ Page({
             })
         }
     },
-    //优惠券
+    //卡券
     myCoupon: function () {
         let logCheck = this.goLogin();
         if (logCheck == true) {

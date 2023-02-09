@@ -1,3 +1,13 @@
+.tabbar {
+    background: transparent;
+}
+.tabbar view {
+    color: white;
+}
+.tabbar .tabbar_click {
+    color: white;
+    border-bottom: 4rpx solid white;
+}
 .bk_img {
     position: absolute;
     top: 0;
@@ -6,13 +16,14 @@
     width: 100%;
 }
 .part {
+    margin-top: 15%;
     color: #ffffff;
 }
 .points {
     margin-top: 5%;
 }
 .history {
-    margin-top: 4%;
+    /* margin-top: 4%; */
     height: 1200rpx;
     overflow: scroll;
 }

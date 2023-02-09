@@ -90,7 +90,7 @@
                             </view>
                         </view>
                         <!-- 2个商品一行 -->
-                        <view class="goodslist" wx:elif="{{item.style == 2}}">
+                        <view class="goodslist" wx:elif="{{item.style == 8}}">
                             <view class="goodspart" wx:for="{{item.columnGoods}}" wx:key="goodsList" wx:for-item="list" wx:for-index="idx" bindtap="goGoodsInfo" data-goodsid="{{list.goods_id}}" wx:if="{{item.showAll == true?idx<(item.columnGoods.length):idx < 6}}">
                                 <view class="image">
                                     <image src="{{list.image}}" mode="widthFix"></image>
@@ -108,7 +108,7 @@
                             </view>
                         </view>
                         <!-- 1-2个商品一行 -->
-                        <view class="hot" wx:elif="{{item.style == 3}}">
+                        <view class="hot" wx:elif="{{item.style == 11}}">
                             <view class="hot_recommend goodspart" bindtap="goGoodsInfo" wx:if="{{item.columnGoods.length != 0}}" data-goodsid="{{item.columnGoods[0].goods_id}}">
                                 <view class="image">
                                     <image src="{{item.columnGoods[0].image}}" mode="widthFix"></image>

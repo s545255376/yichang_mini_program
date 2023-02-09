@@ -1,10 +1,13 @@
+<view class="tabbar">
+  <view class="{{tabbarNum == index?'tabbar_click':''}}" bindtap="tabbarChange" wx:for="{{tabbar}}"  wx:key="tabbar" wx:for-item="item" wx:for-index="index" data-idx="{{index}}">{{item}}</view>
+</view>
 <view class="ic_empty" wx:if="{{loadState == false}}">
   <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
   <view>网络异常，请重新登陆～</view>
 </view>
 <view class="part" wx:else>
     <image class="bk_img" src="http://rogkmohny.hd-bkt.clouddn.com/platform_pic/bk_img.png"></image>
-    <view class="points">我的余额: {{point}}</view>
+    <view class="points">我的{{type_name}}: {{point}}</view>
     <view class="history">
         <view wx:if="{{details.length > 0}}">
             <view class="body" wx:for="{{details}}" wx:for-item="item">
