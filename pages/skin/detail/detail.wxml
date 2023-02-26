@@ -23,7 +23,7 @@
         <view class="info">
           <view class="title">{{item.goods_name}}</view>
           <!-- <view class="desc">{{item.intro}}</view> -->
-          <view class="price">¥{{item.price}}<text>¥{{item.market_price}}</text></view>
+          <view class="price">积分{{item.price}}<text>积分{{item.market_price}}</text></view>
         </view>
       </view>
     </view>

@@ -208,7 +208,7 @@
             <image wx:if="{{scanInfo.image != ''}}" src="{{scanInfo.image}}" mode="aspectFill"></image>
             <view class="title" wx:if="{{scanInfo.name != ''}}">{{scanInfo.name}}</view>
             <view class="price" wx:if="{{scanInfo.coupon_value != ''}}">
-                ¥{{scanInfo.coupon_value}}
+                积分{{scanInfo.coupon_value}}
             </view>
             <view class="cardnum" wx:if="{{scanInfo.card_no != ''}}">卡号：{{scanInfo.card_no}}</view>
             <view wx:if="{{scanInfo.order.length != 0}}">

@@ -16,7 +16,7 @@
                     <view>{{goods.goods_name}}</view>
                     <view>
                         <view>
-                            <text>¥</text>
+                            <text>积分</text>
                             <text>{{goods.price}}</text>
                         </view>
                         <text>{{goods.market_price}}</text>

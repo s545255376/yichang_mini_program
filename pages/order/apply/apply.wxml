@@ -16,7 +16,7 @@
       <view class="desc">{{item.goods_sub}}</view>
       <view class="norms"><text>{{item.item}}</text></view>
       <view class="price">
-        <view class="pay_price"><text>¥</text>{{item.goods_price}}<view class="market_price">¥{{item.market_price}}</view></view>
+        <view class="pay_price"><text>积分</text>{{item.goods_price}}<view class="market_price">积分{{item.market_price}}</view></view>
         <view class="paynum">x {{item.num}}</view>
       </view>
     </view>
@@ -47,7 +47,7 @@
     </view>
     <view class="list">
       <view class="name">退款金额</view>
-      <view class="info"><text>¥</text>{{info.pay_price}}</view>
+      <view class="info"><text>积分</text>{{info.pay_price}}</view>
     </view>
   </view>
   

@@ -18,8 +18,8 @@
                 <view class="info">
                     <view class="title">{{item.goods_name}}</view>
                     <view class="price">
-                        ¥{{item.price}}
-                        <!-- <text wx:if="{{item.market_price != 0}}">¥{{item.market_price}}</text> -->
+                        积分{{item.price}}
+                        <!-- <text wx:if="{{item.market_price != 0}}">积分{{item.market_price}}</text> -->
                     </view>
                 </view>
             </view>

@@ -97,7 +97,7 @@
                                 </view>
                                 <view class="info">
                                     <view class="title">{{list.goods_name}}</view>
-                                    <view class="price">¥{{list.price}}<text wx:if="{{list.market_price != 0}}">¥{{list.market_price}}</text></view>
+                                    <view class="price">积分{{list.price}}<text wx:if="{{list.market_price != 0}}">积分{{list.market_price}}</text></view>
                                 </view>
                             </view>
                             <view class="more" wx:if="{{6 < item.columnGoods.length}}">
@@ -117,7 +117,7 @@
                                     <view class="title">
                                         <view>{{item.columnGoods[0].goods_name}}</view>
                                     </view>
-                                    <view class="price">¥{{item.columnGoods[0].price}}<text wx:if="{{item.columnGoods[0].market_price != 0}}">¥{{item.columnGoods[0].market_price}}</text></view>
+                                    <view class="price">积分{{item.columnGoods[0].price}}<text wx:if="{{item.columnGoods[0].market_price != 0}}">积分{{item.columnGoods[0].market_price}}</text></view>
                                 </view>
                             </view>
                             <view class="goodslist">
@@ -127,7 +127,7 @@
                                     </view>
                                     <view class="info">
                                         <view class="title">{{list.goods_name}}</view>
-                                        <view class="price">¥{{list.price}}<text wx:if="{{list.market_price != 0}}">¥{{list.market_price}}</text></view>
+                                        <view class="price">积分{{list.price}}<text wx:if="{{list.market_price != 0}}">积分{{list.market_price}}</text></view>
                                     </view>
                                 </view>
                             </view>
@@ -147,7 +147,7 @@
                                     </view>
                                     <view class="info">
                                         <view class="title">{{list.goods_name}}</view>
-                                        <view class="price">¥{{list.price}}<text wx:if="{{list.market_price != 0}}">¥{{list.market_price}}</text></view>
+                                        <view class="price">积分{{list.price}}<text wx:if="{{list.market_price != 0}}">积分{{list.market_price}}</text></view>
                                     </view>
                                 </view>
                             </view>
@@ -213,7 +213,7 @@
                     </view>
                     <view class="list_r">
                         <view class="price">
-                            <text>¥</text>
+                            <text>积分</text>
                             {{item.coupon_value}}
                         </view>
                         <view class="term" wx:if="{{item.order_pay_price == '' || item.pay_price_full == ''}}">无门槛使用</view>

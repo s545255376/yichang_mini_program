@@ -46,7 +46,7 @@
           <view class="title">{{info.goods_name}}</view>
           <view class="desc">{{info.goods_sub}}</view>
           <view class="norms"><text>{{info.item}}</text></view>
-          <view class="price"><text class="symbol">¥</text>{{info.goods_price}}<text class="num">x {{info.num}}</text></view>
+          <view class="price"><text class="symbol">积分</text>{{info.goods_price}}<text class="num">x {{info.num}}</text></view>
         </view>
       </view>
     </view>
@@ -58,7 +58,7 @@
       </view>
       <view class="right">
         共{{item.total}}件商品
-        <view>实付：<text>¥ {{item.pay_price}}</text></view>
+        <view>实付：<text>积分 {{item.pay_price}}</text></view>
       </view>
     </view>
   </view>

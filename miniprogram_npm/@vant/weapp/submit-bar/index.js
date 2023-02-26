@@ -20,7 +20,7 @@ var component_1 = require("../common/component");
         buttonText: String,
         currency: {
             type: String,
-            value: '¥',
+            value: '积分',
         },
         buttonType: {
             type: String,
