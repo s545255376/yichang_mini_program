@@ -4,9 +4,11 @@
 </view>
 <view wx:else>
     <image class="bk_img" src="http://rogkmohny.hd-bkt.clouddn.com/platform_pic/bk.jpg"></image>
-    <view wx:for="{{buttom}}" wx:for-item="item" class="selecte_button">
+    <view class="money_button">
+        <view wx:for="{{buttom}}" wx:for-item="item" class="selecte_button">
         <view class="{{item.selected?'selected':'normal'}}" bindtap="setMoney"><image class="select_img" id="{{item.id}}"
         src="{{item.img}}"></image></view>
+        </view>
     </view>
     <view class="click_button" bindtap="spendMoney">充 值</view>
 </view>

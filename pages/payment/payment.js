@@ -69,6 +69,9 @@ Page({
 
         this.getPaymentInfo();
     },
+    onShow() {
+        this.getPaymentInfo();
+    },
     //跳转匠选商品详情
     buyJxGoods() {
         wx.navigateTo({

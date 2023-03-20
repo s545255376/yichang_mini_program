@@ -120,8 +120,8 @@ Page({
       };
       getRequest.post('index/address/add',postdata).then(function(res){
         app.toastFun('添加成功');
-        setTimeout(() => {
-          wx.navigateBack({delta: 1})
+          setTimeout(() => {
+            wx.navigateBack({delta: 1})
         }, 1000);
       }).catch(function(err){
         app.toastFun(err.msg);

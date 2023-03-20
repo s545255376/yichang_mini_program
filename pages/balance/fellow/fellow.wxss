@@ -5,6 +5,10 @@
     height: 100%;
     width: 100%;
 }
+.money_button {
+    height: 1150rpx;
+    overflow: scroll;
+}
 .selecte_button view {
     height: 330rpx;
     background-size: cover;
@@ -34,4 +38,5 @@
     text-align: center;
     font-size: 45rpx;
     margin-left: 10%;
+    position: fixed;
 }

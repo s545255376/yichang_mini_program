@@ -7,12 +7,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        buttom: [
-            { id: 0, money: '0.01', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part1.jpg',selected: false },
-            { id: 1, money: '0.02', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part2.jpg',selected: false },
-            { id: 2, money: '0.03', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part3.jpg',selected: true }
-        ],
-        money: '0.03',
+        buttom: [],
+        money: '20000',
         loadState: true,
     },
 
@@ -20,7 +16,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        let buttom;
+        if (options.type == 1) {
+            buttom = [{ id: 0, money: '5000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part1.jpg',selected: false },
+            { id: 1, money: '10000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part2.jpg',selected: false },
+            { id: 2, money: '20000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part3.jpg', selected: true },
+            { id: 3, money: '50000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part3.jpg', selected: false
+            },
+            { id: 4, money: '100000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part3.jpg', selected: false
+            }]
+        } else {
+            buttom = [buttom = { id: 0, money: '5000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part1.jpg',selected: false },
+            { id: 1, money: '10000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part2.jpg',selected: false },
+            { id: 2, money: '20000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part3.jpg', selected: true }]
+        }
+        this.setData({buttom: buttom})
     },
 
     /**
