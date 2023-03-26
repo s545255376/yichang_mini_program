@@ -2,8 +2,8 @@ const app = getApp()
 const getRequest = require('../../utils/getRequest')
 Page({
     data: {
-        tabbar: ['积分', '余额', '卡券'],
-        point_type: ['point', 'balance', 'card_money'],
+        tabbar: ['积分', '余额'],
+        point_type: ['point', 'balance'],
         type_name: '积分',
         tabbarNum:0,
         point: 0,

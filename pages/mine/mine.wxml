@@ -11,7 +11,7 @@
         <view class="user">
             <image src="../../images/logo.png" mode="widthFix" class="logoavatar"></image>
             <!-- <image wx:else src="{{userinfo.portrait}}" mode="aspectFill" class="avatar"></image> -->
-            <view>
+            <view class="user_info">
                 <view wx:if="{{logType == false}}" bindtap="clicklogin" class="username">{{userinfo.username}}</view>
                 <view wx:else class="username">{{userinfo.username}}</view>
                 <view class="store_name">
@@ -22,10 +22,10 @@
                     <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>我的积分:
                     {{point}}
                 </view>
-                <view class="store_name">
+                <!-- <view class="store_name">
                     <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>我的卡券:
                     {{card_money}}
-                </view>
+                </view> -->
             </view>
             <image wx:if="{{logType == true}}" class="my_code" src="../../images/mine/code.png" bindtap="showCode"></image>
         </view>
@@ -171,7 +171,8 @@
                 <view>消息</view>
                 <text wx:if="{{message != 0}}">{{message}}</text>
             </view>
-            <view class="contact" bindtap="goCustService" wx:if="{{userinfo.role_id == 0}}">
+            <view class="contact">
+                <button open-type="contact" bindcontact="handleContact" class="contact_button"></button>
                 <image src="../../images/mine/ic_service.png" mode="widthFix"></image>
                 <view>联系客服</view>
             </view>

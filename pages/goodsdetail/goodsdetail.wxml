@@ -133,7 +133,8 @@
                 <image src="../../images/return_hone.png" mode="widthFix"></image>
                 <view>首页</view>
             </view>
-            <view class="s_btn" bindtap="customerService">
+            <view class="s_btn">
+                <button open-type="contact" bindcontact="handleContact" id="contact_button"></button>
                 <image src="../../images/ic_service.png" mode="widthFix"></image>
                 <view>客服</view>
                 <!-- <button open-type="contact" bindcontact="handleContact"></button> -->
