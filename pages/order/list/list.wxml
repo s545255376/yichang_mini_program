@@ -46,7 +46,7 @@
         <!-- <button class="white_btn" open-type="contact" bindcontact="handleContact"  send-message-title="客服" session-from="udesk|去哪美小程序商城|实付：积分 {{item.pay_price}}|订单编号：{{item.order_sn}}|支付时间：{{item.pay_time}}|{{userinfo.username}}|{{userinfo.portrait}}">联系客服</button> -->
       </view>
       <view class="btn" wx:elif="{{item.order_status == 2}}">
-        <view class="white_btn" bindtap="showLogistics" data-idx="{{index}}">查看物流</view>
+        <button class="white_btn" data-idx="{{index}}" open-type="contact" bindcontact="handleContact">联系客服</button>
         <view class="black_btn" bindtap="confirmGet" data-idx="{{index}}">确认收货</view>
       </view>
       <!-- <view class="btn" wx:elif="{{item.order_status == 3}}">

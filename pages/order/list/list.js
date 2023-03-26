@@ -180,7 +180,11 @@ Page({
     getRequest.post('index/cart/againAdd', postdata).then(function(res){
       app.toastFun('已添加至购物车');
     }).catch(function(err){app.toastFun(err.msg);})
-  },
+    },
+    handleContact(e) {
+        console.log(e.detail.path)
+        console.log(e.detail.query)
+    },
   //确认收货
   confirmGet:function(e){
     let idx = e.currentTarget.dataset.idx,_this = this,list = this.data.list;

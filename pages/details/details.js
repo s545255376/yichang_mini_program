@@ -5,17 +5,19 @@ Page({
         tabbar: ['积分', '余额'],
         point_type: ['point', 'balance'],
         type_name: '积分',
-        tabbarNum:0,
+        tabbarNum: 0,
         point: 0,
         details: [],
-        loadState: true
+        loadState: true,
+        current_page: 0,
+        last_page: 0
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.getList(0)
+        this.getList(0, 0)
     },
 
     /**
@@ -57,8 +59,8 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-        if (this.data.pagenum < this.data.last_page) {
-            this.getList(this.data.tabbarNum, );
+        if (this.data.current_page < this.data.last_page) {
+            this.getList(this.data.tabbarNum, this.data.current_page);
         }
         else {
             app.toastFun('已经没有了');
@@ -69,20 +71,24 @@ Page({
         let idx = e.currentTarget.dataset.idx;
         this.setData({
             tabbarNum: idx,
-            type_name: this.data.tabbar[idx]
+            type_name: this.data.tabbar[idx],
+            details: []
         })
-        this.getList(idx);
+        this.getList(idx, 0);
     },
 
-    getList(idx) {
+    getList(type, idx) {
         let _this = this;
         let postdata = {
             token: app.globalData.token,
-            cur: idx + 1
+            page: idx + 1,
+            cur: type + 1
         };
         getRequest.post('index/Account/pointLog', postdata).then(function (res) {
             _this.setData({
-                details: res.data.data
+                details: _this.data.details.concat(res.data.data),
+                current_page: res.data.current_page,
+                last_page: res.data.last_page
             })
         }).catch(function (err) {
             // console.log(err)

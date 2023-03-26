@@ -134,7 +134,6 @@
   margin: 20rpx 0 20rpx 20rpx;
   padding: 0;
 }
-
 .list .footer .white_btn{
   color: #231F20;
   background: #ffffff;
@@ -142,6 +141,7 @@
 .list .footer .black_btn{
   background: #231F20;
   color: #ffffff;
+  border-radius: 6%;
 }
 .wait_c{
   color: #C2253A;

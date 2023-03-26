@@ -4,17 +4,31 @@
 </view>
 <view class="part" wx:else>
     <image class="bk_img" src="http://images.lexuanhui.online/platform_pic/bk_img.png"></image>
+    <view class="header">
+        <view class="header_box">
+            <view>当前亲友人数</view>
+            <view style="text-align: center">{{num}}</view>
+        </view>
+        <view class="header_box">
+            <view>当天亲友充值</view>
+            <view style="text-align: center">{{static_day}}</view>
+        </view>
+        <view class="header_box">
+            <view>亲友累计充值</view>
+            <view style="text-align: center">{{static_total}}</view>
+        </view>
+    </view>
     <view class="history" wx:if="{{teams.length > 0}}">
         <view class="head">亲友记录:（3月内团队成员未完成至少一次充值，自动解除绑定关系）</view>
         <view class="body">
-            <view>亲友充值时间</view>
             <view>亲友手机号</view>
-            <view>推广赠送积分</view>
+            <view>当天充值</view>
+            <view>累计充值</view>
         </view>
         <view class="body" wx:for="{{teams}}" wx:for-item="item">
-            <view>{{item.add_time}}</view>
             <view>{{item.mobile}}</view>
-            <view>{{item.point}}</view>
+            <view>{{item.day}}</view>
+            <view>{{item.total}}</view>
         </view>
     </view>
     <view wx:else class="none">暂无记录</view>

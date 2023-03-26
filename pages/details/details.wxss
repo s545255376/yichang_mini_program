@@ -1,5 +1,6 @@
 .tabbar {
     background: transparent;
+    position: absolute;
 }
 .tabbar view {
     color: white;
@@ -9,7 +10,7 @@
     border-bottom: 4rpx solid white;
 }
 .bk_img {
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: -1;
     height: 100%;
@@ -25,7 +26,6 @@
 .history {
     /* margin-top: 4%; */
     height: 1200rpx;
-    overflow: scroll;
 }
 .body {
     display: flex;
