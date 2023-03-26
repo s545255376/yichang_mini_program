@@ -28,14 +28,14 @@
           <view class="title">{{info.goods_name}}</view>
           <view class="desc">{{info.goods_sub}}</view>
           <view class="norms"><text wx:for="{{info.item}}" wx:key="orderGoodsItem" wx:for-item="model" wx:for-index="modelidx">{{model}}</text></view>
-          <view class="price"><text class="symbol">{{6 <= item.order_status?item.return_type+'：':''}}¥</text>{{info.price}}<text class="num">x {{info.num}}</text></view>
+          <view class="price"><text class="symbol">{{6 <= item.order_status?item.return_type+'：':''}}积分</text>{{info.price}}<text class="num">x {{info.num}}</text></view>
         </view>
       </view>
     </view>
     <!-- footer -->
     <view class="footer">
       <view class="show" wx:if="{{6 <= item.order_status}}">{{item.return_type}}{{item.return_status <= 2?'处理中':item.return_status == 3?'成功':item.return_status == 4?'失败':'已撤回'}}</view>
-      <view class="show" wx:else>实付：¥ {{item.pay_price}}<text>共{{item.total}}件商品</text></view>
+      <view class="show" wx:else>实付：积分 {{item.pay_price}}<text>共{{item.total}}件商品</text></view>
       
       <view class="btn" wx:if="{{item.order_status == 0}}">
         <view class="white_btn" bindtap="cancelOrder" data-idx="{{index}}">取消订单</view>
@@ -43,7 +43,7 @@
       </view>
       <view class="btn" wx:elif="{{item.order_status == 1}}">
         <view class="white_btn" bindtap="customerService">联系客服</view>
-        <!-- <button class="white_btn" open-type="contact" bindcontact="handleContact"  send-message-title="客服" session-from="udesk|去哪美小程序商城|实付：¥ {{item.pay_price}}|订单编号：{{item.order_sn}}|支付时间：{{item.pay_time}}|{{userinfo.username}}|{{userinfo.portrait}}">联系客服</button> -->
+        <!-- <button class="white_btn" open-type="contact" bindcontact="handleContact"  send-message-title="客服" session-from="udesk|去哪美小程序商城|实付：积分 {{item.pay_price}}|订单编号：{{item.order_sn}}|支付时间：{{item.pay_time}}|{{userinfo.username}}|{{userinfo.portrait}}">联系客服</button> -->
       </view>
       <view class="btn" wx:elif="{{item.order_status == 2}}">
         <view class="white_btn" bindtap="showLogistics" data-idx="{{index}}">查看物流</view>

@@ -26,7 +26,7 @@
           <view class="info">
             <view class="title">{{list.goods_name}}</view>
             <!-- <view class="desc">{{list.goods_sub}}</view> -->
-            <view class="price">{{list.price}}积分<text wx:if="{{list.market_price != 0}}">¥{{list.market_price}}</text></view>
+            <view class="price">积分{{list.price}}<text wx:if="{{list.market_price != 0}}">积分{{list.market_price}}</text></view>
           </view>
         </view>
       </view>
@@ -39,10 +39,10 @@
           <view class="info">
             <view class="title">
               <view>{{list.columnGoods[0].goods_name}}</view>
-              <!-- <text>¥ {{list.columnGoods[0].price }}</text> -->
+              <!-- <text>积分 {{list.columnGoods[0].price }}</text> -->
             </view>
-            <view class="price">{{list.columnGoods[0].price}}积分<text wx:if="{{list.columnGoods[0].market_price != 0}}">{{list.columnGoods[0].market_price}}积分</text></view>
-            <!-- <view class="desc"><view>{{list.columnGoods[0].goods_sub}}</view><text>¥ {{list.columnGoods[0].market_price}}</text></view> -->
+            <view class="price">积分{{list.columnGoods[0].price}}<text wx:if="{{list.columnGoods[0].market_price != 0}}">积分{{list.columnGoods[0].market_price}}</text></view>
+            <!-- <view class="desc"><view>{{list.columnGoods[0].goods_sub}}</view><text>积分 {{list.columnGoods[0].market_price}}</text></view> -->
           </view>
         </view>
         
@@ -54,7 +54,7 @@
             <view class="info">
               <view class="title">{{list.goods_name}}</view>
               <!-- <view class="desc">{{list.goods_sub}}</view> -->
-              <view class="price">{{list.price}}积分<text wx:if="{{list.market_price != 0}}">{{list.market_price}}积分</text></view>
+              <view class="price">积分{{list.price}}<text wx:if="{{list.market_price != 0}}">积分{{list.market_price}}</text></view>
             </view>
           </view>
         </view>
@@ -68,7 +68,7 @@
             </view>
             <view class="info">
               <view class="title">{{info.goods_name}}</view>
-              <view class="price">{{info.price}}积分<text wx:if="{{info.market_price != 0}}">¥{{info.market_price}}</text></view>
+              <view class="price">积分{{info.price}}<text wx:if="{{info.market_price != 0}}">积分{{info.market_price}}</text></view>
             </view>
           </view>
         </view>

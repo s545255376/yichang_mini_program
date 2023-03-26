@@ -22,8 +22,8 @@
                 <view class="name">{{item.goods_name}}</view>
                 <!-- <view class="desc">{{item.goods_sub}}</view>
         <view class="price">
-          <view class="buy_price"><text>¥</text>{{item.price}}</view>
-          <view class="market_price"><text>¥</text>{{item.market_price}}</view>
+          <view class="buy_price"><text>积分</text>{{item.price}}</view>
+          <view class="market_price"><text>积分</text>{{item.market_price}}</view>
         </view> -->
                 <view class="goods_share_btn" bindtap="shareBtn" data-idx="{{index}}">分享海报</view>
             </view>

@@ -32,7 +32,7 @@ var component_1 = require("../common/component");
         },
         currency: {
             type: String,
-            value: '¥',
+            value: '积分',
         },
     },
     methods: {

@@ -20,7 +20,7 @@
             <view class="cart_norms">30ml</view> -->
             
             <view class="price">
-              <view class="pay_price"><text>¥</text>{{item.price}}<view class="market_price"  wx:if="{{item.market_price != 0}}">¥{{item.market_price}}</view></view>
+              <view class="pay_price"><text>积分</text>{{item.price}}<view class="market_price"  wx:if="{{item.market_price != 0}}">积分{{item.market_price}}</view></view>
               <view class="paynum">x 1</view>
             </view>
           </view>

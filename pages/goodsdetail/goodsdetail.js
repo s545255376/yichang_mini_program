@@ -1080,7 +1080,7 @@ Page({
                     } else {
                         // ctx.fillText(desc, 30*dpr, 440*dpr);
                         ctx.font = 13 * dpr + 'px SourceHanSans'
-                        ctx.fillText('¥', 30 * dpr, 416 * dpr)
+                        ctx.fillText('积分', 30 * dpr, 416 * dpr)
                         ctx.font = 16 * dpr + 'px SourceHanSans'
                         ctx.fillText(price, 40 * dpr, 416 * dpr)
                     }
@@ -1132,7 +1132,7 @@ Page({
                 ctx.setFillStyle('#231F20')
             } else {
                 ctx.setFontSize(13 * dpr)
-                ctx.fillText('¥', 30 * dpr, 416 * dpr)
+                ctx.fillText('积分', 30 * dpr, 416 * dpr)
                 ctx.setFontSize(16 * dpr)
                 ctx.fillText(price, 45 * dpr, 416 * dpr)
             }

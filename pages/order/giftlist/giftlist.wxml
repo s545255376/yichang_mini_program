@@ -5,7 +5,7 @@
       <view class="title">{{item.goods_name}}</view>
       <view class="desc">{{item.goods_sub}}</view>
       <view class="price">
-        <view class="pay_price"><text>¥</text>0<view class="market_price">¥{{item.market_price}}</view></view>
+        <view class="pay_price"><text>积分</text>0<view class="market_price">积分{{item.market_price}}</view></view>
         <view class="paynum">x {{item.num}}</view>
       </view>
     </view>

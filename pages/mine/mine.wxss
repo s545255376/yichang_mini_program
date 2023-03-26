@@ -105,7 +105,7 @@
   margin-top: -110rpx;
 }
 .user .logoavatar,.user .avatar{
-    margin-top: 5%;
+    margin-top: 3%;
     width: 126rpx;
     height: 126rpx;
     border-radius: 50%;
@@ -129,12 +129,23 @@
   vertical-align: text-bottom;
   margin-right: 8rpx;
 }
-
+.user_info {
+    margin-top: 2%;
+}
 .my_code{
     width: 100rpx;
     height: 100rpx;
     margin-top: 5%;
     margin-left: 23%;
+}
+.contact {
+    position: relative;
+}
+.contact_button {
+    position: absolute;
+    opacity: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .card{

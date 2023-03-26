@@ -11,7 +11,7 @@
         <view class="user">
             <image src="../../images/logo.png" mode="widthFix" class="logoavatar"></image>
             <!-- <image wx:else src="{{userinfo.portrait}}" mode="aspectFill" class="avatar"></image> -->
-            <view>
+            <view class="user_info">
                 <view wx:if="{{logType == false}}" bindtap="clicklogin" class="username">{{userinfo.username}}</view>
                 <view wx:else class="username">{{userinfo.username}}</view>
                 <view class="store_name">
@@ -120,7 +120,7 @@
             </view>
             <view bindtap="goMyTeam">
                 <image src="../../images/mine/friend.png" mode="widthFix"></image>
-                <view>我的团队</view>
+                <view>我的亲友</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
         </view>
@@ -194,7 +194,8 @@
                 <view>消息</view>
                 <text wx:if="{{message != 0}}">{{message}}</text>
             </view>
-            <view class="contact" bindtap="goCustService" wx:if="{{userinfo.role_id == 0}}">
+            <view class="contact">
+                <button open-type="contact" bindcontact="handleContact" class="contact_button"></button>
                 <image src="../../images/mine/ic_service.png" mode="widthFix"></image>
                 <view>联系客服</view>
             </view>
@@ -231,7 +232,7 @@
             <image wx:if="{{scanInfo.image != ''}}" src="{{scanInfo.image}}" mode="aspectFill"></image>
             <view class="title" wx:if="{{scanInfo.name != ''}}">{{scanInfo.name}}</view>
             <view class="price" wx:if="{{scanInfo.coupon_value != ''}}">
-                ¥{{scanInfo.coupon_value}}
+                积分{{scanInfo.coupon_value}}
             </view>
             <view class="cardnum" wx:if="{{scanInfo.card_no != ''}}">卡号：{{scanInfo.card_no}}</view>
             <view wx:if="{{scanInfo.order.length != 0}}">

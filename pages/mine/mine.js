@@ -209,6 +209,10 @@ Page({
             })
         }
     },
+    handleContact(e) {
+        console.log(e.detail.path);
+        console.log(e.detail.query);
+    },
     showCode: function () {
         this.setData({
             cancel_code: false
@@ -244,7 +248,7 @@ Page({
             })
         }
     },
-    //我的团队
+    //我的亲友
     goMyTeam: function () {
         let logCheck = this.goLogin();
         if (logCheck == true) {
@@ -351,7 +355,7 @@ Page({
         let logCheck = this.goLogin();
         if (logCheck == true) {
             wx.navigateTo({
-                url: '../balance/fellow/fellow'
+                url: '../balance/fellow/fellow?type=1'
             })
         }
     },
