@@ -5,16 +5,12 @@
 <view class="part" wx:else>
     <image class="bk_img" src="http://images.lexuanhui.online/platform_pic/bk_img.png"></image>
     <view class="history" wx:if="{{teams.length > 0}}">
-<<<<<<< HEAD
-        <view class="head">团队记录:（3月内团队成员未完成至少一次充值，自动解除绑定关系）</view>
+        <view class="head">亲友记录:（3月内团队成员未完成至少一次充值，自动解除绑定关系）</view>
         <view class="body">
-            <view>会员充值时间</view>
-            <view>会员手机号</view>
+            <view>亲友充值时间</view>
+            <view>亲友手机号</view>
             <view>推广赠送积分</view>
         </view>
-=======
-        <view class="head">亲友记录:</view>
->>>>>>> 05ff14281f97683d904ebb02a201349c657c56fa
         <view class="body" wx:for="{{teams}}" wx:for-item="item">
             <view>{{item.add_time}}</view>
             <view>{{item.mobile}}</view>
