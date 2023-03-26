@@ -22,19 +22,21 @@
                     <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>我的积分:
                     {{point}}
                 </view>
-                <view class="store_name">
+                <!-- <view class="store_name">
                     <image src="../../images/mine/ic_myshopn.png" mode="widthFix"></image>我的卡券:
                     {{card_money}}
-                </view>
+                </view> -->
             </view>
             <image wx:if="{{logType == true}}" class="my_code" src="../../images/mine/code.png" bindtap="showCode"></image>
         </view>
         <view class="card">
             <image src="../../images/mine/ic_mine_cardbg.png" mode="aspectFill" class="mine_bg"></image>
             <view class="mine_tips">
-                <image src="../../images/mine/ic_vlog.png" mode="widthFix"></image>
-                <view>夷畅岩茶</view>
+                <image src="../../images/mine/ic_vlog.png" mode="widthFix"></image> 
+                <view wx:if="{{!is_vip}}">夷畅岩茶</view>
+                <view wx:else>夷畅茶楼一楼免费喝茶</view>
             </view>
+            
         </view>
         <!-- <view class="ic_writeoff" bindtap="ScanBtn" wx:if="{{userinfo.role_id == 1}}">
             <image src="../../images/mine/ic_writeoff.png" mode="widthFix"></image>
@@ -83,12 +85,17 @@
     </view>
     <view class="part server">
         <view class="part_title">
-            <text>积分服务</text>
+            <text>我的服务</text>
         </view>
         <view class="part_body">
             <view bindtap="buyPoints">
                 <image src="../../images/mine/vip.png" mode="widthFix"></image>
                 <view>会员充值</view>
+            </view>
+
+            <view bindtap="active">
+                <image src="../../images/mine/card_secret.png" mode="widthFix"></image>
+                <view>激活卡密</view>
             </view>
 
             <view bindtap="scanPoints" wx:if="{{store > 0}}">
@@ -103,7 +110,7 @@
             </view> -->
             <view bindtap="myCoupon">
                 <image src="../../images/mine/ic_card.png" mode="widthFix"></image>
-                <view>我的卡券</view>
+                <view>我的电子卡</view>
                 <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
             <view bindtap="goDetails">
@@ -153,6 +160,22 @@
             </view>
         </view>
     </view> -->
+    <!-- 拼团相关 -->
+    <pop bindeventclose="closeToast" popname="grouponToast" wx:if="{{grouponToast}}">
+        <view id="pop_custome_main">
+            <view class="register_item">
+                <view class="item_title">* 卡号：</view>
+                <input type="number" placeholder="请输入卡号" bindinput="inputchange" data-name="card" />
+            </view>
+            <view class="register_item">
+                <view class="item_title">* 卡密：</view>
+                <input type="number" placeholder="请输入卡密" bindinput="inputchange" data-name="secret" />
+            </view>
+            <view class="buttonGroup" bindtap="goActive">
+                <view>激活</view>
+            </view>
+        </view>
+    </pop>
     <view class="part server">
         <view class="part_title">
             <text>其他功能</text>

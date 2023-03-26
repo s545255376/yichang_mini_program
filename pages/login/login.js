@@ -52,6 +52,9 @@ Page({
             else {
                 newE = e;
             }
+            if (!newE.c) {
+                newE.c = '';
+            }
             app.globalData.sharequery = newE;
             console.warn('[onLoad]登录时携带参数:', newE);
         } else {

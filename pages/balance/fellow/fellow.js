@@ -8,9 +8,9 @@ Page({
      */
     data: {
         buttom: [
-            { id: 0, money: '5000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part1.jpg?v=1',selected: false },
-            { id: 1, money: '10000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part2.jpg?v=2',selected: false },
-            { id: 2, money: '20000', img: 'http://rogkmohny.hd-bkt.clouddn.com/platform_pic/part3.jpg?v=3',selected: true }
+            { id: 0, money: '5000', img: 'http://images.lexuanhui.online/platform_pic/part1.jpg?v=1',selected: false },
+            { id: 1, money: '10000', img: 'http://images.lexuanhui.online/platform_pic/part2.jpg?v=2',selected: false },
+            { id: 2, money: '20000', img: 'http://images.lexuanhui.online/platform_pic/part3.jpg?v=3',selected: true }
         ],
         money: '20000',
         loadState: true,

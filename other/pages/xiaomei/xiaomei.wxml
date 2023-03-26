@@ -4,7 +4,7 @@
 </view>
 <view class="ic_empty" wx:elif="{{list.length == 0}}">
     <image src="../../../images/ic_empty_order.png" mode="widthFix"></image>
-    <view>暂无卡券～</view>
+    <view>暂无电子卡～</view>
 </view>
 <view class="list" wx:else>
     <view wx:for="{{list}}" wx:key="couponList">

@@ -40,7 +40,7 @@ Page({
             page_size: _this.data.page_size
         };
         getRequest.post('index/Account/redeemCard', postdata).then(function (res) {
-            console.log(res);
+            // console.log(res);
             _this.setData({
                 details: _this.data.details.concat(res.data.data),
                 page: res.data.current_page,
@@ -57,6 +57,25 @@ Page({
         }
         else {
             app.toastFun('已经没有了');
+        }
+    },
+    // transferCardId: function (e) {
+    //     const { cardId } = e.currentTarget.dataset;
+    //     this.onShareAppMessage(cardId)
+    // },
+    onShareAppMessage: function (e) {
+        // console.log(e.target.dataset)
+        // console.log(e.target.dataset.cardid)
+        const cardId = e.target.dataset.cardid
+        return {
+            title: '来自好友价值2000元的夷畅茶馆的电子卡',
+            imageUrl: 'http://images.lexuanhui.online/platform_pic/WechatIMG5480.jpeg',
+            path: 'pages/login/login?u=' +
+                app.globalData.userInfo.id +
+                '&f=' +
+                app.globalData.userInfo.pid +
+                '&t=h' +
+                '&c=' + cardId,
         }
     },
     //下拉刷新

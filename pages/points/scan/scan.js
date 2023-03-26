@@ -9,7 +9,7 @@ Page({
         point: '',
         user_id: '',
         pay_mode: '2',
-        pay_type: ['积分','余额','卡券']
+        pay_type: ['积分','余额','电子卡','实体卡']
     },
 
     /**

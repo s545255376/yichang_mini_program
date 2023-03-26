@@ -189,23 +189,23 @@
 <!-- 拼团相关 -->
 <view class="mask" wx:if="{{pageScroll == false}}" catchtouchmove="noScroll"></view>
 <!-- 拼团活动弹窗 -->
-<pop bindeventclose="closeToast" popname="grouponToast" wx:if="{{grouponToast}}">
+<pop bindeventclose="closeToast" popname="grouponToast" wx:if="{{grouponToast && showCard==0}}">
     <view id="pop_custome_main">
-        <image src="http://rogkmohny.hd-bkt.clouddn.com/pl_pic/ad.jpg" mode="widthFix"></image>
+        <image src="http://images.lexuanhui.online/pl_pic/ad.jpg" mode="widthFix"></image>
         <view class="buttonGroup" bindtap="goGroupon">
-            <view>成为会员</view>
+            <view>充值有礼</view>
         </view>
     </view>
 </pop>
 <!-- 新人优惠券弹窗 -->
-<pop bindeventclose="closeToast" popname="couponToast" wx:if="{{couponToast}}">
+<pop bindeventclose="closeToast" popname="couponToast" wx:if="{{showCard==1 && couponToast}}">
     <view id="coupon_toast">
         <view class="info">
             <view catchtouchmove="false">
-                <view class="coupon_title">新人专享礼包</view>
-                <view class="coupon_desc">券不领是不可能的，万一剁手了呢</view>
+                <view class="coupon_title">夷畅电子卡</view>
+                <view class="coupon_desc">您的朋友赠送了您价值2000元的夷畅茶馆电子卡，赶快领取吧！</view>
             </view>
-            <view class="coupon_list">
+            <!-- <view class="coupon_list">
                 <view class="list" wx:for="{{coupons}}" wx:key="newAddCoupon">
                     <view class="list_l">
                         <view class="name">{{item.name}}</view>
@@ -221,9 +221,9 @@
                         <view class="term" wx:elif="{{item.pay_price_full != '' && item.order_pay_price == ''}}">满{{item.pay_price_full}}元使用</view>
                     </view>
                 </view>
-            </view>
+            </view> -->
         </view>
-        <view class="coupon_btn {{couponbtn == true?'':'coupon_unbtn'}}" catchtouchmove="false" bindtap="getCoupon">{{couponbtn == true?'立即领取':'查看我的优惠券 >>'}}</view>
+        <view class="coupon_btn {{couponbtn == true?'':'coupon_unbtn'}}" catchtouchmove="false" bindtap="getCard">{{couponbtn == true?'立即领取':'查看我的电子卡 >>'}}</view>
     </view>
 </pop>
 <!-- 调查问卷弹窗 -->

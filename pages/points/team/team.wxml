@@ -3,9 +3,14 @@
   <view>网络异常，请重新登陆～</view>
 </view>
 <view class="part" wx:else>
-    <image class="bk_img" src="http://rogkmohny.hd-bkt.clouddn.com/platform_pic/bk_img.png"></image>
+    <image class="bk_img" src="http://images.lexuanhui.online/platform_pic/bk_img.png"></image>
     <view class="history" wx:if="{{teams.length > 0}}">
-        <view class="head">团队记录:</view>
+        <view class="head">团队记录:（3月内团队成员未完成至少一次充值，自动解除绑定关系）</view>
+        <view class="body">
+            <view>会员充值时间</view>
+            <view>会员手机号</view>
+            <view>推广赠送积分</view>
+        </view>
         <view class="body" wx:for="{{teams}}" wx:for-item="item">
             <view>{{item.add_time}}</view>
             <view>{{item.mobile}}</view>

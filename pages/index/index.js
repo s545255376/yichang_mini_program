@@ -28,11 +28,11 @@ Page({
 
         list: [],
         jxlist: [],
-        couponToast: false,
+        couponToast: true,
         coupons: [],
         couponbtn: true,
         introimg: '',
-
+        showCard: 0,
         notice: {
             wholewidth: 0,
             width: 0,
@@ -66,7 +66,10 @@ Page({
         duoxuan2: [],
     },
     onLoad(options) {
-        console.log(options);
+        // console.log(options);
+        // console.log(this.data.showCard)
+        console.log(app.globalData.sharequery.c)
+        this.setData({ showCard: app.globalData.sharequery.c ? 1 : 0  })
         if(options.pay == 'success') {
             
         }
@@ -195,13 +198,13 @@ Page({
             })
         } else if (app.globalData.sharequery.t == 'pl') {
             //美容师分享特殊直播间给顾客
-            console.log(app.globalData.sharequery, '从这里进入活动页');
+            // console.log(app.globalData.sharequery, '从这里进入活动页');
             wx.navigateTo({
                 url: `../poster/huodong20220614`,
             })
         } else if (app.globalData.sharequery.t == 'j') {
             //基因检测
-            console.log('进入了基因检测的index入口')
+            // console.log('进入了基因检测的index入口')
             wx.navigateTo({
                 url: `/genetest/pages/index/index`,
             })
@@ -307,6 +310,7 @@ Page({
         const {
             detail
         } = e
+        // console.log(detail)
         this.setData({
             [detail]: false,
         })
@@ -497,7 +501,7 @@ Page({
                         uid: app.globalData.userInfo.id,
                     })
                     .then(function (res) {
-                        console.log(res)
+                        // console.log(res)
                         app.globalData.sharequery.t = ''
                         app.toastFun(res.msg)
                     })
@@ -512,7 +516,7 @@ Page({
                         flag: 'substitute_meal'
                     })
                     .then(function (res) {
-                        console.log(res)
+                        // console.log(res)
                         app.globalData.sharequery.t = ''
                         wx.showModal({
                             title: '提示',
@@ -835,7 +839,7 @@ Page({
                     qid
                 })
                 .then(res => {
-                    console.log(res, '4444444444');
+                    // console.log(res, '4444444444');
                     if (res.code == 200) {
                         this.setData({
                             getQuestionnaire: res.data
@@ -895,7 +899,7 @@ Page({
         })
     },
     confirmQuestion() {
-        console.log(this.data);
+        // console.log(this.data);
         const {
             questunloadimg,
             duoxuan1,
@@ -936,35 +940,40 @@ Page({
                 }
             })
     },
-    //领取新人优惠券
-    getCoupon: function () {
+    //领取电子卡
+    getCard: function () {
+        let _this = this
         if (this.data.couponbtn == true) {
-            let _this = this,
-                coupons = this.data.coupons,
-                id = []
-            coupons.forEach(function (e) {
-                id.push(e.id)
+        //     let _this = this,
+        //         coupons = this.data.coupons,
+        //         id = []
+        //     coupons.forEach(function (e) {
+        //         id.push(e.id)
+        //     })
+        getRequest
+            .post(
+                'index/Account/acceptCard', {
+                    card_id: app.globalData.sharequery.c,
+                    // card_id: 7,
+                    token: app.globalData.token,
+                },
+                true
+            )
+            .then(function (res) {
+                app.toastFun('电子卡领取成功')
+                _this.setData({
+                    couponbtn: false,
+                })
+                app.globalData.sharequery.c = ''
+                wx.navigateTo({
+                    url: '../coupon/coupon',
+                })
             })
-            getRequest
-                .post(
-                    'index/coupons/receive', {
-                        uid: app.globalData.userInfo.id,
-                        id: id,
-                        token: app.globalData.token,
-                    },
-                    true
-                )
-                .then(function (res) {
-                    app.toastFun('优惠券领取成功')
-                    _this.setData({
-                        couponbtn: false,
-                    })
-                })
-                .catch(function (err) {
-                    app.toastFun(err.msg)
-                })
+            .catch(function (err) {
+                app.toastFun(err.msg)
+            })
         } else {
-            this.closeToast({
+            _this.closeToast({
                 detail: 'couponToast'
             })
             wx.navigateTo({
@@ -980,7 +989,7 @@ Page({
     },
     //商品详情
     goGoodsInfo(e) {
-        console.log(e.currentTarget.dataset)
+        // console.log(e.currentTarget.dataset)
         wx.navigateTo({
             url: '../goodsdetail/goodsdetail?goods_id=' +
                 e.currentTarget.dataset.goodsid +
@@ -1042,7 +1051,7 @@ Page({
                 getLiveStatusFun.get(roomid, live_status)
                 // 往后间隔5分钟或更慢的频率去轮询获取直播状态
                 this.data.liveInterval = setInterval(() => {
-                    console.log(roomid)
+                    // console.log(roomid)
                     getLiveStatusFun.get(roomid, live_status)
                 }, 60000)
 
@@ -1058,7 +1067,7 @@ Page({
     onShareAppMessage: function () {
         return {
             title: '夷畅岩茶',
-            imageUrl: 'http://rogkmohny.hd-bkt.clouddn.com/pl_pic/ad.jpg',
+            imageUrl: 'http://images.lexuanhui.online/pl_pic/ad.jpg',
             path: 'pages/login/login?u=' +
                 app.globalData.userInfo.id +
                 '&f=' +

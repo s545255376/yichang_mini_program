@@ -28,6 +28,64 @@
     width: 200px;
     height: 200px;
 }
+/* 拼团弹窗 */
+#pop_custome_main {
+  width: 550rpx;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  height: 550rpx;
+}
+
+#pop_custome_main image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 45rpx;
+}
+
+.buttonGroup view {
+  width: 80%;
+  text-align: center;
+  padding: 20rpx 0;
+  background: #231f20;
+  color: #fff;
+}
+.register_item {
+  margin-bottom: 60rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 12%;
+  margin-left: 15%;
+}
+
+.register_item .item_title {
+  font-size: 28rpx;
+  color: #000;
+  margin-top: 2rpx;
+}
+
+.register_item .item_input {
+  border-bottom: 1rpx solid #D1CBCD;
+  flex: 1;
+  height: 60rpx;
+  font-size: 28rpx;
+  position: relative;
+}
 .mine{
   width: 100%;
   height: auto;

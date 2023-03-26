@@ -6,10 +6,14 @@
   <view>网络异常，请重新登陆～</view>
 </view>
 <view class="part" wx:else>
-    <image class="bk_img" src="http://rogkmohny.hd-bkt.clouddn.com/platform_pic/bk_img.png"></image>
-    <view class="points">我的{{type_name}}: {{point}}</view>
+    <image class="bk_img" src="http://images.lexuanhui.online/platform_pic/bk_img.png"></image>
     <view class="history">
         <view wx:if="{{details.length > 0}}">
+          <view class="body">
+                <view>时间</view>
+                <view>金额</view>
+                <view>详情</view>
+            </view>
             <view class="body" wx:for="{{details}}" wx:for-item="item">
                 <view>{{item.add_time}}</view>
                 <view>{{item.point}}</view>

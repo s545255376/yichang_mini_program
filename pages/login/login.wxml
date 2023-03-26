@@ -1,5 +1,5 @@
 <view class="login">
-    <image class="bk_img" src="http://rogkmohny.hd-bkt.clouddn.com/platform_pic/login_bk.jpg"></image>
+    <image class="bk_img" src="http://images.lexuanhui.online/platform_pic/login_bk.jpg"></image>
     <view class="name">夷 畅 岩 茶 蒸 着 喝</view>
 
     <!-- <button class="login_btn" wx:if="{{btnType == 0}}" bindtap="getUserInfo">同意授权</button> -->

@@ -2,7 +2,7 @@ const app = getApp()
 const getRequest = require('../../utils/getRequest')
 Page({
     data: {
-        tabbar: ['积分', '余额', '卡券'],
+        tabbar: ['积分', '余额', '电子卡'],
         point_type: ['point', 'balance', 'card_money'],
         type_name: '积分',
         tabbarNum:0,
@@ -85,7 +85,7 @@ Page({
                 details: res.data.data
             })
         }).catch(function (err) {
-            console.log(err)
+            // console.log(err)
             _this.setData({ loadState: true })
             setTimeout(() => {
                 wx.navigateBack({
@@ -95,9 +95,16 @@ Page({
         })
 
         getRequest.post('index/Account/point', { token: app.globalData.token }).then(function (res) {
-            _this.setData({
-                point: res.data[_this.data.point_type[idx]]
-            })
+            if (res.data.is_vip) {
+                _this.setData({
+                    tabbar: ['积分', '余额', '电子卡', '实体卡'],
+                    point: res.data[_this.data.point_type[idx]]
+                })
+            } else {
+                _this.setData({
+                    point: res.data[_this.data.point_type[idx]]
+                })
+            }
         })
     }
 })

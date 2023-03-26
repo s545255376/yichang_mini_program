@@ -8,9 +8,14 @@ Page({
         point: 0,
         money: 0,
         card_money: 0,
+        is_vip: false,
         pageShow: false,
         cancel_code: true,
         logType: false,
+        hiddenmodalput: false,
+        grouponToast:false,
+        cardNumber: '',
+        cardSecret: '',
         userinfo: {
             username: '点击登录',
             avatar: '',
@@ -68,7 +73,7 @@ Page({
         let _this = this;
 
         if (app.globalData.userInfo.id != '') { //用户已登录
-            console.log(app.globalData.userInfo)
+            // console.log(app.globalData.userInfo)
             _this.setData({
                 store: app.globalData.userInfo.role_id
             })
@@ -171,7 +176,8 @@ Page({
             _this.setData({
                 point: res.data.point,
                 money: res.data.balance,
-                card_money: res.data.card_money
+                card_money: res.data.card_money,
+                is_vip: res.data.is_vip
             })
         })
     },
@@ -247,6 +253,46 @@ Page({
             })
         }
     },
+    inputchange: function(e) {
+        const {
+            name
+        } = e.currentTarget.dataset;
+        if (name == 'card') {
+            this.setData({
+                cardNumber: e.detail.value
+            })
+        } else {
+            this.setData({
+                cardSecret: e.detail.value
+            })
+        }
+    },
+    // 激活卡密
+    goActive: function() {
+        let _this = this
+        const {cardNumber, cardSecret} = this.data;
+        getRequest
+            .post(
+                '/index/Account/activeCdkey', {
+                    card_no: cardNumber,
+                    pwd: cardSecret,
+                    token: app.globalData.token,
+                },
+                true
+            )
+            .then(function (res) {
+                app.toastFun('激活成功！')
+                _this.setData({
+                    grouponToast: false,
+                })
+                wx.reLaunch({
+                    url: '../mine/mine',
+                })
+            })
+            .catch(function (err) {
+                app.toastFun(err.msg)
+            })
+    },
     //消费明细
     goDetails: function () {
         let logCheck = this.goLogin();
@@ -308,6 +354,21 @@ Page({
                 url: '../balance/fellow/fellow'
             })
         }
+    },
+    active() {
+        this.setData({
+            grouponToast: true
+        })
+    },
+    //隐藏弹窗
+    closeToast: function (e) {
+        const {
+            detail
+        } = e
+        // console.log(detail)
+        this.setData({
+            [detail]: false,
+        })
     },
     //常见问题
     questionBtn: function () {
@@ -411,7 +472,7 @@ Page({
             title: '提示',
             content: '是否确认要注销账号？',
             success: function (info) {
-                console.log(info)
+                // console.log(info)
                 if (info.confirm) {
                     getRequest.post('index/user/del', {
                         uid: app.globalData.userInfo.id

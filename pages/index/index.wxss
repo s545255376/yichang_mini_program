@@ -345,7 +345,7 @@
 #coupon_toast {
     width: 554rpx;
     margin: 0 auto;
-    height: 820rpx;
+    height: 320rpx;
     padding: 30rpx;
     z-index: 999;
     background-image: url('https://fenxiaopic.missshop.com/guoxin/coupon_bg.png');

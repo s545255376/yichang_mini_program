@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "pop": "../../component/pop"
+  },
   "navigationBarTitleText": "个人中心"
 }
