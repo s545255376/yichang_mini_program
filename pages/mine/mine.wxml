@@ -101,7 +101,6 @@
             <view bindtap="scanPoints" wx:if="{{store > 0}}">
                 <image src="../../images/mine/scan.png" mode="widthFix"></image>
                 <view>门店核销</view>
-                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
             <!-- <view bindtap="goDetail">
                 <image src="../../images/mine/recharge.png" mode="widthFix"></image>
@@ -111,17 +110,14 @@
             <view bindtap="myCoupon">
                 <image src="../../images/mine/ic_card.png" mode="widthFix"></image>
                 <view>我的电子卡</view>
-                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
             <view bindtap="goDetails">
                 <image src="../../images/mine/search.png" mode="widthFix"></image>
                 <view>消费明细</view>
-                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
             <view bindtap="goMyTeam">
                 <image src="../../images/mine/friend.png" mode="widthFix"></image>
                 <view>我的亲友</view>
-                <text wx:if="{{orderList.stayCompleteStats != 0}}">{{orderList.stayCompleteStats < 100 ? orderList.stayCompleteStats : '···' }}</text>
             </view>
         </view>
     </view>
