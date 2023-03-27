@@ -1,6 +1,8 @@
 <import src="../wxParse/wxParse.wxml" />
 <!-- <image src="../../images/ic_return.png" mode="widthFix" class="icon_return" style="top:{{statusBarHeight}}px" bindtap="returnBack"></image> -->
 <view class="{{pageShow == true?'wholepage':''}} {{needAdapt ?'iphone_pandding':''}}">
+<scroll-view scroll-y="true" class="scroll_content" :enhanced="true"
+         :bounces="false" :show-scrollbar="false">
     <view wx:if="{{banner.length != 0 || list.video != ''}}">
         <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" class="banner" bindchange="swiperChange" style="height:{{bannerHeight}}px">
             <swiper-item wx:if="{{list.video != ''}}">
@@ -308,4 +310,5 @@
             <view class="saveimg" bindtap="downLoadImg">保存至相册</view>
         </view>
     </view>
+</scroll-view>
 </view>
