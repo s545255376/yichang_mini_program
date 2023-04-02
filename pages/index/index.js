@@ -991,9 +991,7 @@ Page({
     goGoodsInfo(e) {
         // console.log(e.currentTarget.dataset)
         wx.navigateTo({
-            url: '../goodsdetail/goodsdetail?goods_id=' +
-                e.currentTarget.dataset.goodsid +
-                '&live=false',
+            url: `../goodsdetail/goodsdetail?goods_id=${e.currentTarget.dataset.goodsid}&live=false&location_num=${this.data.locationNum}&pre=index`,
         })
     },
     goGroupon() {

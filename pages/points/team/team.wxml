@@ -19,7 +19,7 @@
         </view>
     </view>
     <view class="history" wx:if="{{teams.length > 0}}">
-        <view class="head">亲友记录:（3月内团队成员未完成至少一次充值，自动解除绑定关系）</view>
+        <view class="head">亲友记录:（3月内亲友成员未完成至少一次充值，自动解除绑定关系）</view>
         <view class="body">
             <view>亲友手机号</view>
             <view>当天充值</view>
