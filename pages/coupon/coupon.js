@@ -3,7 +3,7 @@ const getRequest = require('../../utils/getRequest');
 var waitState = false;
 Page({
     data: {
-        tabbar: ['可赠送', '可使用'],
+        tabbar: ['可赠送', '已使用'],
         tabbarNum: 0,
         details: [],
         current_page: 1,

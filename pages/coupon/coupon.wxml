@@ -13,6 +13,7 @@
     <view class="body" wx:if="{{details.length > 0}}">
             <view class="item" wx:for="{{details}}" wx:for-item="item" wx:for-index="index">
                 <view class="transfer" wx:if="{{tabbarNum==0}}"><button type="primary" size="mini" data-cardId="{{item.id}}" open-type="share">赠送亲友</button></view>
+                <view class="transfer" wx:if="{{tabbarNum!=0}}"><button type="warn" size="mini" data-cardId="{{item.id}}">已自动转余额</button></view>
                 <image class="bk_img" src="http://images.lexuanhui.online/platform_pic/WechatIMG5480.jpeg"></image>
             </view>
         </view>
