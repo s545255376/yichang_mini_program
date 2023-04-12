@@ -224,13 +224,9 @@
                 <image src="{{list.is_suit == 0?goods_search.image:list.images[0].image}}" mode="aspectFill" class="goods_img"></image>
                 <view class="info">
                     <view class="price">
-                        <text></text>
                         {{list.is_suit == 0?goods_search.price:sumprice.price}}
                         <view>
-                            <text wx:if="{{list.is_suit == 0 && goods_search.market_price != 0}}"></text>
                             {{goods_search.market_price == 0?'':goods_search.market_price + '积分'}}
-                            <text wx:if="{{list.is_suit == 1 && sumprice.market_price != 0}}"></text>
-                            {{sumprice.market_price == 0?'':sumprice.market_price + '积分'}}
                         </view>
                     </view>
 

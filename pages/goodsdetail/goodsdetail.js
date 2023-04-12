@@ -108,6 +108,19 @@ Page({
              * @param {String} t
              * @param {String} wxlive_type
              */
+
+            var pages = getCurrentPages();
+            var prevPage = pages[pages.length - 2];
+            if (options.pre == 'classify') {
+                prevPage.setData({
+                    activeKey: options.active_key
+                })
+            }else {
+                prevPage.setData({
+                    locationNum: options.location_num
+                })
+            }
+            
             const goods_id = options.goods_id ? options.goods_id : options.gid
             const {
                 props = '',

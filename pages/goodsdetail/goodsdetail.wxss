@@ -298,9 +298,11 @@
 .toast .title .info{
   width: calc(100% - 220rpx);
   padding-left: 20rpx;
+  display: flex;
+  flex-direction: column;
 }
 .toast .title .price{
-  font-size: 36rpx;
+  font-size: 34rpx;
   line-height: 60rpx;
   margin-bottom: 10rpx;
   display: table-cell;
@@ -312,7 +314,7 @@
 }
 .toast .title .price view{
   display: inline-block;
-  font-size: 26rpx;
+  font-size: 24rpx;
   color: #A7A5A6;
   text-decoration: line-through;
 }
