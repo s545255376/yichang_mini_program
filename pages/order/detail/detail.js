@@ -7,7 +7,8 @@ Page({
         order_id: '',
         loglist: {},
         //倒计时
-        showtimearr: ['00', '00', '00'],
+    showtimearr: ['00', '00', '00'],
+        is_cash: 0,
 
         //物流
         expressList: [],
@@ -38,6 +39,12 @@ Page({
             order_id: options.order_id,
             uid: options.uid,
         })
+      
+        if ('is_cash' in options) {
+          this.setData({
+              is_cash: options.is_cash
+            })
+        }
     },
     onShow() {
         this.getInfo(this.data.order_id);

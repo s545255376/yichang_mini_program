@@ -44,7 +44,7 @@
         </view>
     </view>
     <!-- 地址 -->
-    <view class="address">
+    <view class="address" wx:if="{{is_cash == 0}}">
         <view class="row">
             <view class="label">收 货 人：</view>
             <view class="info">{{info.consignee.consignee}} {{info.consignee.mobile}}</view>
@@ -91,10 +91,10 @@
                 </view>
                 <view class="price">
                     <view class="pay_price">
-                        <text>积分</text>
+                        <text>{{is_cash == 0 ? '积分' : '¥'}}</text>
                         {{item.goods_price}}
                         <view class="market_price" wx:if="{{item.market_price != 0}}">
-                            积分{{item.market_price}}
+                          {{is_cash == 0 ? '积分' : '¥'}}{{item.market_price}}
                         </view>
                     </view>
                     <view class="paynum">x {{item.num}}</view>
@@ -131,7 +131,7 @@
             <view>
                 商品金额
                 <view>
-                    <text>积分</text>
+                    <text>{{is_cash == 0 ? '积分' : '¥'}}</text>
                     {{info.goods_price}}
                 </view>
             </view>
@@ -142,21 +142,21 @@
             <view>
                 运费
                 <view>
-                    <text>积分</text>
+                    <text>{{is_cash == 0 ? '积分' : '¥'}}</text>
                     {{info.express_fee}}
                 </view>
             </view>
             <view>
                 优惠金额
                 <view>
-                    <text>积分</text>
+                    <text>{{is_cash == 0 ? '积分' : '¥'}}</text>
                     {{info.coupon_price}}
                 </view>
             </view>
             <view class="pay">
                 应付金额
                 <view>
-                    <text>积分</text>
+                    <text>{{is_cash == 0 ? '积分' : '¥'}}</text>
                     {{info.pay_price}}
                 </view>
             </view>

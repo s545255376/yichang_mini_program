@@ -90,8 +90,8 @@
         "list": [
             {
                 "pagePath": "pages/index/index",
-                "iconPath": "images/icon_cart.png",
-                "selectedIconPath": "images/icon_cart_search.png",
+                "iconPath": "images/home.png",
+                "selectedIconPath": "images/home_active.png",
                 "text": "首页"
             },
             {
@@ -102,9 +102,9 @@
             },
             {
                 "pagePath": "pages/offline/classify",
-                "iconPath": "images/ic_live.png",
-                "selectedIconPath": "images/ic_live_search.png",
-                "text": "线下点茶"
+                "iconPath": "images/icon_cart.png",
+                "selectedIconPath": "images/icon_cart_search.png",
+                "text": "茶馆点餐"
             },
             {
                 "pagePath": "pages/livelist/livelist",

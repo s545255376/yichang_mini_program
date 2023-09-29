@@ -47,9 +47,35 @@
     <view class="border_r" bindtap="myScores"><view class="num">{{score}}</view><view class="name">积分</view></view>
     <view class="coupon" bindtap="myCoupon"><view class="num">{{card}}<view>NEW</view></view><view class="name">优惠券</view></view>
   </view> -->
+  <view class="part">
+        <view class="part_title">
+            <text>茶馆订单</text>
+            <view bindtap="goOrderListCash" data-type="0">
+                查看全部订单
+                <image src="../../images/ic_arrow_r.png" mode="widthFix"></image>
+            </view>
+        </view>
+        <view class="part_body">
+            <view bindtap="goOrderListCash" data-type="1">
+                <image src="../../images/mine/ic_order_waitpay.png" mode="widthFix"></image>
+                <view>待付款</view>
+                <text wx:if="{{orderList_cash.stayPaymentStats != 0}}">{{orderList_cash.stayPaymentStats < 100 ? orderList_cash.stayPaymentStats : '···' }}</text>
+            </view>
+            <view bindtap="goOrderListCash" data-type="2">
+                <image src="../../images/mine/ic_order_waitsend.png" mode="widthFix"></image>
+                <view>待上餐</view>
+                <text wx:if="{{orderList_cash.stayDeliverStats != 0}}">{{orderList_cash.stayDeliverStats < 100 ? orderList_cash.stayDeliverStats : '···' }}</text>
+            </view>
+            <view bindtap="goOrderListCash" data-type="4">
+                <image src="../../images/mine/ic_order_finish.png" mode="widthFix"></image>
+                <view>已完成</view>
+                <text wx:if="{{orderList_cash.stayCompleteStats != 0}}">{{orderList_cash.stayCompleteStats < 100 ? orderList_cash.stayCompleteStats : '···' }}</text>
+            </view>
+        </view>
+    </view>
     <view class="part">
         <view class="part_title">
-            <text>我的订单</text>
+            <text>线上订单</text>
             <view bindtap="goOrderList" data-type="0">
                 查看全部订单
                 <image src="../../images/ic_arrow_r.png" mode="widthFix"></image>

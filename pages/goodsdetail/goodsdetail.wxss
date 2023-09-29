@@ -891,7 +891,9 @@
     width: 140rpx;
     height: 140rpx;
     border-radius: 50%;
-    border: solid;
+    background-color: #c2253a;
+    font-size: larger;
+    color: #FFFFFF;
     text-align: center;
     line-height: 140rpx;
 }

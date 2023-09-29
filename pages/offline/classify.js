@@ -77,7 +77,9 @@ Page({
     },
     //商品详情
     goGoodsInfo(e) {
-        const { goodsid } = e.currentTarget.dataset;
+      const { goodsid } = e.currentTarget.dataset;
+      console.log(this.data.activeKey);
+      console.log(goodsid);
         wx.navigateTo({
             url: `../goodsdetail/goodsdetail?goods_id=${goodsid}&live=false&active_key=${this.data.activeKey}&pre=classify&is_cash=1`,
         })

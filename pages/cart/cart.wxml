@@ -15,7 +15,7 @@
       <!-- <checkbox-group bindchange="searchAll" class="checkpart">
         <checkbox value="all" checked="{{modelall}}">全选</checkbox>
       </checkbox-group> -->
-      <view class="sumprice">合计：<text>积分</text><text class="sumnum">{{sumprice}}</text></view>
+      <view class="sumprice">合计：<text>{{modeltype == 3 ? '¥' : '积分'}}</text><text class="sumnum">{{sumprice}}</text></view>
       <button bindtap="goPayment">结算</button>
     </view>
 
@@ -23,7 +23,7 @@
     <view wx:for="{{list}}" wx:key="cartlist" wx:for-item="listitem" wx:for-index="partnum">
       <view class="cartpart" wx:if="{{listitem.length != 0}}">
         <checkbox-group bindchange="searchAll"  data-type="{{partnum}}">
-          <label><view class="head"><checkbox disabled="{{modeltype != partnum && modeltype != 'none'}}" value="all" checked="{{modelall[partnum]}}" class="checkbox"/>{{partnum == 0?'门店自提':partnum == 1?'快递配送':'门店自提或快递配送'}}</view></label>
+          <label><view class="head"><checkbox disabled="{{modeltype != partnum && modeltype != 'none'}}" value="all" checked="{{modelall[partnum]}}" class="checkbox"/>{{partnum == 0?'门店自提':partnum == 1?'快递配送':partnum == 2?'门店自提或快递配送':'线下点餐'}} </view></label>
         </checkbox-group>
         <checkbox-group bindchange="cartSearch" disabled="{{modeltype != partnum && modeltype != 'none'}}" data-type="{{partnum}}" class="cart_body" wx:if="{{listitem.length != 0}}">
           <view class="cart" wx:for="{{listitem}}" wx:key="childlist">
@@ -53,7 +53,7 @@
 
   
                 <view class="price">
-                  <view class="pay_price"><text>积分</text>{{item.price}}<view class="market_price" wx:if="{{item.market_price != 0}}">积分{{item.market_price}}</view></view>
+                  <view class="pay_price"><text>{{partnum == 3 ? '¥': '积分'}}</text>{{item.price}}<view class="market_price" wx:if="{{item.market_price != 0}}">{{partnum == 3 ? '¥': '积分'}}{{item.market_price}}</view></view>
                   <view class="paynum">
                     <view class="{{item.num<=1?'un_click':''}}" bindtap="delNum" data-type="{{partnum}}" data-idx="{{index}}">-</view><view class="num">{{item.num}}</view><view bindtap="addNum" data-type="{{partnum}}" data-idx="{{index}}">+</view>
                   </view>

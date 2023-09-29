@@ -229,7 +229,7 @@ Page({
         if (this.data.reasonCheck == -1) {
             app.toastFun('您还有未填项');
         } else if (this.data.order_status == 2 && this.data.typeCheck == -1) {
-            app.toastFun('您还有未填项');
+            ('您还有未填项');
         }
         // else if(this.data.typeCheck == 1 && ( this.data.expressCheck == -1 || this.data.express_sn == '')){
         //   app.toastFun('您还有未填项');

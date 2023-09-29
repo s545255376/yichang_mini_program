@@ -8,15 +8,21 @@ Page({
     pagenum:1,
     last_page:1,
     loadState:true,
-    userinfo:{},
+    userinfo: {},
+    is_cash: 0,
     needAdapt:app.globalData.system.needAdapt
   },
   onLoad: function (options) {
     let status = options.status;
     this.setData({
       tabbarNum:status,
-      userinfo:app.globalData.userInfo
+      userinfo: app.globalData.userInfo,
     })
+    if ('is_cash' in options) {
+      this.setData({
+          is_cash: options.is_cash
+        })
+    }
   },
   onShow: function () {
     clearInterval(app.router.timeInterval);
@@ -44,8 +50,11 @@ Page({
       token:app.globalData.token,
       uid:app.globalData.userInfo.id,
       status:status,
-      page:pagenum
+      page: pagenum
     };
+    if (_this.data.is_cash == 1) {
+      postdata['is_cash'] = 1
+    }
     getRequest.post('index/order/order', postdata).then(function(res){
       _this.setData({
         list:_this.data.list.concat(res.data.data),
@@ -56,8 +65,9 @@ Page({
     }).catch(function(err){_this.setData({loadState:false})})
   },
   //跳转订单详情
-  orderDetail:function(e){
+  orderDetail: function (e) {
     let idx = e.currentTarget.dataset.idx;
+    console.log(this.data.list[idx])
     if(6 <= this.data.list[idx].order_status){
       wx.navigateTo({
         url: '../refund/detail/detail?refund_id='+this.data.list[idx].refund_id+'&uid='+app.globalData.userInfo.id,
@@ -65,7 +75,7 @@ Page({
     }
     else{
       wx.navigateTo({
-        url: '../detail/detail?order_id='+this.data.list[idx].id+'&uid='+app.globalData.userInfo.id,
+        url: '../detail/detail?order_id='+this.data.list[idx].id+'&uid='+app.globalData.userInfo.id+'&is_cash='+this.data.list[idx],
       })
     }
   },

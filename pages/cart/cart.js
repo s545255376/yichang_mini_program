@@ -30,7 +30,7 @@ Page({
     let _this = this,list = [[],[],[]];
     //获取购物车列表
     getRequest.post('index/cart/index', {uid:app.globalData.userInfo.id,token:app.globalData.token}).then(function(res){
-      list = [res.data.pick.store,res.data.pick.home,res.data.pick.home_store];
+      list = [res.data.pick.store, res.data.pick.home, res.data.pick.home_store, res.data.pick.offline];
       _this.setData({
         searchList:[],
         list:list,
@@ -341,8 +341,9 @@ console.log(this.data.list[type][idx]);
         cart_id.push(list[e].cart_id);
       })
       cart_id = JSON.stringify(cart_id);
+      console.log(this.data.modeltype)
       wx.navigateTo({
-        url: '../payment/payment?cart_id='+cart_id+'&sku_id=&goods_id=&num='+'&is_jx_goods=0',
+        url: `../payment/payment?cart_id=${cart_id}&sku_id=&goods_id=&num=&is_jx_goods=0&is_cash=${this.data.modeltype == 3 ? 1 : 0}`
       })
     }
   },
