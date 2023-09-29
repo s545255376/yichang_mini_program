@@ -1064,7 +1064,7 @@ Page({
     //分享
     onShareAppMessage: function () {
         return {
-            title: '夷畅岩茶',
+            title: '夷畅-助力中小企业，保护优质产品',
             imageUrl: 'http://images.lexuanhui.online/pl_pic/ad.jpg',
             path: 'pages/login/login?u=' +
                 app.globalData.userInfo.id +
