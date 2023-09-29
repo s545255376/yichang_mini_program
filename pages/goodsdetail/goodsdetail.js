@@ -4,7 +4,7 @@ const cartNum = require('../../utils/cartNum.js')
 const Font = require('../../utils/getFont')
 const getRequest = require('../../utils/getRequest')
 var WxParse = require('../wxParse/wxParse.js')
-import {
+import util, {
     formatTime
 } from '../../utils/util'
 Page({
@@ -14,7 +14,8 @@ Page({
         needAdapt: app.globalData.system.needAdapt,
         pageShow: false,
         cartnum: 0,
-        goods_id: '',
+    goods_id: '',
+        is_cash: 0,
 
         banner: [],
         indicatorDots: false, //指示点
@@ -109,6 +110,11 @@ Page({
              * @param {String} wxlive_type
              */
 
+          if ('is_cash' in options) {
+            this.setData({
+                is_cash: 1
+              })
+            }
             var pages = getCurrentPages();
             var prevPage = pages[pages.length - 2];
             if (options.pre == 'classify') {
@@ -439,6 +445,11 @@ Page({
             url: '../cart/cart',
         })
     },
+    goList: function () {
+        wx.switchTab({
+          url: '../offline/classify',
+        })
+    },
     // 加入购物车-弹窗
     addCart: function () {
         if (this.data.list.can_buy == 1) {
@@ -740,9 +751,45 @@ Page({
                     } else {
                         if (this.data.toastBtn == '立即购买') {
                             _this.closeToast()
-                            wx.navigateTo({
-                                url: `../payment/payment?sku_id=${this.data.goods_search.sku_id}&goods_id=${this.data.goods_id}&num=${this.data.goodsnum}&cart_id=&is_jx_goods=${this.data.list.is_jx_goods}&check_give=${check_give}&activity_id=${this.data.list.activity_id}`,
-                            })
+                            if (this.list.get(is_offline) == 1) {
+                                let _this = this;
+                                let postdata = {
+                                  price: _this.data.money,
+                                  token: app.globalData.token,
+                                }
+                                getRequest.post('index/Recharge/createOrder', postdata).then(function (res) {
+                                  wx.requestPayment({
+                                    nonceStr: res.data.nonceStr,
+                                    package: res.data.package,
+                                    paySign: res.data.paySign,
+                                    timeStamp: res.data.timeStamp,
+                                    signType: res.data.signType,
+                                    success() {
+                                      app.toastFun("支付成功");
+                                      setTimeout(() => {
+                                        wx.switchTab({
+                                          url: '../offline/classify',
+                                        })
+                                      }, 1200);
+                                    },
+                                    fail() {
+                                      app.toastFun("支付失败!");
+                                    }
+                                  })
+                                }).catch(function (err) {
+                                  console.log(err)
+                                  _this.setData({ loadState: true })
+                                  // setTimeout(() => {
+                                  //   wx.navigateBack({
+                                  //     delta: 1,
+                                  //   })
+                                  // }, 1000);
+                                })
+                            } else {
+                                wx.navigateTo({
+                                    url: `../payment/payment?sku_id=${this.data.goods_search.sku_id}&goods_id=${this.data.goods_id}&num=${this.data.goodsnum}&cart_id=&is_jx_goods=${this.data.list.is_jx_goods}&check_give=${check_give}&activity_id=${this.data.list.activity_id}`,
+                                })
+                            }
                         } else if (this.data.toastBtn == '加入购物车') {
                             let postdata = {
                                 uid: app.globalData.userInfo.id,

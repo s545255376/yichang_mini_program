@@ -39,7 +39,8 @@
         "pages/points/scan/scan",
         "pages/details/details",
         "pages/balance/fellow/fellow",
-        "pages/points/team/team"
+        "pages/points/team/team",
+        "pages/offline/classify"
     ],
     "subpackages": [
         {
@@ -98,6 +99,12 @@
                 "iconPath": "images/icon_classify.png",
                 "selectedIconPath": "images/icon_classify_active.png",
                 "text": "精选"
+            },
+            {
+                "pagePath": "pages/offline/classify",
+                "iconPath": "images/ic_live.png",
+                "selectedIconPath": "images/ic_live_search.png",
+                "text": "线下点茶"
             },
             {
                 "pagePath": "pages/livelist/livelist",

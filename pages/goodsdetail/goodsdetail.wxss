@@ -885,3 +885,13 @@
     align-items: center;
     padding:21rpx 0;
 }
+.cart_btn {
+    position: fixed;
+    right: 32rpx;
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    border: solid;
+    text-align: center;
+    line-height: 140rpx;
+}

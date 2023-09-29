@@ -113,6 +113,9 @@
 
 
     <view class="body">
+        <view class="cart_btn" bindtap="goList" wx:if="{{is_cash == 1}}">
+        单独购买
+        </view>
         <view class="title">商品详情</view>
         <!-- <view class="goods_tips">国家药监局提示您：请正确认识化妆品功效，化妆品不能替代药品，不能治疗皮肤病等疾病”</view> -->
         <view class="content">
@@ -141,7 +144,7 @@
                 <view>客服</view>
                 <!-- <button open-type="contact" bindcontact="handleContact"></button> -->
             </view>
-            <view class="s_btn cart" bindtap="goCart" wx:if="{{list.can_add_cart != 0 && list.activity_id != 2}}">
+            <view class="s_btn cart" bindtap="goCart" wx:if="{{list.can_add_cart != 0 && list.activity_id != 2 && is_cash == 0}}">
                 <image src="../../images/return_cart.png" mode="widthFix"></image>
                 <view>购物袋</view>
                 <text wx:if="{{cartnum != 0}}">{{cartnum}}</text>
@@ -160,6 +163,9 @@
                 <text>积分{{list.pd_setting.pd_price}}</text>
                 <text>{{list.pd_setting.pd_total}}单拼团价</text>
             </view>
+        </view>
+        <view class="footer_r {{list.can_buy == 1?'':'unpay'}}" wx:elif="{{is_cash == 1}}">
+            <view class="b_btn paynow" bindtap="buyNow">立即下单</view>
         </view>
         <view class="footer_r {{list.can_buy == 1?'':'unpay'}}" wx:else>
             <!-- <view class="b_btn add_cart" bindtap="addCart" wx:if="{{jxShow == true && liveStatus == 'false' && list.rakeback != 0 && list.is_enter_u8 != 0}}">加入购物袋</view> -->
@@ -226,7 +232,7 @@
                     <view class="price">
                         {{list.is_suit == 0?goods_search.price:sumprice.price}}
                         <view>
-                            {{goods_search.market_price == 0?'':goods_search.market_price + '积分'}}
+                            {{goods_search.market_price == 0?'':goods_search.market_price}}{{is_cash == 1 ? '¥': '积分'}}
                         </view>
                     </view>
 

@@ -95,7 +95,6 @@ Page({
             token: app.globalData.token,
         }
         getRequest.post('index/Recharge/createOrder', postdata).then(function (res) {
-            console.log(res.data);
             wx.requestPayment({
                 nonceStr: res.data.nonceStr,
                 package: res.data.package,
