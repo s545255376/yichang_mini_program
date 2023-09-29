@@ -104,7 +104,7 @@
                 "pagePath": "pages/offline/classify",
                 "iconPath": "images/ic_live.png",
                 "selectedIconPath": "images/ic_live_search.png",
-                "text": "线下点茶"
+                "text": "线下点餐"
             },
             {
                 "pagePath": "pages/livelist/livelist",

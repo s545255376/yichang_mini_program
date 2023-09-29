@@ -56,8 +56,9 @@ Page({
     }).catch(function(err){_this.setData({loadState:false})})
   },
   //跳转订单详情
-  orderDetail:function(e){
+  orderDetail: function (e) {
     let idx = e.currentTarget.dataset.idx;
+    console.log(this.data.list[idx])
     if(6 <= this.data.list[idx].order_status){
       wx.navigateTo({
         url: '../refund/detail/detail?refund_id='+this.data.list[idx].refund_id+'&uid='+app.globalData.userInfo.id,
@@ -65,7 +66,7 @@ Page({
     }
     else{
       wx.navigateTo({
-        url: '../detail/detail?order_id='+this.data.list[idx].id+'&uid='+app.globalData.userInfo.id,
+        url: '../detail/detail?order_id='+this.data.list[idx].id+'&uid='+app.globalData.userInfo.id+'&is_cash='+this.data.list[idx],
       })
     }
   },

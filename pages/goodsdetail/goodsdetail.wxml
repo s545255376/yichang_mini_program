@@ -21,9 +21,9 @@
 
     <view class="head">
         <view class="price">
-            <view class="sale_price"><text>积分</text>{{list.price}}</view>
-            <view class="overline" wx:if="{{list.is_pd == 1}}"><text>积分</text>{{list.pd_setting.pd_price}} ~ <text>积分</text>{{list.market_price}}</view>
-            <view class="overline" wx:elif="{{list.market_price != 0}}"><text>积分</text>{{list.market_price}}</view>
+            <view class="sale_price"><text>{{is_cash == 0 ? '积分':'¥'}}</text>{{list.price}}</view>
+            <view class="overline" wx:if="{{list.is_pd == 1}}"><text>{{is_cash == 0 ? '积分':'¥'}}</text>{{list.pd_setting.pd_price}} ~ <text>{{is_cash == 0 ? '积分':'¥'}}</text>{{list.market_price}}</view>
+            <view class="overline" wx:elif="{{list.market_price != 0}}"><text>{{is_cash == 0 ? '积分':'¥'}}</text>{{list.market_price}}</view>
         </view>
         <view class="title">{{list.goods_name}}</view>
         <view class="desc">{{list.goods_sub}}</view>
@@ -144,7 +144,7 @@
                 <view>客服</view>
                 <!-- <button open-type="contact" bindcontact="handleContact"></button> -->
             </view>
-            <view class="s_btn cart" bindtap="goCart" wx:if="{{list.can_add_cart != 0 && list.activity_id != 2 && is_cash == 0}}">
+            <view class="s_btn cart" bindtap="goCart" wx:if="{{list.can_add_cart != 0 && list.activity_id != 2}}">
                 <image src="../../images/return_cart.png" mode="widthFix"></image>
                 <view>购物袋</view>
                 <text wx:if="{{cartnum != 0}}">{{cartnum}}</text>
@@ -163,9 +163,6 @@
                 <text>积分{{list.pd_setting.pd_price}}</text>
                 <text>{{list.pd_setting.pd_total}}单拼团价</text>
             </view>
-        </view>
-        <view class="footer_r {{list.can_buy == 1?'':'unpay'}}" wx:elif="{{is_cash == 1}}">
-            <view class="b_btn paynow" bindtap="buyNow">立即下单</view>
         </view>
         <view class="footer_r {{list.can_buy == 1?'':'unpay'}}" wx:else>
             <!-- <view class="b_btn add_cart" bindtap="addCart" wx:if="{{jxShow == true && liveStatus == 'false' && list.rakeback != 0 && list.is_enter_u8 != 0}}">加入购物袋</view> -->

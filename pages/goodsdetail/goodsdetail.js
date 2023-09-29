@@ -15,7 +15,7 @@ Page({
         pageShow: false,
         cartnum: 0,
     goods_id: '',
-        is_cash: 0,
+    is_cash: 0,
 
         banner: [],
         indicatorDots: false, //指示点
@@ -112,9 +112,14 @@ Page({
 
           if ('is_cash' in options) {
             this.setData({
-                is_cash: 1
+                is_cash: options.is_cash
               })
-            }
+          }
+
+          app.globalData.table_number = ""
+          if ('table_number' in options) {
+            app.globalData.table_number = options.table_number
+          }
             var pages = getCurrentPages();
             var prevPage = pages[pages.length - 2];
             if (options.pre == 'classify') {
@@ -382,7 +387,15 @@ Page({
             }
         }
     },
-    onShow: function () {
+  onShow: function () {
+    if (this.data.is_cash == 1 && app.globalData.table_number == "") {
+      app.toastFun('请先扫描桌上二维码确定桌号');
+      setTimeout(() => {
+        wx.switchTab({
+          url: '../offline/classify',
+        })
+    }, 1500);
+    }
         //获取并显示购物车中已有商品数量，以及显示已经选中的赠品列表
         if (app.globalData.userInfo.id != '') {
             let _this = this
@@ -750,46 +763,10 @@ Page({
                         app.toastFun('您还有未选择项')
                     } else {
                         if (this.data.toastBtn == '立即购买') {
-                            _this.closeToast()
-                            if (this.list.get(is_offline) == 1) {
-                                let _this = this;
-                                let postdata = {
-                                  price: _this.data.money,
-                                  token: app.globalData.token,
-                                }
-                                getRequest.post('index/Recharge/createOrder', postdata).then(function (res) {
-                                  wx.requestPayment({
-                                    nonceStr: res.data.nonceStr,
-                                    package: res.data.package,
-                                    paySign: res.data.paySign,
-                                    timeStamp: res.data.timeStamp,
-                                    signType: res.data.signType,
-                                    success() {
-                                      app.toastFun("支付成功");
-                                      setTimeout(() => {
-                                        wx.switchTab({
-                                          url: '../offline/classify',
-                                        })
-                                      }, 1200);
-                                    },
-                                    fail() {
-                                      app.toastFun("支付失败!");
-                                    }
-                                  })
-                                }).catch(function (err) {
-                                  console.log(err)
-                                  _this.setData({ loadState: true })
-                                  // setTimeout(() => {
-                                  //   wx.navigateBack({
-                                  //     delta: 1,
-                                  //   })
-                                  // }, 1000);
-                                })
-                            } else {
-                                wx.navigateTo({
-                                    url: `../payment/payment?sku_id=${this.data.goods_search.sku_id}&goods_id=${this.data.goods_id}&num=${this.data.goodsnum}&cart_id=&is_jx_goods=${this.data.list.is_jx_goods}&check_give=${check_give}&activity_id=${this.data.list.activity_id}`,
-                                })
-                            }
+                          _this.closeToast()
+                          wx.navigateTo({
+                            url: `../payment/payment?sku_id=${this.data.goods_search.sku_id}&goods_id=${this.data.goods_id}&num=${this.data.goodsnum}&cart_id=&is_jx_goods=${this.data.list.is_jx_goods}&check_give=${check_give}&activity_id=${this.data.list.activity_id}&is_cash=${this.data.is_cash}`,
+                          })
                         } else if (this.data.toastBtn == '加入购物车') {
                             let postdata = {
                                 uid: app.globalData.userInfo.id,
