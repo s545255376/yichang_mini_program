@@ -58,7 +58,7 @@
         <view class="part_body">
             <view bindtap="goOrderListCash" data-type="1">
                 <image src="../../images/mine/ic_order_waitpay.png" mode="widthFix"></image>
-                <view>待付款</view>
+                <view>已取消</view>
                 <text wx:if="{{orderList_cash.stayPaymentStats != 0}}">{{orderList_cash.stayPaymentStats < 100 ? orderList_cash.stayPaymentStats : '···' }}</text>
             </view>
             <view bindtap="goOrderListCash" data-type="2">

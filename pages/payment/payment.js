@@ -408,63 +408,13 @@ Page({
                             setTimeout(() => {
                               wx.navigateTo({
                                 url: '../order/list/list?status=2&is_cash=1'
-                            })
-                                if (app.globalData.sharequery.hasOwnProperty('gid') && app.globalData.sharequery.gid !== '') {
-                                    //通过分享直接消费的顾客进行上报
-                                    wx.reportEvent("impulsive_customer", {})
-                                } else {
-                                    //自由消费顾客的上报
-                                    wx.reportEvent("hesitant_customer", {})
-                                }
-
-                                if (is_jx_goods == 1) { //匠选商品返回上两页
-                                    app.globalData.userInfo.level_id = 3;
-                                    wx.navigateBack({
-                                        delta: 2,
-                                    })
-                                } else if (is_pd == 1) {
-                                    /**
-                                     * 新拼团
-                                     * 当订单支付完成后，缓存一些订单信息然后跳转回首页
-                                     * is_frompayment 是否是从payment页面跳转的
-                                     * pd_oid 订单id
-                                     * 
-                                     * 关于跳转
-                                     * 这里做一下测试
-                                     * 判断下页面栈的0下标是index的话  就使用新的跳转方法 不然还使用switchTab switchTab有个官方bug就是进入index 会执行两次onshow
-                                     */
-                                    const _cacheinfo = {
-                                        is_frompayment: true
-                                    }
-                                    app.router.cache_groupon = {
-                                        ..._cacheinfo
-                                    }
-                                    app.globalData.sharequery['t'] = 'm';
-                                    app.globalData.sharequery['npdoid'] = res.data.order_id;
-
-
-                                    const _pages = getCurrentPages();
-                                    if (_pages[0].route == 'pages/index/index') {
-                                        wx.navigateBack({
-                                            delta: _pages.length,
-                                        })
-                                    } else {
-                                        wx.switchTab({
-                                            url: '../index/index',
-                                        })
-                                    }
-
-                                } else { //非匠选商品回到首页后跳转订单详情
-                                    app.router.orderid = res.data.order_id;
-                                    wx.switchTab({
-                                        url: '../index/index',
-                                    })
-                                }
+                              })   
                             }, 1000)
                         }
                     })
                       },
                     "fail": function (res) {
+                      console.log(res)
                         app.toastFun("支付失败")
                       },
                       "complete":function(res){}
@@ -541,10 +491,16 @@ Page({
                     } else { //其他原因导致支付失败，回到首页后跳转订单详情
                         app.toastFun(err.msg);
                         setTimeout(function () {
-                            app.router.orderid = res.data.order_id;
-                            wx.switchTab({
-                                url: '../index/index',
+                          app.router.orderid = res.data.order_id;
+                          if (_this.data.is_cash == 1) {
+                            wx.navigateTo({
+                              url: '../order/list/list?status=1&is_cash=1'
                             })
+                          } else {
+                            wx.switchTab({
+                              url: '../index/index',
+                            })
+                          }
                         }, 1000)
                     }
                 })

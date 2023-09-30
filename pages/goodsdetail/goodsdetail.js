@@ -72,6 +72,16 @@ Page({
         fakesuccessList: [],
     },
     onLoad: function (options) {
+
+      if ('is_cash' in options) {
+        this.setData({
+            is_cash: options.is_cash
+          })
+      }
+      if ('table_number' in options) {
+        app.globalData.table_number = options.table_number
+      }
+
         //用户未登录，保存分享参数，跳转登录页
         if (app.globalData.userInfo.id == '') {
             if (Object.keys(options).length > 0) {
@@ -94,7 +104,7 @@ Page({
                 app.globalData.sharequery = newE
             }
             wx.reLaunch({
-                url: '../login/login',
+                url: `../login/login?is_cash=${this.data.is_cash}&goods_id=${options.goods_id}`,
             })
         } else {
             /**
@@ -108,17 +118,7 @@ Page({
              * @param {String} share_openid 分享者openid 只有从分享卡片跳转直播间又进入商品详情的才会出现这个参数
              * @param {String} t
              * @param {String} wxlive_type
-             */
-          
-          if ('is_cash' in options) {
-            this.setData({
-                is_cash: options.is_cash
-              })
-          }
-
-          if ('table_number' in options) {
-            app.globalData.table_number = options.table_number
-          }
+          **/
             // var pages = getCurrentPages();
             // var prevPage = pages[pages.length - 2];
             // if (options.pre == 'classify') {
@@ -130,7 +130,6 @@ Page({
             //         locationNum: options.location_num
             //     })
             // }
-            
             const goods_id = options.goods_id ? options.goods_id : options.gid
             const {
                 props = '',
