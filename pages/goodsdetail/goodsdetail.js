@@ -79,6 +79,10 @@ Page({
           })
       }
 
+      if ('table_number' in options) {
+        app.globalData.table_number = options.table_number
+      }
+
         //用户未登录，保存分享参数，跳转登录页
         if (app.globalData.userInfo.id == '') {
             if (Object.keys(options).length > 0) {
@@ -100,9 +104,9 @@ Page({
                 console.log(newE, 'onload扫码后处理完毕的携带参数')
                 app.globalData.sharequery = newE
             }
-            // wx.reLaunch({
-            //     url: `../login/login?is_cash=${this.data.is_cash}&goods_id=${options.goods_id}`,
-            // })
+            wx.reLaunch({
+                url: `../login/login?is_cash=${this.data.is_cash}&goods_id=${options.goods_id}`,
+            })
         } else {
             /**
              * option带参
