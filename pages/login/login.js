@@ -26,12 +26,12 @@ Page({
         //u:user_id(用户id),f:pid(上级id),t:type(分享类型),gid:goodsid(商品id),eid:essayid(文章id),l:live(直播 true:是直播商品)
         // jx:是否为匠选商品 0否1是
       
-        if ('is_cash' in e && 'goods_id' in e) {
-          this.setData({
-            is_cash: e.is_cash,
-            goods_id: e.goods_id
-          })
-        }
+        // if ('is_cash' in e && 'goods_id' in e) {
+        //   this.setData({
+        //     is_cash: e.is_cash,
+        //     goods_id: e.goods_id
+        //   })
+        // }
       
         let newE = {};
         if (Object.keys(e).length > 0) {
@@ -201,17 +201,20 @@ Page({
                 uid: uid
             })
             .then(function (res) {
-                if (res.data.is_agree_sign == 1) {
-                  if (_this.data.is_cash == 1) {
-                    wx.navigateTo({
-                      url: `../goodsdetail/goodsdetail?goods_id=${_this.data.goods_id}&live=false&active_key=0&pre=classify&is_cash=1`,
-                    })
-                  } else {
-                    //已签署过-跳转首页
-                    wx.switchTab({
-                      url: "../index/index"
-                    });
-                  }
+              if (res.data.is_agree_sign == 1) {
+                wx.switchTab({
+                  url: "../index/index"
+                });
+                  // if (_this.data.is_cash == 1) {
+                  //   wx.navigateTo({
+                  //     url: `../goodsdetail/goodsdetail?goods_id=${_this.data.goods_id}&live=false&active_key=0&pre=classify&is_cash=1`,
+                  //   })
+                  // } else {
+                  //   //已签署过-跳转首页
+                  //   wx.switchTab({
+                  //     url: "../index/index"
+                  //   });
+                  // }
                 } else {
                     //未签署过-显示协议确认弹窗
                     getRequest
