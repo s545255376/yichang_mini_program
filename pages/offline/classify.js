@@ -15,8 +15,10 @@ Page({
         }
     },
   onLoad(options) {
+    let direct = "no";
     if ('table_number' in options) {
-      app.globalData.table_number = options.table_number
+      app.globalData.table_number = options.table_number;
+      direct = "yes"
     }
 
     let postdata = {
@@ -53,7 +55,7 @@ Page({
               app.toastFun("用户登录信息已过期，请重新登录");
               setTimeout(() => {
                   wx.reLaunch({
-                    url: '../index/index',
+                    url: '../login/login?direct=' + direct,
                   })
               }, 1200);
           }

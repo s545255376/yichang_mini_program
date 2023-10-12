@@ -9,6 +9,7 @@ Page({
     tips: "获得你的手机号码",
     is_cash: 0,
     goods_id: 0,
+    direct: "",
         userinfo: {
             nickName: "",
             avatarUrl: "",
@@ -21,7 +22,6 @@ Page({
         registerValue: ''
     },
   onLoad(e) {
-      console.log(e)
         // s=35000&f=10000&t=e&gid=10000
         //u:user_id(用户id),f:pid(上级id),t:type(分享类型),gid:goodsid(商品id),eid:essayid(文章id),l:live(直播 true:是直播商品)
         // jx:是否为匠选商品 0否1是
@@ -32,7 +32,11 @@ Page({
             goods_id: e.goods_id
           })
         }
-      
+    if ('direct' in e) {
+      this.setData({
+        direct: e.direct
+      })
+    }
         let newE = {};
         if (Object.keys(e).length > 0) {
             if (e.scene) {
@@ -206,7 +210,11 @@ Page({
                     wx.navigateTo({
                       url: `../goodsdetail/goodsdetail?goods_id=${_this.data.goods_id}&live=false&active_key=0&pre=classify&is_cash=1`,
                     })
-                  } else {
+                  } else if (_this.data.direct == "yes") {
+                    wx.switchTab({
+                      url: '../offline/classify',
+                    })
+                  }else {
                     //已签署过-跳转首页
                     wx.switchTab({
                       url: "../index/index"
@@ -280,7 +288,11 @@ Page({
               wx.navigateTo({
                 url: `../goodsdetail/goodsdetail?goods_id=${_dthis.data.goods_id}&live=false&active_key=0&pre=classify&is_cash=1`,
               })
-            } else {
+            }else if (_this.data.direct == "yes") {
+              wx.switchTab({
+                url: '../offline/classify',
+              })
+            }else {
               wx.switchTab({
                 url: "../index/index",
               });
