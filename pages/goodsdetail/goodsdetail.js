@@ -82,7 +82,7 @@ Page({
       if ('table_number' in options) {
         app.globalData.table_number = options.table_number
       }
-
+      // app.globalData.table_number = 'A1'
         //用户未登录，保存分享参数，跳转登录页
         if (app.globalData.userInfo.id == '') {
             if (Object.keys(options).length > 0) {
