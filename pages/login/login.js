@@ -109,7 +109,7 @@ Page({
                             // data.mobile = '';
                             getRequest
                                 .noToastPost("index/user/updateUserInfo", logstorage.data)
-                                .then(function (info) {
+                              .then(function (info) {
                                     app.globalData.token = info.data.token;
                                     app.globalData.userInfo = info.data;
                                     const logindata = {
@@ -206,7 +206,7 @@ Page({
             })
             .then(function (res) {
               if (res.data.is_agree_sign == 1) {
-                  if (_this.data.is_cash == 1) {
+                  if (_this.data.is_cash == 1 && app.globalData.token != "") {
                     wx.navigateTo({
                       url: `../goodsdetail/goodsdetail?goods_id=${_this.data.goods_id}&live=false&active_key=0&pre=classify&is_cash=1`,
                     })

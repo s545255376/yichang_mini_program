@@ -71,8 +71,7 @@ Page({
 
         fakesuccessList: [],
     },
-    onLoad: function (options) {
-
+  onLoad: function (options) {
       if ('is_cash' in options) {
         this.setData({
             is_cash: options.is_cash

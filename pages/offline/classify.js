@@ -124,7 +124,7 @@ Page({
         })
     },
     //商品详情
-    goGoodsInfo(e) {
+  goGoodsInfo(e) {
       const { goodsid } = e.currentTarget.dataset;
       console.log(this.data.activeKey);
       console.log(goodsid);
