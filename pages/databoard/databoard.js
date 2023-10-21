@@ -11,7 +11,9 @@ Page({
       let sign = util.getSign(timestamp);
       let url = '/h5/index/board?sign=' + sign + '&timestamp=' + timestamp;
       getRequest.get(url).then((res) => {
-        console.log(res)
+        _this.setData({
+          db: res.data
+        })
       }).catch((err) => {
         console.log(err)
       })
