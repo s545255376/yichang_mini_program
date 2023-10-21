@@ -18,7 +18,7 @@ Page({
      */
     onLoad(options) {
         console.log(options)
-        this.getList(0, 0)
+        // this.getList(0, 0)
     },
 
     /**
@@ -80,26 +80,40 @@ Page({
 
     getList(type, idx) {
         let _this = this;
-        let postdata = {
-            token: app.globalData.token,
-            page: idx + 1,
-            cur: type + 1
-        };
-        getRequest.post('index/Account/pointLog', postdata).then(function (res) {
-            _this.setData({
-                details: _this.data.details.concat(res.data.data),
-                current_page: res.data.current_page,
-                last_page: res.data.last_page
-            })
-        }).catch(function (err) {
-            // console.log(err)
-            _this.setData({ loadState: true })
-            setTimeout(() => {
-                wx.navigateBack({
-                    delta: 1,
-                })
-            }, 1000);
+        let timestamp = new Date().getTime();
+        let sign = util.getSign(timestamp);
+        let page = idx + 1;
+        let url  = '';
+        if (type == 0) {
+            url = '/h5/index/recharge?sign=' + sign + '&timestamp=' + timestamp + '&page' + page;
+        } else {
+            url = '/h5/index/balanceDedu?sign=' + sign + '&timestamp=' + timestamp + '&page' + page;
+        }
+        getRequest.get(url).then((res) => {
+            console.log(res)
+          }).catch((err) => {
+            console.log(err)
         })
+        // let postdata = {
+        //     token: app.globalData.token,
+        //     page: idx + 1,
+        //     cur: type + 1
+        // };
+        // getRequest.post('index/Account/pointLog', postdata).then(function (res) {
+        //     _this.setData({
+        //         details: _this.data.details.concat(res.data.data),
+        //         current_page: res.data.current_page,
+        //         last_page: res.data.last_page
+        //     })
+        // }).catch(function (err) {
+        //     // console.log(err)
+        //     _this.setData({ loadState: true })
+        //     setTimeout(() => {
+        //         wx.navigateBack({
+        //             delta: 1,
+        //         })
+        //     }, 1000);
+        // })
 
         getRequest.post('index/Account/point', { token: app.globalData.token }).then(function (res) {
             if (res.data.is_vip) {
