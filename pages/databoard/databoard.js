@@ -24,7 +24,7 @@ Page({
     goDetails: function (e) {
       let type = e.currentTarget.dataset.type
       wx.navigateTo({
-        url: '../orderList/orderList?type=' + type,
+        url: '../detailsList/detailList?type=' + type,
       })
     },
     noWork: function () {
