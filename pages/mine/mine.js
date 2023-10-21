@@ -283,6 +283,16 @@ Page({
             })
         }
     },
+
+  dataBoard: function () {
+    let logCheck = this.goLogin();
+    if (logCheck == true) {
+        wx.navigateTo({
+            url: '../databoard/databoard'
+        })
+    }
+    },
+
     //我的亲友
     goMyTeam: function () {
         let logCheck = this.goLogin();

@@ -128,6 +128,11 @@
                 <image src="../../images/mine/scan.png" mode="widthFix"></image>
                 <view>门店核销</view>
             </view>
+
+            <view bindtap="dataBoard" >
+                <image src="../../images/mine/scan.png" mode="widthFix"></image>
+                <view>经营助手</view>
+            </view>
             <!-- <view bindtap="goDetail">
                 <image src="../../images/mine/recharge.png" mode="widthFix"></image>
                 <view>余额明细</view>

@@ -1,3 +1,5 @@
+const md5 = require('../utils/md5');
+
 const formatTime = (date) => {
     const year = date.getFullYear()
     const month = date.getMonth() + 1
@@ -65,6 +67,10 @@ function objType(obj) {
     return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase()
 }
 
+function getSign(timestamp) {
+  return md5.hex_md5(timestamp + "jkashd;as5456HJGHJ91");
+}
+
 class Queue {
     constructor() {
         this.dataStore = []
@@ -111,5 +117,6 @@ module.exports = {
     liveDate: liveDate,
     liveHomeDate: liveHomeDate,
     objType: objType,
+    getSign: getSign,
     Queue,
 }

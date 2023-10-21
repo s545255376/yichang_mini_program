@@ -1,5 +1,57 @@
 const app = getApp();
 //const db = wx.cloud.database();
+function get(link, hideLoading = false) {
+  /**
+   * @param {Boolean} hideLoading 有些请求非必要显示loading界面
+  */
+  let promise = new Promise(function (resolve, reject) {
+      if (app.globalData.icloading == false) {
+          if (!hideLoading) wx.showLoading({
+              title: '加载中'
+          })
+          app.globalData.icloading = true;
+      }
+      wx.request({
+          url: app.globalData.url + link,
+          method: 'GET',
+          success: function (res) {
+              if (app.globalData.icloading == true) {
+                  app.globalData.icloading = false;
+              }
+              wx.hideLoading();
+              if (res.data.code == 200) {
+                  resolve(res.data);
+              } else if (res.data.code == 204) {
+                  app.globalData.token = '';
+                  app.globalData.userInfo = {
+                      mobile: '',
+                      username: '',
+                      portrait: '',
+                      sex: '',
+                      stauts: '',
+                      fid: '',
+                      id: ''
+                  };
+                  app.toastFun(res.data.msg);
+                  reject(res.data);
+              } else {
+                  app.toastFun(res.data.msg);
+                  reject(res.data);
+              }
+          },
+          fail: function (res) {
+              console.log(res, '接口请求失败回调');
+              if (app.globalData.icloading == true) {
+                  app.globalData.icloading = false;
+              }
+              wx.hideLoading();
+              app.toastFun('服务器连接失败，请稍后重试！');
+              reject(res.data);
+          }
+      })
+  });
+  return promise;
+}
 //网络请求-非正常情况弹窗提示
 function post(link, params, hideLoading = false) {
     /**
@@ -101,6 +153,7 @@ function noToastPost(link, params) {
 // }
 
 module.exports = {
+    get: get,
     post: post,
     noToastPost: noToastPost,
     //errlogPost: errlogPost

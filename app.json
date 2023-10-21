@@ -40,7 +40,8 @@
         "pages/details/details",
         "pages/balance/fellow/fellow",
         "pages/points/team/team",
-        "pages/offline/classify"
+        "pages/offline/classify",
+        "pages/databoard/databoard"
     ],
     "subpackages": [
         {
