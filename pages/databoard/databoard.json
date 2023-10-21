@@ -1,4 +1,4 @@
 {
     "component": true,
-    "usingComponents": {}
+    "navigationBarTitleText": "营业日报"
 }

@@ -1,2 +1,114 @@
-<!--pages/databoard/databoard.wxml-->
-<text>pages/databoard/databoard.wxml</text>
+<view>
+  <view class="data_box">
+    <view class="data_box_title">
+      <view>会员</view>
+    </view>
+    <view class="data_box_body">
+      <view>
+        <view class="data_content">总会员数</view>
+        <view class="data_num">{{db.user.user_total}}</view> 
+      </view>
+      <view>
+        <view class="data_content">今日新增人数</view>
+        <view class="data_num">{{db.user.register_day}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="data_box">
+    <view class="data_box_title">
+      <view>总充值金额</view>
+      <view bindtap="goDetails" data-type="0">查看充值列表</view>
+    </view>
+    <view class="data_box_body">
+      <view>
+        <view class="data_content">累计充值金额</view>
+        <view class="data_num">{{db.recharge.money_total}}</view>
+      </view>
+      <view>
+        <view class="data_content">今日充值金额</view>
+        <view class="data_num">{{db.recharge.money_day}}</view>
+      </view>
+      <view>
+        <view class="data_content">电子卡激活金额</view>
+        <view class="data_num">{{db.recharge.card_total}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="data_box">
+    <view class="data_box_title">
+      <view>总余额</view>
+      <view bindtap="goDetails" data-type="1">查看余额列表</view>
+    </view>
+    <view class="data_box_body">
+      <view>
+        <view class="data_content">累计消费余额</view>
+        <view class="data_num">{{db.balance.last_balance}}</view>
+      </view>
+      <view>
+        <view class="data_content">今日消费余额</view>
+        <view class="data_num">{{db.balance.money_day}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="data_box">
+    <view class="data_box_title">
+      <view>总积分</view>
+    </view>
+    <view class="data_box_body">
+      <view>
+        <view class="data_content">累计消费积分</view>
+        <view class="data_num">{{db.point.last_point}}</view>
+      </view>
+      <view>
+        <view class="data_content">今日消费积分</view>
+        <view class="data_num">{{db.point.money_day}}</view>
+        </view>
+    </view>
+  </view>
+
+  <view class="data_box">
+    <view class="data_box_title">
+      <view>积分订单</view>
+      <view bindtap="noWork">查看订单列表</view>
+    </view>
+    <view class="data_box_body">
+      <view>
+        <view class="data_content">累计单数</view>
+        <view class="data_num">{{db.point_orders.nums}}</view>
+      </view>
+      <view>
+        <view class="data_content">今日单数</view>
+        <view class="data_num">{{db.point_orders.nums_day}}</view>
+      </view>
+      <view>
+        <view class="data_content">待发货单数</view>
+        <view class="data_num">{{db.point_orders.dai_fh}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="data_box">
+    <view class="data_box_title">
+      <view>茶馆订单</view>
+      <view bindtap="noWork">查看订单列表</view>
+    </view>
+    <view class="data_box_body">
+      <view>
+        <view class="data_content">今日单数</view>
+        <view class="data_num">{{db.cash_orders.nums_day}}</view>
+      </view>
+      <view>
+        <view class="data_content">今日微信收款</view>
+        <view class="data_num">{{db.cash_orders.wx_day}}</view>
+      </view>
+      <view>
+        <view class="data_content">今日余额消费</view>
+        <view class="data_num">{{db.cash_orders.balance_day}}</view>
+      </view>
+    </view>
+  </view>
+
+</view>

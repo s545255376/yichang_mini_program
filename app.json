@@ -14,7 +14,7 @@
         "pages/goodsnorms/goodsnorms",
         "pages/payment/payment",
         "pages/order/list/list",
-        "pages/orderList/orderList/orderList",
+        "pages/orderList/orderList",
         "pages/order/detail/detail",
         "pages/order/detailList/detailList",
         "pages/order/giftlist/giftlist",

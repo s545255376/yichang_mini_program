@@ -3,7 +3,7 @@ const util = require('../../utils/util')
 const getRequest = require('../../utils/getRequest');
 Page({
     data: {
-        
+      db: {}
     },
   onLoad: function () {
     let _this = this;
@@ -18,5 +18,14 @@ Page({
     },
     onShow: function () {
         
+    },
+    goDetails: function (e) {
+      let type = e.currentTarget.dataset.type
+      wx.navigateTo({
+        url: '../orderList/orderList?type=' + type,
+      })
+    },
+    noWork: function () {
+      app.toastFun('该功能暂未开放')
     }
 })
