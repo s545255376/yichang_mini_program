@@ -167,6 +167,9 @@
 <view class="return_top" bindtap="returnTop">
     <image src="../../images/home/ic_gotop.png" mode="widthFix"></image>
 </view>
+<view class="navigate" bindtap="navigate">
+    <view>导航</view>
+</view>
 <view class="cart_btn" bindtap="goCart">
     <image src="../../images/home/ic_cart.png" mode="widthFix"></image>
     <view class="dom" wx:if="{{cartNum != 0}}"></view>

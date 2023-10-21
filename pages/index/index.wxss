@@ -537,6 +537,27 @@
     bottom: 60rpx;
 }
 
+.cart_btn,
+.navigate {
+    position: fixed;
+    right: 32rpx;
+    width: 82rpx;
+    height: 82rpx;
+    border-radius: 50%;
+    background: #000000;
+    text-align: center;
+}
+
+.navigate {
+    bottom: 290rpx;
+}
+.navigate view {
+    color: #fff;
+    /* width: 40rpx; */
+    display: block;
+    margin: 17rpx auto;
+}
+
 .cart_btn {
     bottom: 170rpx;
 }

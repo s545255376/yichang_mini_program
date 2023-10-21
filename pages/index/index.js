@@ -457,6 +457,15 @@ Page({
             duration: 300
         })
     },
+    navigate() {
+        wx.openLocation({
+            latitude: 30.002340, // 纬度，范围为-90~90，负数表示南纬
+            longitude: 120.577102, // 经度，范围为-180~180，负数表示西经
+            scale: 30, // 缩放比例
+            name:"夷畅茶馆",
+            address:"地址：浙江省绍兴市越城区城市广场27号，近仓桥直街"
+          })
+    },
     //小美优惠券领取激活
     xmCoupons() {
         if (app.globalData.sharequery.xmid) {
