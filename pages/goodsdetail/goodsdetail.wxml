@@ -113,8 +113,8 @@
 
 
     <view class="body">
-        <view class="cart_btn" bindtap="goList" wx:if="{{is_cash == 1}}">
-        单独购买
+        <view class="cart_btn" bindtap="goList" wx:if="{{is_cash == 1 && list.columns_id == 9861}}">
+        单 点
         </view>
         <view class="title">商品详情</view>
         <!-- <view class="goods_tips">国家药监局提示您：请正确认识化妆品功效，化妆品不能替代药品，不能治疗皮肤病等疾病”</view> -->

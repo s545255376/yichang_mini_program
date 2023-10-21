@@ -8,14 +8,28 @@ Page({
     pagenum:1,
     last_page:1,
     loadState:true,
-    userinfo:{},
+    userinfo: {},
+    is_cash: 0,
     needAdapt:app.globalData.system.needAdapt
   },
   onLoad: function (options) {
+    if ('is_cash' in options) {
+      this.setData({
+          is_cash: options.is_cash
+        })
+    }
     let status = options.status;
+    if (this.data.is_cash == 1) {
+      this.setData({
+        tabbar:['全部','已取消','待上餐','已完成']
+      })
+      if (status == 3) {
+        status = 4
+      }
+    }
     this.setData({
       tabbarNum:status,
-      userinfo:app.globalData.userInfo
+      userinfo: app.globalData.userInfo,
     })
   },
   onShow: function () {
@@ -36,6 +50,9 @@ Page({
       pagenum:1,
       last_page:1
     })
+    if (this.data.is_cash == 1 && idx == 3) {
+      idx = 4
+    }
     this.getList(idx,1);
   },
   //获取列表
@@ -44,8 +61,11 @@ Page({
       token:app.globalData.token,
       uid:app.globalData.userInfo.id,
       status:status,
-      page:pagenum
+      page: pagenum
     };
+    if (_this.data.is_cash == 1) {
+      postdata['is_cash'] = 1
+    }
     getRequest.post('index/order/order', postdata).then(function(res){
       _this.setData({
         list:_this.data.list.concat(res.data.data),
@@ -57,6 +77,9 @@ Page({
   },
   //跳转订单详情
   orderDetail: function (e) {
+    if (this.data.is_cash == 1) {
+      return
+    }
     let idx = e.currentTarget.dataset.idx;
     console.log(this.data.list[idx])
     if(6 <= this.data.list[idx].order_status){

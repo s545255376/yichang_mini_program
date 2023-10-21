@@ -4,7 +4,7 @@
     <image src="../../images/ic_error_network.png" mode="widthFix"></image>
     <view>网络异常，请重新登陆～</view>
   </view>
-  <view class="ic_empty" wx:elif="{{list[0].length == 0 && list[1].length == 0 && list[2].length == 0 && cancel.length == 0}}">
+  <view class="ic_empty" wx:elif="{{list[0].length == 0 && list[1].length == 0 && list[2].length == 0 && list[3].length == 0 && cancel.length == 0}}">
     <image src="../../images/ic_empty_box.png" mode="widthFix"></image>
     <view>空空如也～</view>
     <view>遇见心动的，就放进来吧</view>

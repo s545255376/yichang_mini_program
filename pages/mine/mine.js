@@ -26,7 +26,14 @@ Page({
             stayReceivStats: 0,
             stayCompleteStats: 0,
             stayRefundStats: 0
-        },
+    },
+    orderList_cash: {
+      stayPaymentStats: 0,
+      stayDeliverStats: 0,
+      stayReceivStats: 0,
+      stayCompleteStats: 0,
+      stayRefundStats: 0
+  },
         score: 0,
         card: 0,
         message: 0,
@@ -77,12 +84,31 @@ Page({
             _this.setData({
                 store: app.globalData.userInfo.role_id
             })
-            let postdata = {
+            let postdata1 = {
                     uid: app.globalData.userInfo.id,
-                    token: app.globalData.token
+              token: app.globalData.token,
+                    is_cash: 1
                 };
             if (app.globalData.userInfo.id != '') {
                 //订单统计
+                getRequest.post('index/order/stats', postdata1, true).then(function (res) {
+                  _this.setData({
+                      logType: true,
+                      userinfo: app.globalData.userInfo,
+                      orderList_cash: res.data
+                  })
+              })
+              .catch(function (err) {
+                  _this.setData({
+                      logType: true,
+                      userinfo: app.globalData.userInfo
+                  })
+              });
+
+              let postdata = {
+                uid: app.globalData.userInfo.id,
+                token: app.globalData.token
+            };
                 getRequest.post('index/order/stats', postdata, true).then(function (res) {
                         _this.setData({
                             logType: true,
@@ -190,7 +216,16 @@ Page({
         } else {
             return true;
         }
-    },
+  },
+    //线下订单
+    goOrderListCash: function (e) {
+      let logCheck = this.goLogin();
+      if (logCheck == true) {
+          wx.navigateTo({
+              url: '../order/list/list?status=' + e.currentTarget.dataset.type + '&is_cash=1'
+          })
+      }
+  },
     //我的订单
     goOrderList: function (e) {
         let logCheck = this.goLogin();

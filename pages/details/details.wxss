@@ -4,6 +4,7 @@
 }
 .tabbar view {
     color: white;
+    font-size: large;
 }
 .tabbar .tabbar_click {
     color: white;

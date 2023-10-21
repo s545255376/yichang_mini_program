@@ -3,7 +3,7 @@
     <view class="name">夷 畅 岩 茶 蒸 着 喝</view>
 
     <!-- <button class="login_btn" wx:if="{{btnType == 0}}" bindtap="getUserInfo">同意授权</button> -->
-    <button class="login_btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{btnType == 1}}">微 信 授 权 登 录</button>
+    <button class="login_btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{btnType == 1}}">手 机 号 快 捷 登 录</button>
 </view>
 
 

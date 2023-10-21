@@ -71,7 +71,17 @@ Page({
 
         fakesuccessList: [],
     },
-    onLoad: function (options) {
+  onLoad: function (options) {
+      if ('is_cash' in options) {
+        this.setData({
+            is_cash: options.is_cash
+          })
+      }
+
+      if ('table_number' in options) {
+        app.globalData.table_number = options.table_number
+      }
+      // app.globalData.table_number = 'A1'
         //用户未登录，保存分享参数，跳转登录页
         if (app.globalData.userInfo.id == '') {
             if (Object.keys(options).length > 0) {
@@ -94,7 +104,7 @@ Page({
                 app.globalData.sharequery = newE
             }
             wx.reLaunch({
-                url: '../login/login',
+                url: `../login/login?is_cash=${this.data.is_cash}&goods_id=${options.goods_id}`,
             })
         } else {
             /**
@@ -108,30 +118,18 @@ Page({
              * @param {String} share_openid 分享者openid 只有从分享卡片跳转直播间又进入商品详情的才会出现这个参数
              * @param {String} t
              * @param {String} wxlive_type
-             */
-
-          if ('is_cash' in options) {
-            this.setData({
-                is_cash: options.is_cash
-              })
-          }
-
-          app.globalData.table_number = ""
-          if ('table_number' in options) {
-            app.globalData.table_number = options.table_number
-          }
-            var pages = getCurrentPages();
-            var prevPage = pages[pages.length - 2];
-            if (options.pre == 'classify') {
-                prevPage.setData({
-                    activeKey: options.active_key
-                })
-            }else {
-                prevPage.setData({
-                    locationNum: options.location_num
-                })
-            }
-            
+          **/
+            // var pages = getCurrentPages();
+            // var prevPage = pages[pages.length - 2];
+            // if (options.pre == 'classify') {
+            //     prevPage.setData({
+            //         activeKey: options.active_key
+            //     })
+            // }else {
+            //     prevPage.setData({
+            //         locationNum: options.location_num
+            //     })
+            // }
             const goods_id = options.goods_id ? options.goods_id : options.gid
             const {
                 props = '',
@@ -388,14 +386,6 @@ Page({
         }
     },
   onShow: function () {
-    if (this.data.is_cash == 1 && app.globalData.table_number == "") {
-      app.toastFun('请先扫描桌上二维码确定桌号');
-      setTimeout(() => {
-        wx.switchTab({
-          url: '../offline/classify',
-        })
-    }, 1500);
-    }
         //获取并显示购物车中已有商品数量，以及显示已经选中的赠品列表
         if (app.globalData.userInfo.id != '') {
             let _this = this
@@ -473,7 +463,11 @@ Page({
         }
     },
     // 立即购买-弹窗
-    buyNow: function () {
+  buyNow: function () {
+    if (this.data.is_cash == 1 && Boolean(app.globalData.table_number) == false) {
+      app.toastFun('请先扫描桌上二维码确定桌号');
+      return
+    }
         if (this.data.list.can_buy == 1) {
             this.setData({
                 toastBtn: '立即购买',

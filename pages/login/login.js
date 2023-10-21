@@ -6,7 +6,10 @@ Page({
         btnType: 1,
         token: "",
         mobile: "",
-        tips: "获得你的手机号码",
+    tips: "获得你的手机号码",
+    is_cash: 0,
+    goods_id: 0,
+    direct: "",
         userinfo: {
             nickName: "",
             avatarUrl: "",
@@ -18,10 +21,22 @@ Page({
         registerToast: false,
         registerValue: ''
     },
-    onLoad(e) {
+  onLoad(e) {
         // s=35000&f=10000&t=e&gid=10000
         //u:user_id(用户id),f:pid(上级id),t:type(分享类型),gid:goodsid(商品id),eid:essayid(文章id),l:live(直播 true:是直播商品)
         // jx:是否为匠选商品 0否1是
+      
+        if ('is_cash' in e && 'goods_id' in e) {
+          this.setData({
+            is_cash: e.is_cash,
+            goods_id: e.goods_id
+          })
+        }
+    if ('direct' in e) {
+      this.setData({
+        direct: e.direct
+      })
+    }
         let newE = {};
         if (Object.keys(e).length > 0) {
             if (e.scene) {
@@ -94,7 +109,7 @@ Page({
                             // data.mobile = '';
                             getRequest
                                 .noToastPost("index/user/updateUserInfo", logstorage.data)
-                                .then(function (info) {
+                              .then(function (info) {
                                     app.globalData.token = info.data.token;
                                     app.globalData.userInfo = info.data;
                                     const logindata = {
@@ -190,11 +205,21 @@ Page({
                 uid: uid
             })
             .then(function (res) {
-                if (res.data.is_agree_sign == 1) {
+              if (res.data.is_agree_sign == 1) {
+                  if (_this.data.is_cash == 1 && app.globalData.token != "") {
+                    wx.navigateTo({
+                      url: `../goodsdetail/goodsdetail?goods_id=${_this.data.goods_id}&live=false&active_key=0&pre=classify&is_cash=1`,
+                    })
+                  } else if (_this.data.direct == "yes") {
+                    wx.switchTab({
+                      url: '../offline/classify',
+                    })
+                  }else {
                     //已签署过-跳转首页
                     wx.switchTab({
-                        url: "../index/index"
+                      url: "../index/index"
                     });
+                  }
                 } else {
                     //未签署过-显示协议确认弹窗
                     getRequest
@@ -258,11 +283,21 @@ Page({
             .post("index/user/agree_sign", {
                 uid: app.globalData.userInfo.id
             })
-            .then(function () {
-                wx.switchTab({
-                    url: "../index/index",
-                });
-            });
+          .then(function () {
+            if (_this.data.is_cash == 1) {
+              wx.navigateTo({
+                url: `../goodsdetail/goodsdetail?goods_id=${_dthis.data.goods_id}&live=false&active_key=0&pre=classify&is_cash=1`,
+              })
+            }else if (_this.data.direct == "yes") {
+              wx.switchTab({
+                url: '../offline/classify',
+              })
+            }else {
+              wx.switchTab({
+                url: "../index/index",
+              });
+            }
+          });
     },
     //获取手机号
     getPhoneNumber: function (e) {

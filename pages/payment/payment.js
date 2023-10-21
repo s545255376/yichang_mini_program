@@ -11,10 +11,13 @@ Page({
         cart_id: '',
         remark: '',
         modeval: 0,
-    pick: [],
-    is_cash: 0,
-    table_number: app.globalData.table_number,
-
+        pick: [],
+        is_cash: 0,
+        table_number: 0,
+        point: 0,
+        money: 0,
+        card_money: 0,
+        is_vip: '',
         couponToast: false,
         couponid: -1,
         couponRadioIdx: -1,
@@ -59,7 +62,8 @@ Page({
             num,
             cart_id,
             is_jx_goods,
-            level_id: app.globalData.userInfo.level_id,
+          level_id: app.globalData.userInfo.level_id,
+            table_number: app.globalData.table_number,
             suit_sku_ids: suit_sku_ids,
             pd_number,
             pd_oid,
@@ -72,7 +76,18 @@ Page({
               is_cash: options.is_cash
             })
         }
-        app.router.suit_sku_ids = [];
+      app.router.suit_sku_ids = [];
+      const _this = this
+      getRequest.post('index/Account/point', {
+        token: app.globalData.token
+    }).then(function (res) {
+        _this.setData({
+            point: res.data.point,
+            money: res.data.balance,
+            card_money: res.data.card_money,
+            is_vip: res.data.is_vip
+        })
+    })
 
         this.getPaymentInfo();
     },
@@ -375,180 +390,172 @@ Page({
                 })
                 postdata['goods'] = _arr
             }
-            
-          postdata['is_cash'] = Number(this.data.is_cash)
-          postdata['table_number'] = Number(this.data.table_number)
+          
+            postdata['is_cash'] = _this.data.is_cash
+            postdata['table_number'] = _this.data.table_number
+          
+          if (_this.data.is_cash == 1 && Number(_this.data.money) >= Number(postdata['order_price'])) {
+
+            wx.showModal({
+              title: '',
+              content: '您的余额还有' + this.data.money + ',本次扣除' + postdata['order_price'],
+              complete: (res) => {
+                if (res.confirm) {
+                  //生成订单
+                  getRequest.post(postUrl, postdata).then((res) => {
+                    let orderdata = {
+                      uid: app.globalData.userInfo.id,
+                      token: app.globalData.token,
+                      puid: res.data.puid,
+                      order_sn: res.data.order_sn,
+                      order_id: res.data.order_id,
+                      total_fee: res.data.total_fee, //价格
+                      total: res.data.total,
+                      body: res.data.body,
+                    };
+                    //余额支付
+                    getRequest.post('index/pay/wxPay', orderdata).then((info) => {
+                      app.toastFun('支付成功');
+                          setTimeout(() => {
+                            wx.navigateTo({
+                              url: '../order/list/list?status=2&is_cash=1'
+                            })
+                          }, 1000)
+                    })
+                  })
+                }
+              }
+            })
+          } else {
             //生成订单
             getRequest.post(postUrl, postdata).then((res) => {
-                let orderdata = {
-                    uid: app.globalData.userInfo.id,
-                    token: app.globalData.token,
-                    puid: res.data.puid,
-                    order_sn: res.data.order_sn,
-                    order_id: res.data.order_id,
-                    total_fee: res.data.total_fee, //价格
-                    total: res.data.total,
-                    body: res.data.body,
-                };
-                //积分支付
+              let orderdata = {
+                uid: app.globalData.userInfo.id,
+                token: app.globalData.token,
+                puid: res.data.puid,
+                order_sn: res.data.order_sn,
+                order_id: res.data.order_id,
+                total_fee: res.data.total_fee, //价格
+                total: res.data.total,
+                body: res.data.body,
+              };
+              //现金或积分支付
               getRequest.post('index/pay/wxPay', orderdata).then((info) => {
-                if (this.data.is_cash == 1) {
+                if (_this.data.is_cash == 1) {
                   wx.requestPayment({
-                      "timeStamp": info.data.timeStamp,
-                      "nonceStr": info.data.nonceStr,
-                      "package": info.data.package,
-                      "signType": info.data.signType,
-                      "paySign": info.data.paySign,
+                    "timeStamp": info.data.timeStamp,
+                    "nonceStr": info.data.nonceStr,
+                    "package": info.data.package,
+                    "signType": info.data.signType,
+                    "paySign": info.data.paySign,
                     "success": function (res) {
                       wx.requestSubscribeMessage({
                         tmplIds: app.globalData.subscribe,
                         complete(allow) {
-                            app.toastFun('支付成功');
-                            setTimeout(() => {
-
-                                if (app.globalData.sharequery.hasOwnProperty('gid') && app.globalData.sharequery.gid !== '') {
-                                    //通过分享直接消费的顾客进行上报
-                                    wx.reportEvent("impulsive_customer", {})
-                                } else {
-                                    //自由消费顾客的上报
-                                    wx.reportEvent("hesitant_customer", {})
-                                }
-
-                                if (is_jx_goods == 1) { //匠选商品返回上两页
-                                    app.globalData.userInfo.level_id = 3;
-                                    wx.navigateBack({
-                                        delta: 2,
-                                    })
-                                } else if (is_pd == 1) {
-                                    /**
-                                     * 新拼团
-                                     * 当订单支付完成后，缓存一些订单信息然后跳转回首页
-                                     * is_frompayment 是否是从payment页面跳转的
-                                     * pd_oid 订单id
-                                     * 
-                                     * 关于跳转
-                                     * 这里做一下测试
-                                     * 判断下页面栈的0下标是index的话  就使用新的跳转方法 不然还使用switchTab switchTab有个官方bug就是进入index 会执行两次onshow
-                                     */
-                                    const _cacheinfo = {
-                                        is_frompayment: true
-                                    }
-                                    app.router.cache_groupon = {
-                                        ..._cacheinfo
-                                    }
-                                    app.globalData.sharequery['t'] = 'm';
-                                    app.globalData.sharequery['npdoid'] = res.data.order_id;
-
-
-                                    const _pages = getCurrentPages();
-                                    if (_pages[0].route == 'pages/index/index') {
-                                        wx.navigateBack({
-                                            delta: _pages.length,
-                                        })
-                                    } else {
-                                        wx.switchTab({
-                                            url: '../index/index',
-                                        })
-                                    }
-
-                                } else { //非匠选商品回到首页后跳转订单详情
-                                    app.router.orderid = res.data.order_id;
-                                    wx.switchTab({
-                                        url: '../index/index',
-                                    })
-                                }
-                            }, 1000)
+                          app.toastFun('支付成功');
+                          setTimeout(() => {
+                            wx.navigateTo({
+                              url: '../order/list/list?status=2&is_cash=1'
+                            })
+                          }, 1000)
                         }
-                    })
-                      },
+                      })
+                    },
                     "fail": function (res) {
-                        app.toastFun("支付失败")
-                      },
-                      "complete":function(res){}
-                    }
+                      console.log(res)
+                      app.toastFun("支付失败")
+                    },
+                    "complete": function (res) { }
+                  }
                   )
                 } else {
                   wx.requestSubscribeMessage({
                     tmplIds: app.globalData.subscribe,
                     complete(allow) {
-                        app.toastFun('支付成功');
-                        setTimeout(() => {
+                      app.toastFun('支付成功');
+                      setTimeout(() => {
 
-                            if (app.globalData.sharequery.hasOwnProperty('gid') && app.globalData.sharequery.gid !== '') {
-                                //通过分享直接消费的顾客进行上报
-                                wx.reportEvent("impulsive_customer", {})
-                            } else {
-                                //自由消费顾客的上报
-                                wx.reportEvent("hesitant_customer", {})
-                            }
+                        if (app.globalData.sharequery.hasOwnProperty('gid') && app.globalData.sharequery.gid !== '') {
+                          //通过分享直接消费的顾客进行上报
+                          wx.reportEvent("impulsive_customer", {})
+                        } else {
+                          //自由消费顾客的上报
+                          wx.reportEvent("hesitant_customer", {})
+                        }
 
-                            if (is_jx_goods == 1) { //匠选商品返回上两页
-                                app.globalData.userInfo.level_id = 3;
-                                wx.navigateBack({
-                                    delta: 2,
-                                })
-                            } else if (is_pd == 1) {
-                                /**
-                                 * 新拼团
-                                 * 当订单支付完成后，缓存一些订单信息然后跳转回首页
-                                 * is_frompayment 是否是从payment页面跳转的
-                                 * pd_oid 订单id
-                                 * 
-                                 * 关于跳转
-                                 * 这里做一下测试
-                                 * 判断下页面栈的0下标是index的话  就使用新的跳转方法 不然还使用switchTab switchTab有个官方bug就是进入index 会执行两次onshow
-                                 */
-                                const _cacheinfo = {
-                                    is_frompayment: true
-                                }
-                                app.router.cache_groupon = {
-                                    ..._cacheinfo
-                                }
-                                app.globalData.sharequery['t'] = 'm';
-                                app.globalData.sharequery['npdoid'] = res.data.order_id;
+                        if (is_jx_goods == 1) { //匠选商品返回上两页
+                          app.globalData.userInfo.level_id = 3;
+                          wx.navigateBack({
+                            delta: 2,
+                          })
+                        } else if (is_pd == 1) {
+                          /**
+                           * 新拼团
+                           * 当订单支付完成后，缓存一些订单信息然后跳转回首页
+                           * is_frompayment 是否是从payment页面跳转的
+                           * pd_oid 订单id
+                           * 
+                           * 关于跳转
+                           * 这里做一下测试
+                           * 判断下页面栈的0下标是index的话  就使用新的跳转方法 不然还使用switchTab switchTab有个官方bug就是进入index 会执行两次onshow
+                           */
+                          const _cacheinfo = {
+                            is_frompayment: true
+                          }
+                          app.router.cache_groupon = {
+                            ..._cacheinfo
+                          }
+                          app.globalData.sharequery['t'] = 'm';
+                          app.globalData.sharequery['npdoid'] = res.data.order_id;
 
 
-                                const _pages = getCurrentPages();
-                                if (_pages[0].route == 'pages/index/index') {
-                                    wx.navigateBack({
-                                        delta: _pages.length,
-                                    })
-                                } else {
-                                    wx.switchTab({
-                                        url: '../index/index',
-                                    })
-                                }
-
-                            } else { //非匠选商品回到首页后跳转订单详情
-                                app.router.orderid = res.data.order_id;
-                                wx.switchTab({
-                                    url: '../index/index',
-                                })
-                            }
-                        }, 1000)
-                    }
-                })
-                  }
-                }).catch(function (err) {
-                    if (err.code == 204) { //204状态，用户未登录，清除缓存后跳转登录页
-                        wx.clearStorage();
-                        wx.reLaunch({
-                            url: '../login/login',
-                        })
-                    } else { //其他原因导致支付失败，回到首页后跳转订单详情
-                        app.toastFun(err.msg);
-                        setTimeout(function () {
-                            app.router.orderid = res.data.order_id;
-                            wx.switchTab({
-                                url: '../index/index',
+                          const _pages = getCurrentPages();
+                          if (_pages[0].route == 'pages/index/index') {
+                            wx.navigateBack({
+                              delta: _pages.length,
                             })
-                        }, 1000)
-                    }
-                })
-            }).catch(function (err) {
-                app.toastFun(err.msg);
-            })
+                          } else {
+                            wx.switchTab({
+                              url: '../index/index',
+                            })
+                          }
 
+                        } else { //非匠选商品回到首页后跳转订单详情
+                          app.router.orderid = res.data.order_id;
+                          wx.switchTab({
+                            url: '../index/index',
+                          })
+                        }
+                      }, 1000)
+                    }
+                  })
+                }
+              }).catch(function (err) {
+                if (err.code == 204) { //204状态，用户未登录，清除缓存后跳转登录页
+                  wx.clearStorage();
+                  wx.reLaunch({
+                    url: '../login/login',
+                  })
+                } else { //其他原因导致支付失败，回到首页后跳转订单详情
+                  app.toastFun(err.msg);
+                  setTimeout(function () {
+                    app.router.orderid = res.data.order_id;
+                    if (_this.data.is_cash == 1) {
+                      wx.navigateTo({
+                        url: '../order/list/list?status=1&is_cash=1'
+                      })
+                    } else {
+                      wx.switchTab({
+                        url: '../index/index',
+                      })
+                    }
+                  }, 1000)
+                }
+              })
+            }).catch(function (err) {
+              app.toastFun(err.msg);
+            })
+          }
         } else {
             app.toastFun('请添加收货地址');
         }
