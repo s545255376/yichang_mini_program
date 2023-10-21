@@ -17,6 +17,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        console.log('11111')
         console.log(options)
         // this.getList(0, 0)
     },

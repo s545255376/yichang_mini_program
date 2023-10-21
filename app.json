@@ -16,7 +16,7 @@
         "pages/order/list/list",
         "pages/orderList/orderList",
         "pages/order/detail/detail",
-        "pages/order/detailList/detailList",
+        "pages/detailList/detailList",
         "pages/order/giftlist/giftlist",
         "pages/order/apply/apply",
         "pages/order/logistics/logistics",
