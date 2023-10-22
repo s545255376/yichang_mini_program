@@ -278,7 +278,8 @@ Page({
         });
     },
     //同意签署协议
-    confirmBtn() {
+  confirmBtn() {
+    let _this = this;
         getRequest
             .post("index/user/agree_sign", {
                 uid: app.globalData.userInfo.id
