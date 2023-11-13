@@ -357,7 +357,10 @@ Page({
             }
         } else {
             // console.log(e);
-            app.toastFun("手机号获取时发生系统错误，请重试");
+          // app.toastFun("手机号获取时发生系统错误");
+          wx.reLaunch({
+            url: '../mine/mine',
+          })
         }
     },
     mobileLogin(postdata) {
