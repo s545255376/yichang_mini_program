@@ -18,17 +18,17 @@ Page({
     onLoad(options) {
         let buttom;
         if (options.type == 1) {
-            buttom = [{ id: 0, money: '5000', img: 'http://images.lexuanhui.online/upload/20230326/4d9a1ade85e6a8e3fc79c4dfa74fb43b.jpeg',selected: false },
-            { id: 1, money: '10000', img: 'http://images.lexuanhui.online/upload/20230326/63fcf948db217f0ba214c487998b1147.jpeg',selected: false },
-            { id: 2, money: '20000', img: 'http://images.lexuanhui.online/upload/20230326/2c837d26acc51766e56fbe7f20762291.jpeg', selected: true },
-            {id: 3, money: '50000', img: 'http://images.lexuanhui.online/upload/20230326/49bb99e7311e491a6347e592fa72338a.jpeg', selected: false
+            buttom = [{ id: 0, money: '5000', img: 'https://store.luluhoo.cn/yichang_mini/5000.jpg',selected: false },
+            { id: 1, money: '10000', img: 'https://store.luluhoo.cn/yichang_mini/10000.jpg',selected: false },
+            { id: 2, money: '20000', img: 'https://store.luluhoo.cn/yichang_mini/20000.jpg', selected: true },
+            {id: 3, money: '50000', img: 'https://store.luluhoo.cn/yichang_mini/50000.jpg', selected: false
             },
-            { id: 4, money: '100000', img: 'http://images.lexuanhui.online/upload/20230326/917368a5dbf56df4293e9796227b5ba6.jpeg', selected: false
+            { id: 4, money: '100000', img: 'https://store.luluhoo.cn/yichang_mini/100000.jpg', selected: false
             }]
         } else {
-            buttom = [{ id: 0, money: '5000', img: 'http://images.lexuanhui.online/upload/20230326/4d9a1ade85e6a8e3fc79c4dfa74fb43b.jpeg',selected: false },
-            { id: 1, money: '10000', img: 'http://images.lexuanhui.online/upload/20230326/63fcf948db217f0ba214c487998b1147.jpeg',selected: false },
-            { id: 2, money: '20000', img: 'http://images.lexuanhui.online/upload/20230326/2c837d26acc51766e56fbe7f20762291.jpeg', selected: true }]
+            buttom = [{ id: 0, money: '5000', img: 'https://store.luluhoo.cn/yichang_mini/5000.jpg',selected: false },
+            { id: 1, money: '10000', img: 'https://store.luluhoo.cn/yichang_mini/10000.jpg',selected: false },
+            { id: 2, money: '20000', img: 'https://store.luluhoo.cn/yichang_mini/20000.jpg', selected: true }]
         }
         this.setData({buttom: buttom})
     },
