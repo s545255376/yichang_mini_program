@@ -28,7 +28,7 @@
           <view class="title">{{info.goods_name}}</view>
           <view class="desc">{{info.goods_sub}}</view>
           <view class="norms"><text wx:for="{{info.item}}" wx:key="orderGoodsItem" wx:for-item="model" wx:for-index="modelidx">{{model}}</text></view>
-          <view class="price"><text class="symbol">{{6 <= item.order_status?item.return_type+'：':''}}积分</text>{{info.price}}<text class="num">x {{info.num}}</text></view>
+          <view class="price"><text class="symbol">{{6 <= item.order_status?item.return_type+'：':''}}{{item.is_cash == 0 ? '积分': '¥'}}</text>{{info.price}}<text class="num">x {{info.num}}</text></view>
         </view>
       </view>
     </view>
