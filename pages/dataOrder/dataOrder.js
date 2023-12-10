@@ -2,8 +2,9 @@ const app = getApp();
 const util = require('../../utils/util');
 const getRequest = require('../../utils/getRequest');
 Page({
-  data: {
-        mobile: '',
+    data: {
+        tabbar: ['积分订单', '茶馆订单'],
+        tabbarNum: 0,
         details: [],
         loadState: true,
         current_page: 0,
@@ -13,11 +14,11 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-  onLoad(options) {
-    this.setData({
-        mobile: options.mobile
+    onLoad(options) {
+      this.setData({
+        tabbarNum: options.type
       })
-      this.getList(0);
+      this.getList(options.type, 0);
     },
 
     /**
@@ -60,19 +61,30 @@ Page({
      */
   onReachBottom: function () {
     if (this.data.current_page < this.data.last_page) {
-      this.getList(this.data.current_page);
+      this.getList(this.data.tabbarNum, this.data.current_page);
     }
     else {
       app.toastFun('已经没有了');
     }
   },
 
-    getList(idx) {
+    tabbarChange: function (e) {
+        let idx = e.currentTarget.dataset.idx;
+        this.setData({
+          tabbarNum: idx,
+          details: [],
+          current_page: 0,
+          last_page: 0
+        })
+        this.getList(idx, 0);
+    },
+
+    getList(type, idx) {
         let _this = this;
         let timestamp = new Date().getTime();
         let sign = util.getSign(timestamp);
         let page = idx + 1;
-        let url  = 'h5/index/balanceDedu?sign=' + sign + '&timestamp=' + timestamp + '&page=' + page + '&start=&end=&' + 'mobile=' + _this.data.mobile;
+        let url  = '/h5/index/orders?sign=' + sign + '&timestamp=' + timestamp + '&page=' + page + '&mobile=&start=&end=&is_cash=' + type;
         getRequest.get(url).then((res) => {
           _this.setData({
             current_page: res.data.current_page,

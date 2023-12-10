@@ -1,0 +1,24 @@
+<input id="search" placeholder="请输入会员手机号" type="number" 	placeholder-style="margin-left:5%" bindinput="searchVip"></input>
+<view class="ic_empty" wx:if="{{loadState == false}}">
+  <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
+  <view>网络异常，请重新登陆～</view>
+</view>
+<view class="part" wx:else>
+
+  <image class="bk_img" src="http://images.lexuanhui.online/platform_pic/bk_img.png"></image>
+  <view class="history">
+    <view wx:if="{{details.length > 0}}">
+      <view class="body">
+        <view>手机号(点击查看详情)</view>
+        <view>余额</view>
+        <view>积分</view>
+      </view>
+      <view class="body" wx:for="{{details}}" wx:for-item="item" bindtap="goDetailList"   data-type="{{item.mobile}}">
+        <view>{{item.mobile}}</view>
+        <view>{{item.balance}}</view>
+        <view>{{item.point}}</view>
+      </view>
+    </view>
+    <view wx:else class="none">暂无记录</view>
+  </view>
+</view>

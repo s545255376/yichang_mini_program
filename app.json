@@ -17,6 +17,8 @@
         "pages/orderList/orderList",
         "pages/order/detail/detail",
         "pages/detailList/detailList",
+        "pages/dataOrder/dataOrder",
+        "pages/dataVip/dataVip",
         "pages/order/giftlist/giftlist",
         "pages/order/apply/apply",
         "pages/order/logistics/logistics",
