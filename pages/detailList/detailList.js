@@ -1,12 +1,9 @@
-const app = getApp()
-const getRequest = require('../../utils/getRequest')
+const app = getApp();
+const util = require('../../utils/util');
+const getRequest = require('../../utils/getRequest');
 Page({
-    data: {
-        tabbar: ['充值列表', '余额消费列表'],
-        point_type: ['recharge', 'balance'],
-        type_name: '充值列表',
-        tabbarNum: 0,
-        point: 0,
+  data: {
+        mobile: '',
         details: [],
         loadState: true,
         current_page: 0,
@@ -17,6 +14,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.setData({
+            mobile: options.mobile
+        })
+        this.getList(0);
     },
 
     /**
@@ -57,6 +58,7 @@ Page({
     /**
      * 页面上拉触底事件的处理函数
      */
+<<<<<<< HEAD
     onReachBottom: function () {
         if (this.data.current_page < this.data.last_page) {
             this.getList(this.data.tabbarNum, this.data.current_page);
@@ -77,21 +79,33 @@ Page({
     },
 
     getList(type, idx) {
+=======
+  onReachBottom: function () {
+    if (this.data.current_page < this.data.last_page) {
+      this.getList(this.data.current_page);
+    }
+    else {
+      app.toastFun('已经没有了');
+    }
+  },
+
+    getList(idx) {
+>>>>>>> 8728272b02493cd006c52da4e25bd4e03a2fc121
         let _this = this;
         let timestamp = new Date().getTime();
         let sign = util.getSign(timestamp);
         let page = idx + 1;
-        let url  = '';
-        if (type == 0) {
-            url = '/h5/index/recharge?sign=' + sign + '&timestamp=' + timestamp + '&page' + page;
-        } else {
-            url = '/h5/index/balanceDedu?sign=' + sign + '&timestamp=' + timestamp + '&page' + page;
-        }
+        let url  = 'h5/index/balanceDedu?sign=' + sign + '&timestamp=' + timestamp + '&page=' + page + '&start=&end=&' + 'mobile=' + _this.data.mobile;
         getRequest.get(url).then((res) => {
-            console.log(res)
+          _this.setData({
+            current_page: res.data.current_page,
+            last_page: res.data.last_page,
+            details: _this.data.details.concat(res.data.data)
+          })
           }).catch((err) => {
             console.log(err)
         })
+<<<<<<< HEAD
         // let postdata = {
         //     token: app.globalData.token,
         //     page: idx + 1,
@@ -125,5 +139,7 @@ Page({
                 })
             }
         })
+=======
+>>>>>>> 8728272b02493cd006c52da4e25bd4e03a2fc121
     }
 })

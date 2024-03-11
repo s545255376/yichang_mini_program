@@ -2,7 +2,7 @@
   <view class="data_box">
     <view class="data_box_title">
       <view>茶馆订单</view>
-      <view bindtap="noWork">查看订单列表</view>
+      <view bindtap="goOrder" data-type="1">查看订单列表</view>
     </view>
     <view class="data_box_body">
       <view>
@@ -23,6 +23,7 @@
   <view class="data_box">
     <view class="data_box_title">
       <view>会员</view>
+      <view bindtap="goVip">查看会员</view>
     </view>
     <view class="data_box_body">
       <view>
@@ -101,7 +102,7 @@
   <view class="data_box">
     <view class="data_box_title">
       <view>积分订单</view>
-      <view bindtap="noWork">查看订单列表</view>
+      <view bindtap="goOrder" data-type="0">查看订单列表</view>
     </view>
     <view class="data_box_body">
       <view>

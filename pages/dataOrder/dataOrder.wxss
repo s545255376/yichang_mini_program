@@ -1,7 +1,14 @@
-.title {
-  color: white;
-  margin-left: 5%;
-  margin-top: 3%;
+.tabbar {
+    background: transparent;
+    position: absolute;
+}
+.tabbar view {
+    color: white;
+    font-size: large;
+}
+.tabbar .tabbar_click {
+    color: white;
+    border-bottom: 4rpx solid white;
 }
 .bk_img {
     position: fixed;
@@ -11,7 +18,7 @@
     width: 100%;
 }
 .part {
-    margin-top: 3%;
+    margin-top: 15%;
     color: #ffffff;
 }
 .points {

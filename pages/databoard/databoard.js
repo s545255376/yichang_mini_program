@@ -1,5 +1,5 @@
 const app = getApp();
-const util = require('../../utils/util')
+const util = require('../../utils/util');
 const getRequest = require('../../utils/getRequest');
 Page({
     data: {
@@ -26,7 +26,18 @@ Page({
       wx.navigateTo({
         url: '../detailList/detailList?type=' + type,
       })
-    },
+  },
+  goOrder: function (e) {
+    let type = e.currentTarget.dataset.type
+    wx.navigateTo({
+      url: '../dataOrder/dataOrder?type=' + type,
+    })
+  },
+  goVip: function () {
+    wx.navigateTo({
+      url: '../dataVip/dataVip',
+    })
+  },
     noWork: function () {
       app.toastFun('该功能暂未开放')
     }

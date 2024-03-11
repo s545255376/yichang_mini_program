@@ -1,0 +1,41 @@
+#search {
+  margin-top: 2%;
+  background: white;
+  margin-left: 10%;
+  width: 80%;
+  border-radius: 10rpx;
+  height: 60rpx;
+}
+.bk_img {
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+.part {
+  margin-top: 5%;
+  color: #ffffff;
+}
+.points {
+  margin-top: 5%;
+}
+.history {
+  /* margin-top: 4%; */
+  height: 1200rpx;
+}
+.body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 4%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom-style: dotted;
+  width: 94%;
+  margin-left: 3%;
+}
+.none {
+  text-align: center;
+  margin-top: 30%;
+}

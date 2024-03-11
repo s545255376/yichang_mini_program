@@ -1,21 +1,21 @@
-<view class="title">
-  当前会员: {{mobile}} 
+<view class="tabbar">
+  <view class="{{tabbarNum == index?'tabbar_click':''}}" bindtap="tabbarChange" wx:for="{{tabbar}}"  wx:key="tabbar" wx:for-item="item" wx:for-index="index" data-idx="{{index}}">{{item}}</view>
 </view>
 <view class="ic_empty" wx:if="{{loadState == false}}">
   <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
   <view>网络异常，请重新登陆～</view>
 </view>
 <view class="part" wx:else>
-    <image class="bk_img" src="http://images.luluhoo.cn/platform_pic/bk_img.png"></image>
+    <image class="bk_img" src="http://images.lexuanhui.online/platform_pic/bk_img.png"></image>
     <view class="history">
         <view wx:if="{{details.length > 0}}">
           <view class="body">
                 <view>时间</view>
-                <view>消费详情</view>
+                <view>金额</view>
             </view>
             <view class="body" wx:for="{{details}}" wx:for-item="item">
-                <view>{{item.add_time}}</view>
-                <view>{{item.point}}</view>
+                <view>{{item.create_time}}</view>
+                <view>{{item.pay_price}}</view>
             </view>
         </view>
         <view wx:else class="none">暂无记录</view>
