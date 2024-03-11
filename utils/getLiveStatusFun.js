@@ -1,5 +1,5 @@
 //获取并更新直播状态
-const livePlayer = requirePlugin('live-player-plugin');
+// const livePlayer = requirePlugin('live-player-plugin');
 const app = getApp();
 function getLiveStatusFun(roomid, live_status) {
     livePlayer.getLiveStatus({ room_id: roomid })

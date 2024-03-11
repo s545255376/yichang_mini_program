@@ -1074,7 +1074,7 @@ Page({
     onShareAppMessage: function () {
         return {
             title: '夷畅-助力中小企业，保护优质产品',
-            imageUrl: 'http://images.lexuanhui.online/pl_pic/ad.jpg',
+            imageUrl: 'http://images.luluhoo.cn/pl_pic/ad.jpg',
             path: 'pages/login/login?u=' +
                 app.globalData.userInfo.id +
                 '&f=' +

@@ -1,7 +1,7 @@
 const app = getApp();
 const getRequest = require('../../utils/getRequest');
 const util = require('../../utils/util.js');
-const getLiveStatusFun = require('../../utils/getLiveStatusFun.js');
+// const getLiveStatusFun = require('../../utils/getLiveStatusFun.js');
 
 Page({
     data: {

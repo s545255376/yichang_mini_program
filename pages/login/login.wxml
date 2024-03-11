@@ -1,9 +1,9 @@
 <view class="login">
-    <image class="bk_img" src="http://images.lexuanhui.online/platform_pic/login_bk.jpg"></image>
+    <image class="bk_img" src="http://images.luluhoo.cn/platform_pic/login_bk.jpg"></image>
     <view class="name">夷 畅 岩 茶 蒸 着 喝</view>
 
     <!-- <button class="login_btn" wx:if="{{btnType == 0}}" bindtap="getUserInfo">同意授权</button> -->
-    <view class="login_btn" bindtap="getPhoneNumber" wx:if="{{btnType == 1}}">开 启 体 验</view>
+    <button class="login_btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{btnType == 1}}">手 机 号 快 捷 登 录</button>
 </view>
 
 
@@ -26,21 +26,7 @@
         </view>
     </view>
 </view>
-<pop bindeventclose="closeToast1" popname="inputMobile" wx:if="{{inputMobile}}">
-        <view id="pop_custome_main">
-            <view id="title">完善用户信息</view>
-            <view class="register_item">
-                <input type="number" placeholder="请输入手机号" bindinput="inputchange" data-name="mobile" />
-            </view>
-            
-            <!-- <view class="buttonGroup" bindtap="goActive">
-                <view>取消</view>
-            </view> -->
-            <view class="buttonGroup" bindtap="getPhoneNumber1">
-                <view>确定</view>
-            </view>
-        </view>
-    </pop>
+
 <pop bindeventclose="closeToast" popname="registerToast" wx:if="{{registerToast}}">
     <view id="pop_register_main">
         <view id="title">绑定邀请人</view>

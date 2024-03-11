@@ -1,5 +1,3 @@
-let livePlayer = requirePlugin('live-player-plugin')
-
 App({
     onLaunch: function () {
         const _this = this
@@ -23,7 +21,7 @@ App({
     },
     globalData: {
         examineStr: '20221008',
-        url:'https://www.lexuanhui.online/',
+        url:'https://yichang.luluhoo.cn/',
         //url: 'https://cmjx.chengmeijiangxuan.com/', //正式
         // url: 'http://101.43.21.82/',//测试
         //url: 'http://192.168.7.68:4411/', //本地

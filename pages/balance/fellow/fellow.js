@@ -18,17 +18,19 @@ Page({
     onLoad(options) {
         let buttom;
         if (options.type == 1) {
-            buttom = [{ id: 0, money: '5000', img: 'https://store.luluhoo.cn/yichang_mini/5000.jpg',selected: false },
-            { id: 1, money: '10000', img: 'https://store.luluhoo.cn/yichang_mini/10000.jpg',selected: false },
-            { id: 2, money: '20000', img: 'https://store.luluhoo.cn/yichang_mini/20000.jpg', selected: true },
-            {id: 3, money: '50000', img: 'https://store.luluhoo.cn/yichang_mini/50000.jpg', selected: false
+            buttom = [{ id: 0, money: '2000', img: 'https://store.luluhoo.cn/yichang_mini/2000.jpeg',selected: false },
+            { id: 1, money: '5000', img: 'https://store.luluhoo.cn/yichang_mini/5000.jpg',selected: false },
+            { id: 2, money: '10000', img: 'https://store.luluhoo.cn/yichang_mini/10000.jpg',selected: false },
+            { id: 3, money: '20000', img: 'https://store.luluhoo.cn/yichang_mini/20000.jpg', selected: true },
+            {id: 4, money: '50000', img: 'https://store.luluhoo.cn/yichang_mini/50000.jpg', selected: false
             },
-            { id: 4, money: '100000', img: 'https://store.luluhoo.cn/yichang_mini/100000.jpg', selected: false
+            { id: 5, money: '100000', img: 'https://store.luluhoo.cn/yichang_mini/100000.jpg', selected: false
             }]
         } else {
-            buttom = [{ id: 0, money: '5000', img: 'https://store.luluhoo.cn/yichang_mini/5000.jpg',selected: false },
-            { id: 1, money: '10000', img: 'https://store.luluhoo.cn/yichang_mini/10000.jpg',selected: false },
-            { id: 2, money: '20000', img: 'https://store.luluhoo.cn/yichang_mini/20000.jpg', selected: true }]
+            buttom = [{ id: 0, money: '2000', img: 'https://store.luluhoo.cn/yichang_mini/2000.jpeg',selected: false },
+            { id: 1, money: '5000', img: 'https://store.luluhoo.cn/yichang_mini/5000.jpg',selected: false },
+            { id: 2, money: '10000', img: 'https://store.luluhoo.cn/yichang_mini/10000.jpg',selected: false },
+            { id: 3, money: '20000', img: 'https://store.luluhoo.cn/yichang_mini/20000.jpg', selected: true }]
         }
         this.setData({buttom: buttom})
     },
@@ -89,7 +91,13 @@ Page({
         })
     },
     spendMoney() {
-        let _this = this;
+        if (app.globalData.userInfo.id == '') {
+            app.toastFun("请先登录!");
+            wx.navigateTo({
+                url: '../../login/login',
+            })
+        } else {
+            let _this = this;
         let postdata = {
             price: _this.data.money,
             token: app.globalData.token,
@@ -122,5 +130,6 @@ Page({
             //   })
             // }, 1000);
           })
+        }
     }
 })

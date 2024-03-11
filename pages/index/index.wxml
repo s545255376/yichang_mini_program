@@ -194,7 +194,7 @@
 <!-- 拼团活动弹窗 -->
 <pop bindeventclose="closeToast" popname="grouponToast" wx:if="{{grouponToast && showCard==0}}">
     <view id="pop_custome_main">
-        <image src="http://images.lexuanhui.online/pl_pic/ad.jpg" mode="widthFix"></image>
+        <image src="http://images.luluhoo.cn/pl_pic/ad.jpg" mode="widthFix"></image>
         <view class="buttonGroup" bindtap="goGroupon">
             <view>充值有礼</view>
         </view>

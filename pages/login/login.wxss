@@ -45,44 +45,6 @@
     margin-top: 20rpx;
 }
 
-#pop_custome_main {
-    width: 550rpx;
-    box-sizing: border-box;
-    background: #fff;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    position: relative;
-    border-radius: 20rpx;
-    margin: 0 auto;
-    height: 450rpx;
-}
-
-.buttonGroup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: absolute;
-    bottom: 45rpx;
-  }
-  
-  .buttonGroup view {
-    width: 80%;
-    text-align: center;
-    padding: 20rpx 0;
-    background: #231f20;
-    color: #fff;
-  }
-  .register_item {
-    margin-bottom: 60rpx;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 12%;
-    margin-left: 15%;
-  }
-
 .login_btn {
     border-color: white;
     border: solid;
@@ -92,8 +54,6 @@
     font-size: 20px;
     line-height: 100rpx;
     margin-top: 18%;
-    margin-left: 10%;
-    text-align: center;
 }
 
 

@@ -69,7 +69,7 @@ Page({
         const cardId = e.target.dataset.cardid
         return {
             title: '来自好友价值1000元的夷畅茶馆的电子卡',
-            imageUrl: 'https://store.luluhoo.cn/yichang_mini/coupon_1000.jpg',
+            imageUrl: 'http://store.luluhoo.cn/yichang_mini/coupon_1000.jpg',
             path: 'pages/login/login?u=' +
                 app.globalData.userInfo.id +
                 '&f=' +

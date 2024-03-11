@@ -17,13 +17,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-<<<<<<< HEAD
-
-=======
-        console.log('11111')
-        console.log(options)
-        // this.getList(0, 0)
->>>>>>> c88801e (修改登录跳转到我的页面)
     },
 
     /**
@@ -64,17 +57,6 @@ Page({
     /**
      * 页面上拉触底事件的处理函数
      */
-<<<<<<< HEAD
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-=======
     onReachBottom: function () {
         if (this.data.current_page < this.data.last_page) {
             this.getList(this.data.tabbarNum, this.data.current_page);
@@ -143,6 +125,5 @@ Page({
                 })
             }
         })
->>>>>>> c88801e (修改登录跳转到我的页面)
     }
 })

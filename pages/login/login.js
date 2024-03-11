@@ -19,9 +19,7 @@ Page({
         treatyshow: false,
         // 顾客绑定注册相关
         registerToast: false,
-        inputMobile: false,
-        registerValue: '',
-        mobileNumber: ''
+        registerValue: ''
     },
   onLoad(e) {
         // s=35000&f=10000&t=e&gid=10000
@@ -302,50 +300,11 @@ Page({
             }
           });
     },
-    inputchange: function(e) {
-        const {
-            name
-        } = e.currentTarget.dataset;
-        if (name == 'mobile') {
-            this.setData({
-                mobileNumber: e.detail.value
-            })
-        } else {
-            // this.setData({
-            //     cardSecret: e.detail.value
-            // })
-        }
-    },
-    //隐藏弹窗
-    closeToast1: function (e) {
-        // console.log('12344')
-        // const {
-        //     detail
-        // } = e
-        // console.log(e)
-        this.setData({
-            inputMobile: false,
-            mobileNumber: '13788888888'
-        })
-        this.getPhoneNumber1();
-        console.log('12344')
-    },
-    getPhoneNumber: function() {
-        this.setData({
-            inputMobile: true
-        })
-    },
     //获取手机号
-    getPhoneNumber1: function (e) {
-        this.setData({
-            inputMobile: false
-        })
+    getPhoneNumber: function (e) {
         const _this = this;
-        let {token, mobileNumber} = this.data;
-        console.log('2222')
-        // if (e.detail.iv) {
-        if (false) {
-            console.log('22221')
+        if (e.detail.iv) {
+            let token = this.data.token;
             if (token == "") {
                 wx.login({
                     success: function (wxlogin) {
@@ -385,7 +344,6 @@ Page({
                 });
             } else {
                 this.mobileLogin({
-                    mobile: _this.data.userinfo.mobile,
                     token: token,
                     iv: e.detail.iv,
                     encryptedData: e.detail.encryptedData,
@@ -398,51 +356,14 @@ Page({
                 });
             }
         } else {
-            // 没有e的逻辑
-            console.log('1111')
             // console.log(e);
-            if (token == "") {
-                wx.login({
-                    success: function (wxlogin) {
-                        getRequest
-                            .post("index/user/login", {
-                                code: wxlogin.code
-                            })
-                            .then(function (gettoken) {
-                                token = gettoken.data.token;
-                                _this.mobileLogin({
-                                    mobile: mobileNumber,
-                                    token: token,
-                                    // iv: e.detail.iv,
-                                    // encryptedData: e.detail.encryptedData,
-                                    nickName: _this.data.userinfo.nickName,
-                                    avatar: _this.data.userinfo.avatarUrl,
-                                    gender: "",
-                                    fid: app.globalData.sharequery.f,
-                                    user_id: '',
-                                    invitee_uid: app.globalData.sharequery.u,
-                                });
-                            })
-                    },
-                });
-            } else {
-                this.mobileLogin({
-                    mobile: _this.data.userinfo.mobile ? _this.data.userinfo.mobile : mobileNumber,
-                    token: token,
-                    // iv: e.detail.iv,
-                    // encryptedData: e.detail.encryptedData,
-                    nickName: _this.data.userinfo.nickName,
-                    avatar: _this.data.userinfo.avatarUrl,
-                    gender: "",
-                    fid: app.globalData.sharequery.f,
-                    user_id: '',
-                    invitee_uid: app.globalData.sharequery.u,
-                });
-            }
+          // app.toastFun("手机号获取时发生系统错误");
+          wx.reLaunch({
+            url: '../mine/mine',
+          })
         }
     },
     mobileLogin(postdata) {
-        console.log(postdata)
         getRequest
             .noToastPost("index/user/getMobile", postdata)
             .then((info) => {
