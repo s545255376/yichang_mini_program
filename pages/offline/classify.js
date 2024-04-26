@@ -1,12 +1,14 @@
 // pages/classify/classify.js
 const app = getApp();
 const Font = require('../../utils/getFont');
+const cartNum = require('../../utils/cartNum.js');
 const getRequest = require('../../utils/getRequest');
 Page({
     data: {
         screenHeight: wx.getSystemInfoSync().windowHeight,  
         activeKey: 0,
-        classifyList: [],
+    classifyList: [],
+    cartnum: 0,
     value: '',
     message: '',
         columnGoods: {
@@ -77,7 +79,18 @@ Page({
         }).exec();
     },
     onShow() {
-        
+        //获取并显示购物车中已有商品数量，以及显示已经选中的赠品列表
+        if (app.globalData.userInfo.id != '') {
+          let _this = this
+          cartNum
+              .sum()
+              .then(function (res) {
+                  _this.setData({
+                      cartnum: res.data.cart_count
+                  })
+              })
+              .catch()
+      }
     },
     //获取商品列表
     getGoodsList() {
@@ -131,7 +144,13 @@ Page({
         wx.navigateTo({
             url: `../goodsdetail/goodsdetail?goods_id=${goodsid}&live=false&active_key=${this.data.activeKey}&pre=classify&is_cash=1`,
         })
-    },
+  },
+  //跳转购物车
+  goCart: function () {
+    wx.navigateTo({
+        url: '../cart/cart',
+    })
+},
     intoSearchPage() {
         wx.navigateTo({
             url: `../classifySearch/classifySearch`
