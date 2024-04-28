@@ -14,7 +14,8 @@
             <view class="item" wx:for="{{details}}" wx:for-item="item" wx:for-index="index">
                 <view class="transfer" wx:if="{{tabbarNum==0}}"><button type="primary" size="mini" data-cardId="{{item.id}}" open-type="share">赠送亲友</button></view>
                 <view class="transfer" wx:if="{{tabbarNum!=0}}"><button type="warn" size="mini" data-cardId="{{item.id}}">已自动转余额</button></view>
-                <image class="bk_img" src="http://store.luluhoo.cn/yichang_mini/coupon_1000.jpg"></image>
+                <image class="bk_img" wx:if="{{item.price == '2000.00'}}" src="http://store.luluhoo.cn/yichang_mini/coupon_2000.jpg"></image>
+                <image class="bk_img" wx:elif="{{item.price == '1000.00'}}" src="http://store.luluhoo.cn/yichang_mini/coupon_1000.jpg"></image>
             </view>
         </view>
 </view>

@@ -40,7 +40,8 @@ Page({
             page_size: _this.data.page_size
         };
         getRequest.post('index/Account/redeemCard', postdata).then(function (res) {
-            // console.log(res);
+            console.log('打印电子卡')
+            console.log(res);
             _this.setData({
                 details: _this.data.details.concat(res.data.data),
                 page: res.data.current_page,

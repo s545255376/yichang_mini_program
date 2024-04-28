@@ -5,7 +5,7 @@
 </view>
 <view class="part" wx:else>
 
-  <image class="bk_img" src="http://images.lexuanhui.online/platform_pic/bk_img.png"></image>
+  <image class="bk_img" src="http://images.luluhoo.cn/platform_pic/bk_img.png"></image>
   <view class="history">
     <view wx:if="{{details.length > 0}}">
       <view class="body">
