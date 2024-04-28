@@ -66,18 +66,23 @@ Page({
         duoxuan2: [],
     },
     onLoad(options) {
-        // console.log(options);
-        // console.log(this.data.showCard)
-        console.log(app.globalData.sharequery.c)
+      const logindata = wx.getStorageSync('logindata');
+      if (logindata) {
+        app.globalData.token = logindata.token;
+        app.globalData.userInfo.mobile = logindata.mobile;
+        app.globalData.userInfo.username = logindata.mobile;
+        app.globalData.userInfo.id = logindata.id;
+      }
         this.setData({ showCard: app.globalData.sharequery.c ? 1 : 0  })
         if(options.pay == 'success') {
             
         }
         wx.hideShareMenu()
         if (app.globalData.userInfo.id == '') {
-            wx.reLaunch({
-                url: '../login/login',
-            })
+            // wx.reLaunch({
+            //     url: '../login/login',
+            // })
+            this.showLoad()
         } else {
             this.showLoad()
             this.dealpopQuery() //处理弹窗、活动等相关信息统一汇总
@@ -555,8 +560,10 @@ Page({
         const _getSwiperList = this.getSwiperList()
         const _getGoodsList = this.getGoodsList()
         const _getLive = this.getLive() //获取当前直播状态
-        const _getCartNum = this.getCartNum() //获取购物车内容
+      const _getCartNum = this.getCartNum() //获取购物车内容
+      if (app.globalData.userInfo.id != '') {
         const _getNotice = this.getNotice() //获取公告列表
+      }
         const _getJxGoodsList = this.getJxGoodsList() //获取swiper匠选商品
         Promise.all([
             _getSwiperList,
