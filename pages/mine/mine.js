@@ -75,7 +75,7 @@ Page({
             })
         }
     },
-    onShow: function () {
+  onShow: function () {
         wx.setStorageSync('intomyxprevpage', 'mine');
         let _this = this;
 
@@ -190,6 +190,7 @@ Page({
             })
         }
 
+      console.log(app.globalData);
         getRequest.post('index/Account/hxQrcode', { token: app.globalData.token }).then(function (res) {
             _this.setData({
                 qrcode: res.data.qrcode

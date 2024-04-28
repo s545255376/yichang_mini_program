@@ -73,3 +73,36 @@
   line-height: unset;
   height: unset;
 }
+
+.cart_btn {
+  position: fixed;
+  left: 15rpx;
+  width: 140rpx;
+  height: 140rpx;
+  bottom: 2rpx;
+  /* background-color: #c2253a; */
+  /* font-size: larger; */
+  /* color: #FFFFFF; */
+  text-align: center;
+  /* line-height: 140rpx; */
+  font-size: 30rpx;
+}
+
+.cart_btn image {
+    width: 50rpx;
+}
+
+.cart_btn text{
+  position: absolute;
+  top: 0;
+  right: 50%;
+  margin-right: -35rpx;
+  background: #231F20;
+  color: #ffffff;
+  width: 30rpx;
+  height: 30rpx;
+  font-size: 20rpx;
+  line-height: 30rpx;
+  text-align: center;
+  border-radius: 50%;
+}

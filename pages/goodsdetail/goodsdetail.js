@@ -464,6 +464,7 @@ Page({
     },
     // 立即购买-弹窗
   buyNow: function () {
+    app.globalData.table_number = 'A1'
     if (this.data.is_cash == 1 && Boolean(app.globalData.table_number) == false) {
       app.toastFun('请先扫描桌上二维码确定桌号');
       return

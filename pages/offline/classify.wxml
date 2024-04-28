@@ -5,6 +5,11 @@
         <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
             <van-sidebar-item wx:for="{{classifyList}}" title="{{item.title}}" wx:key="index"/>
         </van-sidebar>
+        <view class="cart_btn" bindtap="goCart">
+          <image src="../../images/return_cart.png" mode="widthFix"></image>
+          <view>购物袋</view>
+          <text wx:if="{{cartnum != 0}}">{{cartnum}}</text>
+        </view>
     </view>
     <view id="right_contant">
         <view id="classify_image" wx:if="{{columnGoods.image}}">
