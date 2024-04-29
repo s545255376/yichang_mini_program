@@ -73,6 +73,20 @@ Page({
         app.globalData.userInfo.username = logindata.mobile;
         app.globalData.userInfo.id = logindata.id;
       }
+      if (app.globalData.userInfo.role_id) {
+        wx.setStorageSync('user_role', app.globalData.userInfo.role_id);
+      }
+      else {
+        app.globalData.userInfo.role_id = wx.getStorageSync('user_role')
+      }
+
+      if (app.globalData.userInfo.store_id) {
+        wx.setStorageSync('store_id', app.globalData.userInfo.store_id);
+      }
+      else {
+        app.globalData.userInfo.store_id = wx.getStorageSync('store_id')
+      }
+
         this.setData({ showCard: app.globalData.sharequery.c ? 1 : 0  })
         if(options.pay == 'success') {
             
