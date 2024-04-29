@@ -54,7 +54,7 @@ Page({
             is_pd = 0,
             pt_buytype = 0
         } = options;
-        const suit_sku_ids = app.router.suit_sku_ids;
+      const suit_sku_ids = app.router.suit_sku_ids;
         this.setData({
             check_give,
             sku_id,
@@ -91,7 +91,15 @@ Page({
 
         this.getPaymentInfo();
     },
-    onShow() {
+  onShow() {
+    if (!app.globalData.table_number) {
+      app.toastFun('请先扫描桌上二维码确定桌号');
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1 // 指定返回的页面数，默认为1，表示返回上一页
+        })
+      }, 1500)
+    }
         this.getPaymentInfo();
     },
     //跳转匠选商品详情
