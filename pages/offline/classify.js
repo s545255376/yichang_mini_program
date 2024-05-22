@@ -153,7 +153,7 @@ Page({
 },
     intoSearchPage() {
         wx.navigateTo({
-            url: `../classifySearch/classifySearch`
+            url: `../classifySearch/classifySearch?is_cash=1`
         })
     }
 })
