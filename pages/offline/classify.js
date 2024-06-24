@@ -55,11 +55,11 @@ Page({
                   showActionsheet: false,
               })
               app.toastFun("用户登录信息已过期，请重新登录");
-              setTimeout(() => {
-                  wx.reLaunch({
-                    url: '../login/login?direct=' + direct,
-                  })
-              }, 1200);
+              // setTimeout(() => {
+              //     wx.reLaunch({
+              //       url: '../login/login?direct=' + direct,
+              //     })
+              // }, 1200);
           }
       })
   });

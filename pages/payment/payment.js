@@ -17,6 +17,8 @@ Page({
         point: 0,
         money: 0,
         card_money: 0,
+    cup_number: 0,
+        ori_price: 0,
         is_vip: '',
         couponToast: false,
         couponid: -1,
@@ -175,14 +177,14 @@ Page({
                     switchChecked = true;
                 }
             }
-
             _this.setData({
                 // modeval:0,
                 pick: res.data.pick[0],
                 couponid: couponid,
                 couponRadioIdx: couponid,
                 switchChecked: switchChecked,
-                info: res.data
+                info: res.data,
+                ori_price: res.data.amount.pay_price
             })
         }).catch(function (err) {
             if (err.code != 603) {
@@ -282,7 +284,22 @@ Page({
             couponid: -1
         })
         this.payPriceChange();
-    },
+  },
+    
+  setCup(e) {
+    if (!e.detail.value) {
+      e.detail.value = 0
+    }
+    this.setData({
+      cup_number: e.detail.value
+    })
+    let new_info = this.data.info;
+    new_info.amount.pay_price = this.data.ori_price + this.data.cup_number * 10;
+    this.setData({
+      info: new_info
+    })
+  },
+
     //金额统计计算
     payPriceChange() {
         let _this = this,
@@ -403,7 +420,6 @@ Page({
             postdata['table_number'] = _this.data.table_number
           
           if (_this.data.is_cash == 1 && Number(_this.data.money) >= Number(postdata['order_price'])) {
-
             wx.showModal({
               title: '',
               content: '您的余额还有' + this.data.money + ',本次扣除' + postdata['order_price'],

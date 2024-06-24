@@ -150,6 +150,12 @@
                     <text>{{is_cash == 1 ? '¥' : '积分'}}</text>{{info.amount.goods_price}}
                 </view>
             </view>
+            <!-- <view wx:if="{{is_cash == 1}}">
+                新加杯个数(10元/杯)
+                <view>
+                    <input type="number" placeholder="请关注详情中的默认杯数" style="text-align: right" bindinput="setCup"></input>
+                </view>
+            </view> -->
             <view wx:if="{{info.amount.discount_info != ''}}">
                 活动折扣
                 <view class="discount_num">{{info.amount.discount_info}}</view>

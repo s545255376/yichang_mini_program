@@ -14,8 +14,8 @@ Page({
         needAdapt: app.globalData.system.needAdapt,
         pageShow: false,
         cartnum: 0,
-    goods_id: '',
-    is_cash: 0,
+        goods_id: '',
+        is_cash: 0,
 
         banner: [],
         indicatorDots: false, //指示点
@@ -103,9 +103,11 @@ Page({
                 console.log(newE, 'onload扫码后处理完毕的携带参数')
                 app.globalData.sharequery = newE
             }
-            wx.reLaunch({
-                url: `../login/login?is_cash=${this.data.is_cash}&goods_id=${options.goods_id}`,
-            })
+          
+          this.getGoodsInfo(options.goods_id, '', '');
+            // wx.reLaunch({
+            //     url: `../login/login?is_cash=${this.data.is_cash}&goods_id=${options.goods_id}`,
+            // })
         } else {
             /**
              * option带参
@@ -169,204 +171,7 @@ Page({
                 drawCanvasType = 'new'
             }
 
-            getRequest
-                .post('index/goods/info', {
-                    goods_id: goods_id,
-                    store_id: app.globalData.userInfo.store_id,
-                    u_id: app.globalData.userInfo.id,
-                    room_id: room_id,
-                    pd_oid,
-                })
-                .then(function (res) {
-                    if (
-                        res.data.is_jx_goods == 1 &&
-                        app.globalData.userInfo.level_id == 5
-                    ) {
-                        app.globalData.userInfo.level_id = 6
-                        app.globalData.userInfo.jx_goods_id = goods_id
-                    }
-
-                    let content = res.data.content
-                    WxParse.wxParse('contentname', 'html', content, _this, 5)
-
-                    if (res.data.is_suit == 0) {
-                        goods_search = {
-                            sku_id: '',
-                            image: res.data.images[0].image,
-                            price: res.data.price,
-                            market_price: res.data.market_price,
-                            unsearch: true,
-                            stock: res.data.stock,
-                        }
-                        let sku = res.data.sku
-                        if (props) {
-                            //购物车进入商品详情，循环显示已选择的商品规格与金额
-                            if (sku[props].image != '') {
-                                goods_search.image = sku[props].image
-                            }
-                            goods_search.sku_id = sku[props].sku_id
-                            goods_search.price = sku[props].price
-                            goods_search.market_price = sku[props].market_price
-                            goods_search.unsearch = false
-                            goods_search.stock = sku[props].stock
-                        }
-                        //循环定义规格选中状态
-                        res.data.specs.forEach(function (e, idx) {
-                            if (props) {
-                                //购物车进入商品详情，循环判断已选择规格
-                                e.item.forEach(function (item, itemidx) {
-                                    if (item.id == sku[props].item[idx].id) {
-                                        e.searchidx = itemidx
-                                    }
-                                })
-                            } else {
-                                e.searchidx = -1
-                            }
-                        })
-
-                        if (res.data.is_pd == 1) {
-                            //拼团单独处理一个sku数组以供弹窗选择
-                            for (const i in sku) {
-                                pt_sku.push(Object.assign(sku[i], {
-                                    num: 0
-                                }))
-                            }
-                            const {
-                                fakesuccessList
-                            } = _this.data
-                            let _arr = []
-                            if (res.data.pd_success.length >= 2) {
-                                res.data.pd_success.map((key) => {
-                                    key.create_time = formatTime(
-                                        new Date(key.create_time * 1000)
-                                    )
-                                    _arr.push(key)
-                                    if (_arr.length == 2) {
-                                        fakesuccessList.push(_arr)
-                                    }
-                                    if (_arr.length == 2) _arr = []
-                                })
-                            } else if (res.data.pd_success.length !== 0) {
-                                res.data.pd_success[0].create_time = formatTime(
-                                    new Date(
-                                        res.data.pd_success[0].create_time *
-                                        1000
-                                    )
-                                )
-                                fakesuccessList.push(res.data.pd_success)
-                            }
-                            _this.setData({
-                                fakesuccessList,
-                            })
-                        }
-                    } else {
-                        let addsearch = {
-                            sku_id: '',
-                            image: res.data.images[0].image,
-                            price: res.data.price,
-                            market_price: res.data.market_price,
-                            unsearch: true,
-                            stock: res.data.stock,
-                        }
-                        sumprice = {
-                            price: res.data.price,
-                            market_price: res.data.market_price,
-                        }
-
-                        res.data.suit_list.forEach(function (suite, suitidx) {
-                            let sku = suite.sku
-                            if (props) {
-                                //购物车进入商品详情，循环显示已选择的商品规格与金额
-                                if (sku[props].image != '') {
-                                    addsearch.image = sku[props].image
-                                }
-                                addsearch.sku_id = sku[props].sku_id
-                                addsearch.price = sku[props].price
-                                addsearch.market_price = sku[props].market_price
-                                addsearch.unsearch = false
-                                addsearch.stock = sku[props].stock
-                                suit_goods_search.push(addsearch)
-                            }
-                            //循环定义规格选中状态
-                            suite.specs.forEach(function (e, idx) {
-                                if (props) {
-                                    //购物车进入商品详情，循环判断已选择规格
-                                    e.item.forEach(function (item, itemidx) {
-                                        if (
-                                            item.id == sku[props].item[idx].id
-                                        ) {
-                                            e.searchidx = itemidx
-                                        }
-                                    })
-                                } else {
-                                    e.searchidx = -1
-                                }
-                            })
-                        })
-
-                        pdNum = res.data.pd_choice.indexOf(pdjnum + '')
-                    }
-
-                    let banner = []
-                    res.data.images.forEach(function (e, idx) {
-                        banner.push(e.image)
-                    })
-                    //匠选商品-不允许分享
-                    if (res.data.is_jx_goods == 1) {
-                        wx.hideShareMenu()
-                    }
-                    //直播商品，不允许分享
-                    let liveStatus = live ? live : l ? l : 'false'
-                    if (liveStatus == 'true') {
-                        wx.hideShareMenu()
-                        if (res.data.can_buy == 0) {
-                            app.toastFun(res.msg)
-                        }
-                    }
-
-                    _this.setData({
-                        bannerHeight: app.globalData.system.windowWidth,
-                        banner: banner,
-                        content: content,
-                        list: {
-                            ...res.data
-                        },
-                        giveLimitNum: res.data.check_num_limit,
-                        goods_id: goods_id,
-                        goods_search: goods_search,
-                        suit_goods_search: suit_goods_search,
-                        sumprice: sumprice,
-                        model: app.globalData.system.model,
-                        drawCanvasType: drawCanvasType,
-                        statusBarHeight: app.globalData.system.statusBarHeight + 6,
-                        jxShow: res.data.is_jx_goods == 1 ? false : true,
-                        liveStatus: liveStatus,
-                        pd_oid: pd_oid,
-                        pdNum: pdNum,
-                        level_id: app.globalData.userInfo.level_id,
-                        room_id: room_id,
-                        pt_sku,
-                    })
-                    app.router.giveList = res.data.check_give_lsit
-                })
-                .catch(function (err) {
-                    // app.toastFun('抱歉，该商品已下架！');
-                    // getRequest.errlogPost('商品详情', err, {
-                    //     goods_id: goods_id,
-                    //     store_id: app.globalData.userInfo.store_id,
-                    //     u_id: app.globalData.userInfo.id,
-                    //     mobile: app.globalData.userInfo.mobile,
-                    // }, {
-                    //     methods: 'onload',
-                    //     version: app.globalData.version
-                    // })
-                    app.toastFun(err.msg)
-                    setTimeout(() => {
-                        wx.navigateBack({
-                            delta: 1,
-                        })
-                    }, 1000)
-                })
+          this.getGoodsInfo(goods_id, room_id, pd_oid);
             //加载字体
             if (app.globalData.loadFont == false) {
                 Font.get()
@@ -400,7 +205,223 @@ Page({
                     })
                 })
                 .catch()
+        } else {
+          app.toastFun('您还未登录，请登录后购买');
         }
+  },
+  getGoodsInfo: function (goods_id, room_id, pd_oid) {
+    let _this = this,
+      drawCanvasType = 'old',
+      goods_search = {},
+      suit_goods_search = [],
+      sumprice = {
+        price: 0,
+        market_price: 0,
+      },
+      pdNum = 0,
+      props = '',
+      live = '',
+      l = ''
+
+            const pt_sku = []
+    getRequest
+    .post('index/goods/info', {
+        goods_id: goods_id,
+        store_id: app.globalData.userInfo.store_id,
+        u_id: app.globalData.userInfo.id,
+        room_id: room_id,
+        pd_oid,
+    })
+    .then(function (res) {
+        if (
+            res.data.is_jx_goods == 1 &&
+            app.globalData.userInfo.level_id == 5
+        ) {
+            app.globalData.userInfo.level_id = 6
+            app.globalData.userInfo.jx_goods_id = goods_id
+        }
+
+        let content = res.data.content
+        WxParse.wxParse('contentname', 'html', content, _this, 5)
+
+        if (res.data.is_suit == 0) {
+            goods_search = {
+                sku_id: '',
+                image: res.data.images[0].image,
+                price: res.data.price,
+                market_price: res.data.market_price,
+                unsearch: true,
+                stock: res.data.stock,
+            }
+            let sku = res.data.sku
+            if (props) {
+                //购物车进入商品详情，循环显示已选择的商品规格与金额
+                if (sku[props].image != '') {
+                    goods_search.image = sku[props].image
+                }
+                goods_search.sku_id = sku[props].sku_id
+                goods_search.price = sku[props].price
+                goods_search.market_price = sku[props].market_price
+                goods_search.unsearch = false
+                goods_search.stock = sku[props].stock
+            }
+            //循环定义规格选中状态
+            res.data.specs.forEach(function (e, idx) {
+                if (props) {
+                    //购物车进入商品详情，循环判断已选择规格
+                    e.item.forEach(function (item, itemidx) {
+                        if (item.id == sku[props].item[idx].id) {
+                            e.searchidx = itemidx
+                        }
+                    })
+                } else {
+                    e.searchidx = -1
+                }
+            })
+
+            if (res.data.is_pd == 1) {
+                //拼团单独处理一个sku数组以供弹窗选择
+                for (const i in sku) {
+                    pt_sku.push(Object.assign(sku[i], {
+                        num: 0
+                    }))
+                }
+                const {
+                    fakesuccessList
+                } = _this.data
+                let _arr = []
+                if (res.data.pd_success.length >= 2) {
+                    res.data.pd_success.map((key) => {
+                        key.create_time = formatTime(
+                            new Date(key.create_time * 1000)
+                        )
+                        _arr.push(key)
+                        if (_arr.length == 2) {
+                            fakesuccessList.push(_arr)
+                        }
+                        if (_arr.length == 2) _arr = []
+                    })
+                } else if (res.data.pd_success.length !== 0) {
+                    res.data.pd_success[0].create_time = formatTime(
+                        new Date(
+                            res.data.pd_success[0].create_time *
+                            1000
+                        )
+                    )
+                    fakesuccessList.push(res.data.pd_success)
+                }
+                _this.setData({
+                    fakesuccessList,
+                })
+            }
+        } else {
+            let addsearch = {
+                sku_id: '',
+                image: res.data.images[0].image,
+                price: res.data.price,
+                market_price: res.data.market_price,
+                unsearch: true,
+                stock: res.data.stock,
+            }
+            sumprice = {
+                price: res.data.price,
+                market_price: res.data.market_price,
+            }
+
+            res.data.suit_list.forEach(function (suite, suitidx) {
+                let sku = suite.sku
+                if (props) {
+                    //购物车进入商品详情，循环显示已选择的商品规格与金额
+                    if (sku[props].image != '') {
+                        addsearch.image = sku[props].image
+                    }
+                    addsearch.sku_id = sku[props].sku_id
+                    addsearch.price = sku[props].price
+                    addsearch.market_price = sku[props].market_price
+                    addsearch.unsearch = false
+                    addsearch.stock = sku[props].stock
+                    suit_goods_search.push(addsearch)
+                }
+                //循环定义规格选中状态
+                suite.specs.forEach(function (e, idx) {
+                    if (props) {
+                        //购物车进入商品详情，循环判断已选择规格
+                        e.item.forEach(function (item, itemidx) {
+                            if (
+                                item.id == sku[props].item[idx].id
+                            ) {
+                                e.searchidx = itemidx
+                            }
+                        })
+                    } else {
+                        e.searchidx = -1
+                    }
+                })
+            })
+
+            pdNum = res.data.pd_choice.indexOf(pdjnum + '')
+        }
+
+        let banner = []
+        res.data.images.forEach(function (e, idx) {
+            banner.push(e.image)
+        })
+        //匠选商品-不允许分享
+        if (res.data.is_jx_goods == 1) {
+            wx.hideShareMenu()
+        }
+        //直播商品，不允许分享
+        let liveStatus = live ? live : l ? l : 'false'
+        if (liveStatus == 'true') {
+            wx.hideShareMenu()
+            if (res.data.can_buy == 0) {
+                app.toastFun(res.msg)
+            }
+        }
+
+        _this.setData({
+            bannerHeight: app.globalData.system.windowWidth,
+            banner: banner,
+            content: content,
+            list: {
+                ...res.data
+            },
+            giveLimitNum: res.data.check_num_limit,
+            goods_id: goods_id,
+            goods_search: goods_search,
+            suit_goods_search: suit_goods_search,
+            sumprice: sumprice,
+            model: app.globalData.system.model,
+            drawCanvasType: drawCanvasType,
+            statusBarHeight: app.globalData.system.statusBarHeight + 6,
+            jxShow: res.data.is_jx_goods == 1 ? false : true,
+            liveStatus: liveStatus,
+            pd_oid: pd_oid,
+            pdNum: pdNum,
+            level_id: app.globalData.userInfo.level_id,
+            room_id: room_id,
+            pt_sku,
+        })
+        app.router.giveList = res.data.check_give_lsit
+    })
+    .catch(function (err) {
+        // app.toastFun('抱歉，该商品已下架！');
+        // getRequest.errlogPost('商品详情', err, {
+        //     goods_id: goods_id,
+        //     store_id: app.globalData.userInfo.store_id,
+        //     u_id: app.globalData.userInfo.id,
+        //     mobile: app.globalData.userInfo.mobile,
+        // }, {
+        //     methods: 'onload',
+        //     version: app.globalData.version
+        // })
+        app.toastFun(err.msg)
+        setTimeout(() => {
+            wx.navigateBack({
+                delta: 1,
+            })
+        }, 1000)
+    })
     },
     //返回上一页
     returnBack: function () {
@@ -464,6 +485,10 @@ Page({
     },
     // 立即购买-弹窗
   buyNow: function () {
+    if (app.globalData.userInfo.id == '') {
+      app.toastFun('您还未登录，请登录后购买');
+      return;
+    }
     if (this.data.is_cash == 1 && Boolean(app.globalData.table_number) == false) {
       app.toastFun('请先扫描桌上二维码确定桌号');
       return
