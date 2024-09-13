@@ -11,23 +11,30 @@ Page({
     cartnum: 0,
     value: '',
     message: '',
-        columnGoods: {
-            list: [],
-            image:''
-        }
+    columnGoods: {
+      list: [],
+      image:''
     },
+    area_type: 'inside'    
+  },
   onLoad(options) {
+    let _this = this;
     let direct = "no";
     if ('table_number' in options) {
       app.globalData.table_number = options.table_number;
       direct = "yes"
     }
 
+    if ('area_type' in options) {
+      _this.setData({
+        area_type: options.area_type
+      })
+    }
+
     let postdata = {
       uid: app.globalData.userInfo.id,
       token: app.globalData.token
     };
-    let _this = this;
     getRequest.post('index/message/stats', postdata, true).then(function (res) {
       _this.setData({
           message: res.data.msg
