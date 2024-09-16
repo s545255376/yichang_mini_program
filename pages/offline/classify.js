@@ -14,8 +14,7 @@ Page({
     columnGoods: {
       list: [],
       image:''
-    },
-    area_type: ''    
+    }, 
   },
   onLoad(options) {
     let _this = this;
@@ -26,9 +25,7 @@ Page({
     }
 
     if ('area_type' in options) {
-      _this.setData({
-        area_type: options.area_type
-      })
+      app.globalData.area_type = options.area_type;
     }
 
     let postdata = {
@@ -101,14 +98,13 @@ Page({
     },
     //获取商品列表
   getGoodsList() {
-        let _this = this;
         return new Promise((resolve, reject) => {
             getRequest.post('index/index/goods', {
                 store_id: app.globalData.userInfo.store_id,
                 role_id: app.globalData.userInfo.role_id,
                 u_id: app.globalData.userInfo.id,
               is_cash: 1,
-                area_type: _this.data.area_type
+                area_type: app.globalData.area_type
             }, true).then((res) => {
                 if (res.code == 200) {
                     let _data = res.data;
