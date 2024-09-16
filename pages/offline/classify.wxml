@@ -16,7 +16,7 @@
             <image src="{{columnGoods.image}}" lazy-load="true" mode="widthFix"></image>
         </view>
         <view id="classify_contant">
-            <view class="goodspart" wx:for="{{columnGoods.list}}" wx:key="index" bindtap="goGoodsInfo" data-goodsid="{{item.goods_id}}" wx:if="{{area_type == item.area_type}}">
+            <view class="goodspart" wx:for="{{columnGoods.list}}" wx:key="index" bindtap="goGoodsInfo" data-goodsid="{{item.goods_id}}">
                 <view class="image">
                     <image src="{{item.image + '?imageView2/1/w/200/h/200'}}" mode="widthFix"></image>
                 </view>
