@@ -4,9 +4,10 @@ const Font = require('../../utils/getFont');
 const cartNum = require('../../utils/cartNum.js');
 const getRequest = require('../../utils/getRequest');
 Page({
-    data: {
-        screenHeight: wx.getSystemInfoSync().windowHeight,  
-        activeKey: 0,
+  data: {
+    sort_sale: true,
+    screenHeight: wx.getSystemInfoSync().windowHeight,  
+    activeKey: 0,
     classifyList: [],
     cartnum: 0,
     value: '',
@@ -23,11 +24,9 @@ Page({
       app.globalData.table_number = options.table_number;
       direct = "yes"
     }
-
     if ('area_type' in options) {
       app.globalData.area_type = options.area_type;
     }
-
     let postdata = {
       uid: app.globalData.userInfo.id,
       token: app.globalData.token
@@ -95,7 +94,44 @@ Page({
               })
               .catch()
       }
-    },
+  },
+    //减少数量
+  delNum: function (e) {
+    let idx = e.currentTarget.dataset.idx;
+    let num = this.data.columnGoods.list[idx].num;
+    if(1 < num) {
+      num -= 1;
+      // this.changeNum(idx,this.data.list[type][idx].cart_id,num,type);
+    }
+  },
+  //增加数量
+  addNum: function (e) {
+    let idx = e.currentTarget.dataset.idx;
+    let num = this.data.columnGoods.list[idx].num;
+    num += 1;
+    // this.changeNum(idx,this.data.list[type][idx].cart_id,num,type);
+  },
+  //保存数量
+  changeNum(idx, cart_id, num, type) {
+    let _this = this,postdata={
+      uid:app.globalData.userInfo.id,
+      token:app.globalData.token,
+      cart_id:cart_id,
+      num:num
+    };
+    getRequest.post('index/cart/revise',postdata).then(function(res){
+      _this.data.list[type][idx].num = num;
+      let listnum = "list["+type+"]["+idx+"].num";
+      _this.setData({[listnum]:num})
+      _this.priceSum(_this.data.searchList,_this.data.modeltype);
+      // cartNum.sum().catch();
+    }).catch(function(err){app.toastFun(err.msg);})
+  },
+  changeSort() {
+    this.setData({
+      sort_sale: !this.data.sort_sale
+    })
+  },
     //获取商品列表
   getGoodsList() {
         return new Promise((resolve, reject) => {

@@ -16,16 +16,32 @@
             <image src="{{columnGoods.image}}" lazy-load="true" mode="widthFix"></image>
         </view>
         <view id="classify_contant">
+            <view class="sort_contents" bind:tap="changeSort">
+              <view class="{{sort_sale ? 'sort_click' : 'sort_unclick'}}">按销量</view>
+              <view class="{{sort_sale ? 'sort_unclick' : 'sort_click'}}">按新品</view>
+            </view>
             <view class="goodspart" wx:for="{{columnGoods.list}}" wx:key="index" bindtap="goGoodsInfo" data-goodsid="{{item.goods_id}}">
                 <view class="image">
                     <image src="{{item.image + '?imageView2/1/w/200/h/200'}}" mode="widthFix"></image>
                 </view>
                 <view class="info">
+                  <view class="title_content">
+                    <view class="sign">招牌</view>
                     <view class="title">{{item.goods_name}}</view>
+                  </view>
+                  <view class="buttom_content">
                     <view class="price">
                         ¥{{item.price}}
-                        <!-- <text wx:if="{{item.market_price != 0}}">积分{{item.market_price}}</text> -->
                     </view>
+                    <view class="paynum" wx:if="{{item.num > 0}}">
+                      <view class="{{item.num == 0 ? 'un_click':''}}" catchtap="delNum" data-index="{{index}}">-</view>
+                      <view class="num">{{item.num}}</view>
+                      <view catchtap="addNum" data-index="{{index}}" class="{{ptTotalNums == 6 ?'un_click':''}}">+</view>
+                    </view>
+                    <view wx:else="{{item.num <= 0}}">
+                      
+                    </view>
+                  </view>
                 </view>
             </view>
         </view>

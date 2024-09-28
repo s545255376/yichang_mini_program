@@ -40,7 +40,7 @@
 #right_contant {
   width: 75%;
   overflow-y: scroll;
-  padding: 40rpx 40rpx 0 40rpx;
+  padding: 40rpx 0 40rpx;
   box-sizing: border-box;
 }
 #classify_image {
@@ -56,24 +56,83 @@
   flex-wrap: wrap;
   align-items: flex-start;
 }
-.goodspart:nth-child(odd) {
-  width: calc(50% - 15rpx) !important;
-  margin-right: 28rpx !important;
+.sort_contents {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
 }
-.goodspart:nth-child(even) {
-  width: calc(50% - 15rpx) !important;
-  margin-right: 0 !important;
+.sort_contents view {
+  width: 150rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  margin-left: 30rpx;
+  border-radius: 12rpx;
+}
+.sort_click {
+  background: #B63F48;
+  color: #ffffff;
+}
+.sort_unclick {
+  background: #E7E7E7;
+}
+.goodspart {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  padding-top: 5%;
+}
+.goodspart .image {
+  width: 70%;
 }
 .goodspart .image image {
+  width: 100%;
   box-sizing: border-box;
+  border-radius: 5%;
 }
-.goodspart .title {
+.goodspart .info {
+  margin-left: 5%;
+}
+.goodspart .title_content {
+  display: flex;
+  flex-direction: left;
+}
+.title_content .sign {
+  height: 50rpx;
+  width: 30%;
+  background: rgba(182, 63, 72, 0.2);
+  border-radius: 10%;
+  font-size: 28rpx;
+  color: #B63F48;
+  text-align: center;
+  line-height: 50rpx;
+}
+.title_content .title {
+  padding-left: 5%;
+  height: 50rpx;
+  line-height: 50rpx;
   overflow: unset !important;
   white-space: unset !important;
-  line-height: unset;
-  height: unset;
 }
-
+.paynum{
+  float: right;
+  display: inline-flex;
+}
+.paynum view{
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #F2F3F5;
+  color: #231F20;
+  text-align: center;
+}
+.paynum .num{
+  margin: 0 2rpx;
+} 
+.paynum .un_click{
+  background: #F7F8FA;
+  color: #A7A5A6;
+}
 .cart_btn {
   position: fixed;
   left: 15rpx;
