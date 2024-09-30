@@ -115,6 +115,7 @@ Page({
   },
   //增加数量
   addNum: function (e) {
+    console.log(this.data.list)
     let idx = e.currentTarget.dataset.idx,type = e.currentTarget.dataset.type;
     let num = this.data.list[type][idx].num;
     num += 1;
@@ -130,7 +131,7 @@ Page({
     };
     getRequest.post('index/cart/revise',postdata).then(function(res){
       _this.data.list[type][idx].num = num;
-      let listnum = "list["+type+"]["+idx+"].num";
+      let listnum = "list[" + type + "][" + idx + "].num";
       _this.setData({[listnum]:num})
       _this.priceSum(_this.data.searchList,_this.data.modeltype);
       // cartNum.sum().catch();

@@ -80,7 +80,6 @@
   width: 100%;
   display: flex;
   justify-content: left;
-  padding-top: 5%;
 }
 .goodspart .image {
   width: 70%;
@@ -98,6 +97,7 @@
   flex-direction: left;
 }
 .title_content .sign {
+  padding-right: 5%;
   height: 50rpx;
   width: 30%;
   background: rgba(182, 63, 72, 0.2);
@@ -108,20 +108,37 @@
   line-height: 50rpx;
 }
 .title_content .title {
-  padding-left: 5%;
   height: 50rpx;
   line-height: 50rpx;
   overflow: unset !important;
   white-space: unset !important;
 }
+.mid_content {
+  margin-top: 10rpx;
+  font-size: 25rpx;
+  color: rgba(0, 0, 0, 0.3);
+}
+.buttom_content {
+  display: flex;
+  justify-content: space-between;
+}
+.buttom_content .price {
+  font-size: 35rpx;
+}
+.buttom_content image {
+  margin-top: 30rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
 .paynum{
+  margin-top: 30rpx;
   float: right;
   display: inline-flex;
 }
 .paynum view{
-  width: 60rpx;
-  height: 60rpx;
-  line-height: 60rpx;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
   background: #F2F3F5;
   color: #231F20;
   text-align: center;

@@ -68,7 +68,6 @@ Page({
   });
 
         wx.hideShareMenu();
-        this.getGoodsList(0);
         let query = wx.createSelectorQuery();
         query.select('#search').boundingClientRect((rect) => {
             if (rect) {
@@ -81,7 +80,8 @@ Page({
             }
         }).exec();
     },
-    onShow() {
+  onShow() {
+        this.getGoodsList(0);
         //获取并显示购物车中已有商品数量，以及显示已经选中的赠品列表
         if (app.globalData.userInfo.id != '') {
           let _this = this
@@ -97,42 +97,87 @@ Page({
   },
     //减少数量
   delNum: function (e) {
-    let idx = e.currentTarget.dataset.idx;
-    let num = this.data.columnGoods.list[idx].num;
-    if(1 < num) {
-      num -= 1;
-      // this.changeNum(idx,this.data.list[type][idx].cart_id,num,type);
-    }
+    let idx = e.currentTarget.dataset.index;
+    let good = this.data.columnGoods.list[idx];
+    let num = good.cart_num;
+    num -= 1;
+    this.changeNum(idx, good.cart_id, num);
   },
   //增加数量
   addNum: function (e) {
-    let idx = e.currentTarget.dataset.idx;
-    let num = this.data.columnGoods.list[idx].num;
+    let idx = e.currentTarget.dataset.index;
+    let good = this.data.columnGoods.list[idx];
+    let num = good.cart_num;
     num += 1;
-    // this.changeNum(idx,this.data.list[type][idx].cart_id,num,type);
+    this.changeNum(idx, good.cart_id, num);
   },
   //保存数量
-  changeNum(idx, cart_id, num, type) {
-    let _this = this,postdata={
+  changeNum(idx, cart_id, num) {
+    let _this = this;
+    let postdata = {
       uid:app.globalData.userInfo.id,
       token:app.globalData.token,
       cart_id:cart_id,
       num:num
     };
-    getRequest.post('index/cart/revise',postdata).then(function(res){
-      _this.data.list[type][idx].num = num;
-      let listnum = "list["+type+"]["+idx+"].num";
-      _this.setData({[listnum]:num})
-      _this.priceSum(_this.data.searchList,_this.data.modeltype);
-      // cartNum.sum().catch();
-    }).catch(function(err){app.toastFun(err.msg);})
+    if (num > 0) {
+      getRequest.post('index/cart/revise',postdata).then(function(res){
+        let listnum = 'columnGoods.list[' + idx + '].cart_num';
+        _this.setData({
+          [listnum]: num
+        })
+      }).catch(function(err){app.toastFun(err.msg);})
+    } else {
+      getRequest.post('index/cart/del',postdata).then(function(res){
+        let listnum = 'columnGoods.list[' + idx + '].cart_num';
+        _this.setData({
+          [listnum]: num
+        })
+        _this.getCartNum();
+      }).catch(function (err) { app.toastFun(err.msg); })
+    }
+  },
+  addCart(e) {
+    let _this = this;
+    let idx = e.currentTarget.dataset.index;
+    let good = this.data.columnGoods.list[idx];
+    let num = good.cart_num;
+    num += 1;
+    let postdata = {
+      uid: app.globalData.userInfo.id,
+      sku_id: '',
+      goods_id: good.goods_id,
+      num: num,
+      token: app.globalData.token,
+      check_give: '',
+    }
+    getRequest.post('index/cart/add', postdata)
+      .then(function (res) {
+        let listnum = 'columnGoods.list[' + idx + '].cart_num';
+        let listcart = 'columnGoods.list[' + idx + '].cart_id';
+        _this.setData({
+          [listnum]: num,
+          [listcart]: res.data.return
+        })
+        _this.getCartNum();
+    }).catch(function (err) {
+        app.toastFun(err.msg)
+    })
   },
   changeSort() {
     this.setData({
       sort_sale: !this.data.sort_sale
     })
   },
-    //获取商品列表
+  getCartNum() {
+    let _this = this;
+    cartNum.sum().then(function (res) {
+      _this.setData({
+        cartnum: res.data.cart_count
+      })
+    }).catch()
+  },
+  //获取商品列表
   getGoodsList() {
         return new Promise((resolve, reject) => {
             getRequest.post('index/index/goods', {
