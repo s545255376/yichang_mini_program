@@ -2,6 +2,9 @@
     "pages": [
         "pages/index/index",
         "pages/login/login",
+        "pages/classify/classify",
+        "pages/offline/classify",
+        "pages/mine/mine",
         "pages/poster/xiaomei",
         "pages/skin/index/index",
         "pages/skin/detail/detail",
@@ -9,7 +12,6 @@
         "pages/goodsgroup/goodsgroup",
         "pages/cart/cart",
         "pages/livelist/livelist",
-        "pages/mine/mine",
         "pages/goodsdetail/goodsdetail",
         "pages/goodsnorms/goodsnorms",
         "pages/payment/payment",
@@ -37,14 +39,12 @@
         "pages/feedback/add/add",
         "pages/intomyx/intomyx",
         "pages/poster/huodong20220325",
-        "pages/classify/classify",
         "pages/classifySearch/classifySearch",
         "pages/poster/huodong20220614",
         "pages/points/scan/scan",
         "pages/details/details",
         "pages/balance/fellow/fellow",
         "pages/points/team/team",
-        "pages/offline/classify",
         "pages/databoard/databoard"
     ],
     "subpackages": [
@@ -133,5 +133,6 @@
     },
     "plugins": {
     },
-    "sitemapLocation": "sitemap.json"
+    "sitemapLocation": "sitemap.json",
+    "embeddedAppIdList": ["wx9a95331605fc5eb5", "wx379b62a3cc54f35e"]
 }

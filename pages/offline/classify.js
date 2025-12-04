@@ -27,16 +27,22 @@ Page({
     if ('area_type' in options) {
       app.globalData.area_type = options.area_type;
     }
+    let loginData = wx.getStorageSync('logindata')
+    if (loginData) {
+        app.globalData.userInfo = loginData
+        app.globalData.token = loginData.token
+        console.log(app.globalData)
+    }
     let postdata = {
       uid: app.globalData.userInfo.id,
       token: app.globalData.token
     };
     getRequest.post('index/message/stats', postdata, true).then(function (res) {
-      _this.setData({
-          message: res.data.msg
-      })
-  })
-  .catch(function (err) {
+        _this.setData({
+            message: res.data.msg
+        })
+    }).catch(function (err) {
+      console.log(err)
       wx.removeStorage({
           key: 'logindata',
           success(res) {

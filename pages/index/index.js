@@ -135,102 +135,102 @@ Page({
         }
     },
     onShow() {
-        wx.setStorageSync('intomyxprevpage', 'index')
+        // wx.setStorageSync('intomyxprevpage', 'index')
 
-        clearInterval(this.data.liveInterval)
-        if (app.router.orderid != '') {
-            //跳转订单详情
-            wx.navigateTo({
-                url: '../order/detail/detail?order_id=' + app.router.orderid,
-            })
-        } else if (app.globalData.sharequery.t == 'm') {
-            //新拼团盲盒
-            wx.navigateTo({
-                url: `../../groupon/pages/tuaninfo/tuaninfo?pd_oid=${app.globalData.sharequery.npdoid}`,
-            })
-        } else if (app.globalData.sharequery.t == 'e') {
-            //跳转文章详情
-            wx.navigateTo({
-                url: '../skin/detail/detail?aid=' +
-                    app.globalData.sharequery.eid,
-            })
-        } else if (app.globalData.sharequery.t == 'g') {
-            //跳转商品详情
-            getRequest
-                .noToastPost('index/goods/info', {
-                    goods_id: app.globalData.sharequery.gid,
-                    store_id: app.globalData.userInfo.store_id,
-                    u_id: app.globalData.userInfo.id,
-                })
-                .then((res) => {
-                    if (res.data.can_buy == 1) {
-                        let link = ''
-                        if (app.globalData.sharequery.pdoid) {
-                            link =
-                                '&pd_oid=' +
-                                app.globalData.sharequery.pdoid +
-                                '&pdjnum=' +
-                                app.globalData.sharequery.pdjnum
-                        }
-                        if (
-                            app.globalData.sharequery.hasOwnProperty(
-                                'npdoid'
-                            ) &&
-                            app.globalData.sharequery.npdoid
-                        ) {
-                            link = `&pd_oid=${app.globalData.sharequery.npdoid}`
-                        }
-                        wx.navigateTo({
-                            url: '../goodsdetail/goodsdetail?goods_id=' +
-                                app.globalData.sharequery.gid +
-                                '&live=' +
-                                (app.globalData.sharequery.l ?
-                                    app.globalData.sharequery.l :
-                                    false) +
-                                link,
-                        })
-                    } else {
-                        app.toastFun('该商品已下架')
-                        app.clearShareQuery()
-                        app.router.giveCheckList = []
-                        app.router.giveChecked = []
-                    }
-                })
-                .catch(function (err) {
-                    app.clearShareQuery()
-                    app.router.giveCheckList = []
-                    app.router.giveChecked = []
-                    setTimeout(() => {
-                        app.toastFun(err.msg)
-                    }, 500)
-                })
-            // wx.navigateTo({
-            //   url: '../goodsdetail/goodsdetail?goods_id='+app.globalData.sharequery.gid+'&live='+(app.globalData.sharequery.l?app.globalData.sharequery.l:false),
-            // })
-        } else if (app.globalData.sharequery.t == 'xm') {
-            //小美优惠券领取激活
-            this.xmCoupons()
-        } else if (app.globalData.sharequery.t == 'l') {
-            //直播列表
-            wx.switchTab({
-                url: '../livelist/livelist',
-            })
-        } else if (app.globalData.sharequery.t == 'pl') {
-            //美容师分享特殊直播间给顾客
-            // console.log(app.globalData.sharequery, '从这里进入活动页');
-            wx.navigateTo({
-                url: `../poster/huodong20220614`,
-            })
-        } else if (app.globalData.sharequery.t == 'j') {
-            //基因检测
-            // console.log('进入了基因检测的index入口')
-            wx.navigateTo({
-                url: `/genetest/pages/index/index`,
-            })
-        } else {
-            //不跳转
-            wx.showShareMenu()
-        }
+        // clearInterval(this.data.liveInterval)
+        // if (app.router.orderid != '') {
+        //     //跳转订单详情
+        //     wx.navigateTo({
+        //         url: '../order/detail/detail?order_id=' + app.router.orderid,
+        //     })
+        // } else if (app.globalData.sharequery.t == 'm') {
+        //     //新拼团盲盒
+        //     wx.navigateTo({
+        //         url: `../../groupon/pages/tuaninfo/tuaninfo?pd_oid=${app.globalData.sharequery.npdoid}`,
+        //     })
+        // } else if (app.globalData.sharequery.t == 'e') {
+        //     //跳转文章详情
+        //     wx.navigateTo({
+        //         url: '../skin/detail/detail?aid=' +
+        //             app.globalData.sharequery.eid,
+        //     })
+        // } else if (app.globalData.sharequery.t == 'g') {
+        //     //跳转商品详情
+        //     getRequest
+        //         .noToastPost('index/goods/info', {
+        //             goods_id: app.globalData.sharequery.gid,
+        //             store_id: app.globalData.userInfo.store_id,
+        //             u_id: app.globalData.userInfo.id,
+        //         })
+        //         .then((res) => {
+        //             if (res.data.can_buy == 1) {
+        //                 let link = ''
+        //                 if (app.globalData.sharequery.pdoid) {
+        //                     link =
+        //                         '&pd_oid=' +
+        //                         app.globalData.sharequery.pdoid +
+        //                         '&pdjnum=' +
+        //                         app.globalData.sharequery.pdjnum
+        //                 }
+        //                 if (
+        //                     app.globalData.sharequery.hasOwnProperty(
+        //                         'npdoid'
+        //                     ) &&
+        //                     app.globalData.sharequery.npdoid
+        //                 ) {
+        //                     link = `&pd_oid=${app.globalData.sharequery.npdoid}`
+        //                 }
+        //                 wx.navigateTo({
+        //                     url: '../goodsdetail/goodsdetail?goods_id=' +
+        //                         app.globalData.sharequery.gid +
+        //                         '&live=' +
+        //                         (app.globalData.sharequery.l ?
+        //                             app.globalData.sharequery.l :
+        //                             false) +
+        //                         link,
+        //                 })
+        //             } else {
+        //                 app.toastFun('该商品已下架')
+        //                 app.clearShareQuery()
+        //                 app.router.giveCheckList = []
+        //                 app.router.giveChecked = []
+        //             }
+        //         })
+        //         .catch(function (err) {
+        //             app.clearShareQuery()
+        //             app.router.giveCheckList = []
+        //             app.router.giveChecked = []
+        //             setTimeout(() => {
+        //                 app.toastFun(err.msg)
+        //             }, 500)
+        //         })
+        //     // wx.navigateTo({
+        //     //   url: '../goodsdetail/goodsdetail?goods_id='+app.globalData.sharequery.gid+'&live='+(app.globalData.sharequery.l?app.globalData.sharequery.l:false),
+        //     // })
+        // } else if (app.globalData.sharequery.t == 'xm') {
+        //     //小美优惠券领取激活
+        //     this.xmCoupons()
+        // } else if (app.globalData.sharequery.t == 'l') {
+        //     //直播列表
+        //     wx.switchTab({
+        //         url: '../livelist/livelist',
+        //     })
+        // } else if (app.globalData.sharequery.t == 'pl') {
+        //     //美容师分享特殊直播间给顾客
+        //     // console.log(app.globalData.sharequery, '从这里进入活动页');
+        //     wx.navigateTo({
+        //         url: `../poster/huodong20220614`,
+        //     })
+        // } else if (app.globalData.sharequery.t == 'j') {
+        //     //基因检测
+        //     // console.log('进入了基因检测的index入口')
+        //     wx.navigateTo({
+        //         url: `/genetest/pages/index/index`,
+        //     })
+        // } else {
+        //     //不跳转
+        //     wx.showShareMenu()
+        // }
     },
     dealpopQuery() {
         //优惠券弹窗
@@ -575,16 +575,12 @@ Page({
         const _getGoodsList = this.getGoodsList()
         const _getLive = this.getLive() //获取当前直播状态
       const _getCartNum = this.getCartNum() //获取购物车内容
-      if (app.globalData.userInfo.id != '') {
-        const _getNotice = this.getNotice() //获取公告列表
-      }
         const _getJxGoodsList = this.getJxGoodsList() //获取swiper匠选商品
         Promise.all([
             _getSwiperList,
             _getGoodsList,
             _getLive,
             _getCartNum,
-            _getNotice,
             _getJxGoodsList,
         ]).then(() => {
             wx.hideLoading()

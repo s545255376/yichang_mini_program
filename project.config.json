@@ -43,7 +43,12 @@
         "useStaticServer": true,
         "minifyWXML": true,
         "useApiHook": false,
-        "useApiHostProcess": false
+        "useApiHostProcess": false,
+        "compileWorklet": false,
+        "localPlugins": false,
+        "condition": false,
+        "swc": false,
+        "disableSWC": true
     },
     "compileType": "miniprogram",
     "editorSetting": {
@@ -66,5 +71,6 @@
         "ignore": [],
         "include": []
     },
-    "appid": "wx7a9a5cb835bb3557"
+    "appid": "wxe586b6254c2bf955",
+    "simulatorPluginLibVersion": {}
 }

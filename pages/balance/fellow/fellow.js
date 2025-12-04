@@ -102,7 +102,7 @@ Page({
             price: _this.data.money,
             token: app.globalData.token,
         }
-        getRequest.post('index/Recharge/createOrder', postdata).then(function (res) {
+        getRequest.post('index/Recharge/createOrderYb', postdata).then(function (res) {
             wx.requestPayment({
                 nonceStr: res.data.nonceStr,
                 package: res.data.package,

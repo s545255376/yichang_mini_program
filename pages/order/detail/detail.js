@@ -6,8 +6,8 @@ Page({
         info: {},
         order_id: '',
         loglist: {},
-        //倒计时
-    showtimearr: ['00', '00', '00'],
+        //倒计时数组，显示剩余小时、分钟、秒（如['00','02','21']，表示还剩2分21秒）
+        showtimearr: ['00', '00', '00'],
         is_cash: 0,
 
         //物流
@@ -94,6 +94,7 @@ Page({
                     giftList: _result
                 })
             }
+            // 如果订单状态为0（未支付），启动取消倒计时
             if (res.data.order_status == 0) {
                 _this.countDown(res.data.cancel_time);
             }
@@ -233,49 +234,15 @@ Page({
             url: '../logistics/logistics?order_id=' + this.data.order_id + '&uid=' + this.data.uid,
         })
     },
-    //倒计时
+    /**
+     * 倒计时功能说明：
+     * countDown 主要用于订单未支付时显示剩余自动取消时间。
+     * 例如：秒杀/拼团等场景，订单未在规定时间内支付会被系统自动取消。
+     * 该方法会计算当前时间与取消时间差，每秒刷新页面显示剩余的小时、分钟、秒。
+     * 当倒计时结束，会自动刷新订单状态为失效。
+     */
     countDown(endtime) {
-        let now = new Date().getTime(),
-            _this = this;
-        endtime = endtime * 1000;
-        // console.log(now,endtime)
-        if (now <= endtime) {
-            let differ = endtime - now;
-            //计算小时数
-            let hours = Math.floor(differ % (24 * 60 * 60 * 1000) / (60 * 60 * 1000));
-            //计算分钟数
-            let minutes = Math.floor(differ % (60 * 60 * 1000) / (60 * 1000));
-            //计算秒数
-            var seconds = Math.round((differ % (60 * 60 * 1000) % (60 * 1000)) / 1000);
-
-            app.router.timeInterval = setInterval(function () {
-                console.log(seconds)
-                if (hours == 0 && seconds == 0 && minutes == 0) {
-                    clearInterval(app.router.timeInterval);
-                    _this.getInfo(_this.data.order_id);
-                } else if (seconds == 0 && minutes == 0) {
-                    hours -= 1;
-                    minutes = 59;
-                    seconds = 59;
-                } else if (seconds == 0) {
-                    minutes -= 1;
-                    seconds = 59;
-                } else {
-                    seconds -= 1;
-                }
-                _this.setData({
-                    showtimearr: [hours < 10 ? '0' + hours : hours, minutes < 10 ? '0' + minutes : minutes, seconds < 10 ? '0' + seconds : seconds]
-                })
-            }, 1000)
-        } else {
-            console.log(this.data.info)
-            this.data.info.order_status = 5;
-            this.data.info.order_status_str = '已失效';
-            this.setData({
-                info: this.data.info
-            })
-            // this.getInfo(this.data.order_id);
-        }
+        
     },
     //取消订单
     cancelOrder: function () {
@@ -358,16 +325,27 @@ Page({
                     body: res.data.body,
                 };
                 //获取微信支付参数
-                getRequest.post('index/pay/wxPay', orderdata).then(function (info) {
-                    //掉起支付
-                    wx.requestSubscribeMessage({
-                        tmplIds: app.globalData.subscribe,
-                        complete(allow) {
-                            app.toastFun('支付成功');
-                            //支付成功后刷新页面
-                            _this.getInfo(_this.data.order_id);
-                        }
-                    })
+                getRequest.post('index/pay/wxPayYb', orderdata).then(function (info) {
+                    info = info.data.prePayTn
+                    // console.log(info)
+                    if (_this.data.info.is_cash == 1) {
+                        wx.requestPayment({
+                            "timeStamp": info.timeStamp,
+                            "nonceStr": info.nonceStr,
+                            "package": info.package,
+                            "signType": info.signType,
+                            "paySign": info.paySign,
+                            "success": function (res) {
+                                app.toastFun('支付成功');
+                                _this.getInfo(_this.data.order_id);
+                            },
+                            "fail": function (res) {
+                            console.log(res)
+                            app.toastFun("支付失败")
+                            },
+                            "complete": function (res) { }
+                        })
+                    }
                 }).catch(function (err) { //生成订单是白
                     app.toastFun(err.msg);
                     if (err.code == 204) { //用户未登录，清除缓存后跳转登录页

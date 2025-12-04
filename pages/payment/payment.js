@@ -438,7 +438,7 @@ Page({
                       body: res.data.body,
                     };
                     //余额支付
-                    getRequest.post('index/pay/wxPay', orderdata).then((info) => {
+                    getRequest.post('index/pay/wxPayYb', orderdata).then((info) => {
                       app.toastFun('支付成功');
                           setTimeout(() => {
                             wx.navigateTo({
@@ -464,14 +464,16 @@ Page({
                 body: res.data.body,
               };
               //现金或积分支付
-              getRequest.post('index/pay/wxPay', orderdata).then((info) => {
+              getRequest.post('index/pay/wxPayYb', orderdata).then((info) => {
+                info = info.data.prePayTn
+                // console.log(info)
                 if (_this.data.is_cash == 1) {
                   wx.requestPayment({
-                    "timeStamp": info.data.timeStamp,
-                    "nonceStr": info.data.nonceStr,
-                    "package": info.data.package,
-                    "signType": info.data.signType,
-                    "paySign": info.data.paySign,
+                    "timeStamp": info.timeStamp,
+                    "nonceStr": info.nonceStr,
+                    "package": info.package,
+                    "signType": info.signType,
+                    "paySign": info.paySign,
                     "success": function (res) {
                       wx.requestSubscribeMessage({
                         tmplIds: app.globalData.subscribe,
@@ -479,7 +481,7 @@ Page({
                           app.toastFun('支付成功');
                           setTimeout(() => {
                             wx.navigateTo({
-                              url: '../order/list/list?status=2&is_cash=1'
+                              url: '/pages/order/list/list?status=2&is_cash=1'
                             })
                           }, 1000)
                         }
@@ -562,18 +564,18 @@ Page({
                   })
                 } else { //其他原因导致支付失败，回到首页后跳转订单详情
                   app.toastFun(err.msg);
-                  setTimeout(function () {
-                    app.router.orderid = res.data.order_id;
-                    if (_this.data.is_cash == 1) {
-                      wx.navigateTo({
-                        url: '../order/list/list?status=1&is_cash=1'
-                      })
-                    } else {
-                      wx.switchTab({
-                        url: '../index/index',
-                      })
-                    }
-                  }, 1000)
+                  // setTimeout(function () {
+                  //   app.router.orderid = res.data.order_id;
+                  //   if (_this.data.is_cash == 1) {
+                  //     wx.navigateTo({
+                  //       url: '/pages/order/list/list?status=1&is_cash=1'
+                  //     })
+                  //   } else {
+                  //     wx.switchTab({
+                  //       url: '/pages/index/index',
+                  //     })
+                  //   }
+                  // }, 1000)
                 }
               })
             }).catch(function (err) {

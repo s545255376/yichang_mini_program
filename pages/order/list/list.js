@@ -159,21 +159,26 @@ Page({
         total:res.data.total,
         body:res.data.body,
       };
-      getRequest.post('index/pay/wxPay',orderdata).then(function(info){
-        wx.requestSubscribeMessage({
-            tmplIds: app.globalData.subscribe,
-            complete (allow) {
-              if(_this.data.tabbarNum == 1){
-                list.splice(idx,1);
-                _this.setData({list:list})
-              }
-              else{
-                list[idx].order_status =1;
-                _this.setData({list:list})
-              }
-              app.toastFun('支付成功');
-            }
-          })
+      getRequest.post('index/pay/wxPayYb',orderdata).then(function(info){
+        info = info.data.prePayTn
+        if (list[idx].is_cash == 1) {
+            wx.requestPayment({
+                "timeStamp": info.timeStamp,
+                "nonceStr": info.nonceStr,
+                "package": info.package,
+                "signType": info.signType,
+                "paySign": info.paySign,
+                "success": function (res) {
+                    app.toastFun('支付成功');
+                    _this.getList(_this.data.tabbarNum,1);
+                },
+                "fail": function (res) {
+                console.log(res)
+                app.toastFun("支付失败")
+                },
+                "complete": function (res) { }
+            })
+        }
       }).catch(function(err){
         app.toastFun(err.msg);
         if(err.code == 204){

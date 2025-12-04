@@ -15,6 +15,12 @@ App({
                 _this.globalData.system.needAdapt = res.safeArea.top >= 44 || res.safeArea.top <= 50 ? true : false;
             }
         })
+        let loginData = wx.getStorageSync('logindata')
+        if (loginData) {
+            this.globalData.userInfo = loginData
+            this.globalData.token = loginData.token
+            console.log(this.globalData)
+        }
         // if (wx.cloud) {
         //     wx.cloud.init()
         // }
