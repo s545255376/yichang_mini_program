@@ -6,7 +6,8 @@ const getRequest = require('../../utils/getRequest')
 import {
     Queue,
     //liveHomeDate,
-    objType
+    objType,
+    processImageUrl
 } from '../../utils/util.js'
 const queryPop = new Queue() //弹窗队列
 var locationType = 0,
@@ -57,6 +58,7 @@ Page({
 
         grouponShow: {}, //盲盒团购信息
         grouponToast: false,
+        grouponImageUrl: '',
 
         getQuestionnaire: {},
         questionnaireToast: false, //调查问卷
@@ -66,6 +68,11 @@ Page({
         duoxuan2: [],
     },
     onLoad(options) {
+      // 处理图片URL，将HTTP转换为HTTPS
+      this.setData({
+        grouponImageUrl: processImageUrl('http://images.luluhoo.cn/pl_pic/ad.jpg')
+      });
+      
       const logindata = wx.getStorageSync('logindata');
       if (logindata) {
         app.globalData.token = logindata.token;
@@ -1091,7 +1098,7 @@ Page({
     onShareAppMessage: function () {
         return {
             title: '夷畅-助力中小企业，保护优质产品',
-            imageUrl: 'http://images.luluhoo.cn/pl_pic/ad.jpg',
+            imageUrl: processImageUrl('http://images.luluhoo.cn/pl_pic/ad.jpg'),
             path: 'pages/login/login?u=' +
                 app.globalData.userInfo.id +
                 '&f=' +

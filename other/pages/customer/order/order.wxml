@@ -1,3 +1,5 @@
+
+<wxs module="common" src="../../../../utils/common.wxs"></wxs>
 <view class="tabbar">
   <view class="name_search">
     <input placeholder="请输入用户名" placeholder-style="color:#A7A5A6;" bindinput="nameChange"/>
@@ -32,7 +34,7 @@
 <view wx:else class="page">
   <view class="list" wx:for="{{list}}" wx:key="orderList">
     <view class="head">
-      <image src="{{item.portrait}}" mode="aspectFill"></image>
+      <image src="{{common.processImageUrl(item.portrait)}}" mode="aspectFill"></image>
       <view class="cust_info">
         <view class="cust_name">{{item.username}}</view>
         <view class="cust_order">订单号：{{item.order_sn}}</view>
@@ -41,7 +43,7 @@
     <!-- body -->
     <view class="detail">
       <view class="body" wx:for="{{item.goods}}" wx:key="orderGoodsList" wx:for-item="info" wx:for-index="idx">
-        <image src="{{info.image}}" mode="aspectFill"></image>
+        <image src="{{common.processImageUrl(info.image)}}" mode="aspectFill"></image>
         <view class="info">
           <view class="title">{{info.goods_name}}</view>
           <view class="desc">{{info.goods_sub}}</view>

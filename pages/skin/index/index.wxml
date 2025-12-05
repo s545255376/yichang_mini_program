@@ -1,10 +1,12 @@
+
+<wxs module="common" src="../../../utils/common.wxs"></wxs>
 <view class="skin_tabbar" wx:if="{{pid == 1}}">
   <view class="{{cateNum == index?'clicktab':''}}" wx:for="{{cate}}" wx:key="cate" bindtap="cateChange" data-idx="{{index}}">{{item.cate_name}}</view>
 </view>
 
 <view class="list" wx:if="{{list.length != 0}}">
   <view class="essay" bindtap="goInfo" wx:for="{{list}}" wx:key="essay" data-idx="{{index}}">
-    <image src="{{item.image}}" mode="widthFix"></image>
+    <image src="{{common.processImageUrl(item.image)}}" mode="widthFix"></image>
     <view class="title">{{item.title}}</view>
     <view class="info">{{item.desc}}</view>
   </view>

@@ -108,6 +108,17 @@ class Queue {
     }
 }
 
+/**
+ * 处理图片URL，将HTTP转换为HTTPS
+ * 如果图片服务器不支持HTTPS，此函数会尝试转换，但可能仍会失败
+ * @param {string} url 图片URL
+ * @returns {string} 处理后的图片URL
+ */
+function processImageUrl(url) {
+    url = url.replace('http://images.luluhoo.cn', 'https://yichangimg.luluhoo.cn');
+    return url;
+}
+
 module.exports = {
     formatTime: formatTime,
     dateArr: dateArr,
@@ -119,4 +130,5 @@ module.exports = {
     objType: objType,
     getSign: getSign,
     Queue,
+    processImageUrl: processImageUrl,
 }

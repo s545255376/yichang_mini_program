@@ -1,3 +1,5 @@
+
+<wxs module="common" src="../../../utils/common.wxs"></wxs>
 <import src="../../wxParse/wxParse.wxml"/>
 <view class="ic_empty" wx:if="{{loadState == false}}">
   <image src="../../../images/ic_error_network.png" mode="widthFix"></image>
@@ -17,7 +19,7 @@
     <view class="goodslist">
       <view class="goodspart" wx:for="{{list}}" wx:key="recommend" data-idx="{{index}}" bindtap="goGoods">
         <view class="image">
-          <image src="{{item.image}}" mode="aspectFill"></image>
+          <image src="{{common.processImageUrl(item.image)}}" mode="aspectFill"></image>
           <view wx:if="{{item.tag.length != 0}}"><text wx:for="{{item.tag}}" wx:key="tagList" wx:for-item="tag">{{tag}}</text></view>
         </view>
         <view class="info">

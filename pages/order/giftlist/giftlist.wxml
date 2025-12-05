@@ -1,6 +1,8 @@
+
+<wxs module="common" src="../../../utils/common.wxs"></wxs>
 <view class="goods_part">
   <view class="goods" wx:for="{{list}}" wx:key="giftList">
-    <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+    <image src="{{common.processImageUrl(item.image)}}" mode="aspectFill" class="goods_thumb"></image>
     <view class="info">
       <view class="title">{{item.goods_name}}</view>
       <view class="desc">{{item.goods_sub}}</view>

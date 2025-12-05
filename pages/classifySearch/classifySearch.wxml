@@ -1,9 +1,11 @@
 <!--pages/classifySearch/classifySearch.wxml-->
+
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 <van-search id="search" bind:search="confirmSearch" value="{{ value }}" placeholder="请输入搜索关键词" />
 <view id="classifySearch" class="home wholepage" style="padding-top:{{ searchBarHeight}}px;min-height:{{screenHeight}}px">
     <view class="goodspart" wx:for="{{columnGoods}}" wx:key="index" bindtap="goGoodsInfo" data-goodsid="{{item.goods_id}}">
         <view class="image">
-            <image src="{{item.image}}" mode="widthFix"></image>
+            <image src="{{common.processImageUrl(item.image)}}" mode="widthFix"></image>
         </view>
         <view class="info">
             <view class="title">{{item.goods_name}}</view>

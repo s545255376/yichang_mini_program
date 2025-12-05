@@ -1,6 +1,8 @@
+
+<wxs module="common" src="../../../utils/common.wxs"></wxs>
 <view class="wholepage">
     <view class="head">
-        <image src="{{userinfo.portrait}}" mode="aspectFill" class="avatar"></image>
+        <image src="{{common.processImageUrl(userinfo.portrait)}}" mode="aspectFill" class="avatar"></image>
         <view class="name">{{userinfo.username}}</view>
         <!-- <view class="share_btn" bindtap="shareShopn">
       <image src="../../images/ic_share_gray.png" mode="widthFix"></image>
@@ -17,7 +19,7 @@
     </view>
     <view class="list" wx:else>
         <view class="part" wx:for="{{list}}" wx:key="posterList">
-            <image src="{{item.image}}" mode="widthFix"></image>
+            <image src="{{common.processImageUrl(item.image)}}" mode="widthFix"></image>
             <view class="info">
                 <view class="name">{{item.goods_name}}</view>
                 <!-- <view class="desc">{{item.goods_sub}}</view>

@@ -1,4 +1,6 @@
 <!--pages/temporaryPackages/pages/newRetail/articleQRcollection.wxml-->
+
+<wxs module="common" src="../../../../utils/common.wxs"></wxs>
 <view id="articleQRcollection" style="{{'min-height:'+ screenHeight + 'px'}}">
     <canvas type="2d" class="canvas-poster" id="canvasPoster" style="width:{{canvasWidth}}px;height:{{canvasHeight}}px" canvas-id="canvasPoster"></canvas>
     <view class="clearfix"></view>
@@ -20,7 +22,7 @@
             <view class="imgList {{item.material.length == 1 ? 'x1' : item.material.length == 2 ? 'x2' : 'x3'}}">
                 <view wx:for="{{item.material}}" wx:for-item="items" wx:key="index">
                     <block wx:if="{{items.type == 'image'}}">
-                        <image src="{{items.url}}" mode="aspectFit" bindtap="previewImages" data-material="{{item.material}}" data-item="{{items}}"></image>
+                        <image src="{{common.processImageUrl(items.url)}}" mode="aspectFit" bindtap="previewImages" data-material="{{item.material}}" data-item="{{items}}"></image>
                     </block>
                     <block wx:elif="{{items.type == 'video'}}">
                         <video src="{{items.url}}" custom-cache="{{false}}" initial-time="{{1}}" muted="true" show-mute-btn="true" controls="true" ></video>

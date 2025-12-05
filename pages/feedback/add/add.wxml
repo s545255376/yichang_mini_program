@@ -1,3 +1,5 @@
+
+<wxs module="common" src="../../../utils/common.wxs"></wxs>
 <view class="{{needAdapt ? 'iphone_pandding' : ''}}">
   <view class="text">
     <textarea placeholder="你有什么意见或问题可以反馈给我们" placeholder-class="placeholder" maxlength="100" bindinput="inputChange"></textarea>
@@ -5,7 +7,7 @@
   </view>
   <view class="imglist">
     <view class="img" wx:for="{{uploadimg}}" wx:key="returnImgList">
-      <image src="{{item.img}}" mode="aspectFill" bindtap="bannerClick" data-idx="{{index}}"></image>
+      <image src="{{common.processImageUrl(item.img)}}" mode="aspectFill" bindtap="bannerClick" data-idx="{{index}}"></image>
       <view data-idx="{{index}}" bindtap="delImg">删除</view>
     </view>
     <view class="img" bindtap="addImg">

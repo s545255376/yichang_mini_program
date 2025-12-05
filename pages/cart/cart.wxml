@@ -1,3 +1,5 @@
+
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="page {{needAdapt ? 'iphone_pandding' : ''}}">
   <view wx:if="{{loading == true}}"></view>
   <view class="ic_empty" wx:elif="{{loadState == false}}">
@@ -29,7 +31,7 @@
           <view class="cart" wx:for="{{listitem}}" wx:key="childlist">
             <view class="check_icon"><checkbox disabled="{{modeltype != partnum && modeltype != 'none'}}" value="{{index}}" class="checkbox" checked="{{item.checked}}"/></view>
             <view class="detail">
-              <image src="{{item.image}}" mode="aspectFill" class="goods_thumb" bindtap="goGoodsInfo"  data-type="{{partnum}}" data-idx="{{index}}"></image>
+              <image src="{{common.processImageUrl(item.image)}}" mode="aspectFill" class="goods_thumb" bindtap="goGoodsInfo"  data-type="{{partnum}}" data-idx="{{index}}"></image>
               <view class="info">
                 <view class="title"><view bindtap="goGoodsInfo"  data-type="{{partnum}}" data-idx="{{index}}">{{item.goods_name}}</view><image mode="widthFix" src="../../images/ic_del.png" bindtap="delCart" data-state="list"  data-type="{{partnum}}" data-idx="{{index}}"></image></view>
                 <view class="desc" bindtap="goGoodsInfo"  data-type="{{partnum}}" data-idx="{{index}}">{{item.goods_sub}}</view>
@@ -74,7 +76,7 @@
       <view class="cart" wx:for="{{cancel}}" wx:key="cartCancel">
         <view class="invalid_tips">失效</view>
         <view class="detail">
-          <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+          <image src="{{common.processImageUrl(item.image)}}" mode="aspectFill" class="goods_thumb"></image>
           <view class="info">
             <view class="title"><view>{{item.goods_name}}</view><image mode="widthFix" src="../../images/ic_del.png"></image></view>
             <view class="desc">{{item.goods_sub}}</view>
@@ -118,7 +120,7 @@
     <view class="toast">
       <view class="title" catchtouchmove="false">
         <image src="../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeToast"></image>
-        <image src="{{toastShow.image}}" mode="aspectFill" class="goods_img"></image>
+        <image src="{{common.processImageUrl(toastShow.image)}}" mode="aspectFill" class="goods_img"></image>
         <view class="info">
           <view class="price"><text>￥</text>{{toastShow.price}} <view><text wx:if="{{toastShow.market_price != 0}}">￥</text>{{toastShow.market_price == 0?'':toastShow.market_price}}</view></view>
           <view class="search_tips" wx:if="{{toastShow.is_suit == 0}}"><text wx:for="{{toastShow.specs}}" wx:key="goodsSpecs">{{item.item[item.searchidx].item}}</text></view>
@@ -132,7 +134,7 @@
           <view class="name">{{item.spec_name}}：</view>
           <view class="btn_list">
             <view class="{{item.searchidx == -1?'':item.searchidx == idx?'btn_click':''}}" wx:for="{{item.item}}" wx:key="goodsSpecsItem" wx:for-item="specsitem" wx:for-index="idx" data-pidx="{{index}}"  data-idx="{{idx}}" bindtap="specsSearch">
-              <image src="{{specsitem.image}}" mode="aspectFill" wx:if="{{specsitem.image}}"></image>
+              <image src="{{common.processImageUrl(specsitem.image)}}" mode="aspectFill" wx:if="{{specsitem.image}}"></image>
               <text>{{specsitem.item}}</text>
             </view>
           </view>
@@ -145,7 +147,7 @@
             <view class="name">{{suititem.goods_name}}{{item.spec_name}}：</view>
             <view class="btn_list">
               <view class="{{item.searchidx == -1?'':item.searchidx == idx?'btn_click':''}}" wx:for="{{item.item}}" wx:key="goodsSpecsItem" wx:for-item="specsitem" wx:for-index="idx" data-gidx="{{suitidx}}" data-pidx="{{index}}"  data-idx="{{idx}}" bindtap="specsSearch">
-                <image src="{{specsitem.image}}" mode="aspectFill" wx:if="{{specsitem.image}}"></image>
+                <image src="{{common.processImageUrl(specsitem.image)}}" mode="aspectFill" wx:if="{{specsitem.image}}"></image>
                 <text>{{specsitem.item}}</text>
               </view>
             </view>

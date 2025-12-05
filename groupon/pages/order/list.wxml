@@ -1,4 +1,5 @@
 <!--groupon/pages/order/list.wxml-->
+<wxs module="common" src="../../../utils/common.wxs"></wxs>
 <view class="tabbar">
     <view class="{{tabbarNum == index?'tabbar_click':''}}" bindtap="tabbarChange" wx:for="{{tabbar}}"  wx:key="tabbar" wx:for-item="item" wx:for-index="index" data-idx="{{index}}">{{item}}</view>
 </view>
@@ -17,7 +18,7 @@
                 <view class="header_left">
                     <block wx:if="{{is_storeStaff}}">
                         <view>
-                            <image src="{{item.ownerInfo.portrait}}"></image>
+                            <image src="{{common.processImageUrl(item.ownerInfo.portrait)}}"></image>
                             <view class="tuanzhang">
                                 <text>团长</text>
                             </view>
@@ -39,7 +40,7 @@
                 <view class="item_lists" wx:for="{{item.lists}}" wx:for-item="item_lists" wx:for-index="lists_index" wx:key="lists_index">
                     <view class="item_order" wx:if="{{!is_storeStaff}}">订单编号：{{item_lists.order.order_sn}}</view>
                     <view class="item_goods" wx:for="{{item_lists.order.goods}}" wx:for-item="item_goods" wx:for-index="goods_index" wx:key="goods_index">
-                        <image src="{{item_goods.image}}" mode="widthFix"></image>
+                        <image src="{{common.processImageUrl(item_goods.image)}}" mode="widthFix"></image>
                         <view>
                             <view>{{item_goods.goods_name}}</view>
                             <view>

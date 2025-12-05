@@ -1,3 +1,5 @@
+
+<wxs module="common" src="../../../utils/common.wxs"></wxs>
 <view class="tabbar" >
   <view class="{{tabbarNum == index?'tabbar_click':''}}" bindtap="tabbarChange" wx:for="{{tabbar}}"  wx:key="tabbar" wx:for-item="item" wx:for-index="index" data-idx="{{index}}">{{item}}</view>
 </view>
@@ -19,7 +21,7 @@
     <!-- body -->
     <view class="detail" bindtap="orderDetail" data-idx="{{index}}">
       <view class="body" wx:for="{{item.goods}}" wx:key="orderGoodsList" wx:for-item="info" wx:for-index="idx">
-        <image src="{{info.image}}" mode="aspectFill"></image>
+        <image src="{{common.processImageUrl(info.image)}}" mode="aspectFill"></image>
         <view class="tips" wx:if="{{info.type == 2}}">
           <image src="../../../images/order/ic_gifts.png" mode="widthFix"></image>
           <view>赠品</view>

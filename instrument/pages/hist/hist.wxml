@@ -49,8 +49,8 @@
 <view class="list" wx:else>
   <view wx:for="{{list}}" wx:key="index" bindtap="goCharts" data-position="{{item.position}}"  data-type="{{item.type}}" class="part">
     <view class="part_info">
-      <image src="{{item.type == 0?'../../images/ic_check_before.png':'../../images/ic_check_after.png'}}" mode="widthFix" class="state"></image>
-      <view class="image"><image src="{{item.position == 0?'../../images/ic_hand_search.png':item.position == 1?'../../images/ic_face_search.png':'../../images/ic_eyes_search.png'}}" mode="widthFix"></image><view>{{item.position == 0?'手部':item.position == 1?'脸部':'眼部'}}</view></view>
+      <image src="item.type == 0?'../../images/ic_check_before.png':'../../images/ic_check_after.png'}}" mode="widthFix" class="state"></image>
+      <view class="image"><image src="item.position == 0?'../../images/ic_hand_search.png':item.position == 1?'../../images/ic_face_search.png':'../../images/ic_eyes_search.png'}}" mode="widthFix"></image><view>{{item.position == 0?'手部':item.position == 1?'脸部':'眼部'}}</view></view>
       <view class="info">
         <view class="title"><view>肌肤状况</view><view>平均水分</view><view>比最近一{{datanum ==0?'天':datanum ==1?'周':'月'}}</view></view>
         <view class="pernum"><view>{{item.moisture_content < 20?'干燥':item.moisture_content < 30?'较干燥':item.moisture_content < 40?'标准':'较湿润'}}</view><view>{{Fix.toFix(item.moisture_content)}}%</view><view>{{Fix.toFix(item.compare)}}%</view></view>

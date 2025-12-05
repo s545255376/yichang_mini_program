@@ -1,3 +1,5 @@
+
+<wxs module="common" src="../../../../utils/common.wxs"></wxs>
 <view class="ic_empty" wx:if="{{loadState == false}}">
   <image src="../../../../images/ic_error_network.png" mode="widthFix"></image>
   <view>网络异常，请重新登陆～</view>
@@ -14,7 +16,7 @@
     <!-- body -->
     <view class="detail" bindtap="orderDetail" data-idx="{{index}}">
       <view class="body" wx:for="{{item.order.goods}}" wx:key="orderGoodsList" wx:for-item="info" wx:for-index="idx">
-        <image src="{{info.image}}" mode="aspectFill"></image>
+        <image src="{{common.processImageUrl(info.image)}}" mode="aspectFill"></image>
         <view class="tips" wx:if="{{info.type == 2}}">
           <image src="../../../../images/order/ic_gifts.png" mode="widthFix"></image>
           <view>赠品</view>

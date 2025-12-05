@@ -1,4 +1,6 @@
 <!--pages/classify/classify.wxml-->
+
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 <van-search id="search" readonly bindtap="intoSearchPage" value="{{ value }}" placeholder="请输入搜索关键词" />
 <view id="classify" class="home wholepage" style="{{'height:'+ screenHeight + 'px'}}">
     <view id="left_bar">
@@ -13,7 +15,7 @@
     </view>
     <view id="right_contant">
         <view id="classify_image" wx:if="{{columnGoods.image}}">
-            <image src="{{columnGoods.image}}" lazy-load="true" mode="widthFix"></image>
+            <image src="{{common.processImageUrl(columnGoods.image)}}" lazy-load="true" mode="widthFix"></image>
         </view>
         <view id="classify_contant">
             <!-- <view class="sort_contents" bind:tap="changeSort">
@@ -22,7 +24,7 @@
             </view> -->
             <view class="goodspart" wx:for="{{columnGoods.list}}" wx:key="index" bindtap="goGoodsInfo" data-goodsid="{{item.goods_id}}">
                 <view class="image">
-                    <image src="{{item.image + '?imageView2/1/w/200/h/200'}}" mode="widthFix"></image>
+                    <image src="{{common.processImageUrl(item.image + '?imageView2/1/w/200/h/200')}}" mode="widthFix"></image>
                 </view>
                 <view class="info">
                   <view class="title_content">

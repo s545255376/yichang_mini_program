@@ -1,3 +1,5 @@
+
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 <wxs module="showdate">
   function formatNumber(n){
     n = n.toString()
@@ -52,7 +54,7 @@
     <!-- 参加减至xx活动 -->
     <view wx:if="{{info.goods_vip.length != 0}}">
         <view class="goods" wx:for="{{info.goods_vip}}" wx:key="payGoodsVipList">
-            <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+            <image src="{{common.processImageUrl(item.image)}}" mode="aspectFill" class="goods_thumb"></image>
             <view class="info">
                 <view class="title">{{item.goods_name}}</view>
                 <view class="tips" wx:if="{{item.type == 2}}">
@@ -94,7 +96,7 @@
             <image src="../../images/order/ic_gifts.png" mode="widthFix"></image>
             <view>赠品</view>
         </view>
-        <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+        <image src="{{common.processImageUrl(item.image)}}" mode="aspectFill" class="goods_thumb"></image>
         <view class="info">
             <view class="title">{{item.goods_name}}</view>
             <!-- 套盒 -->
@@ -254,7 +256,7 @@
         <view class="toast">
             <view class="title" catchtouchmove="false">
                 <image src="../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeNorms"></image>
-                <image src="{{normsList.image}}" mode="aspectFill" class="goods_img"></image>
+                <image src="{{common.processImageUrl(normsList.image)}}" mode="aspectFill" class="goods_img"></image>
                 <view class="info">
                     <view class="price">
                         <text>￥</text>{{normsList.price}}
@@ -281,7 +283,7 @@
         <view class="toast">
             <view class="title" catchtouchmove="false">
                 <image src="../../images/ic_del.png" mode="widthFix" class="close" bindtap="closeNorms"></image>
-                <image src="{{normsList.image}}" mode="aspectFill" class="goods_img"></image>
+                <image src="{{common.processImageUrl(normsList.image)}}" mode="aspectFill" class="goods_img"></image>
                 <view class="info">
                     <view>
                         {{normsList.goods_name}}
@@ -291,7 +293,7 @@
             <!-- 规格 -->
             <view class="norms">
                 <view class="pd_skulist" wx:for="{{normsList.suit_list}}" catchtouchmove="false">
-                    <image src="{{item.sku_image}}" mode="aspectFill" class="goods_img"></image>
+                    <image src="{{common.processImageUrl(item.sku_image)}}" mode="aspectFill" class="goods_img"></image>
                     <view class="info">
                         <view>
                             <view>{{item.sku_name}}</view>

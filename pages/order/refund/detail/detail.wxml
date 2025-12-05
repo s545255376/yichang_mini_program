@@ -1,3 +1,5 @@
+
+<wxs module="common" src="../../../../utils/common.wxs"></wxs>
 <view class="ic_empty" wx:if="{{loadState == false}}">
   <image src="../../../../images/ic_error_network.png" mode="widthFix"></image>
   <view>网络异常，请重新登陆～</view>
@@ -55,7 +57,7 @@
   <view class="goods_part">
     <view class="order_title">{{info.refund_type}}信息</view>
     <view class="goods" wx:for="{{info.order.goods}}" wx:key="orderGoods" bindtap="goGoodsInfo" data-idx="{{index}}" wx:if="{{item.type != 3}}">
-      <image src="{{item.image}}" mode="aspectFill" class="goods_thumb"></image>
+      <image src="{{common.processImageUrl(item.image)}}" mode="aspectFill" class="goods_thumb"></image>
       <view class="tips" wx:if="{{item.type == 2}}">
         <image src="../../../../images/order/ic_gifts.png" mode="widthFix"></image>
         <view>赠品</view>
@@ -78,7 +80,7 @@
       <view class="order_title"><image src="../../../../images/order/ic_gift.png" mode="widthFix"></image>奖品</view>
       <view class="gifts">
         <view class="gift_img">
-          <image src="{{item.image}}" mode="widthFix" wx:for="{{prizelist}}" wx:key="prizelist" wx:if="{{index < 3}}"></image>
+          <image src="{{common.processImageUrl(item.image)}}" mode="widthFix" wx:for="{{prizelist}}" wx:key="prizelist" wx:if="{{index < 3}}"></image>
         </view>
         <view class="show_more">
           <view class="info" bindtap="showMoreGifts">
@@ -105,7 +107,7 @@
       <view class="name">上传凭证</view>
       <view class="upload">
         <view class="img" wx:for="{{info.return_voucher}}" wx:key="returnImgList">
-          <image src="{{item}}" mode="aspectFill" lazy-load="true" bindtap="bannerClick" data-idx="{{index}}"></image>
+          <image src="{{common.processImageUrl(item)}}" mode="aspectFill" lazy-load="true" bindtap="bannerClick" data-idx="{{index}}"></image>
         </view>
       </view>
     </view>

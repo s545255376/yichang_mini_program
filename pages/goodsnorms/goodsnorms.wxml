@@ -1,3 +1,5 @@
+
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="page">
   <view wx:if="{{loading == true}}"></view>
   <view class="ic_empty" wx:elif="{{loadState == false}}">
@@ -13,7 +15,7 @@
       <label class="cart" wx:for="{{list}}" wx:key="childlist">
         <view class="check_icon"><radio value="{{index}}" class="checkbox" checked="{{checkedNum == index}}"/></view>
         <view class="detail">
-          <image src="{{item.image}}" mode="aspectFill" class="goods_thumb" bindtap="goGoodsInfo"></image>
+          <image src="{{common.processImageUrl(item.image)}}" mode="aspectFill" class="goods_thumb" bindtap="goGoodsInfo"></image>
           <view class="info">
             <view class="title">{{item.goods_name}}</view>
             <!-- <view class="desc">MISSSHOP素颜凝胶水</view>

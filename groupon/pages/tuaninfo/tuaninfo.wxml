@@ -1,4 +1,6 @@
 <!--groupon/pages/tuaninfo/tuaninfo.wxml-->
+
+<wxs module="common" src="../../../utils/common.wxs"></wxs>
 <view class="wholepage">
     <view id="tuanInfo">
         <!-- 从payment支付页过来的 提示一个支付成功 -->
@@ -11,7 +13,7 @@
         </view>
         <view id="content">
             <view id="productInfo">
-                <image src="{{goods.image}}" ></image>
+                <image src="{{common.processImageUrl(goods.image)}}" ></image>
                 <view>
                     <view>{{goods.goods_name}}</view>
                     <view>
@@ -95,7 +97,7 @@
                 <view id="buylist_title"></view>
                 <view class="buylist_item" wx:for="{{info.buy_list}}" wx:key="index">
                     <view class="buylist_item_header">
-                        <image src="{{item.user.portrait}}"></image>
+                        <image src="{{common.processImageUrl(item.user.portrait)}}"></image>
                         <view class="tuanzhang" wx:if="{{item.user.is_owner == 1}}"><text>团长</text></view>
                     </view>
                     <view class="buylist_item_content">
