@@ -12,12 +12,18 @@ Page({
     cartnum: 0,
     value: '',
     message: '',
+    apply: false, // 品牌介绍开关
     columnGoods: {
       list: [],
       image:''
     }, 
   },
   onLoad(options) {
+    this.getApply().then(res => {
+      this.setData({
+        apply: res
+      })
+    });
     let _this = this;
     let direct = "no";
     if ('table_number' in options) {
@@ -100,6 +106,15 @@ Page({
               })
               .catch()
       }
+  },
+  async getApply(){
+    return new Promise((resolve, reject) => {
+      getRequest.post('/index/notify/apply', {}).then(res => {
+        resolve(res.data == 1 ? true : false);
+      }).catch(err => {
+        reject(false);
+      });
+    });
   },
     //减少数量
   delNum: function (e) {

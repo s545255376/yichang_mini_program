@@ -182,3 +182,276 @@
   text-align: center;
   border-radius: 50%;
 }
+
+/* 品牌介绍界面样式 */
+.brand-intro-container {
+  background-color: #F7F8FA;
+  overflow-y: auto;
+  padding-bottom: 60rpx;
+}
+
+/* 头部设计 */
+.brand-header {
+  position: relative;
+  height: 420rpx;
+  background: linear-gradient(135deg, #c2253a 0%, #ff4d6a 100%);
+  border-bottom-left-radius: 60rpx;
+  border-bottom-right-radius: 60rpx;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10rpx 30rpx rgba(194, 37, 58, 0.2);
+}
+
+.header-bg-circle {
+  position: absolute;
+  top: -100rpx;
+  right: -100rpx;
+  width: 400rpx;
+  height: 400rpx;
+  background: rgba(255,255,255,0.03);
+  border-radius: 50%;
+}
+
+.header-content {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -40rpx;
+}
+
+.brand-logo-wrapper {
+  width: 140rpx;
+  height: 140rpx;
+  background: #fff;
+  border-radius: 50%;
+  padding: 6rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.2);
+  margin-bottom: 24rpx;
+}
+
+.brand-logo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.brand-info {
+  text-align: center;
+  color: #fff;
+}
+
+.brand-name {
+  font-size: 44rpx;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+  margin-bottom: 8rpx;
+}
+
+.brand-slogan {
+  font-size: 20rpx;
+  letter-spacing: 8rpx;
+  opacity: 0.6;
+  margin-bottom: 20rpx;
+  text-transform: uppercase;
+}
+
+.brand-desc {
+  font-size: 26rpx;
+  background: rgba(255,255,255,0.1);
+  padding: 8rpx 24rpx;
+  border-radius: 30rpx;
+  letter-spacing: 2rpx;
+}
+
+.brand-content {
+  padding: 0 30rpx;
+  margin-top: -50rpx;
+  position: relative;
+  z-index: 3;
+}
+
+/* 简介卡片 */
+.intro-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 40rpx 40rpx 50rpx;
+  box-shadow: 0 10rpx 40rpx rgba(0,0,0,0.06);
+  position: relative;
+  margin-bottom: 50rpx;
+}
+
+.quote-icon {
+  position: absolute;
+  top: 20rpx;
+  left: 30rpx;
+  font-size: 80rpx;
+  color: rgba(194, 37, 58, 0.1);
+  font-family: serif;
+  line-height: 1;
+}
+
+.intro-text {
+  font-size: 28rpx;
+  line-height: 1.8;
+  color: #555;
+  text-align: justify;
+  position: relative;
+  z-index: 2;
+}
+
+.highlight {
+  color: #c2253a;
+  font-weight: bold;
+  margin: 0 4rpx;
+}
+
+/* 通用标题 */
+.section-container {
+  margin-bottom: 50rpx;
+}
+
+.section-header {
+  margin-bottom: 30rpx;
+  padding-left: 10rpx;
+}
+
+.en-title {
+  display: block;
+  font-size: 20rpx;
+  color: #999;
+  letter-spacing: 4rpx;
+  margin-bottom: 4rpx;
+  font-weight: bold;
+}
+
+.cn-title {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+  position: relative;
+  display: inline-block;
+}
+
+.cn-title::after {
+  content: '';
+  position: absolute;
+  bottom: 6rpx;
+  left: 0;
+  right: 0;
+  height: 12rpx;
+  background: rgba(194, 37, 58, 0.15);
+  z-index: -1;
+  border-radius: 6rpx;
+}
+
+/* 优势 Grid */
+.advantage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24rpx;
+}
+
+.adv-item {
+  background: #fff;
+  padding: 30rpx 20rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.03);
+  transition: transform 0.2s;
+}
+
+.adv-icon-box {
+  width: 80rpx;
+  height: 80rpx;
+  background: #FFF5F6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20rpx;
+}
+
+.adv-icon {
+  font-size: 36rpx;
+}
+
+.adv-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.adv-desc {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* 理念列表 */
+.concept-list {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 10rpx 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.03);
+}
+
+.concept-row {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.concept-row:last-child {
+  border-bottom: none;
+}
+
+.concept-big-text {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: linear-gradient(135deg, #c2253a 0%, #ff4d6a 100%);
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+  border-radius: 16rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+  box-shadow: 0 4rpx 12rpx rgba(194, 37, 58, 0.2);
+}
+
+.concept-detail {
+  width: 120rpx;
+  flex-shrink: 0;
+}
+
+.concept-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.concept-sub {
+  font-size: 18rpx;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.concept-line {
+  width: 2rpx;
+  height: 40rpx;
+  background: #eee;
+  margin: 0 24rpx;
+}
+
+.concept-content {
+  flex: 1;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.4;
+}

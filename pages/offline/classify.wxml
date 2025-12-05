@@ -2,7 +2,111 @@
 
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <van-search id="search" readonly bindtap="intoSearchPage" value="{{ value }}" placeholder="请输入搜索关键词" />
-<view id="classify" class="home wholepage" style="{{'height:'+ screenHeight + 'px'}}">
+
+<!-- 品牌介绍界面 -->
+<view wx:if="{{apply}}" class="brand-intro-container" style="{{'height:'+ screenHeight + 'px'}}">
+  <view class="brand-header">
+    <view class="header-bg-circle"></view>
+    <view class="header-content">
+      <view class="brand-logo-wrapper">
+        <image class="brand-logo" src="../../images/logo.png" mode="aspectFit"></image>
+      </view>
+      <view class="brand-info">
+        <view class="brand-name">夷畅精选</view>
+        <view class="brand-slogan">YICHANG SELECTION</view>
+        <view class="brand-desc">用心做好每一件产品</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="brand-content">
+    <!-- 简介卡片 -->
+    <view class="intro-card">
+      <view class="quote-icon">“</view>
+      <view class="intro-text">
+        我们是一家专注于提供优质产品和服务的品牌，致力于为消费者带来更好的购物体验。多年来，我们始终坚持<text class="highlight">品质第一</text>、<text class="highlight">服务至上</text>的理念，赢得了广大消费者的信赖与支持。
+      </view>
+    </view>
+    
+    <!-- 品牌优势 -->
+    <view class="section-container">
+      <view class="section-header">
+        <text class="en-title">ADVANTAGES</text>
+        <text class="cn-title">品牌优势</text>
+      </view>
+      <view class="advantage-grid">
+        <view class="adv-item">
+          <view class="adv-icon-box">
+            <view class="adv-icon">💎</view>
+          </view>
+          <view class="adv-title">优选品质</view>
+          <view class="adv-desc">严格把控商品源头</view>
+        </view>
+        <view class="adv-item">
+          <view class="adv-icon-box">
+            <view class="adv-icon">🛡️</view>
+          </view>
+          <view class="adv-title">全程保障</view>
+          <view class="adv-desc">贴心服务无忧购</view>
+        </view>
+        <view class="adv-item">
+          <view class="adv-icon-box">
+            <view class="adv-icon">💰</view>
+          </view>
+          <view class="adv-title">超高性价</view>
+          <view class="adv-desc">实惠价格享好物</view>
+        </view>
+        <view class="adv-item">
+          <view class="adv-icon-box">
+            <view class="adv-icon">🚀</view>
+          </view>
+          <view class="adv-title">极速配送</view>
+          <view class="adv-desc">便捷购物新体验</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 品牌理念 -->
+    <view class="section-container">
+      <view class="section-header">
+        <text class="en-title">CONCEPT</text>
+        <text class="cn-title">品牌理念</text>
+      </view>
+      <view class="concept-list">
+        <view class="concept-row">
+          <view class="concept-big-text">专</view>
+          <view class="concept-detail">
+            <view class="concept-name">专业</view>
+            <view class="concept-sub">Professional</view>
+          </view>
+          <view class="concept-line"></view>
+          <view class="concept-content">专业团队打造，提供最专业的服务支持</view>
+        </view>
+        <view class="concept-row">
+          <view class="concept-big-text">心</view>
+          <view class="concept-detail">
+            <view class="concept-name">用心</view>
+            <view class="concept-sub">Attentive</view>
+          </view>
+          <view class="concept-line"></view>
+          <view class="concept-content">用心做好细节，只为给您最好的体验</view>
+        </view>
+        <view class="concept-row">
+          <view class="concept-big-text">质</view>
+          <view class="concept-detail">
+            <view class="concept-name">品质</view>
+            <view class="concept-sub">Quality</view>
+          </view>
+          <view class="concept-line"></view>
+          <view class="concept-content">坚持品质为先，绝不向劣质产品妥协</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 原有分类页面 -->
+<view wx:else id="classify" class="home wholepage" style="{{'height:'+ screenHeight + 'px'}}">
     <view id="left_bar">
         <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
             <van-sidebar-item wx:for="{{classifyList}}" title="{{item.title}}" wx:key="index"/>
