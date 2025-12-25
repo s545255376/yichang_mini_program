@@ -1,9 +1,12 @@
-const app = getApp();
+function getSafeApp(){
+  return getApp();
+}
 //const db = wx.cloud.database();
 function get(link, hideLoading = false) {
   /**
    * @param {Boolean} hideLoading 有些请求非必要显示loading界面
   */
+ let app = getSafeApp()
   let promise = new Promise(function (resolve, reject) {
       if (app.globalData.icloading == false) {
           if (!hideLoading) wx.showLoading({
@@ -57,6 +60,7 @@ function post(link, params, hideLoading = false) {
     /**
      * @param {Boolean} hideLoading 有些请求非必要显示loading界面
     */
+   let app = getSafeApp()
     if (app.globalData.token != '') {
         let token = { 'token': app.globalData.token };
         params = Object.assign(params, token);
@@ -112,6 +116,7 @@ function post(link, params, hideLoading = false) {
 }
 //网络请求-非正常情况不弹窗提示
 function noToastPost(link, params) {
+  let app = getSafeApp()
     if (app.globalData.token != '') {
         let token = { 'token': app.globalData.token };
         params = Object.assign(params, token);

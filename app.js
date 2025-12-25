@@ -1,9 +1,18 @@
+import getRequest from "./utils/getRequest"
 App({
-    onLaunch: function () {
+    onLaunch: async function () {
         const _this = this
         wx.hideShareMenu()
 
         this.getNewVersion() //获取版本更新
+        let user = await this.getTokenFun()
+        console.log(user)
+        let logindata = {
+            mobile: user.mobile,
+            token: user.token,
+            id: user.user_id,
+        };
+        wx.setStorageSync('logindata', logindata)
         //设备基本信息
         wx.getSystemInfo({
             success: (res) => {
@@ -27,7 +36,7 @@ App({
     },
     globalData: {
         examineStr: '20221008',
-        url:'https://yichang.luluhoo.cn/',
+        url:'https://yichang-test.luluhoo.cn/',
         //url: 'https://cmjx.chengmeijiangxuan.com/', //正式
         // url: 'http://101.43.21.82/',//测试
         //url: 'http://192.168.7.68:4411/', //本地
@@ -134,6 +143,37 @@ App({
             icon: 'none',
         })
     },
+    getTokenFun() {
+      return new Promise((resolve, reject) => {
+        // 1. 微信登录
+        wx.login({
+          success: (wxlogin) => {
+    
+            // 2. 请求自己后台换 token
+            getRequest.post("index/user/login", {
+              code: wxlogin.code
+            }).then(res => {
+    
+              const token = res.data.token;
+              const mobile = res.data.mobile;
+              const user_id = res.data.user_id
+    
+              resolve({
+                token,
+                mobile,
+                user_id
+              });   // 成功抛出去
+    
+            }).catch(err => {
+              reject(err);
+            });
+          },
+          fail: err => {
+            reject(err);
+          }
+        });
+      });
+    },    
     //版本检查
     getNewVersion() {
         // 检测自动更新

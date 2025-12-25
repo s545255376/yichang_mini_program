@@ -19,11 +19,6 @@ Page({
     }, 
   },
   onLoad(options) {
-    this.getApply().then(res => {
-      this.setData({
-        apply: res
-      })
-    });
     let _this = this;
     let direct = "no";
     if ('table_number' in options) {
@@ -33,6 +28,11 @@ Page({
     if ('area_type' in options) {
       app.globalData.area_type = options.area_type;
     }
+    this.getApply().then(res => {
+      this.setData({
+        apply: !app.globalData.table_number && res
+      })
+    });
     let loginData = wx.getStorageSync('logindata')
     if (loginData) {
         app.globalData.userInfo = loginData
@@ -254,6 +254,13 @@ Page({
   },
   //跳转购物车
   goCart: function () {
+    if(!app.globalData.table_number){
+      wx.showToast({
+          title: "请先扫桌码",
+          icon: 'none',
+      })
+      return
+    }
     wx.navigateTo({
         url: '../cart/cart',
     })
